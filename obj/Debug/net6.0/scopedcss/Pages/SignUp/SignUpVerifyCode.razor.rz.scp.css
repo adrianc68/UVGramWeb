@@ -1,0 +1,51 @@
+.su-code[b-i77flgwyrf]{
+    padding:35px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
+
+.su-code-main[b-i77flgwyrf] {
+    padding:5px 25px 25px 25px;
+    width:calc(420px - 30px);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.su-code-description[b-i77flgwyrf] {
+    padding:25px 25px 0 25px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.su-code-description > img[b-i77flgwyrf] {
+    height:120px;
+    padding-bottom:15px;
+}
+
+.su-code-form[b-i77flgwyrf] {
+    padding:25px;
+    padding:15px 25px 25px 25px;
+    width:100%;
+}
+
+
+
+.su-buttons[b-i77flgwyrf] {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    gap:15px;
+    padding-left:25px;
+    padding-right:25px;
+}
+
+.su-buttons > button[b-i77flgwyrf] {
+    width:100%;
+}
+

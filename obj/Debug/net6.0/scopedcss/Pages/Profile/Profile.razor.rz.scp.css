@@ -1,0 +1,135 @@
+.profile[b-rqgvf31y2o] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 55px;
+}
+
+.profile-content[b-rqgvf31y2o] {
+    width: 80vw;
+}
+
+/* 
+.profile-userdata {
+    background-color: red;
+}
+*/
+.profile-data[b-rqgvf31y2o] {
+    padding:30px 30px 0px 30px;
+    display:flex;
+    justify-content: center;
+    align-items: top;
+    gap:25px;
+}
+
+.profile-description[b-rqgvf31y2o] {
+    margin-left:55px;
+}
+
+.userprofile[b-rqgvf31y2o] {
+    display:flex;
+    justify-content: center;
+    align-items: top;
+    width:auto;
+}
+
+.profile-a-container[b-rqgvf31y2o] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
+    padding:15px;
+}
+
+.profile-a-username[b-rqgvf31y2o] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-a-username > h2[b-rqgvf31y2o] {
+    font-size:1.6em;
+}
+
+.profile-desc-actions[b-rqgvf31y2o] {
+    display:flex;
+    gap:10px;
+}
+
+.profile-desc-actions > div > button[b-rqgvf31y2o] {
+    font-size:0.85em;
+    color:#000;
+    font-weight: 600;
+}
+
+.profile-b-container[b-rqgvf31y2o] {
+    display:flex;
+    justify-content: flex-start;
+    padding:5px 0px 0px 15px;
+    align-items: center;
+    gap:5px;
+}
+
+.profile-indicators[b-rqgvf31y2o] {
+    display:flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.profile-indicators > button[b-rqgvf31y2o]{
+    border:0;
+    background-color: transparent;
+}
+
+.profile-c-container[b-rqgvf31y2o] {
+    padding:15px;
+    
+}
+
+
+.userprofile-img[b-rqgvf31y2o] {
+    height:165px;
+    width:165px;
+}
+
+.profile-histories[b-rqgvf31y2o] {
+    padding:15px;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+
+.profile-histories ul[b-rqgvf31y2o] {
+    list-style: none;
+    display:flex;
+    gap:15px;
+}
+
+.profile-publications[b-rqgvf31y2o] {
+    padding-top:15px;
+    padding-bottom:15px;
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.pf-followers[b-rqgvf31y2o] {
+    position:relative;
+}
+
+.pf-following[b-rqgvf31y2o] {
+    position:relative;
+}
+
+.notsqr[b-rqgvf31y2o] {
+    z-index:0;
+    height: 24px;
+    width: 24px;
+    left:50%;
+    background-color: red;
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .125);
+}

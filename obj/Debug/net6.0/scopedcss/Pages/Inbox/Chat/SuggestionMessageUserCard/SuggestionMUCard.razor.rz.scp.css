@@ -1,0 +1,19 @@
+.sumucard[b-fwrpecrxmh] {
+    display: flex;
+    gap:10px;
+    cursor:pointer;
+    padding:5px;
+}
+
+
+.userprofile[b-fwrpecrxmh] {
+    height:44px;
+    width:44px;
+}
+
+
+.userdata[b-fwrpecrxmh] {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}

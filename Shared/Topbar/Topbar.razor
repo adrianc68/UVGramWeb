@@ -1,0 +1,50 @@
+@if (showCreatePublication)
+{
+    <UVGramWeb.Shared.Publications.CreatePublication.CreatePublication>
+</UVGramWeb.Shared.Publications.CreatePublication.CreatePublication>
+}
+
+<header class="card">
+    <nav class="topbar">
+        <div class="topbar-logo">
+            <UVGramWeb.Shared.Logo.Logo></UVGramWeb.Shared.Logo.Logo>
+        </div>
+        <div class="topbar-search">
+            <input type="text" id="search" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+        </div>
+        <div class="topbar-actions">
+            <NavLink class="btn shadow-none" href="/home">
+                    <span class="oi oi-home" aria-label="home"></span>
+            </NavLink>
+            <NavLink class="btn shadow-none" href="/inbox/">
+                    <span class="oi oi-envelope-closed" aria-label="Mensajes"></span>
+            </NavLink>
+            <NavLink class="btn shadow-none" @onclick="() => showCreatePublication = !showCreatePublication">
+                <span class="oi oi-plus" aria-label="Publicar"></span>
+            </NavLink>
+            <NavLink class="btn shadow-none">
+                    <span class="oi oi-compass" aria-label="Explorar"></span>
+            </NavLink>
+            <button class="btn shadow-none" @onclick="() => showNotificationPopup = !showNotificationPopup">
+                <span class="oi oi-heart" aria-label="Notificaciones"></span>
+                @if (showNotificationPopup)
+                {
+                    <div class="notification-popup">
+                        <div class="notsqr"></div>
+                        <div class="notification-tooltip shadow">
+                            <UVGramWeb.Shared.Notifications.Notifications></UVGramWeb.Shared.Notifications.Notifications>
+                        </div>
+                    </div>
+                }
+            </button>
+            <NavLink class="btn shadow-none" href="/my.username/">
+                <span class="oi oi-person" aria-label="Mi perfil"></span>
+            </NavLink>
+        </div>
+    </nav>
+</header>
+
+@code {
+    bool showCreatePublication;
+    bool showNotificationPopup;
+}

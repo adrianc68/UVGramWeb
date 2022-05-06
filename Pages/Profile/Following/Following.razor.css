@@ -1,0 +1,25 @@
+.following {
+    position:absolute;
+    width:350px;
+    max-height:350px;
+    top:35px;
+    z-index:100;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+}
+
+.following-header {
+    padding:10px;
+}
+
+.following-header > h1 {
+    font-size:1.1em;
+    text-align: center;
+}
+
+.following-content {
+    padding:10px;
+    overflow: auto;
+    
+}

@@ -1,0 +1,15 @@
+.mymessage-wrapper[b-gcbuxeim6g] {
+    width:100%;
+    padding:5px;
+    display:flex;
+    justify-content: flex-end;
+}
+
+.mymessage[b-gcbuxeim6g] {
+    max-width: 234px;
+    padding:15px;
+    border-radius:18px;
+    background-color:rgb(235, 223, 223);
+    word-break: break-all;
+    font-size:0.87em;
+}

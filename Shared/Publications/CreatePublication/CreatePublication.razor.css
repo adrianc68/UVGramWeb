@@ -1,0 +1,163 @@
+.createpublication {
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.cp-close {
+    position: absolute;
+    top:0;
+    right:0;
+    padding:15px;
+}
+
+.cp-close > button {
+    background-color: transparent;
+    border:none;
+}
+
+.createpub-description-content, .createpub-content {
+    border:none;
+}
+
+.createpub {
+    height:100vh;
+    width:100vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createpub-content {
+    width:55%;
+    height:80%;
+}
+
+.cpc-header, .cpc-header-cpd {
+    padding:5px;
+}
+
+.cpc-header > h1,
+.cpc-header-cpd > h1 {
+    font-size:1.0em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:bold;
+    height:100%;
+}
+
+.cpc-multimedia {
+    display:Flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    gap:10px;
+}
+
+.cpc-multimedia > h2 {
+    font-size:1.3em;
+}
+
+.cpc-multimedia > button {
+    font-size:0.8em;
+}
+
+
+.cpc-body {
+    display:flex;
+    height: 100%;
+    width: 100%;
+}
+
+.cpc-header-cpd {
+    display:flex;
+    justify-content: space-between;
+    padding:5px 15px 5px 15px;
+}
+
+.cpc-header-cpd > button {
+    border:none;
+    background-color: transparent;
+    font-size:0.8em;
+}
+
+.cpc-description-body {
+    height:100%;
+    min-height:90%;
+    display:flex;
+    overflow: auto;
+
+}
+
+.cpc-img-content {
+    width:69%;
+}
+
+.cpc-img-uploaded {
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    border-radius:0 0 0 15px;
+}
+
+.createpub-description-content {
+    width:85%;
+    height:80%;
+    border-radius:15px;
+}
+
+.cpc-img-uploaded > img {
+    min-width:100%;
+    min-height:100%;
+    flex-shrink: 0;
+}
+
+.createpub-datapublication {
+    flex:1;
+}
+
+.createpub-datapublication > .cs-textarea > textarea {
+    min-height:86px;
+    height:176px;
+    max-height:176px;
+    min-width:153px;
+    width:100%;
+    padding:15px;
+    border-radius:0;
+}
+
+.cs-textarea-info {
+    display:flex;
+    justify-content: space-between;
+    padding:10px;
+}
+
+.cs-textarea-info > button {
+    border:none;
+    background-color: transparent;
+}
+
+.cs-ti-limitdesc {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:0.7em;
+    letter-spacing: 0.08em;
+}
+
+
+
+.createpub-datapublication > .cs-ubication > input {
+    padding:15px;
+}
+
+.cs-configuration {
+    padding:15px;
+}
+

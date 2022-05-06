@@ -1,0 +1,16 @@
+
+@if (ShowModal)
+{
+    <div class="modal fade show" id="myModal" aria-modal="true" role="dialog">
+    <div class="md-content">
+        @ChildContent
+    </div>
+</div>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    public bool ShowModal = true;
+}

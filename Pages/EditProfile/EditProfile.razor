@@ -1,0 +1,131 @@
+@page "/accounts/edit/"
+
+<UVGramWeb.Shared.Topbar.Topbar></UVGramWeb.Shared.Topbar.Topbar>
+<div class="editprofile">
+    <div class="editprofile-content card">
+        <EPSidebar></EPSidebar>
+        <article class="ep-rightside">
+            <form class="ep-editprofile-form">
+                <div class="ep-data ep-photo-profile">
+                    <aside>
+                        <div class="userprofile-img-content">
+                            <UVGramWeb.Shared.UserProfile.UserProfile></UVGramWeb.Shared.UserProfile.UserProfile>
+                        </div>
+                    </aside>
+                    <div class="ep-data ep-pp-data">
+                        <h1>adrian_c68</h1>
+                        <button class="btn-link text-decoration-none ">Cambiar foto de perfil</button>
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="name">Nombre:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <input class="form-control" aria-required="false" id="name" placeholder="Nombre" type="text"
+                            value="nombre...">
+                        <div id="help" class="form-text">
+                            <p>
+                                Para ayudar a que las personas descubran tu cuenta, usa el nombre por el que te conoce
+                                la
+                                gente, ya sea tu nombre completo, apodo o nombre comercial.
+                                Solo puedes cambiar el nombre del grupo dos veces en un plazo de 14 días.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="username">Nombre de usuario:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <input class="form-control" aria-required="false" id="username" placeholder="Nombre de usuario"
+                            type="text" value="nombreusuario...">
+
+                        <div id="help" class="form-text">
+                            <p>
+                                En la mayoría de los casos, podrás volver a cambiar tu nombre de usuario durante 14 días
+                                más
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="website">Sitio web:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <input class="form-control" aria-required="false" id="website" placeholder="Sitio web..."
+                            type="text" value="sitioweb...">
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="presentation">Presentación:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <textarea class="form-control" autocomplete="off" autocorrect="off" type="text"
+                            id="presentation" placeholder="" aria-label="Presentacion para tu perfil" />
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                    </aside>
+                    <div class="ep-input">
+                        <div id="help" class="form-text">
+                            <h2>Información personal</h2>
+                            <p>
+
+                                Proporciona tu información personal, incluso si la cuenta se usa para un negocio, una
+                                mascota,
+                                etc. Esta información no se incluirá en tu perfil público.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="email">Correo electrónico:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <input class="form-control" aria-required="false" id="email" placeholder="email" type="text"
+                            value="email...">
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="phonenumber">Presentación:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <input class="form-control" aria-required="false" id="phonenumber" placeholder="Telefono"
+                            type="text" value="phonenumber...">
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                        <label class="epaside-data semibold" for="gender">Genero:</label>
+                    </aside>
+                    <div class="ep-input">
+                        <select class="form-control" name="gender" id="gender" aria-required="false">
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                            <option value="3">Otro...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ep-data">
+                    <aside>
+                    </aside>
+                    <div class="ep-input">
+                        <div class="actions">
+                            <button class="btn btn-primary">Enviar</button>
+                            <button class="btn btn-link text-decoration-none">Inhabilitar temporalmente mi
+                                cuenta</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </div>
+</div>

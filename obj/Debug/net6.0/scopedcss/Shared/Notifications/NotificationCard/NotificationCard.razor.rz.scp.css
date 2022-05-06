@@ -1,0 +1,35 @@
+.notificationcard[b-ubujzl2eg1] {
+    padding:10px 5px 10px 5px;
+    display:flex;
+    gap:10px;
+}
+
+.userprofile[b-ubujzl2eg1] {
+    height:44px;
+    width:44px;
+}
+
+.ntc-content[b-ubujzl2eg1] {
+    text-align: start;
+    flex:1;
+    display:flex;
+    align-items: center;
+}
+
+.ntc-content > span[b-ubujzl2eg1] {
+    display:block;
+    font-size:0.87em;
+    line-height: 1.1em;
+}
+
+.ntc-linkaction[b-ubujzl2eg1] {
+    width:13%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ntc-linkaction > img[b-ubujzl2eg1] {
+    width:40px;
+    height:40px;
+}

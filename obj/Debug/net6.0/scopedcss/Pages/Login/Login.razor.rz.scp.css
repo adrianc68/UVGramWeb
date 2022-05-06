@@ -1,0 +1,46 @@
+.login[b-5kqehl7rlk] {
+    padding:35px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
+
+.log-main[b-5kqehl7rlk] {
+    padding:25px;
+    width:calc(420px - 30px);
+}
+
+.log-logo[b-5kqehl7rlk] {
+    padding:25px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.log-form[b-5kqehl7rlk] {
+    padding:15px;
+}
+
+.log-buttons[b-5kqehl7rlk] {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+
+.log-buttons > button[b-5kqehl7rlk] {
+    width:100%;
+}
+
+.log-signup[b-5kqehl7rlk] {
+    width:calc(420px - 30px);
+    padding:15px;
+}
+
+.log-signup-content[b-5kqehl7rlk] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}
