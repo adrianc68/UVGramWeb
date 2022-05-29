@@ -1,0 +1,9 @@
+.pubd-options[b-tbn4zbbnuc] {
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.pubd-options > button:first-child[b-tbn4zbbnuc] {
+    color:#dc3545;
+}

@@ -1,0 +1,30 @@
+.historycard[b-cizsp5kt4r] {
+    height:38%;
+    width:12%;
+    background-color: blue;
+    border-radius:7px;
+    position: relative;
+}
+
+.historycard > img[b-cizsp5kt4r] {
+    height: 100%;
+    width: 100%;
+}
+
+.historycard.active[b-cizsp5kt4r] {
+    height: 96%;
+    width:30%;
+    aspect-ratio: 96/30;
+}
+
+.backStorie[b-cizsp5kt4r] {
+    position:absolute;
+    top:50%;
+    left:-10%;
+}
+
+.nextStorie[b-cizsp5kt4r] {
+    position:absolute;
+    top:50%;
+    right:-10%;
+}

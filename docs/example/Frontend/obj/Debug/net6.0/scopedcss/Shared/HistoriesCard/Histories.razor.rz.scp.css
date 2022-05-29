@@ -1,0 +1,25 @@
+.history-content[b-sfo640pb5o] {
+    height: auto;
+    width: auto;
+    display:flex;
+    flex-direction: column;
+    gap:3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-userprofile[b-sfo640pb5o] {
+    height:60px;
+    width:60px;
+}
+
+.history-username[b-sfo640pb5o] {
+    font-size:0.8em;
+    width:80px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}

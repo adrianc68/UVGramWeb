@@ -1,0 +1,53 @@
+.signUp[b-w724rdbscc] {
+    padding:35px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
+
+.su-main[b-w724rdbscc] {
+    padding:25px;
+    width:calc(520px - 30px);
+}
+
+.su-description[b-w724rdbscc] {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.su-form[b-w724rdbscc] {
+    padding:15px;
+}
+
+.su-buttons[b-w724rdbscc] {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.su-buttons > button[b-w724rdbscc] {
+    width:100%;
+}
+
+
+.su-login[b-w724rdbscc] {
+    width:calc(520px - 30px);
+    padding:15px;
+}
+
+.su-l-content[b-w724rdbscc] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}
+
+.conditions[b-w724rdbscc] {
+    font-size:0.8em;
+    margin-left:25px;
+    margin-right:25px;
+    margin-top:10px;
+}

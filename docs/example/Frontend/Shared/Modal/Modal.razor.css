@@ -1,0 +1,10 @@
+#myModal {
+    display: block;
+    background-color: rgba(10, 10, 10, .8);
+}
+
+.md-content {
+    background-color: blue;
+    height:100vh;
+    width:100vw;
+}

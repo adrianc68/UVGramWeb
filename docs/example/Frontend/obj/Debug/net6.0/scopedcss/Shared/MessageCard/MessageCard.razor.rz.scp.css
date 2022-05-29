@@ -1,0 +1,58 @@
+.messagecard[b-drcu8fmwy6] {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:15px;
+    padding:10px 15px 10px 15px;
+    width:100%;
+}
+
+.messagecard:hover[b-drcu8fmwy6] {
+    background-color: rgb(247, 241, 250);
+}
+
+.userprofile[b-drcu8fmwy6] {
+    height:56px;
+    width:56px;
+}
+
+.userprofile-data[b-drcu8fmwy6] {
+    font-size:0.9em;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    overflow: hidden;
+
+}
+
+.mc-message-content > span:last-child[b-drcu8fmwy6] {
+    font-size:0.85em;
+}
+
+.mc-message-content[b-drcu8fmwy6] {
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.userprofile-actions > button[b-drcu8fmwy6] {
+    font-size:0.8em;
+    font-weight: 600;
+    padding:0;
+}
+
+
+.message[b-drcu8fmwy6] {
+    border-radius: 100%;
+    display:grid;
+    place-items: center;
+}
+
+.no-readed[b-drcu8fmwy6] {
+    background-color:#0095f6;
+}
+
+.read[b-drcu8fmwy6] {
+    background-color: transparent;
+}

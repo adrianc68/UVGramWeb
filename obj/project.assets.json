@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kerberos/Escritorio/UVGram/UVGramWeb/UVGramWeb.csproj",
-      "projectName": "UVGramWeb",
-      "projectPath": "/home/kerberos/Escritorio/UVGram/UVGramWeb/UVGramWeb.csproj",
+      "projectUniqueName": "/home/kerberos/Escritorio/Desarrollos/Desarrollo de Aplicaciones/UVGram/UVGram.csproj",
+      "projectName": "UVGram",
+      "projectPath": "/home/kerberos/Escritorio/Desarrollos/Desarrollo de Aplicaciones/UVGram/UVGram.csproj",
       "packagesPath": "/home/kerberos/.nuget/packages/",
-      "outputPath": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/",
+      "outputPath": "/home/kerberos/Escritorio/Desarrollos/Desarrollo de Aplicaciones/UVGram/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kerberos/.nuget/NuGet/NuGet.Config"

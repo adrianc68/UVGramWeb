@@ -1,0 +1,26 @@
+.publication-profile[b-1731x4mxoo] {
+    width:100%;
+    display:flex;
+    display:flex;
+    justify-content: center;
+    gap:15px;
+}
+
+.pf-publication[b-1731x4mxoo] {
+    display:flex;
+
+    height:35vh;
+    width:35vh;
+
+    overflow: hidden;
+
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 219, 219);
+}
+
+.profile-img > img[b-1731x4mxoo] {
+    height:100%;
+    width:100%;
+    object-fit: contain;
+}

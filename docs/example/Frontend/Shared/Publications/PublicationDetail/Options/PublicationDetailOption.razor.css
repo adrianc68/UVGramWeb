@@ -1,0 +1,9 @@
+.pubd-options {
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.pubd-options > button:first-child {
+    color:#dc3545;
+}

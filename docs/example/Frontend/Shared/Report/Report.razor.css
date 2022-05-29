@@ -1,0 +1,54 @@
+.report {
+    height:100vh;
+    width:100vw;
+    background-color: black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-content {
+    width:400px;
+    border-radius:15px;
+    display:flex;
+    flex-direction: column;
+    gap:0px;
+}
+
+.report-header {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    padding:10px;
+}
+
+.report-action {
+    position: absolute;
+    right:10px;
+    top:0px;
+}
+
+.report-header >  h1 {
+    width: 100%;
+    font-size:1.1em;
+    text-align: center;
+}
+
+.report-options {
+    display:flex;
+    flex-direction: column;
+}
+
+.report-options > h2 {
+    font-size:1em;
+    padding:10px;
+    text-align: center;
+    text-align: start;
+}
+
+.report-options > button {
+    padding:10px 10px 10px 15px;
+    border-bottom:2px;
+    text-align: start;
+}

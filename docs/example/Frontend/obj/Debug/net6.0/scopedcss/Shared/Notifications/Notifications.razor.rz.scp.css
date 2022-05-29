@@ -1,0 +1,19 @@
+.nt-content[b-cw3je8lb1k] {
+    height:100%;
+    width: 100%;
+}
+
+.notf-header[b-cw3je8lb1k] {
+    padding:5px 5px 5px 10px;
+    display:flex;
+    justify-content: flex-start;
+    font-size:0.88em;
+}
+
+.notf-content[b-cw3je8lb1k] {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    overflow: auto;
+    padding:5px;
+}

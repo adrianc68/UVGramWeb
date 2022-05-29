@@ -1,0 +1,31 @@
+.uc-membercard[b-azm94dxixn] {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:15px;
+    padding:15px;
+}
+
+.userprofile[b-azm94dxixn] {
+    height:56px;
+    width:56px;
+    display:flex;
+
+}
+
+.membercard-data[b-azm94dxixn] {
+    font-size:0.9em;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+.membercard-data > span:last-child[b-azm94dxixn] {
+    font-size:0.85em;
+}
+
+.membercard-actions > button[b-azm94dxixn] {
+    font-size:0.8em;
+    font-weight: 600;
+    padding:0;
+}

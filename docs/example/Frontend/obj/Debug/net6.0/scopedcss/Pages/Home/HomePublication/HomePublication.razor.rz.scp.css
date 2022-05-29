@@ -1,0 +1,145 @@
+.home-publication[b-dp4osh4nfn] {
+    height:auto;
+    width:100%;
+}
+
+.hp-header[b-dp4osh4nfn] {
+    height:62px;
+    display:flex;
+}
+
+.hp-userprofile[b-dp4osh4nfn] {
+    height:42px;
+    width:42px;
+}
+
+
+.hp-userdata[b-dp4osh4nfn] {
+    display:flex;
+    width:100%;
+    align-items: center;
+    padding-left:10px;
+    gap:15px;
+}
+
+.hp-username[b-dp4osh4nfn] {
+    font-size:0.9em;
+}
+
+.hp-options[b-dp4osh4nfn] {
+    display:grid;
+    place-items: center;
+    width:10%;
+}
+
+.hp-multimedia[b-dp4osh4nfn] {
+    user-select: none; 
+}
+
+.hp-multimedia > img[b-dp4osh4nfn] {
+    width:100%;
+    height:100%;
+}
+
+.hp-publication-buttons[b-dp4osh4nfn] {
+    display:flex;
+    padding:5px;
+}
+
+.hp-pb-primary[b-dp4osh4nfn] {
+    width:100%;
+}
+
+.hp-publication-description[b-dp4osh4nfn] {
+    padding:0px 15px 15px 15px;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+}
+
+.hp-p-time[b-dp4osh4nfn] {
+    font-size:0.8em;
+}
+
+.hp-pub-counter[b-dp4osh4nfn]::after {
+    padding-left:0.5em;
+    font-weight: bold;
+}
+
+.hp-icon[b-dp4osh4nfn] {
+    color:#000;
+    fill:#000;
+}
+
+.hp-icon:hover[b-dp4osh4nfn] {
+    color:#8e8e8e;
+    fill:#8e8e8e;
+}
+
+
+.hp-last-comments[b-dp4osh4nfn] { 
+    display:flex;
+    flex-direction: column;
+}
+
+.hp-description-fsize[b-dp4osh4nfn] {
+    font-size:0.88em;
+}
+
+.hp-datepulished[b-dp4osh4nfn] {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.hp-make-comment[b-dp4osh4nfn] {
+    display:flex;
+}
+
+.hp-mc-form[b-dp4osh4nfn] {
+    display:flex;
+    padding:15px;
+    gap:5px;
+    width:100%;
+}
+
+.hp-emojis[b-dp4osh4nfn] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hp-textarea[b-dp4osh4nfn] {
+    padding:5px;
+    width:100%;
+}
+
+.hp-textarea > textarea[b-dp4osh4nfn] {
+    height:32px;
+    max-height:90px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    font-size:0.8em;
+}
+
+.hp-options-actions[b-dp4osh4nfn] {
+    position:relative;
+}
+
+.hp-options-tooltip[b-dp4osh4nfn] {
+    position: absolute;
+    z-index:100;
+    top:32px;
+    transform: translate(-45%, 0);
+}
+
+.notsqr[b-dp4osh4nfn] {
+    z-index:0;
+    height: 24px;
+    width: 24px;
+    background-color: red;
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .125);
+}

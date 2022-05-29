@@ -1,0 +1,46 @@
+.login[b-11ol3rtnye] {
+    padding:35px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
+
+.log-main[b-11ol3rtnye] {
+    padding:25px;
+    width:calc(420px - 30px);
+}
+
+.log-logo[b-11ol3rtnye] {
+    padding:25px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.log-form[b-11ol3rtnye] {
+    padding:15px;
+}
+
+.log-buttons[b-11ol3rtnye] {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+
+.log-buttons > button[b-11ol3rtnye] {
+    width:100%;
+}
+
+.log-signup[b-11ol3rtnye] {
+    width:calc(420px - 30px);
+    padding:15px;
+}
+
+.log-signup-content[b-11ol3rtnye] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}

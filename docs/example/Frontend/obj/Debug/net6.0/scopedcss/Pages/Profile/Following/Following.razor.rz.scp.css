@@ -1,0 +1,25 @@
+.following[b-hr5h4svgq4] {
+    position:absolute;
+    width:350px;
+    max-height:350px;
+    top:35px;
+    z-index:100;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+}
+
+.following-header[b-hr5h4svgq4] {
+    padding:10px;
+}
+
+.following-header > h1[b-hr5h4svgq4] {
+    font-size:1.1em;
+    text-align: center;
+}
+
+.following-content[b-hr5h4svgq4] {
+    padding:10px;
+    overflow: auto;
+    
+}

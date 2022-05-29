@@ -1,0 +1,52 @@
+.comment-wrapper[b-j2o3mv82n6] {
+    width:100%;
+    padding:5px;
+}
+
+.comment-layout[b-j2o3mv82n6] {
+    width:100%;
+    font-size:0.90em;
+    gap: 10px;
+    display:flex;
+    align-items: top;
+}
+
+.actions-wrapper[b-j2o3mv82n6] {
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left:15px;
+    padding-left:42px;
+}
+
+.actions[b-j2o3mv82n6] {
+    display:flex;
+    gap:10px;
+    font-size:0.85em;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-content[b-j2o3mv82n6] {
+    flex:1;
+}
+
+.comment-spn[b-j2o3mv82n6] {
+    word-break: break-all;
+}
+
+.cl-userprofile[b-j2o3mv82n6] {
+    height:32px;
+    width:32px;
+}
+
+.like-action[b-j2o3mv82n6] {
+    display:flex;
+    align-items: flex-start;
+    padding-top:5px;
+    justify-content: center;
+}
+
+.cat-options-button[b-j2o3mv82n6] {
+    position:relative;
+}
