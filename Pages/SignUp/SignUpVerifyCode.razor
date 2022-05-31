@@ -1,11 +1,9 @@
-@page "/signup4"
-
 <div class="su-code">
     <div class="su-code-main card">
         <div class="su-code-description">
-            <img src="/images/ide-code.svg" alt="Imagen decorativa que hace alusión a un telefono que recibe un código">
+            <img src="/images/ide-code.svg" alt="Imagen decorativa que hace alusión a un dispositivo que recibe un código">
             <p class="semibold text-center">Solo un paso más</p>
-            <p class="text-muted text-center">Ingresa el código de 6 dígitos que enviamos al numero de telefono</p>
+            <p class="text-muted text-center">Ingresa el código de 6 dígitos que enviamos al correo electronico.</p>
         </div>
         <div class="su-code-form">
             <div class="form-floating mb-3">
@@ -14,9 +12,27 @@
             </div>
         </div>
         <div class="su-buttons">
-            <button class="btn btn-primary">Siguiente</button>
-            <button class="btn btn-link text-decoration-none">Volver</button>
+            <button class="btn btn-primary" type="submit">Siguiente</button>
+            <button class="btn btn-link text-decoration-none" @onclick="() => InvokeFunction(MoveBackwardCallback)">Volver</button>
         </div>
     </div>
-
+     <section class="su-login card">
+          <div class="su-l-content">
+            <span>¿Tienes una cuenta?</span>
+            <NavLink class="nav-link" href="login">Inicia sesión</NavLink>
+          </div>
+      </section>
 </div>
+
+@code {
+    [Parameter]
+    public Action? MoveForwardCallback { get; set; }
+
+    [Parameter]
+    public Action? MoveBackwardCallback { get; set; }
+
+    private void InvokeFunction(Action function) {
+        function.Invoke();
+    }
+
+}

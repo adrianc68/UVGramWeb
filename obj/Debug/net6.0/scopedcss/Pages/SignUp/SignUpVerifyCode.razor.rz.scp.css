@@ -49,3 +49,21 @@
     width:100%;
 }
 
+.su-login[b-i77flgwyrf] {
+    width:calc(420px - 30px);
+    padding:15px;
+}
+
+.su-l-content[b-i77flgwyrf] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}
+
+.conditions[b-i77flgwyrf] {
+    font-size:0.8em;
+    margin-left:25px;
+    margin-right:25px;
+    margin-top:10px;
+}

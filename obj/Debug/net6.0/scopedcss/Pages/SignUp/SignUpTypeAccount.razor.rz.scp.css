@@ -32,3 +32,22 @@
     padding:15px;
     gap:55px;
 }
+
+.su-login[b-smgm4rnepf] {
+    width:calc(420px - 30px);
+    padding:15px;
+}
+
+.su-l-content[b-smgm4rnepf] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}
+
+.conditions[b-smgm4rnepf] {
+    font-size:0.8em;
+    margin-left:25px;
+    margin-right:25px;
+    margin-top:10px;
+}

@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/home/kerberos/.nuget/packages/": {}
+    "/home/keberos/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kerberos/Escritorio/UVGram/UVGramWeb/UVGramWeb.csproj",
+      "projectUniqueName": "/home/keberos/Escritorio/UVGram/UVGramWeb/UVGramWeb.csproj",
       "projectName": "UVGramWeb",
-      "projectPath": "/home/kerberos/Escritorio/UVGram/UVGramWeb/UVGramWeb.csproj",
-      "packagesPath": "/home/kerberos/.nuget/packages/",
-      "outputPath": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/",
+      "projectPath": "/home/keberos/Escritorio/UVGram/UVGramWeb/UVGramWeb.csproj",
+      "packagesPath": "/home/keberos/.nuget/packages/",
+      "outputPath": "/home/keberos/Escritorio/UVGram/UVGramWeb/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/kerberos/.nuget/NuGet/NuGet.Config"
+        "/home/keberos/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
       }
     }
   }

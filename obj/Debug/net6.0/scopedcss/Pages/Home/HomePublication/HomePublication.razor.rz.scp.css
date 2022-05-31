@@ -34,6 +34,9 @@
 
 .hp-multimedia[b-bq5zdp3qyf] {
     user-select: none; 
+    min-height:250px;
+    height:520px;
+    max-height:600px;
 }
 
 .hp-multimedia > img[b-bq5zdp3qyf] {

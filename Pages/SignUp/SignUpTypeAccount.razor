@@ -1,17 +1,35 @@
-@page "/signup3"
-
 <div class="su-type-account">
-    <div class="su-type-acc-main card">
+    <section class="su-type-acc-main card">
         <div class="su-ta-description">
             <p class="semibold text-center"> Selecciona el tipo de cuenta</p>
             <p class="text-muted text-center">Cada una de los tipos de cuenta ofrece ciertos beneficios</p>
         </div>
         <div class="su-ta-form btn-group-toggle" data-toggle="buttons">
-            <button class="btn btn-primary" type="button">Personal</button>
-            <button class="btn btn-primary" type="button">Empresarial</button>
+            <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Personal</button>
+            <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Empresarial</button>
         </div>
         <div class="su-buttons">
-            <button class="btn btn-link text-decoration-none">Volver</button>
+            <button class="btn btn-link text-decoration-none" @onclick="() => InvokeFunction(MoveBackwardCallback)">Volver</button>
         </div>
-    </div>
+    </section>
+       <section class="su-login card">
+          <div class="su-l-content">
+            <span>¿Tienes una cuenta?</span>
+            <NavLink class="nav-link" href="login">Inicia sesión</NavLink>
+          </div>
+      </section>
 </div>
+
+
+@code {
+    [Parameter]
+    public Action? MoveForwardCallback { get; set; }
+
+    [Parameter]
+    public Action? MoveBackwardCallback { get; set; }
+
+    private void InvokeFunction(Action function) {
+        function.Invoke();
+    }
+
+}

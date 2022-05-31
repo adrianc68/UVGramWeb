@@ -1,41 +1,35 @@
 @page "/signup"
+@using UVGramWeb.Models; 
 
-<div class="signUp">
-    <section class="su-main card">
-        <div class="su-description">
-            <UVGramWeb.Shared.Logo.Logo></UVGramWeb.Shared.Logo.Logo>
-            <p class="text-muted">Regístrate para ser parte de la comunidad.</p>
-        </div>
-        <div class="su-form">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                <label for="email">Dirección de correo electrónico</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="name" placeholder="Mark Defill">
-                <label for="name">Nombre completo</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="username" placeholder="fullcode92">
-                <label for="username">Nombre de usuario</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                <label for="password">Contraseña</label>
-            </div>
-        </div>
-        <div class="su-buttons">
-            <button class="btn btn-primary">Registrarte</button>
-        </div>
-        <div class="error-message"> 
-            <p role="alert" class="text-danger">Este nombre de usuario no está disponible Prueba con otro</p>
-        </div>
-        <p class="text-muted text-center conditions">Al registrarte, aceptas nuestra <strong>Condiciones</strong>, la<strong>política de datos</strong> y la <strong>política de cookies.</strong></p>
-    </section>
-    <section class="su-login card">
-        <div class="su-l-content">
-        <span>¿Tienes una cuenta?</span>
-        <NavLink class="nav-link" href="login">Inicia sesión</NavLink>
-        </div>
-    </section>
-</div>
+<EditForm Model="@account" >
+    <div class="signUp">
+      @steps[currentStep]
+    </div>
+</EditForm>
+
+@code {
+
+    private RenderFragment[] steps;
+    private int currentStep = 0;
+
+    protected override void OnInitialized() {
+      steps = new RenderFragment[4];
+      steps[0] = @<SignUpInitialData MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
+      steps[1] = @<SignUpBirth MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
+      steps[2] = @<SignUpTypeAccount MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
+      steps[3] = @<SignUpVerifyCode MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
+    }
+
+    public void MoveForward() {
+      if (currentStep < 3) currentStep += 1;
+    }
+
+    public void MoveBackward() {
+      if (currentStep > 0) currentStep -= 1;
+    }
+
+  Account account = new Account(); 
+
+    
+}
+

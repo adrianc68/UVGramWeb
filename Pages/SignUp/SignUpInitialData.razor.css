@@ -1,4 +1,4 @@
-.su-type-account{
+.signUp {
     padding:35px;
     display:flex;
     flex-direction: column;
@@ -7,34 +7,34 @@
     gap:15px;
 }
 
-.su-type-acc-main {
+.su-main {
     padding:25px;
-    width:calc(420px - 30px);
-    display:flex;
-    align-items: center;
+    width:calc(520px - 30px);
 }
 
-.su-ta-description {
-    padding:25px;
+.su-description {
     display:flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.su-ta-description > img {
-    height:120px;
-    padding-bottom:15px;
-}
-
-.su-ta-form {
-    display:flex;
+.su-form {
     padding:15px;
-    gap:55px;
 }
+
+.su-buttons {
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.su-buttons > button {
+    width:100%;
+}
+
 
 .su-login {
-    width:calc(420px - 30px);
+    width:calc(520px - 30px);
     padding:15px;
 }
 
