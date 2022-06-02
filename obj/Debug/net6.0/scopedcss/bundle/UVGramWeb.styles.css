@@ -1315,6 +1315,13 @@
     width:100%;
 }
 
+.su-id-account[b-4vzyl9gbvt]{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
 
 .su-login[b-4vzyl9gbvt] {
     width:calc(520px - 30px);
@@ -1346,13 +1353,13 @@
 
 .su-type-acc-main[b-smgm4rnepf] {
     padding:25px;
-    width:calc(420px - 30px);
     display:flex;
     align-items: center;
+    gap:15px;
 }
 
 .su-ta-description[b-smgm4rnepf] {
-    padding:25px;
+    padding:25px 25px 0px 25px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -1387,6 +1394,19 @@
     margin-left:25px;
     margin-right:25px;
     margin-top:10px;
+}
+
+.type-button[b-smgm4rnepf] {
+    padding:55px;
+    background-color: transparent;
+    color:rgb(39, 35, 35);
+    border-width:0.3px;
+    border-radius:5px;
+    border-color:rgb(1, 47, 139);
+}
+
+.type-button:hover[b-smgm4rnepf] {
+    background-color:rgb(244, 243, 255);
 }
 /* _content/UVGramWeb/Pages/SignUp/SignUpVerifyCode.razor.rz.scp.css */
 .su-code[b-i77flgwyrf]{

@@ -1,9 +1,15 @@
 @page "/signup"
-@using UVGramWeb.Models; 
+@using UVGramWeb.Models;
+@using System.ComponentModel;
 
-<EditForm Model="@account" >
+<EditForm EditContext="@editContext" OnSubmit="@HandleSubmit" >
+    <DataAnnotationsValidator />
     <div class="signUp">
-      @steps[currentStep]
+        <CascadingValue Value="@editContext" Name="EditContextValue"> 
+          <CascadingValue Value="@account" Name="AccountValue">
+            @steps[currentStep]
+          </CascadingValue>
+        </CascadingValue>
     </div>
 </EditForm>
 
@@ -11,13 +17,17 @@
 
     private RenderFragment[] steps;
     private int currentStep = 0;
+    private EditContext? editContext;
+    User account = new User(); 
+
 
     protected override void OnInitialized() {
       steps = new RenderFragment[4];
-      steps[0] = @<SignUpInitialData MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
+      steps[0] = @<SignUpInitialData MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"/>;
       steps[1] = @<SignUpBirth MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
       steps[2] = @<SignUpTypeAccount MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
       steps[3] = @<SignUpVerifyCode MoveForwardCallback="MoveForward" MoveBackwardCallback="MoveBackward"  />;
+      editContext = new(account);
     }
 
     public void MoveForward() {
@@ -28,7 +38,50 @@
       if (currentStep > 0) currentStep -= 1;
     }
 
-  Account account = new Account(); 
+    private async Task HandleSubmit() {
+        foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(editContext))
+      {
+          string name = descriptor.Name;
+          object value = descriptor.GetValue(editContext);
+          Console.WriteLine("{0}={1}", name, value);
+      }
+
+
+
+      Console.WriteLine("*****************************************");
+            Console.WriteLine("Printing variables of account");
+      foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(account))
+      {
+          string name = descriptor.Name;
+          object value = descriptor.GetValue(account);
+          Console.WriteLine("{0}={1}", name, value);
+      }
+
+        foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(account.RolUsuario))
+      {
+          string name = descriptor.Name;
+          object value = descriptor.GetValue(account.RolUsuario);
+          Console.WriteLine("{0}={1}", name, value);
+      }
+
+      foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(account.Cuenta))
+      {
+          string name = descriptor.Name;
+          object value = descriptor.GetValue(account.Cuenta);
+          Console.WriteLine("{0}={1}", name, value);
+      }
+
+
+   
+      if(editContext != null && editContext.Validate()) {
+        Console.WriteLine("Form is valid");
+      } else {
+        Console.WriteLine("Form is invalid");
+      }
+      Console.WriteLine("*******************");
+    }
+
+
 
     
 }

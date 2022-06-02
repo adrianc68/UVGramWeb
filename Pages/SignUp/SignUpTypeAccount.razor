@@ -1,3 +1,5 @@
+@using UVGramWeb.Models; 
+
 <div class="su-type-account">
     <section class="su-type-acc-main card">
         <div class="su-ta-description">
@@ -5,23 +7,23 @@
             <p class="text-muted text-center">Cada una de los tipos de cuenta ofrece ciertos beneficios</p>
         </div>
         <div class="su-ta-form btn-group-toggle" data-toggle="buttons">
-            <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Personal</button>
-            <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Empresarial</button>
+            <button class="type-button btn-primary" @onclick="() => { account.RolUsuario.Personal = new Personal(); InvokeFunction(MoveForwardCallback);}">Personal</button>
+            <button class="type-button btn btn-primary" @onclick="() => { account.RolUsuario.Empresa = new Company(); InvokeFunction(MoveForwardCallback);}">Empresarial</button>
         </div>
         <div class="su-buttons">
             <button class="btn btn-link text-decoration-none" @onclick="() => InvokeFunction(MoveBackwardCallback)">Volver</button>
         </div>
     </section>
-       <section class="su-login card">
-          <div class="su-l-content">
-            <span>¿Tienes una cuenta?</span>
-            <NavLink class="nav-link" href="login">Inicia sesión</NavLink>
-          </div>
-      </section>
 </div>
 
 
 @code {
+    [CascadingParameter(Name = "EditContextValue")]
+    protected EditContext? editContext { get; set; }
+
+    [CascadingParameter(Name = "AccountValue")]
+    protected User account { get; set; }
+
     [Parameter]
     public Action? MoveForwardCallback { get; set; }
 

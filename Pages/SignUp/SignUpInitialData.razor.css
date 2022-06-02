@@ -32,6 +32,13 @@
     width:100%;
 }
 
+.su-id-account{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
 
 .su-login {
     width:calc(520px - 30px);

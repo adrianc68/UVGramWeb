@@ -1,43 +1,64 @@
+@using UVGramWeb.Models; 
+@using System.ComponentModel;
 
- <section class="su-main card">
-        <div class="su-description">
-            <UVGramWeb.Shared.Logo.Logo></UVGramWeb.Shared.Logo.Logo>
-            <p class="text-muted">Regístrate para ser parte de la comunidad.</p>
-        </div>
-        <div class="su-form">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                <label for="email">Dirección de correo electrónico</label>           
+    <section class="su-main card">
+            <div class="su-description">
+                <UVGramWeb.Shared.Logo.Logo></UVGramWeb.Shared.Logo.Logo>
+                <p class="text-muted">Regístrate para ser parte de la comunidad.</p>
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="name" placeholder="Mark Defill">
-                <label for="name">Nombre completo</label>
+    
+
+            <div class="su-form">
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="account.Cuenta.Correo" id="email"  class="form-control"/>
+                    <ValidationMessage class="text-danger" For="() => account.Cuenta.Correo" />
+                    <label for="email">Dirección de correo electrónico</label>           
+                </div> 
+                    
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="account.Nombre" id="nombre"  class="form-control"/>
+                    <label for="name">Nombre completo</label>
+                    <ValidationMessage class="text-danger" For="() => account.Nombre"></ValidationMessage>        
+                </div> 
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="account.NombreUsuario" id="nombreUsuario"  class="form-control"/>
+                    <label for="username">Nombre de usuario</label>
+                    <ValidationMessage class="text-danger" For="() => account.NombreUsuario"></ValidationMessage>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="account.Cuenta.Contrasena" type="password" id="password"  class="form-control"/>
+                    <label for="password">Contraseña</label>
+                    <ValidationMessage For="() => account.Cuenta.Contrasena"></ValidationMessage>
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="username" placeholder="fullcode92">
-                <label for="username">Nombre de usuario</label>
+
+            <div class="su-buttons">
+                <!-- <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Registrarte</button>ç -->
+                <button class="btn btn-primary" @onclick="ValidateThis">Registrarte</button>
             </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                <label for="password">Contraseña</label>
+
+            <div class="error-message"> 
+                <p role="alert" class="text-danger">Mensaje de sistema</p>
             </div>
-        </div>
-        <div class="su-buttons">
-            <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Registrarte</button>
-        </div>
-        <div class="error-message"> 
-            <p role="alert" class="text-danger">Este nombre de usuario no está disponible Prueba con otro</p>
-        </div>
-        <p class="text-muted text-center conditions">Al registrarte, aceptas nuestra <strong>Condiciones</strong>, la<strong>política de datos</strong> y la <strong>política de cookies.</strong></p>
+            <p class="text-muted text-center conditions">Al registrarte, aceptas nuestra <strong>Condiciones</strong>, la<strong>política de datos</strong> y la <strong>política de cookies.</strong></p>
     </section>
+
     <section class="su-login card">
-          <div class="su-l-content">
-            <span>¿Tienes una cuenta?</span>
-            <NavLink class="nav-link" href="login">Inicia sesión</NavLink>
-          </div>
+            <div class="su-l-content">
+                <span>¿Tienes una cuenta?</span>
+                <NavLink class="nav-link" href="login">Inicia sesión</NavLink>
+            </div>
     </section>
 
 @code {
+    [CascadingParameter(Name = "EditContextValue")]
+    protected EditContext? editContext { get; set; }
+
+    [CascadingParameter(Name = "AccountValue")]
+    protected User account { get; set; }
+
     [Parameter]
     public Action? MoveForwardCallback { get; set; }
 
@@ -48,8 +69,10 @@
         function.Invoke();
     }
 
-    protected override void OnInitialized() {
-        Console.WriteLine("Initial data");
+    void ValidateThis() {
+        if(editContext.Validate()) {
+            InvokeFunction(MoveForwardCallback);
+        }
     }
-
+ 
 }

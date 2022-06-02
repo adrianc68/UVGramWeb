@@ -1,63 +1,49 @@
+@using UVGramWeb.Models; 
+
 <section class="su-bd-main card">
         <div class="su-bd-description">
             <img src="/images/birthday-cake.svg" alt="Pastel de cumpleaños que hace alusión a la fecha de nacimiento"/>
             <p class="semibold">Agrega tu fecha de nacimiento</p>
             <p> No se incluirá en tu perfil público</p>
         </div>
+        <ObjectGraphDataAnnotationsValidator />
         <div class="su-bd-form">
-            <select class="form-select input-size-color" @bind="@ChangeMonthInput" aria-label="mes">
-                @for(int i = 0; i < months.Count ; i++ ) {
-                    <option value=@(i+1)>@months[i]</option>
-                }
-            </select>
-            <select class="form-select input-size-color" @bind="@valueDayInput" aria-label="día">
+            <InputSelect ValueExpression="@(() => account.RolUsuario.MesNacimiento)" Value="@account.RolUsuario.MesNacimiento" ValueChanged="@((int value) =>  { account.RolUsuario.MesNacimiento = value; ChangeMonthInput(value); } )" class="form-select input-size-color">
+            <ValidationMessage class="text-danger" For="() => account.RolUsuario.MesNacimiento" />
+            @for(int i = 0; i < months.Count ; i++ ) {
+                <option value=@(i+1)>@months[i]</option>
+            }
+            </InputSelect>
+            <InputSelect ValueExpression="@(() => account.RolUsuario.DiaNacimiento)" Value="@account.RolUsuario.DiaNacimiento" ValueChanged="@((int value) =>  { account.RolUsuario.DiaNacimiento = value;} )"  class="form-select input-size-color">
+            <ValidationMessage class="text-danger" For="() => account.RolUsuario.DiaNacimiento" />
                 @for(int i = 1; i <= @daysOfMonth; i++ ) {
                     <option value=@i>@i</option>
                 }
-            </select>
-            <select class="form-select input-size-color" @bind="@ChangeYearInput" id="yearInput" aria-label="año">
+            </InputSelect>
+            <InputSelect ValueExpression="@(() => account.RolUsuario.AñoNacimiento)" Value="@account.RolUsuario.AñoNacimiento" ValueChanged="@((int value) =>  { account.RolUsuario.AñoNacimiento = value; ChangeYearInput(value); } )"  class="form-select input-size-color">
+            <ValidationMessage class="text-danger" For="() => account.RolUsuario.AñoNacimiento" />
                 @for( int i = 2022; i > 1910; i--) {
                     <option value=@i>@i</option>
                 }
-            </select>
+            </InputSelect>
+
         </div>
         <div class="su-bd-select-description">
             <p class="text-muted text-center">Debes ingresar la fecha en que naciste</p>
             <p class="text-muted text-center">Indica tu fecha de nacimiento, aunque esta cuenta sea para un negocio, una mascota, etc.</p>
         </div>
         <div class="su-buttons">
-            <button class="btn btn-primary" @onclick="() => InvokeFunction(MoveForwardCallback)">Siguiente</button>
+            <button class="btn btn-primary" @onclick="ValidateThis">Siguiente</button>
             <button class="btn btn-link text-decoration-none" @onclick="() => InvokeFunction(MoveBackwardCallback)">Volver</button>
         </div>
     </section>
 
 @code {
     List<string> months = new List<string>() { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre","noviembre", "diciembre"};
-    int valueMonthInput { get; set; } = 1;
-    int valueDayInput { get; set; } = 1;
-    int valueYearInput { get; set; } = 2020;
-    int daysOfMonth { get; set; } = 31;
-
-    
-    private int ChangeMonthInput {
-        get { return valueMonthInput;}
-        set {
-            valueMonthInput = value;
-            setDaysOfMonth();
-        }
-    }
-
-    private int ChangeYearInput {
-        get { return valueYearInput; }
-        set {
-            valueYearInput = value;
-            setDaysOfMonth();
-        }
-    }
-
-    private void setDaysOfMonth() {
-        daysOfMonth = DateTime.DaysInMonth(valueYearInput, valueMonthInput);
-    }
+    private int valueMonthInput { get; set; } = 1;
+    private int valueDayInput { get; set; } = 1;
+    private int valueYearInput { get; set; } = 2020;
+    private int daysOfMonth { get; set; } = 31;
 
     [Parameter]
     public Action? MoveForwardCallback { get; set; }
@@ -65,8 +51,36 @@
     [Parameter]
     public Action? MoveBackwardCallback { get; set; }
 
+    [CascadingParameter(Name = "EditContextValue")]
+    protected EditContext? editContext { get; set; }
+
+    [CascadingParameter(Name = "AccountValue")]
+    protected User account { get; set; }
+
+    private void ChangeMonthInput(int value) {
+        account.RolUsuario.MesNacimiento = value;
+        valueMonthInput = value;
+        setDaysOfMonth();
+    }
+
+    private void ChangeYearInput(int value) {
+        account.RolUsuario.AñoNacimiento = value;
+        valueYearInput = value;
+        setDaysOfMonth();
+    }
+
+    private void setDaysOfMonth() {
+        daysOfMonth = DateTime.DaysInMonth(valueYearInput, valueMonthInput);
+    }
+
     private void InvokeFunction(Action function) {
         function.Invoke();
+    }
+
+    void ValidateThis() {
+        if(editContext.Validate()) {
+            InvokeFunction(MoveForwardCallback);
+        }
     }
 
  
