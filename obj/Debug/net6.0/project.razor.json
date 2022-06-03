@@ -197,39 +197,6 @@
         }
       },
       {
-        "HashCode": 1308473454,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.Home.Home",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Home"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.Home.Home"
-        }
-      },
-      {
-        "HashCode": 35033655,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.Home.Home",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Pages.Home.Home"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.Home.Home",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 132864774,
         "Kind": "Components.Component",
         "Name": "UVGramWeb.Pages.Home.HomeHistories.Histories",
@@ -745,68 +712,181 @@
         }
       },
       {
-        "HashCode": 370701199,
+        "HashCode": -498496505,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.UnderConstruction.UnderConstruction",
+        "Name": "UVGramWeb.Pages.SignUp.SignUp",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "UnderConstruction"
+            "TagName": "SignUp"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.UnderConstruction.UnderConstruction"
+          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUp"
         }
       },
       {
-        "HashCode": -1110081334,
+        "HashCode": -449533530,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.UnderConstruction.UnderConstruction",
+        "Name": "UVGramWeb.Pages.SignUp.SignUp",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "UVGramWeb.Pages.UnderConstruction.UnderConstruction"
+            "TagName": "UVGramWeb.Pages.SignUp.SignUp"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.UnderConstruction.UnderConstruction",
+          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUp",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
       {
-        "HashCode": 976230607,
+        "HashCode": 148638872,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.Welcome.Index",
+        "Name": "UVGramWeb.Pages.SignUp.SignUpBirth",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Index"
+            "TagName": "SignUpBirth"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveForwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveForwardCallback",
+              "Components.DelegateSignature": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveBackwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveBackwardCallback",
+              "Components.DelegateSignature": "True"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.Welcome.Index"
+          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUpBirth"
         }
       },
       {
-        "HashCode": 1666705073,
+        "HashCode": 2003810131,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.Welcome.Index",
+        "Name": "UVGramWeb.Pages.SignUp.SignUpBirth",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "UVGramWeb.Pages.Welcome.Index"
+            "TagName": "UVGramWeb.Pages.SignUp.SignUpBirth"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveForwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveForwardCallback",
+              "Components.DelegateSignature": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveBackwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveBackwardCallback",
+              "Components.DelegateSignature": "True"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.Welcome.Index",
+          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUpBirth",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 495747646,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Pages.SignUp.SignUpInitialData",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SignUpInitialData"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveForwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveForwardCallback",
+              "Components.DelegateSignature": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveBackwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveBackwardCallback",
+              "Components.DelegateSignature": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUpInitialData"
+        }
+      },
+      {
+        "HashCode": 1953875778,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Pages.SignUp.SignUpInitialData",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Pages.SignUp.SignUpInitialData"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveForwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveForwardCallback",
+              "Components.DelegateSignature": "True"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "MoveBackwardCallback",
+            "TypeName": "System.Action",
+            "Metadata": {
+              "Common.PropertyName": "MoveBackwardCallback",
+              "Components.DelegateSignature": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUpInitialData",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -884,39 +964,6 @@
         }
       },
       {
-        "HashCode": -498496505,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.SignUp.SignUp",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SignUp"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUp"
-        }
-      },
-      {
-        "HashCode": -449533530,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.SignUp.SignUp",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Pages.SignUp.SignUp"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUp",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1754231749,
         "Kind": "Components.Component",
         "Name": "UVGramWeb.Pages.SignUp.SignUpVerifyCode",
@@ -990,75 +1037,68 @@
         }
       },
       {
-        "HashCode": 148638872,
+        "HashCode": 370701199,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.SignUp.SignUpBirth",
+        "Name": "UVGramWeb.Pages.UnderConstruction.UnderConstruction",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "SignUpBirth"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "MoveForwardCallback",
-            "TypeName": "System.Action",
-            "Metadata": {
-              "Common.PropertyName": "MoveForwardCallback",
-              "Components.DelegateSignature": "True"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "MoveBackwardCallback",
-            "TypeName": "System.Action",
-            "Metadata": {
-              "Common.PropertyName": "MoveBackwardCallback",
-              "Components.DelegateSignature": "True"
-            }
+            "TagName": "UnderConstruction"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUpBirth"
+          "Common.TypeName": "UVGramWeb.Pages.UnderConstruction.UnderConstruction"
         }
       },
       {
-        "HashCode": 2003810131,
+        "HashCode": -1110081334,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Pages.SignUp.SignUpBirth",
+        "Name": "UVGramWeb.Pages.UnderConstruction.UnderConstruction",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "UVGramWeb.Pages.SignUp.SignUpBirth"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "MoveForwardCallback",
-            "TypeName": "System.Action",
-            "Metadata": {
-              "Common.PropertyName": "MoveForwardCallback",
-              "Components.DelegateSignature": "True"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "MoveBackwardCallback",
-            "TypeName": "System.Action",
-            "Metadata": {
-              "Common.PropertyName": "MoveBackwardCallback",
-              "Components.DelegateSignature": "True"
-            }
+            "TagName": "UVGramWeb.Pages.UnderConstruction.UnderConstruction"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Pages.SignUp.SignUpBirth",
+          "Common.TypeName": "UVGramWeb.Pages.UnderConstruction.UnderConstruction",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 976230607,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Pages.Welcome.Index",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Pages.Welcome.Index"
+        }
+      },
+      {
+        "HashCode": 1666705073,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Pages.Welcome.Index",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Pages.Welcome.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Pages.Welcome.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -1149,9 +1189,9 @@
         }
       },
       {
-        "HashCode": 1745153920,
+        "HashCode": 1937309918,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.HistoriesCard.Histories",
+        "Name": "UVGramWeb.Shared.Components.HistoriesCard.Histories",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1161,30 +1201,30 @@
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.HistoriesCard.Histories"
+          "Common.TypeName": "UVGramWeb.Shared.Components.HistoriesCard.Histories"
         }
       },
       {
-        "HashCode": -1821237225,
+        "HashCode": -1327945168,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.HistoriesCard.Histories",
+        "Name": "UVGramWeb.Shared.Components.HistoriesCard.Histories",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "UVGramWeb.Shared.HistoriesCard.Histories"
+            "TagName": "UVGramWeb.Shared.Components.HistoriesCard.Histories"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.HistoriesCard.Histories",
+          "Common.TypeName": "UVGramWeb.Shared.Components.HistoriesCard.Histories",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
       {
-        "HashCode": -300798377,
+        "HashCode": 180767493,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Logo.Logo",
+        "Name": "UVGramWeb.Shared.Components.Logo.Logo",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
@@ -1194,23 +1234,544 @@
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Logo.Logo"
+          "Common.TypeName": "UVGramWeb.Shared.Components.Logo.Logo"
         }
       },
       {
-        "HashCode": 48709717,
+        "HashCode": -1922185307,
         "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Logo.Logo",
+        "Name": "UVGramWeb.Shared.Components.Logo.Logo",
         "AssemblyName": "UVGramWeb",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "UVGramWeb.Shared.Logo.Logo"
+            "TagName": "UVGramWeb.Shared.Components.Logo.Logo"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Logo.Logo",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Logo.Logo",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -2116243052,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.MessageCard.MessageCard",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MessageCard"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.MessageCard.MessageCard"
+        }
+      },
+      {
+        "HashCode": -633041264,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.MessageCard.MessageCard",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.MessageCard.MessageCard"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.MessageCard.MessageCard",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 463405969,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Modal.Modal",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Modal"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "ChildContent",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Metadata": {
+              "Common.PropertyName": "ChildContent",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Modal.Modal"
+        }
+      },
+      {
+        "HashCode": 1878022734,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Modal.Modal",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Modal.Modal"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "ChildContent",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Metadata": {
+              "Common.PropertyName": "ChildContent",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Modal.Modal",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1779055051,
+        "Kind": "Components.ChildContent",
+        "Name": "UVGramWeb.Shared.Components.Modal.Modal.ChildContent",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ChildContent",
+            "ParentTag": "Modal"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.None",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Modal.Modal.ChildContent",
+          "Components.IsSpecialKind": "Components.ChildContent"
+        }
+      },
+      {
+        "HashCode": 1569381930,
+        "Kind": "Components.ChildContent",
+        "Name": "UVGramWeb.Shared.Components.Modal.Modal.ChildContent",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ChildContent",
+            "ParentTag": "UVGramWeb.Shared.Components.Modal.Modal"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.None",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Modal.Modal.ChildContent",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -2001470387,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Notifications.NotificationCard.NotificationCard",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NotificationCard"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Notifications.NotificationCard.NotificationCard"
+        }
+      },
+      {
+        "HashCode": 854373755,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Notifications.NotificationCard.NotificationCard",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Notifications.NotificationCard.NotificationCard"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Notifications.NotificationCard.NotificationCard",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1797591944,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Notifications.Notifications",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Notifications"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Notifications.Notifications"
+        }
+      },
+      {
+        "HashCode": 2095618569,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Notifications.Notifications",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Notifications.Notifications"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Notifications.Notifications",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1719782059,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.Comment.Comment",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Comment"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.Comment.Comment"
+        }
+      },
+      {
+        "HashCode": -1024897231,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.Comment.Comment",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Publications.Comment.Comment"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.Comment.Comment",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1579966561,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.CreatePublication.CreatePublication",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CreatePublication"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.CreatePublication.CreatePublication"
+        }
+      },
+      {
+        "HashCode": -1725776786,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.CreatePublication.CreatePublication",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Publications.CreatePublication.CreatePublication"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.CreatePublication.CreatePublication",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1383950187,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.Options.OptionsPublication",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "OptionsPublication"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.Options.OptionsPublication"
+        }
+      },
+      {
+        "HashCode": 372233694,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.Options.OptionsPublication",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Publications.Options.OptionsPublication"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.Options.OptionsPublication",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -513533351,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.PublicationDetail.Options.PublicationDetailOption",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "PublicationDetailOption"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.PublicationDetail.Options.PublicationDetailOption"
+        }
+      },
+      {
+        "HashCode": 800207923,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.PublicationDetail.Options.PublicationDetailOption",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Publications.PublicationDetail.Options.PublicationDetailOption"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.PublicationDetail.Options.PublicationDetailOption",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 240667710,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.PublicationDetail.PublicationDetail",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "PublicationDetail"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.PublicationDetail.PublicationDetail"
+        }
+      },
+      {
+        "HashCode": -798050974,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Publications.PublicationDetail.PublicationDetail",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Publications.PublicationDetail.PublicationDetail"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Publications.PublicationDetail.PublicationDetail",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 167186250,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Report.Report",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Report"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Report.Report"
+        }
+      },
+      {
+        "HashCode": -1289609475,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Report.Report",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Report.Report"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Report.Report",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1854178745,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Suggestions.Suggestions",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Suggestions"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Suggestions.Suggestions"
+        }
+      },
+      {
+        "HashCode": 2072852755,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Suggestions.Suggestions",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Suggestions.Suggestions"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Suggestions.Suggestions",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -872584498,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Topbar.Topbar",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Topbar"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Topbar.Topbar"
+        }
+      },
+      {
+        "HashCode": 756844598,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.Topbar.Topbar",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.Topbar.Topbar"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.Topbar.Topbar",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1475214290,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.UserCard.UserCard",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UserCard"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.UserCard.UserCard"
+        }
+      },
+      {
+        "HashCode": 173345713,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.UserCard.UserCard",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.UserCard.UserCard"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.UserCard.UserCard",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1824080890,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.UserProfile.UserProfile",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UserProfile"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.UserProfile.UserProfile"
+        }
+      },
+      {
+        "HashCode": -1618271556,
+        "Kind": "Components.Component",
+        "Name": "UVGramWeb.Shared.Components.UserProfile.UserProfile",
+        "AssemblyName": "UVGramWeb",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "UVGramWeb.Shared.Components.UserProfile.UserProfile"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "UVGramWeb.Shared.Components.UserProfile.UserProfile",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -1311,131 +1872,6 @@
         }
       },
       {
-        "HashCode": -1426077691,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.MessageCard.MessageCard",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "MessageCard"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.MessageCard.MessageCard"
-        }
-      },
-      {
-        "HashCode": -472856760,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.MessageCard.MessageCard",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.MessageCard.MessageCard"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.MessageCard.MessageCard",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 772824547,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Modal.Modal",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Modal"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "ChildContent",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Metadata": {
-              "Common.PropertyName": "ChildContent",
-              "Components.ChildContent": "True"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Modal.Modal"
-        }
-      },
-      {
-        "HashCode": 1928284386,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Modal.Modal",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Modal.Modal"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "ChildContent",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Metadata": {
-              "Common.PropertyName": "ChildContent",
-              "Components.ChildContent": "True"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Modal.Modal",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 924449378,
-        "Kind": "Components.ChildContent",
-        "Name": "UVGramWeb.Shared.Modal.Modal.ChildContent",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ChildContent",
-            "ParentTag": "Modal"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Common.TypeName": "UVGramWeb.Shared.Modal.Modal.ChildContent",
-          "Components.IsSpecialKind": "Components.ChildContent"
-        }
-      },
-      {
-        "HashCode": -731528201,
-        "Kind": "Components.ChildContent",
-        "Name": "UVGramWeb.Shared.Modal.Modal.ChildContent",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ChildContent",
-            "ParentTag": "UVGramWeb.Shared.Modal.Modal"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Common.TypeName": "UVGramWeb.Shared.Modal.Modal.ChildContent",
-          "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -230967114,
         "Kind": "Components.Component",
         "Name": "UVGramWeb.Shared.NavMenu",
@@ -1465,402 +1901,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "UVGramWeb.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 596234831,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Notifications.NotificationCard.NotificationCard",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NotificationCard"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Notifications.NotificationCard.NotificationCard"
-        }
-      },
-      {
-        "HashCode": -939351517,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Notifications.NotificationCard.NotificationCard",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Notifications.NotificationCard.NotificationCard"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Notifications.NotificationCard.NotificationCard",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -195298445,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Notifications.Notifications",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Notifications"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Notifications.Notifications"
-        }
-      },
-      {
-        "HashCode": -424368772,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Notifications.Notifications",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Notifications.Notifications"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Notifications.Notifications",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1578631791,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.Comment.Comment",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Comment"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.Comment.Comment"
-        }
-      },
-      {
-        "HashCode": -499298538,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.Comment.Comment",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Publications.Comment.Comment"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.Comment.Comment",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1322795386,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.CreatePublication.CreatePublication",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CreatePublication"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.CreatePublication.CreatePublication"
-        }
-      },
-      {
-        "HashCode": -2008576953,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.CreatePublication.CreatePublication",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Publications.CreatePublication.CreatePublication"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.CreatePublication.CreatePublication",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1560057380,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.Options.OptionsPublication",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "OptionsPublication"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.Options.OptionsPublication"
-        }
-      },
-      {
-        "HashCode": 431562247,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.Options.OptionsPublication",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Publications.Options.OptionsPublication"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.Options.OptionsPublication",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -833920521,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "PublicationDetailOption"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption"
-        }
-      },
-      {
-        "HashCode": -927401763,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 240476726,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.PublicationDetail.PublicationDetail",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "PublicationDetail"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.PublicationDetail.PublicationDetail"
-        }
-      },
-      {
-        "HashCode": 772466583,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Publications.PublicationDetail.PublicationDetail",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Publications.PublicationDetail.PublicationDetail"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Publications.PublicationDetail.PublicationDetail",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -52398681,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Report.Report",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Report"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Report.Report"
-        }
-      },
-      {
-        "HashCode": -146535103,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Report.Report",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Report.Report"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Report.Report",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1142596943,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Suggestions.Suggestions",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Suggestions"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Suggestions.Suggestions"
-        }
-      },
-      {
-        "HashCode": 1717114311,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Suggestions.Suggestions",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Suggestions.Suggestions"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Suggestions.Suggestions",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1876980589,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Topbar.Topbar",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Topbar"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Topbar.Topbar"
-        }
-      },
-      {
-        "HashCode": 1235056973,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.Topbar.Topbar",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.Topbar.Topbar"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.Topbar.Topbar",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1895273912,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.UserCard.UserCard",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UserCard"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.UserCard.UserCard"
-        }
-      },
-      {
-        "HashCode": 868308298,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.UserCard.UserCard",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.UserCard.UserCard"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.UserCard.UserCard",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1518435300,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.UserProfile.UserProfile",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UserProfile"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.UserProfile.UserProfile"
-        }
-      },
-      {
-        "HashCode": -1056269600,
-        "Kind": "Components.Component",
-        "Name": "UVGramWeb.Shared.UserProfile.UserProfile",
-        "AssemblyName": "UVGramWeb",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "UVGramWeb.Shared.UserProfile.UserProfile"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "UVGramWeb.Shared.UserProfile.UserProfile",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -18151,23 +18191,18 @@
   "RootNamespace": "UVGramWeb",
   "Documents": [
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/PublicationDetail/Options/PublicationDetailOption.razor",
-      "TargetPath": "Shared\\Publications\\PublicationDetail\\Options\\PublicationDetailOption.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/SignUp/SignUpTypeAccount.razor",
       "TargetPath": "Pages\\SignUp\\SignUpTypeAccount.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/UserCard/UserCard.razor",
-      "TargetPath": "Shared\\UserCard\\UserCard.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/App.razor",
+      "TargetPath": "App.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/App.razor",
-      "TargetPath": "App.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/MessageCard/MessageCard.razor",
+      "TargetPath": "Shared\\Components\\MessageCard\\MessageCard.razor",
       "FileKind": "component"
     },
     {
@@ -18181,11 +18216,6 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/Comment/Comment.razor",
-      "TargetPath": "Shared\\Publications\\Comment\\Comment.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/UnderConstruction/UnderConstruction.razor",
       "TargetPath": "Pages\\UnderConstruction\\UnderConstruction.razor",
       "FileKind": "component"
@@ -18196,13 +18226,18 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Publications/CreatePublication/CreatePublication.razor",
+      "TargetPath": "Shared\\Components\\Publications\\CreatePublication\\CreatePublication.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Inbox.razor",
       "TargetPath": "Pages\\Inbox\\Inbox.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/UserProfile/UserProfile.razor",
-      "TargetPath": "Shared\\UserProfile\\UserProfile.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/HistoriesCard/Histories.razor",
+      "TargetPath": "Shared\\Components\\HistoriesCard\\Histories.razor",
       "FileKind": "component"
     },
     {
@@ -18231,23 +18266,18 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Report/Report.razor",
-      "TargetPath": "Shared\\Report\\Report.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Topbar/Topbar.razor",
-      "TargetPath": "Shared\\Topbar\\Topbar.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Notifications/Notifications.razor",
-      "TargetPath": "Shared\\Notifications\\Notifications.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Suggestions/Suggestions.razor",
+      "TargetPath": "Shared\\Components\\Suggestions\\Suggestions.razor",
       "FileKind": "component"
     },
     {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Chat/UserMessage/UserMessage.razor",
       "TargetPath": "Pages\\Inbox\\Chat\\UserMessage\\UserMessage.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Notifications/Notifications.razor",
+      "TargetPath": "Shared\\Components\\Notifications\\Notifications.razor",
       "FileKind": "component"
     },
     {
@@ -18263,6 +18293,16 @@
     {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/Welcome/Index.razor",
       "TargetPath": "Pages\\Welcome\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Publications/Options/OptionsPublication.razor",
+      "TargetPath": "Shared\\Components\\Publications\\Options\\OptionsPublication.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Modal/Modal.razor",
+      "TargetPath": "Shared\\Components\\Modal\\Modal.razor",
       "FileKind": "component"
     },
     {
@@ -18296,33 +18336,8 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/HistoriesCard/Histories.razor",
-      "TargetPath": "Shared\\HistoriesCard\\Histories.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Logo/Logo.razor",
-      "TargetPath": "Shared\\Logo\\Logo.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Modal/Modal.razor",
-      "TargetPath": "Shared\\Modal\\Modal.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Suggestions/Suggestions.razor",
-      "TargetPath": "Shared\\Suggestions\\Suggestions.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Notifications/NotificationCard/NotificationCard.razor",
-      "TargetPath": "Shared\\Notifications\\NotificationCard\\NotificationCard.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/MessageCard/MessageCard.razor",
-      "TargetPath": "Shared\\MessageCard\\MessageCard.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Publications/Comment/Comment.razor",
+      "TargetPath": "Shared\\Components\\Publications\\Comment\\Comment.razor",
       "FileKind": "component"
     },
     {
@@ -18336,8 +18351,23 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Logo/Logo.razor",
+      "TargetPath": "Shared\\Components\\Logo\\Logo.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/Home/HomeHistories/Histories.razor",
       "TargetPath": "Pages\\Home\\HomeHistories\\Histories.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Publications/PublicationDetail/PublicationDetail.razor",
+      "TargetPath": "Shared\\Components\\Publications\\PublicationDetail\\PublicationDetail.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Notifications/NotificationCard/NotificationCard.razor",
+      "TargetPath": "Shared\\Components\\Notifications\\NotificationCard\\NotificationCard.razor",
       "FileKind": "component"
     },
     {
@@ -18351,13 +18381,18 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/Options/OptionsPublication.razor",
-      "TargetPath": "Shared\\Publications\\Options\\OptionsPublication.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Topbar/Topbar.razor",
+      "TargetPath": "Shared\\Components\\Topbar\\Topbar.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/CreatePublication/CreatePublication.razor",
-      "TargetPath": "Shared\\Publications\\CreatePublication\\CreatePublication.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Report/Report.razor",
+      "TargetPath": "Shared\\Components\\Report\\Report.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/Publications/PublicationDetail/Options/PublicationDetailOption.razor",
+      "TargetPath": "Shared\\Components\\Publications\\PublicationDetail\\Options\\PublicationDetailOption.razor",
       "FileKind": "component"
     },
     {
@@ -18371,8 +18406,8 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/PublicationDetail/PublicationDetail.razor",
-      "TargetPath": "Shared\\Publications\\PublicationDetail\\PublicationDetail.razor",
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/UserProfile/UserProfile.razor",
+      "TargetPath": "Shared\\Components\\UserProfile\\UserProfile.razor",
       "FileKind": "component"
     },
     {
@@ -18389,6 +18424,11 @@
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Shared/Components/UserCard/UserCard.razor",
+      "TargetPath": "Shared\\Components\\UserCard\\UserCard.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "/home/keberos/Escritorio/UVGram/UVGramWeb/Pages/Profile/PublicationProfile/PublicationProfile.razor",
