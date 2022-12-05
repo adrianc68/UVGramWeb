@@ -8,7 +8,7 @@
 .wm-information-container {
     width: 100%;
     display:flex;
-    gap:25px;
+    gap:10px;
     justify-content: center;
     align-items: center;
     padding-top:75px;
@@ -60,20 +60,14 @@
     border-radius: 2px;
 }
 
-.wmicllc-input {
-    padding-bottom:7px;
-}
-
-.wmicllc-input > input {
-    background-color: #fafafa;
-    font-size: 13px;
-    color:#959595;
-    border-radius: 2px;
-    font-family: Arial, Helvetica, sans-serif;
+.wmicllc-inputs {
+    display:flex;
+    flex-direction: column;
+    gap:6px;
 }
 
 .wmicllc-buttons{
-    padding-top:8px;
+    padding-top:15px;
 }
 
 .wmicllc-buttons > button {
@@ -92,16 +86,15 @@
     padding-top:5px;
     display:flex;
     align-items: flex-end;
+    font-size: 0.8em;
     justify-content: center;
     flex:1;
-    font-size: 0.87em;
 }
 
 .wmicllc-recover > a {
     width:100%;
     text-align: center;
     color: #1B4373;
-    font-size: 0.8em;
     text-decoration: none;
 }
 

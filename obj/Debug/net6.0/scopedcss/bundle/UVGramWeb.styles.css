@@ -1,16 +1,16 @@
-/* /Pages/Components/Logo/Logo.razor.rz.scp.css */
-.logo[b-xk1dnpm5av] {
+/* /Pages/Components/Logo.razor.rz.scp.css */
+.logo[b-rrf025yqfg] {
     font-size: 2.7em;
     font-weight: bold;
 }
 
-.logo > a[b-xk1dnpm5av] {
+.logo > a[b-rrf025yqfg] {
     text-decoration: none;
     color:rgb(27, 26, 26);
     letter-spacing: 3px;
 }
 
-.logo-title[b-xk1dnpm5av] {
+.logo-title[b-rrf025yqfg] {
     font-family: Lobster, 'Helvetica';
 }
 /* /Pages/Index.razor.rz.scp.css */
@@ -24,7 +24,7 @@
 .wm-information-container[b-v2ubcfauz3] {
     width: 100%;
     display:flex;
-    gap:25px;
+    gap:10px;
     justify-content: center;
     align-items: center;
     padding-top:75px;
@@ -76,20 +76,14 @@
     border-radius: 2px;
 }
 
-.wmicllc-input[b-v2ubcfauz3] {
-    padding-bottom:7px;
-}
-
-.wmicllc-input > input[b-v2ubcfauz3] {
-    background-color: #fafafa;
-    font-size: 13px;
-    color:#959595;
-    border-radius: 2px;
-    font-family: Arial, Helvetica, sans-serif;
+.wmicllc-inputs[b-v2ubcfauz3] {
+    display:flex;
+    flex-direction: column;
+    gap:6px;
 }
 
 .wmicllc-buttons[b-v2ubcfauz3]{
-    padding-top:8px;
+    padding-top:15px;
 }
 
 .wmicllc-buttons > button[b-v2ubcfauz3] {
@@ -108,16 +102,15 @@
     padding-top:5px;
     display:flex;
     align-items: flex-end;
+    font-size: 0.8em;
     justify-content: center;
     flex:1;
-    font-size: 0.87em;
 }
 
 .wmicllc-recover > a[b-v2ubcfauz3] {
     width:100%;
     text-align: center;
     color: #1B4373;
-    font-size: 0.8em;
     text-decoration: none;
 }
 

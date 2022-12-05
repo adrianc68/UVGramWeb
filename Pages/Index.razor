@@ -1,5 +1,4 @@
 ﻿@page "/"
-@using UVGramWeb.Pages.Components.Logo
 @inject NavigationManager NavigationManager
 
 <div class="welcome-main-container">
@@ -11,21 +10,40 @@
             <div class="wmicl-login-card">
                 <form class="wmicllc-form card">
                     <div class="wmicllc-logo-title">
-                        <Logo></Logo>
+                        <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
                     </div>
-                    <div class="wmicllc-input">
-                        <input type="text" class="form-control" id="account" placeholder="name@example.com">
-                    </div>
-                    <div class="wmicllc-input">
-                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                    </div>
-                    <div class="wmicllc-buttons">
-                        <button class="custom-btn btn-primary">Iniciar sesión</button>
-                    </div>
-                    <div class="wmicllc-message">
-                        <p role="alert" class="text-danger ">Este nombre de usuario no está disponible Prueba con otro
-                        </p>
-                    </div>
+
+                    <EditForm model="@loginModel" OnValidSubmit="OnValidSubmit">
+                        <DataAnnotationsValidator />
+                        <div class="wmicllc-inputs">
+                            <div class="custom-form-floating">
+                                <InputText id="username" @bind-Value="loginModel.Username" class="custom-form-input"
+                                    aria-label="usuario o correo electrónico" required=true aria-required="true" />
+                                <label for="username" class="custom-form-floating-label">Usuario o correo electrónico</label>
+                            </div>
+
+                            <div class="custom-form-floating">
+                                <InputText id="password" type="password" @bind-Value="loginModel.Password"
+                                    class="custom-form-input" aria-label="Contraseña" required=true
+                                    aria-required="true" />
+                                <label for="password" class="custom-form-floating-label">Contraseña</label>
+                            </div>
+                        </div>
+
+
+                        @* <ValidationMessage For="@(() => loginModel.Username)" /> *@
+                        <div class="wmicllc-buttons">
+                            <button class="custom-btn btn-primary">Iniciar sesión</button>
+                        </div>
+
+                        <div class="wmicllc-message">
+                            <p role="alert" class="text-danger ">Este nombre de usuario no está disponible Prueba con
+                                otro
+                            </p>
+                        </div>
+                    </EditForm>
+
+
                     <div class="wmicllc-recover">
                         <a href="/login">
                             <p role="alert">¿Olvidaste tu contraseña?</p>
@@ -42,3 +60,13 @@
         </div>
     </section>
 </div>
+
+@code {
+    private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
+
+    private void OnValidSubmit()
+    {
+        return;
+    }
+
+}
