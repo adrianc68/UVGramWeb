@@ -10,7 +10,7 @@
             <div class="wmicl-login-card">
                 <form class="wmicllc-form card">
                     <div class="wmicllc-logo-title">
-                        <UVGramWeb.Pages.Components.Logo.Logo></UVGramWeb.Pages.Components.Logo.Logo>
+                        @* <UVGramWeb.Pages.Components.Logo.Logo></UVGramWeb.Pages.Components.Logo.Logo> *@
                     </div>
                     <div class="wmicllc-input">
                         <input type="text" class="form-control" id="account" placeholder="name@example.com">
@@ -42,16 +42,3 @@
     </section>
 </div>
 
-<button @onclick="@onClick"> Click </button>
-
-@code {
-
-    [Inject]
-    protected IJSRuntime jsRuntime { get; set; }
-
-    private void onClick()
-    {
-        var isWebAssembly = this.jsRuntime is IJSInProcessRuntime;
-        Console.WriteLine(isWebAssembly);
-    }
-}
