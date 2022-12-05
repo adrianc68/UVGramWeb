@@ -8,217 +8,217 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UVGramWeb
 build_property.RootNamespace = UVGramWeb
-build_property.ProjectDir = /home/kerberos/Escritorio/UVGram/UVGramWeb/
+build_property.ProjectDir = /Users/kerberos/Desktop/UVGram/UVGramWeb/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/kerberos/Escritorio/UVGram/UVGramWeb
+build_property.MSBuildProjectDirectory = /Users/kerberos/Desktop/UVGram/UVGramWeb
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/App.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/FetchData.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/SurveyPrompt.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/_Imports.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/EditProfile/ChangePassword/ChangePassword.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/EditProfile/ChangePassword/ChangePassword.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdFByb2ZpbGUvQ2hhbmdlUGFzc3dvcmQvQ2hhbmdlUGFzc3dvcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-6tqvszy58b
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/EditProfile/EditProfile.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/EditProfile/EditProfile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdFByb2ZpbGUvRWRpdFByb2ZpbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-qg29l6y77f
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/EditProfile/EPSidebar.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/EditProfile/EPSidebar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdFByb2ZpbGUvRVBTaWRlYmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-ph3np8r21s
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Histories/HistoriesPage.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Histories/HistoriesPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSGlzdG9yaWVzL0hpc3Rvcmllc1BhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-vhpzinn8p7
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Histories/HistoryPageCard/HistoryPageCard.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Histories/HistoryPageCard/HistoryPageCard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSGlzdG9yaWVzL0hpc3RvcnlQYWdlQ2FyZC9IaXN0b3J5UGFnZUNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-s01x4icsff
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Home/Home.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Home/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS9Ib21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-4d1lkf14n8
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Home/HomeHistories/Histories.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Home/HomeHistories/Histories.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS9Ib21lSGlzdG9yaWVzL0hpc3Rvcmllcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-6tnwkcsr2w
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Home/HomePublication/HomePublication.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Home/HomePublication/HomePublication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS9Ib21lUHVibGljYXRpb24vSG9tZVB1YmxpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-bq5zdp3qyf
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Chat/Chat.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/Chat/Chat.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvQ2hhdC9DaGF0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-5thuc6oyby
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Chat/MemberCard/MemberCard.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/Chat/MemberCard/MemberCard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvQ2hhdC9NZW1iZXJDYXJkL01lbWJlckNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-qv7ykwf0j9
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Chat/MyMessage/MyMessage.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/Chat/MyMessage/MyMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvQ2hhdC9NeU1lc3NhZ2UvTXlNZXNzYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-gcbuxeim6g
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Chat/SuggestionMessageUserCard/SuggestionMUCard.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/Chat/SuggestionMessageUserCard/SuggestionMUCard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvQ2hhdC9TdWdnZXN0aW9uTWVzc2FnZVVzZXJDYXJkL1N1Z2dlc3Rpb25NVUNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-fwrpecrxmh
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Chat/UserMessage/UserMessage.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/Chat/UserMessage/UserMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvQ2hhdC9Vc2VyTWVzc2FnZS9Vc2VyTWVzc2FnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-vrjjufz003
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/Inbox.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/Inbox.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvSW5ib3gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-k9n295d3ny
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Inbox/SendMessage/SendMessage.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Inbox/SendMessage/SendMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3gvU2VuZE1lc3NhZ2UvU2VuZE1lc3NhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-aexswl2pd7
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Login/Login.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Login/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4vTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-5kqehl7rlk
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Profile/Followers/Followers.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Profile/Followers/Followers.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS9Gb2xsb3dlcnMvRm9sbG93ZXJzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-mmalesrwgu
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Profile/Following/Following.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Profile/Following/Following.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS9Gb2xsb3dpbmcvRm9sbG93aW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-zsp5vpw3d5
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Profile/Profile.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Profile/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS9Qcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-rqgvf31y2o
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Profile/PublicationProfile/PublicationProfile.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Profile/PublicationProfile/PublicationProfile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS9QdWJsaWNhdGlvblByb2ZpbGUvUHVibGljYXRpb25Qcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-nnge3widdo
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/PublicationDetail/PublicationDetail.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/PublicationDetail/PublicationDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHVibGljYXRpb25EZXRhaWwvUHVibGljYXRpb25EZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-r7z2k9aw5h
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/SignUp/SignUp.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/SignUp/SignUp.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2lnblVwL1NpZ25VcC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-m815n33bdu
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/SignUp/SignUpBirth.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/SignUp/SignUpBirth.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2lnblVwL1NpZ25VcEJpcnRoLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-mu88kh4xhb
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/SignUp/SignUpTypeAccount.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/SignUp/SignUpTypeAccount.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2lnblVwL1NpZ25VcFR5cGVBY2NvdW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-smgm4rnepf
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/SignUp/SignUpVerifyCode.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/SignUp/SignUpVerifyCode.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2lnblVwL1NpZ25VcFZlcmlmeUNvZGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-i77flgwyrf
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/UnderConstruction/UnderConstruction.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/UnderConstruction/UnderConstruction.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVW5kZXJDb25zdHJ1Y3Rpb24vVW5kZXJDb25zdHJ1Y3Rpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-wvqyb6wglr
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Welcome/Index.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Welcome/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VsY29tZS9JbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-bz8jlyv3r3
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/HistoriesCard/Histories.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/HistoriesCard/Histories.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0hpc3Rvcmllc0NhcmQvSGlzdG9yaWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-x40rex66u9
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Logo/Logo.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Logo/Logo.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ28vTG9nby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-6t8ch7372h
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/MainLayout.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-mwk7a10tnr
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/MessageCard/MessageCard.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/MessageCard/MessageCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01lc3NhZ2VDYXJkL01lc3NhZ2VDYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-w3wh730kke
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Modal/Modal.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Modal/Modal.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01vZGFsL01vZGFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-br8292mhca
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/NavMenu.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-1e6mcqym9y
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Notifications/NotificationCard/NotificationCard.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Notifications/NotificationCard/NotificationCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05vdGlmaWNhdGlvbnMvTm90aWZpY2F0aW9uQ2FyZC9Ob3RpZmljYXRpb25DYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-ubujzl2eg1
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Notifications/Notifications.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Notifications/Notifications.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05vdGlmaWNhdGlvbnMvTm90aWZpY2F0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-6stslgco58
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/Comment/Comment.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Publications/Comment/Comment.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1B1YmxpY2F0aW9ucy9Db21tZW50L0NvbW1lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-lvm67gs5tw
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/CreatePublication/CreatePublication.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Publications/CreatePublication/CreatePublication.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1B1YmxpY2F0aW9ucy9DcmVhdGVQdWJsaWNhdGlvbi9DcmVhdGVQdWJsaWNhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-2um59velop
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/Options/OptionsPublication.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Publications/Options/OptionsPublication.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1B1YmxpY2F0aW9ucy9PcHRpb25zL09wdGlvbnNQdWJsaWNhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-yqj49kmoip
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/PublicationDetail/Options/PublicationDetailOption.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Publications/PublicationDetail/Options/PublicationDetailOption.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1B1YmxpY2F0aW9ucy9QdWJsaWNhdGlvbkRldGFpbC9PcHRpb25zL1B1YmxpY2F0aW9uRGV0YWlsT3B0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-5vxhravu9d
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Publications/PublicationDetail/PublicationDetail.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Publications/PublicationDetail/PublicationDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1B1YmxpY2F0aW9ucy9QdWJsaWNhdGlvbkRldGFpbC9QdWJsaWNhdGlvbkRldGFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-6la0jvyuur
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Report/Report.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Report/Report.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1JlcG9ydC9SZXBvcnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-myu2a7blm6
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Suggestions/Suggestions.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Suggestions/Suggestions.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1Z2dlc3Rpb25zL1N1Z2dlc3Rpb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-pzp2ge8ftl
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/Topbar/Topbar.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Topbar/Topbar.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RvcGJhci9Ub3BiYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-b7bo461e2s
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/UserCard/UserCard.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/UserCard/UserCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1VzZXJDYXJkL1VzZXJDYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-siugdsw7q9
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Shared/UserProfile/UserProfile.razor]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/UserProfile/UserProfile.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1VzZXJQcm9maWxlL1VzZXJQcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-pxicvnp8m6
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/Error.cshtml]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/_Host.cshtml]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/kerberos/Escritorio/UVGram/UVGramWeb/Pages/_Layout.cshtml]
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

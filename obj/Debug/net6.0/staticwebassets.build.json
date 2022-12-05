@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c6lcs2hDxcZRd4/vhmLsdv0A3M+Gp9NP2mXBYjWUAZ0=",
+  "Hash": "pdOJ4lOj0Lf+N0aOufYNE0UpyIuBMxQRlsOPLx4OmuA=",
   "Source": "UVGramWeb",
   "BasePath": "_content/UVGramWeb",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "UVGramWeb/wwwroot",
       "Source": "UVGramWeb",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/UVGramWeb.styles.css",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/UVGramWeb.styles.css",
       "SourceId": "UVGramWeb",
       "SourceType": "Computed",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "UVGramWeb.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/UVGramWeb.styles.css"
+      "OriginalItemSpec": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/UVGramWeb.styles.css"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/UVGramWeb.bundle.scp.css",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/UVGramWeb.bundle.scp.css",
       "SourceId": "UVGramWeb",
       "SourceType": "Computed",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "UVGramWeb.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/home/kerberos/Escritorio/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/UVGramWeb.bundle.scp.css"
+      "OriginalItemSpec": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/UVGramWeb.bundle.scp.css"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/bootstrap/bootstrap.min.css",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/bootstrap/bootstrap.min.css",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot/css/bootstrap/bootstrap.min.css"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/bootstrap/bootstrap.min.css.map",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot/css/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/FONT-LICENSE",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/FONT-LICENSE",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/FONT-LICENSE"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.eot"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.otf"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.ttf"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.woff"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/ICON-LICENSE",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/ICON-LICENSE",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/ICON-LICENSE"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/open-iconic/README.md",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/open-iconic/README.md",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/README.md"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/css/site.css",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/css/site.css",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/favicon.ico",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/favicon.ico",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/birthday-cake.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/birthday-cake.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/birthday-cake.svg",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot/images/birthday-cake.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-1.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-1.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-1.svg",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-1.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-10.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-10.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-10.svg",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-10.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-11.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-11.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-11.svg",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-11.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-12.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-12.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-12.svg",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-12.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-13.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-13.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-13.svg",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-13.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-14.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-14.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-14.svg",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-14.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-15.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-15.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-15.svg",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-15.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-2.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-2.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-2.svg",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-2.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-3.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-3.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-3.svg",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-3.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-4.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-4.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-4.svg",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-4.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-5.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-5.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-5.svg",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-5.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-6.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-6.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-6.svg",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-6.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-7.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-7.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-7.svg",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-7.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-8.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-8.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-8.svg",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-8.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/bk-9.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/bk-9.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/bk-9.svg",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot/images/bk-9.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/example.jpg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/example.jpg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/example.jpg",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot/images/example.jpg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/history-01.jpeg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/history-01.jpeg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/history-01.jpeg",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot/images/history-01.jpeg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/history-02.jpeg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/history-02.jpeg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/history-02.jpeg",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot/images/history-02.jpeg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/history-03.jpeg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/history-03.jpeg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/history-03.jpeg",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot/images/history-03.jpeg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/history-04.jpeg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/history-04.jpeg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/history-04.jpeg",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot/images/history-04.jpeg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-01.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-01.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-01.svg",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-01.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-02.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-02.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-02.svg",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-02.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-03.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-03.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-03.svg",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-03.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-04.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-04.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-04.svg",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-04.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-05.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-05.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-05.svg",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-05.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-06.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-06.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-06.svg",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-06.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-07.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-07.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-07.svg",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-07.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-08.png",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-08.png",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-08.png",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-08.png"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-09.png",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-09.png",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-09.png",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-09.png"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-10-delivery.png",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-10-delivery.png",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-10-delivery.png",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-10-delivery.png"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-11.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-11.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-11.svg",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-11.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-12.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-12.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-12.svg",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-12.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-13.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-13.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-13.svg",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-13.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-14.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-14.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-14.svg",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-14.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-15.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-15.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-15.svg",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-15.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-16.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-16.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-16.svg",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-16.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-17.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-17.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-17.svg",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-17.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-18.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-18.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-18.svg",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-18.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-19.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-19.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-19.svg",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-19.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-20.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-20.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-20.svg",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-20.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-21.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-21.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-21.svg",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-21.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-22.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-22.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-22.svg",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-22.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-23.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-23.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-23.svg",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-23.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-24.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-24.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-24.svg",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-24.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-25.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-25.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-25.svg",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-25.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-26.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-26.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-26.svg",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-26.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-27.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-27.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-27.svg",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-27.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-28.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-28.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-28.svg",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-28.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-29.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-29.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-29.svg",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-29.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-30.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-30.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-30.svg",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-30.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-31.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-31.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-31.svg",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-31.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-32.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-32.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-32.svg",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-32.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-33.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-33.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-33.svg",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-33.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-34.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-34.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-34.svg",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-34.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-35.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-35.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-35.svg",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-35.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-36.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-36.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-36.svg",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-36.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-37.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-37.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-37.svg",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-37.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-38.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-38.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-38.svg",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-38.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-39.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-39.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-39.svg",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-39.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-40.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-40.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-40.svg",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-40.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-41.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-41.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-41.svg",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-41.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-42.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-42.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-42.svg",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-42.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-43.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-43.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-43.svg",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-43.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-44.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-44.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-44.svg",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-44.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-45.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-45.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-45.svg",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-45.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-46.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-46.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-46.svg",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-46.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-47.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-47.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-47.svg",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-47.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-48.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-48.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-48.svg",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-48.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-49.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-49.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-49.svg",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-49.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/ide-code.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/ide-code.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/ide-code.svg",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot/images/ide-code.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/invalid.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/invalid.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/invalid.svg",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot/images/invalid.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/valid.svg",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/valid.svg",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/valid.svg",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot/images/valid.svg"
     },
     {
-      "Identity": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/images/vid-02.mp4",
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/images/vid-02.mp4",
       "SourceId": "UVGramWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kerberos/Escritorio/UVGram/UVGramWeb/wwwroot/",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/wwwroot/",
       "BasePath": "_content/UVGramWeb",
       "RelativePath": "images/vid-02.mp4",
       "AssetKind": "All",
