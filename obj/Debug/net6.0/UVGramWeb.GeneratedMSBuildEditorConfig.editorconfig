@@ -22,13 +22,13 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Components/Logo/Logo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Mb2dvL0xvZ28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xk1dnpm5av
 
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=

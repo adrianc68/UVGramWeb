@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using UVGramWeb.Pages.Components.Logo
 @inject NavigationManager NavigationManager
 
 <div class="welcome-main-container">
@@ -10,7 +11,7 @@
             <div class="wmicl-login-card">
                 <form class="wmicllc-form card">
                     <div class="wmicllc-logo-title">
-                        @* <UVGramWeb.Pages.Components.Logo.Logo></UVGramWeb.Pages.Components.Logo.Logo> *@
+                        <Logo></Logo>
                     </div>
                     <div class="wmicllc-input">
                         <input type="text" class="form-control" id="account" placeholder="name@example.com">
@@ -34,11 +35,10 @@
                 <section class="wmicllc-options card">
                     <div class="wmicllcoc-options">
                         <span>¿No tienes una cuenta?</span>
-                        @* <NavLink class="nav-link" href="signup">Registrate</NavLink> *@
+                        <NavLink class="nav-link" href="signup">Registrate</NavLink>
                     </div>
                 </section>
             </div>
         </div>
     </section>
 </div>
-
