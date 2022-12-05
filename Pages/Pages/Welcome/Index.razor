@@ -1,0 +1,57 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+<div class="welcome-main-container">
+    <section class="wm-information-container">
+        <div class="wmi-container-image">
+            <img src="images/ide-20.svg" alt="Imagen decorativa" />
+        </div>
+        <div class="wmi-container-login">
+            <div class="wmicl-login-card">
+                <form class="wmicllc-form card">
+                    <div class="wmicllc-logo-title">
+                        <UVGramWeb.Pages.Components.Logo.Logo></UVGramWeb.Pages.Components.Logo.Logo>
+                    </div>
+                    <div class="wmicllc-input">
+                        <input type="text" class="form-control" id="account" placeholder="name@example.com">
+                    </div>
+                    <div class="wmicllc-input">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                    </div>
+                    <div class="wmicllc-buttons">
+                        <button class="custom-btn btn-primary">Iniciar sesión</button>
+                    </div>
+                    <div class="wmicllc-message">
+                        <p role="alert" class="text-danger ">Este nombre de usuario no está disponible Prueba con otro
+                        </p>
+                    </div>
+                    <div class="wmicllc-recover">
+                        <a href="/login">
+                            <p role="alert">¿Olvidaste tu contraseña?</p>
+                        </a>
+                    </div>
+                </form>
+                <section class="wmicllc-options card">
+                    <div class="wmicllcoc-options">
+                        <span>¿No tienes una cuenta?</span>
+                        @* <NavLink class="nav-link" href="signup">Registrate</NavLink> *@
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+
+<button @onclick="@onClick"> Click </button>
+
+@code {
+
+    [Inject]
+    protected IJSRuntime jsRuntime { get; set; }
+
+    private void onClick()
+    {
+        var isWebAssembly = this.jsRuntime is IJSInProcessRuntime;
+        Console.WriteLine(isWebAssembly);
+    }
+}

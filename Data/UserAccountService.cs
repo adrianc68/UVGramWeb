@@ -1,59 +1,20 @@
-@page "/call-web-api"
-@using System.Text.Json
-@using System.Text.Json.Serialization
-@inject IHttpClientFactory ClientFactory
+using UVGramWeb.Data.Models;
 
-<h1>Call web API from a Blazor Server Razor component</h1>
-
-@if (getBranchesError)
+namespace UserAccountServices.Web.Services
 {
-    <p>Unable to get branches from GitHub. Please try again later.</p>
-}
-else
-{
-    <ul>
-        @foreach (var branch in branches)
-        {
-            <li>@branch.Name</li>
-        }
-    </ul>
-}
-
-@code {
-    private IEnumerable<GitHubBranch> branches = Array.Empty<GitHubBranch>();
-    private bool getBranchesError;
-    private bool shouldRender;
-
-    protected override bool ShouldRender() => shouldRender;
-
-    protected override async Task OnInitializedAsync()
+    public class UserAccountService: IUserAccountService
     {
-        var request = new HttpRequestMessage(HttpMethod.Get,
-            "https://api.github.com/repos/dotnet/AspNetCore.Docs/branches");
-        request.Headers.Add("Accept", "application/vnd.github.v3+json");
-        request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+        private readonly HttpClient httpClient;
 
-        var client = ClientFactory.CreateClient();
-
-        var response = await client.SendAsync(request);
-
-        if (response.IsSuccessStatusCode)
+        public UserAccountService(HttpClient httpClient)
         {
-            using var responseStream = await response.Content.ReadAsStreamAsync();
-            branches = await JsonSerializer.DeserializeAsync
-                <IEnumerable<GitHubBranch>>(responseStream);
-        }
-        else
-        {
-            getBranchesError = true;
+            this.httpClient = httpClient;
         }
 
-        shouldRender = true;
-    }
+        public async Task<bool> Login(UserLogin userData) 
+        {
+            return await httpClient.GetFromJsonAsync<bool>("authentication/login");
+        }
 
-    public class GitHubBranch
-    {
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
     }
 }

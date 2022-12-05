@@ -1,12 +1,15 @@
-using UVGramWeb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddHttpClient();
+
+
+builder.Services.AddHttpClient<IUserAccountService, UserAccountServices.Web.Services.UserAccountService>(client =>
+{
+    client.BaseAddress = new Uri("http://192.168.1.67:8008");
+});
 
 var app = builder.Build();
 
@@ -18,12 +21,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

@@ -1,19 +1,3 @@
-/* _content/UVGramWeb/Pages/Components/Logo/Logo.razor.rz.scp.css */
-.logo[b-xk1dnpm5av] {
-    font-size: 2.7em;
-    font-weight: bold;
-}
-
-.logo > a[b-xk1dnpm5av] {
-    text-decoration: none;
-    color:rgb(27, 26, 26);
-    letter-spacing: 3px;
-}
-
-.logo-title[b-xk1dnpm5av] {
-    font-family: Lobster, 'Helvetica';
-}
-/* _content/UVGramWeb/Pages/Pages/Welcome/Index.razor.rz.scp.css */
 
 .welcome-main-container[b-2evmdc7ar2] {
     width:100vw;
