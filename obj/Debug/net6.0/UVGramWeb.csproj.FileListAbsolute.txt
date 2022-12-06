@@ -2444,3 +2444,7 @@
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/UVGramWeb.pdb
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/ref/UVGramWeb.dll
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Components/Logo.razor.rz.scp.css
+/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/Newtonsoft.Json.dll
+/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/Newtonsoft.Json.dll.gz
+/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/Newtonsoft.Json.dll
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/build-gz/zla5nqTx.gz

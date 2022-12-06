@@ -1,5 +1,7 @@
 ﻿@page "/"
-@inject NavigationManager NavigationManager
+@inject NavigationManager navigationManager
+@inject Services.IUserAccountService UserAccountService
+@inject Shared.PageHistoryState PageHistoryState
 
 <div class="welcome-main-container">
     <section class="wm-information-container">
@@ -17,33 +19,43 @@
                         <DataAnnotationsValidator />
                         <div class="wmicllc-inputs">
                             <div class="custom-form-floating">
-                                <InputText id="username" @bind-Value="loginModel.Username" class="custom-form-input"
-                                    aria-label="usuario o correo electrónico" required=true aria-required="true" />
-                                <label for="username" class="custom-form-floating-label">Usuario o correo electrónico</label>
+                                <InputText id="username" @bind-Value="loginModel.emailOrUsername" autocomplete="off"
+                                    class="custom-form-input" aria-label="usuario o correo electrónico" required=true
+                                    aria-required="true" />
+                                <label for="username" class="custom-form-floating-label">Usuario o correo
+                                    electrónico</label>
                             </div>
 
                             <div class="custom-form-floating">
-                                <InputText id="password" type="password" @bind-Value="loginModel.Password"
-                                    class="custom-form-input" aria-label="Contraseña" required=true
+                                <InputText id="password" type="password" @bind-Value="loginModel.password"
+                                    autocomplete="off" class="custom-form-input" aria-label="Contraseña" required=true
                                     aria-required="true" />
                                 <label for="password" class="custom-form-floating-label">Contraseña</label>
                             </div>
                         </div>
-
-
-                        @* <ValidationMessage For="@(() => loginModel.Username)" /> *@
                         <div class="wmicllc-buttons">
-                            <button class="custom-btn btn-primary">Iniciar sesión</button>
+                            <button class="custom-btn btn-primary" disabled="@loading">
+                                @if (loading)
+                                {
+                                    <span class=spinner-border spinner-border-sm mr-1"></span>
+                                }
+                                else
+                                {
+                                    <span>Iniciar sesión</span>
+                                }
+                            </button>
                         </div>
 
                         <div class="wmicllc-message">
-                            <p role="alert" class="text-danger ">Este nombre de usuario no está disponible Prueba con
-                                otro
+                            <ValidationMessage For="@(() => loginModel.emailOrUsername)" />
+                            <p role="alert" class="text-danger ">
+                                @if (errorMessage != null)
+                                {
+                                    <span>@errorMessage</span>
+                                }
                             </p>
                         </div>
                     </EditForm>
-
-
                     <div class="wmicllc-recover">
                         <a href="/login">
                             <p role="alert">¿Olvidaste tu contraseña?</p>
@@ -63,9 +75,24 @@
 
 @code {
     private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
-
-    private void OnValidSubmit()
+    private bool loading;
+    private String errorMessage;
+    private async void OnValidSubmit()
     {
+        errorMessage = null;
+        loading = true;
+
+        try
+        {
+            await UserAccountService.Login(loginModel);
+            navigationManager.NavigateTo("/login");
+        }
+        catch (Exception error)
+        {
+            errorMessage = error.Message;
+            loading = false;
+            StateHasChanged();
+        }
         return;
     }
 

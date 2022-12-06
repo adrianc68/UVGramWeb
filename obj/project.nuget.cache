@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YSSFFxMvAGXhymaFiQG1OY6qg23KULMHOY4bb2JehT7oQglOCvjxZ5hh5NQur9y22apuGo/+ZM0mP7hbqOWxFg==",
+  "dgSpecHash": "cKnjlyMkx03k9xZrgPiv/ByhKRaD5LQTkKPY3PzGtCJoKY9RKT6M6YuP1EmfU3yurOydsThMEfvCiqX0JixftA==",
   "success": true,
   "projectFilePath": "/Users/kerberos/Desktop/UVGram/UVGramWeb/UVGramWeb.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "/Users/kerberos/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/Users/kerberos/.nuget/packages/microsoft.jsinterop/6.0.10/microsoft.jsinterop.6.0.10.nupkg.sha512",
     "/Users/kerberos/.nuget/packages/microsoft.jsinterop.webassembly/6.0.10/microsoft.jsinterop.webassembly.6.0.10.nupkg.sha512",
+    "/Users/kerberos/.nuget/packages/newtonsoft.json/13.0.2/newtonsoft.json.13.0.2.nupkg.sha512",
     "/Users/kerberos/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/Users/kerberos/.nuget/packages/system.io.pipelines/6.0.3/system.io.pipelines.6.0.3.nupkg.sha512",
     "/Users/kerberos/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",

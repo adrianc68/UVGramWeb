@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cm0OUpiJSvKgeQnWJQmF/qKySjqun0/qF3ybEVGCVrg=",
+  "Hash": "0uV3mBP89Yip2F3fFjqubmB6VdvKdaE/JD9NISr1VYk=",
   "Source": "UVGramWeb",
   "BasePath": "/",
   "Mode": "Root",
@@ -661,6 +661,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/kerberos/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/6.0.10/runtimes/browser-wasm/lib/net6.0/netstandard.dll"
+    },
+    {
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/Newtonsoft.Json.dll",
+      "SourceId": "UVGramWeb",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Newtonsoft.Json.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/kerberos/.nuget/packages/newtonsoft.json/13.0.2/lib/net6.0/Newtonsoft.Json.dll"
     },
     {
       "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/System.AppContext.dll",
@@ -6747,6 +6764,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/System.AppContext.dll"
+    },
+    {
+      "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/build-gz/zla5nqTx.gz",
+      "SourceId": "UVGramWeb",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Newtonsoft.Json.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/Newtonsoft.Json.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/Newtonsoft.Json.dll"
     },
     {
       "Identity": "/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/build-gz/ZozI96ca.gz",
