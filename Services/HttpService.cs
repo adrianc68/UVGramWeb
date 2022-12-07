@@ -65,7 +65,6 @@ public class HttpService : IHttpService
     {
         await addJwtHeader(request);
         using var response = await httpClient.SendAsync(request);
-
         if (response.StatusCode == HttpStatusCode.Unauthorized)
         {
             navigationManager.NavigateTo("/authentication/logout");
@@ -80,7 +79,7 @@ public class HttpService : IHttpService
         using var response = await httpClient.SendAsync(request);
         if (response.StatusCode == HttpStatusCode.Unauthorized)
         {
-            navigationManager.NavigateTo("/authentication/logout");
+            navigationManager.NavigateTo("/logout");
             return default;
         }
         await handleErrors(response);
@@ -89,11 +88,14 @@ public class HttpService : IHttpService
 
     private async Task addJwtHeader(HttpRequestMessage request)
     {
-        var accessToken = await localStorageService.GetItem<string>("accessToken");
-        var isApiUrl = !request.RequestUri.IsAbsoluteUri;
-        if (isApiUrl)
+        var User = await localStorageService.GetItem<UVGramWeb.Shared.Models.User>("login");
+        if (User != null)
         {
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var isApiUrl = !request.RequestUri.IsAbsoluteUri;
+            if (isApiUrl)
+            {
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", User.accessToken);
+            }
         }
     }
 

@@ -1,0 +1,9 @@
+@page "/logout"
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+
+@code {
+    protected override async void OnInitialized()
+    {
+        await AuthenticationService.Logout();
+    }
+}

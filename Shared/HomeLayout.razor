@@ -1,0 +1,8 @@
+@inherits LayoutComponentBase
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager
+
+<main class="main-page">
+    <UVGramWeb.Pages.Components.Topbar></UVGramWeb.Pages.Components.Topbar>
+    @Body
+</main>

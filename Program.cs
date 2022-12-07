@@ -7,8 +7,7 @@ using UVGramWeb.Services;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-builder.Services.AddScoped<IAlertService, AlertService>();
-builder.Services.AddScoped<IUserAccountService, UserAccountService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IHttpService, HttpService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped(x =>
@@ -21,4 +20,8 @@ builder.Services.AddSingleton<PageHistoryState>();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://192.168.1.67:8080") });
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+var authService = host.Services.GetRequiredService<IAuthenticationService>();
+await authService.Initialize();
+
+await host.RunAsync();

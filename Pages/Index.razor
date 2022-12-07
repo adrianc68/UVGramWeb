@@ -1,6 +1,6 @@
 ﻿@page "/"
 @inject NavigationManager navigationManager
-@inject Services.IUserAccountService UserAccountService
+@inject Services.IAuthenticationService AuthenticationService
 @inject Shared.PageHistoryState PageHistoryState
 
 <div class="welcome-main-container">
@@ -57,7 +57,7 @@
                         </div>
                     </EditForm>
                     <div class="wmicllc-recover">
-                        <a href="/login">
+                        <a href="/accounts/recover">
                             <p role="alert">¿Olvidaste tu contraseña?</p>
                         </a>
                     </div>
@@ -77,15 +77,26 @@
     private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
     private bool loading;
     private String errorMessage;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        if (AuthenticationService.User != null)
+        {
+            navigationManager.NavigateTo("/home");
+        }
+    }
+
     private async void OnValidSubmit()
     {
         errorMessage = null;
         loading = true;
-
         try
         {
-            await UserAccountService.Login(loginModel);
-            navigationManager.NavigateTo("/login");
+            await AuthenticationService.Login(loginModel);
+            navigationManager.NavigateTo("/home");
+            @* var returnUrl = navigationManager.QueryString("returnUrl") ?? ""; *@
+            @* navigationManager.NavigateTo(returnUrl); *@
         }
         catch (Exception error)
         {

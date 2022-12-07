@@ -2434,7 +2434,6 @@
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/blazor.boot.json
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/staticwebassets.build.json
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/staticwebassets.development.json
-/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Index.razor.rz.scp.css
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/bundle/UVGramWeb.styles.css
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/projectbundle/UVGramWeb.bundle.scp.css
@@ -2448,3 +2447,7 @@
 /Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/wwwroot/_framework/Newtonsoft.Json.dll.gz
 /Users/kerberos/Desktop/UVGram/UVGramWeb/bin/Debug/net6.0/Newtonsoft.Json.dll
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/build-gz/zla5nqTx.gz
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Home.razor.rz.scp.css
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Components/Topbar.razor.rz.scp.css
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Shared/HomeLayout.razor.rz.scp.css
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Index.razor.rz.scp.css

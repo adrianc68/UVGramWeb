@@ -22,8 +22,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/Alert.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0FsZXJ0LnJhem9y
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/_Imports.razor]
@@ -34,9 +34,21 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Mb2dvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-rrf025yqfg
 
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Components/Topbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Ub3BiYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-o1u1lmxsrj
+
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-mpvivnun8u
+
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-v2ubcfauz3
+
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/HomeLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0hvbWVMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xney4lah9b
 
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=

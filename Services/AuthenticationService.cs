@@ -6,7 +6,7 @@ using UVGramWeb.Shared.Exceptions;
 
 namespace UVGramWeb.Services;
 
-public class UserAccountService : IUserAccountService
+public class AuthenticationService : IAuthenticationService
 {
     private IHttpService httpService;
     private ILocalStorageService localStorageService;
@@ -15,7 +15,7 @@ public class UserAccountService : IUserAccountService
 
     public User User { get; private set; }
 
-    public UserAccountService(IHttpService httpService, ILocalStorageService localStorageService, NavigationManager navigationManager)
+    public AuthenticationService(IHttpService httpService, ILocalStorageService localStorageService, NavigationManager navigationManager)
     {
         this.httpService = httpService;
         this.localStorageService = localStorageService;
@@ -74,8 +74,18 @@ public class UserAccountService : IUserAccountService
         }
     }
 
-    public Task Logout()
+    public async Task Logout()
     {
-        throw new NotImplementedException();
+        try
+        {
+            User = null;
+            var data = await httpService.Post("/authentication/logout", null);
+        }
+        catch (Exception error)
+        {   
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        await localStorageService.RemoveItem("login");
+        navigationManager.NavigateTo("/login");
     }
 }

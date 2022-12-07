@@ -3,7 +3,7 @@ using UVGramWeb.Shared.Data;
 
 namespace UVGramWeb.Services;
 
-public interface IUserAccountService
+public interface IAuthenticationService
 {
     User User { get; }
     Task Initialize();
