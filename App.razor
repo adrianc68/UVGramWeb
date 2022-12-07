@@ -2,12 +2,30 @@
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        <CascadingValue Value="this">
+            <RouteView RouteData="@routeData" DefaultLayout="this.LayoutType" />
+        </CascadingValue>
     </Found>
     <NotFound>
-        @{
-            NavigationManager.NavigateTo("/");
-        }
+        <LayoutView Layout="this.LayoutType">
+            <div class="not-found-container">
+                <h2>Esta página no está disponible</h2>
+                <p>Es posible que el enlace que seleccionaste no funcione o que se haya eliminado la página.</p>
+            </div>
+        </LayoutView>
     </NotFound>
 </Router>
+
+
+@code {
+    private Type LayoutType = typeof(MainLayout);
+
+    public void SetLayout(Type layout)
+    {
+        if (layout != LayoutType)
+        {
+            this.LayoutType = layout;
+            StateHasChanged();
+        }
+    }
+}

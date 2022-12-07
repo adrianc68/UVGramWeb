@@ -1,3 +1,101 @@
+/* /Pages/Components/Login.razor.rz.scp.css */
+.wmi-container-login[b-gpmdqkyynd] {
+    height:550px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-start;
+}
+
+.wmicl-login-card[b-gpmdqkyynd] {
+    width: 350px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:15px;
+}
+
+.wmicllc-logo-title[b-gpmdqkyynd] {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 45px;
+    padding-top:5px;
+}
+
+.wmicllc-form[b-gpmdqkyynd] {
+    width:350px;
+    display:flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top:45px;
+    padding-bottom: 10px;
+    height:auto;
+    border-radius: 2px;
+}
+
+.wmicllc-inputs[b-gpmdqkyynd] {
+    display:flex;
+    flex-direction: column;
+    gap:6px;
+}
+
+.wmicllc-buttons[b-gpmdqkyynd]{
+    padding-top:15px;
+}
+
+.wmicllc-buttons > button[b-gpmdqkyynd] {
+    width: 100%;
+}
+
+.wmicllc-message[b-gpmdqkyynd] {
+    padding-top:15px;
+    font-size: 0.78em;
+    display:flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.wmicllc-recover[b-gpmdqkyynd] {
+    padding-top:5px;
+    display:flex;
+    align-items: flex-end;
+    font-size: 0.8em;
+    justify-content: center;
+    flex:1;
+}
+
+.wmicllc-recover > a[b-gpmdqkyynd] {
+    width:100%;
+    text-align: center;
+    color: #1B4373;
+    text-decoration: none;
+}
+
+.wmicllc-options[b-gpmdqkyynd] {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+    padding:15px;
+}
+
+.wmicllcoc-options[b-gpmdqkyynd] {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    font-size: 0.9em;
+}
+
+@media (max-width: 870px) {
+    .wmi-container-image[b-gpmdqkyynd] {
+        display: none;
+    }
+}
 /* /Pages/Components/Logo.razor.rz.scp.css */
 .logo[b-rrf025yqfg] {
     font-size: 2.7em;
@@ -281,3 +379,8 @@
     background-color: red;
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
+.main-page[b-mwk7a10tnr] {
+    height:100vh;
+    width:100hw;
+    background-color: red;
+}

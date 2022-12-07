@@ -1,0 +1,88 @@
+@inject NavigationManager navigationManager
+@inject Services.IAuthenticationService AuthenticationService
+@inject Shared.PageHistoryState PageHistoryState
+
+<div class="wmi-container-login">
+    <div class="wmicl-login-card">
+        <form class="wmicllc-form card">
+            <div class="wmicllc-logo-title">
+                <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
+            </div>
+
+            <EditForm model="@loginModel" OnValidSubmit="OnValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="wmicllc-inputs">
+                    <div class="custom-form-floating">
+                        <InputText id="username" @bind-Value="loginModel.emailOrUsername" autocomplete="off"
+                            class="custom-form-input" aria-label="usuario o correo electrónico" required=true
+                            aria-required="true" />
+                        <label for="username" class="custom-form-floating-label">Usuario o correo
+                            electrónico</label>
+                    </div>
+
+                    <div class="custom-form-floating">
+                        <InputText id="password" type="password" @bind-Value="loginModel.password" autocomplete="off"
+                            class="custom-form-input" aria-label="Contraseña" required=true aria-required="true" />
+                        <label for="password" class="custom-form-floating-label">Contraseña</label>
+                    </div>
+                </div>
+                <div class="wmicllc-buttons">
+                    <button class="custom-btn btn-primary" disabled="@loading">
+                        @if (loading)
+                        {
+                            <span class=spinner-border spinner-border-sm mr-1"></span>
+                        }
+                        else
+                        {
+                            <span>Iniciar sesión</span>
+                        }
+                    </button>
+                </div>
+
+                <div class="wmicllc-message">
+                    <ValidationMessage For="@(() => loginModel.emailOrUsername)" />
+                    <p role="alert" class="text-danger ">
+                        @if (errorMessage != null)
+                        {
+                            <span>@errorMessage</span>
+                        }
+                    </p>
+                </div>
+            </EditForm>
+            <div class="wmicllc-recover">
+                <a href="/accounts/recover">
+                    <p role="alert">¿Olvidaste tu contraseña?</p>
+                </a>
+            </div>
+        </form>
+        <section class="wmicllc-options card">
+            <div class="wmicllcoc-options">
+                <span>¿No tienes una cuenta?</span>
+                <NavLink class="nav-link" href="signup">Registrate</NavLink>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
+    private bool loading;
+    private String errorMessage;
+    private async void OnValidSubmit()
+    {
+        errorMessage = null;
+        loading = true;
+        try
+        {
+            await AuthenticationService.Login(loginModel);
+            navigationManager.NavigateTo("/");
+        }
+        catch (Exception error)
+        {
+            errorMessage = error.Message;
+            loading = false;
+            StateHasChanged();
+        }
+        return;
+    }
+}

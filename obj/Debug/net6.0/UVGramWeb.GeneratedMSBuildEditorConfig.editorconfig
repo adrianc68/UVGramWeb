@@ -26,9 +26,17 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/CustomRouteView.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0N1c3RvbVJvdXRlVmlldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Components/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-gpmdqkyynd
 
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/Components/Logo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9Mb2dvLnJhem9y

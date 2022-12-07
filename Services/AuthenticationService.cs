@@ -86,6 +86,6 @@ public class AuthenticationService : IAuthenticationService
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
         await localStorageService.RemoveItem("login");
-        navigationManager.NavigateTo("/login");
+        navigationManager.NavigateTo("/");
     }
 }
