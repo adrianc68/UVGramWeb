@@ -78,8 +78,8 @@ public class AuthenticationService : IAuthenticationService
     {
         try
         {
-            User = null;
             var data = await httpService.Post("/authentication/logout", null);
+            User = null;
         }
         catch (Exception error)
         {   
