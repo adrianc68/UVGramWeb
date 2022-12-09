@@ -54,9 +54,13 @@ build_metadata.AdditionalFiles.CssScope = b-mpvivnun8u
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-v2ubcfauz3
 
-[/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/HomeLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0hvbWVMYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-xney4lah9b
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/LoginPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW5QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-cucix1uwf1
+
+[/Users/kerberos/Desktop/UVGram/UVGramWeb/Pages/SignUp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2lnblVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-1ht8p8gh99
 
 [/Users/kerberos/Desktop/UVGram/UVGramWeb/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=

@@ -2449,6 +2449,7 @@
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/build-gz/zla5nqTx.gz
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Home.razor.rz.scp.css
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Components/Topbar.razor.rz.scp.css
-/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Shared/HomeLayout.razor.rz.scp.css
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Index.razor.rz.scp.css
 /Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/Components/Login.razor.rz.scp.css
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/SignUp.razor.rz.scp.css
+/Users/kerberos/Desktop/UVGram/UVGramWeb/obj/Debug/net6.0/scopedcss/Pages/LoginPage.razor.rz.scp.css

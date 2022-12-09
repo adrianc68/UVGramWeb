@@ -1,0 +1,53 @@
+@page "/signup"
+
+<main class="signUp">
+    <div class="su-signup-card">
+        <section class="sus-form card">
+            <div class="su-description">
+                <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
+                <p class="text-muted">Regístrate para ser parte de la comunidad universitaria.</p>
+            </div>
+            <form class="su-form">
+                <div class="suf-inputs">
+                    <div class="custom-form-floating">
+                        <input id="email" autocomplete="off" class="custom-form-input" aria-label="Dirección correo"
+                            required=true aria-required="true" />
+                        <label for="email" class="custom-form-floating-label">Dirección correo
+                            electrónico</label>
+                    </div>
+                    <div class="custom-form-floating">
+                        <input id="name" autocomplete="off" class="custom-form-input" aria-label="Nombre completo"
+                            required=true aria-required="true" />
+                        <label for="name" class="custom-form-floating-label">Nombre completo</label>
+                    </div>
+                    <div class="custom-form-floating">
+                        <input id="username" autocomplete="off" class="custom-form-input" aria-label="Nombre de usuario"
+                            required=true aria-required="true" />
+                        <label for="username" class="custom-form-floating-label">Nombre de usuario</label>
+                    </div>
+                    <div class="custom-form-floating">
+                        <input id="password" autocomplete="off" class="custom-form-input" aria-label="Contraseña"
+                            required=true aria-required="true" />
+                        <label for="password" class="custom-form-floating-label">Contraseña</label>
+                    </div>
+                </div>
+            </form>
+
+            <div class="su-buttons">
+                <button class="custom-btn btn-primary">Registrarte</button>
+            </div>
+            <div class="su-error-message">
+                <p role="alert" class="text-danger">Este nombre de usuario no está disponible Prueba con otro</p>
+            </div>
+            <p class="text-muted text-center su-conditions">Al registrarte, aceptas nuestra
+                <strong>Condiciones</strong>,
+                la<strong>política de datos</strong> y la <strong>política de cookies.</strong>
+            </p>
+        </section>
+        <section class="su-login card">
+            <span>¿Tienes una cuenta?</span>
+            <NavLink class="custom-nav-link" href="login">Inicia sesión</NavLink>
+        </section>
+    </div>
+
+</main>

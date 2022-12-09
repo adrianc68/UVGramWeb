@@ -1,94 +1,87 @@
 /* /Pages/Components/Login.razor.rz.scp.css */
 .wmi-container-login[b-gpmdqkyynd] {
-    height:550px;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: flex-start;
 }
 
 .wmicl-login-card[b-gpmdqkyynd] {
     width: 350px;
-    display:flex;
+    gap: 15px;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap:15px;
 }
 
 .wmicllc-logo-title[b-gpmdqkyynd] {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 45px;
-    padding-top:5px;
+    padding-top: 5px;
 }
 
 .wmicllc-form[b-gpmdqkyynd] {
-    width:350px;
-    display:flex;
+    width: 350px;
+    display: flex;
     flex-direction: column;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top:45px;
+    padding-top: 45px;
     padding-bottom: 10px;
-    height:auto;
+    height: auto;
     border-radius: 2px;
 }
 
 .wmicllc-inputs[b-gpmdqkyynd] {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:6px;
+    gap: 6px;
 }
 
-.wmicllc-buttons[b-gpmdqkyynd]{
-    padding-top:15px;
+.wmicllc-buttons[b-gpmdqkyynd] {
+    padding-top: 15px;
 }
 
-.wmicllc-buttons > button[b-gpmdqkyynd] {
+.wmicllc-buttons>button[b-gpmdqkyynd] {
     width: 100%;
 }
 
 .wmicllc-message[b-gpmdqkyynd] {
-    padding-top:15px;
+    padding-top: 15px;
     font-size: 0.78em;
-    display:flex;
+    display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
 }
 
 .wmicllc-recover[b-gpmdqkyynd] {
-    padding-top:5px;
-    display:flex;
+    padding-top: 5px;
+    display: flex;
     align-items: flex-end;
     font-size: 0.8em;
     justify-content: center;
-    flex:1;
+    flex: 1;
 }
 
-.wmicllc-recover > a[b-gpmdqkyynd] {
-    width:100%;
+.wmicllc-recover>a[b-gpmdqkyynd] {
+    width: 100%;
     text-align: center;
     color: #1B4373;
     text-decoration: none;
 }
 
 .wmicllc-options[b-gpmdqkyynd] {
-    width:100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap:1em;
-    padding:15px;
-}
-
-.wmicllcoc-options[b-gpmdqkyynd] {
-    display:flex;
+    width: 100%;
+    padding: 20px;
+    font-size: 0.85em;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width:100%;
-    font-size: 0.9em;
+    gap: 5px;
 }
 
 @media (max-width: 870px) {
@@ -249,121 +242,120 @@
     font-size: 0.8em;;
 }
 /* /Pages/Index.razor.rz.scp.css */
-
 .welcome-main-container[b-v2ubcfauz3] {
-    width:100vw;
-    height:auto;
-    display:flex;
+    width: 100vw;
+    height: auto;
+    display: flex;
 }
 
 .wm-information-container[b-v2ubcfauz3] {
     width: 100%;
-    display:flex;
-    gap:10px;
+    display: flex;
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    padding-top:75px;
+    padding-top: 75px;
 }
 
 .wmi-container-image[b-v2ubcfauz3] {
-    width:400px;
-    height:550px;
+    width: 400px;
+    height: 550px;
 }
 
-.wmi-container-image > img[b-v2ubcfauz3] {
-    width:100%;
+.wmi-container-image>img[b-v2ubcfauz3] {
+    width: 100%;
     height: 100%;
 }
 
 .wmi-container-login[b-v2ubcfauz3] {
-    height:550px;
-    display:flex;
+    height: 550px;
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: flex-start;
 }
 
 .wmicl-login-card[b-v2ubcfauz3] {
     width: 350px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap:15px;
+    gap: 15px;
 }
 
 .wmicllc-logo-title[b-v2ubcfauz3] {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 45px;
-    padding-top:5px;
+    padding-top: 5px;
 }
 
 .wmicllc-form[b-v2ubcfauz3] {
-    width:350px;
-    display:flex;
+    width: 350px;
+    display: flex;
     flex-direction: column;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top:45px;
+    padding-top: 45px;
     padding-bottom: 10px;
-    height:auto;
+    height: auto;
     border-radius: 2px;
 }
 
 .wmicllc-inputs[b-v2ubcfauz3] {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:6px;
+    gap: 6px;
 }
 
-.wmicllc-buttons[b-v2ubcfauz3]{
-    padding-top:15px;
+.wmicllc-buttons[b-v2ubcfauz3] {
+    padding-top: 15px;
 }
 
-.wmicllc-buttons > button[b-v2ubcfauz3] {
+.wmicllc-buttons>button[b-v2ubcfauz3] {
     width: 100%;
 }
 
 .wmicllc-message[b-v2ubcfauz3] {
-    padding-top:15px;
+    padding-top: 15px;
     font-size: 0.78em;
-    display:flex;
+    display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
 }
 
 .wmicllc-recover[b-v2ubcfauz3] {
-    padding-top:5px;
-    display:flex;
+    padding-top: 5px;
+    display: flex;
     align-items: flex-end;
     font-size: 0.8em;
     justify-content: center;
-    flex:1;
+    flex: 1;
 }
 
-.wmicllc-recover > a[b-v2ubcfauz3] {
-    width:100%;
+.wmicllc-recover>a[b-v2ubcfauz3] {
+    width: 100%;
     text-align: center;
     color: #1B4373;
     text-decoration: none;
 }
 
 .wmicllc-options[b-v2ubcfauz3] {
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap:1em;
-    padding:15px;
+    gap: 1em;
+    padding: 15px;
 }
 
 .wmicllcoc-options[b-v2ubcfauz3] {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width:100%;
+    width: 100%;
     font-size: 0.9em;
 }
 
@@ -372,11 +364,112 @@
         display: none;
     }
 }
-/* /Shared/HomeLayout.razor.rz.scp.css */
-.main-page[b-xney4lah9b] {
-    height:100vh;
-    width:100hw;
-    background-color: red;
+/* /Pages/LoginPage.razor.rz.scp.css */
+.welcome-main-container[b-cucix1uwf1] {
+    width: 100vw;
+    height: auto;
+    display: flex;
+}
+
+.wm-information-container[b-cucix1uwf1] {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 75px;
+}
+/* /Pages/SignUp.razor.rz.scp.css */
+.signUp[b-1ht8p8gh99] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.su-signup-card[b-1ht8p8gh99] {
+    padding-top: 12px;
+    width: 350px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sus-form[b-1ht8p8gh99] {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border-radius: 2px;
+    align-items: center;
+}
+
+.suf-inputs[b-1ht8p8gh99] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.su-description[b-1ht8p8gh99] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    gap: 15px;
+}
+
+.su-form[b-1ht8p8gh99] {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.su-buttons[b-1ht8p8gh99] {
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+}
+
+.su-buttons>button[b-1ht8p8gh99] {
+    width: 100%;
+}
+
+.su-login[b-1ht8p8gh99] {
+    width: 100%;
+    padding: 20px;
+    font-size: 0.85em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.su-conditions[b-1ht8p8gh99] {
+    font-size: 0.8em;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+}
+
+.su-error-message[b-1ht8p8gh99] {
+    padding-top: 15px;
+    width: 80%;
+    font-size: 0.78em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .main-page[b-mwk7a10tnr] {
