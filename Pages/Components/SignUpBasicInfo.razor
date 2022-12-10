@@ -1,0 +1,142 @@
+@inject NavigationManager NavigationManager
+@using UVGramWeb.Shared.Data
+@inject Services.IAccountService AccountService
+
+<div class="su-signup-card">
+    <div class="sus-form card">
+        <div class="su-description">
+            <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
+            <p class="text-muted">Regístrate para ser parte de la comunidad universitaria.</p>
+        </div>
+        <EditForm model="@UserRegisterModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <div class="su-form">
+                <div class="suf-inputs">
+                    <div class="custom-form-floating">
+                        <InputText id="email" @bind-Value="UserRegisterModel.email" autocomplete="off"
+                            class="custom-form-input" aria-label="Dirección correo" required=true onchange=""
+                            aria-required="true" />
+                        <label for="email" class="custom-form-floating-label">Dirección correo
+                            electrónico</label>
+                        <span class="custom-form-floating-checking-type">
+                            <span class="checkmark"></span>
+                        </span>
+                    </div>
+                    <div class="custom-form-floating">
+                        <InputText id="name" @bind-Value="UserRegisterModel.name" autocomplete="off"
+                            class="custom-form-input" aria-label="Nombre completo" required=true aria-required="true" />
+                        <label for="name" class="custom-form-floating-label">Nombre completo</label>
+                        <span class="custom-form-floating-checking-type">
+                            <span class="checkmark-invalid"></span>
+                        </span>
+                    </div>
+                    <div class="custom-form-floating">
+                        <InputText id="telefono" @bind-Value="UserRegisterModel.phoneNumber" autocomplete="off"
+                            class="custom-form-input" aria-label="Teléfono" required=true aria-required="true" />
+                        <label for="telefono" class="custom-form-floating-label">Telefono</label>
+                        <span class="custom-form-floating-checking-type">
+                            <span class="checkmark-invalid"></span>
+                        </span>
+                    </div>
+                    <div class="custom-form-floating">
+                        <InputText id="username" @bind-Value="UserRegisterModel.username" autocomplete="off"
+                            class="custom-form-input" aria-label="Nombre de usuario" required=true
+                            aria-required="true" />
+                        <label for="username" class="custom-form-floating-label">Nombre de usuario</label>
+                        <span class="custom-form-floating-checking-type">
+                            <span class="checkmark-invalid"></span>
+                        </span>
+                    </div>
+                    <div class="custom-form-floating">
+                        <InputText id="password" @bind-Value="UserRegisterModel.password" type="password"
+                            autocomplete="off" class="custom-form-input" aria-label="Contraseña" required=true
+                            aria-required="true" />
+                        <label for="password" class="custom-form-floating-label">Contraseña</label>
+                        <span class="custom-form-floating-checking-type">
+                            <span class="checkmark-invalid"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="su-buttons">
+                <button class="custom-btn custom-btn-primary">
+                    @if (loading)
+                    {
+                        <span class="spinner-border spinner-border-sm mr-1"></span>
+                    }
+                    else
+                    {
+                        <span> Registrarse </span>
+                    }
+
+                </button>
+            </div>
+        </EditForm>
+        <div class="su-error-message">
+            <p role="alert" class="text-danger">
+                @if (errorMessage != null)
+                {
+                    <span>@errorMessage</span>
+                }
+            </p>
+        </div>
+        <p class="text-muted text-center su-conditions">Al registrarte, aceptas nuestra
+            <strong>Condiciones</strong>,
+            la<strong> política de datos</strong> y la <strong>política de cookies.</strong>
+        </p>
+    </div>
+
+    <section class="su-login card">
+        <span>¿Tienes una cuenta?</span>
+        <button class="custom-btn custom-btn-secondary no-padding"
+            @onclick="@(() => NavigationManager.NavigateTo("/login"))">Inicia
+            sesión</button>
+    </section>
+</div>
+
+@code {
+    [Parameter] public Action MoveForward { get; set; }
+    [Parameter] public UserRegister UserRegisterModel { get; set; }
+    private bool loading;
+    private String errorMessage;
+    private bool isUsernameRegistered = false;
+    private bool isEmailRegistered = false;
+
+    private void InvokeParentMethod()
+    {
+        MoveForward?.Invoke();
+    }
+
+    private async void OnValidSubmit()
+    {
+        errorMessage = null;
+        loading = true;
+        try
+        {
+            Boolean emailValue = await AccountService.VerifyEmailAddress(UserRegisterModel.email);
+            Console.WriteLine("Email value");
+            Console.WriteLine(emailValue);
+            Boolean usernameValue = await AccountService.VerifyUsername(UserRegisterModel.username);
+            Console.WriteLine("Username value");
+            Console.WriteLine(usernameValue);
+        }
+        catch (Exception error)
+        {
+            errorMessage = error.Message;
+            loading = false;
+            StateHasChanged();
+        }
+        return;
+    }
+
+    private async void CheckIfUsernameIsRegistered()
+    {
+
+    }
+
+    private async void CheckIfEmailIsRegistered()
+    {
+
+    }
+
+}

@@ -63,13 +63,13 @@
     font-size: 0.8em;
     justify-content: center;
     flex: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.wmicllc-recover>a {
+.wmicllc-recover>.custom-btn {
     width: 100%;
-    text-align: center;
-    color: #1B4373;
-    text-decoration: none;
+    color: #3868a1;
 }
 
 .wmicllc-options {

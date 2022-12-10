@@ -1,0 +1,33 @@
+<div class="su-code">
+    <div class="su-code-main card">
+        <div class="su-code-description">
+            <img src="/images/ide-code.svg" alt="Imagen decorativa que hace alusión a un telefono que recibe un código">
+            <p class="bold text-center">Solo un paso más</p>
+            <p class="text-muted text-center">Ingresa el código de 6 dígitos que enviamos a tu correo electrónico</p>
+        </div>
+        <div class="su-code-form">
+
+            <div class="custom-form-floating">
+                <input id="code" autocomplete="off" class="custom-form-input" aria-label="Nombre completo" required=true
+                    aria-required="true" />
+                <label for="code" class="custom-form-floating-label">Código de confirmación</label>
+            </div>
+        </div>
+        <div class="su-buttons">
+            <button class="custom-btn custom-btn-primary" @onclick=@(()=> this.InvokeParentMethod(MoveForward))>Confirmar</button>
+            <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
+                this.InvokeParentMethod(MoveBackward))>Enviar un nuevo código</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Action MoveForward { get; set; }
+
+    [Parameter] public Action MoveBackward { get; set; }
+
+    private void InvokeParentMethod(Action action)
+    {
+        action?.Invoke();
+    }
+}

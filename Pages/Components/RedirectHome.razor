@@ -4,6 +4,6 @@
     protected override async Task OnInitializedAsync()
     {
         await Task.CompletedTask;
-        NavigationManager.NavigateTo("/", forceLoad: true);
+        NavigationManager.NavigateTo("/", forceLoad: false);
     }
 }

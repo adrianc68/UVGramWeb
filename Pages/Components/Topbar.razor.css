@@ -30,6 +30,10 @@
     font-size:1.2em;
 }
 
+.topbar-actions > .custom-btn-secondary {
+    font-size: 0.75em;
+}
+
 .notification-popup {
     position: relative;
 }

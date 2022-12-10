@@ -1,5 +1,5 @@
 @inject Services.IAuthenticationService AuthenticationService
-@inject NavigationManager Navigation;
+@inject NavigationManager NavigationManager;
 
 <div class="wmi-container-login">
     <div class="wmicl-login-card">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="wmicllc-buttons">
-                    <button class="custom-btn btn-primary" disabled="@loading">
+                    <button class="custom-btn custom-btn-primary" disabled="@loading">
                         @if (loading)
                         {
                             <span class="spinner-border spinner-border-sm mr-1"></span>
@@ -49,14 +49,16 @@
                 </div>
             </EditForm>
             <div class="wmicllc-recover">
-                <a href="/accounts/recover">
-                    <p role="alert">¿Olvidaste tu contraseña?</p>
-                </a>
+                <button class="custom-btn custom-btn-secondary"
+                    @onclick="@(() => NavigationManager.NavigateTo("/accounts/recover"))">¿Olvidaste tu
+                    contraseña?
+                </button>
             </div>
         </form>
         <section class="wmicllc-options card">
             <span>¿No tienes una cuenta?</span>
-            <NavLink class="custom-nav-link" href="signup">Registrate</NavLink>
+            <button class="custom-btn custom-btn-secondary no-padding"
+                @onclick="@(() => NavigationManager.NavigateTo("/signup"))">Registrate</button>
         </section>
     </div>
 </div>
@@ -71,7 +73,7 @@
         var user = (await authStateTask).User;
         if (user.Identity.IsAuthenticated)
         {
-            Navigation.NavigateTo("/");
+            NavigationManager.NavigateTo("/");
         }
     }
     private async void OnValidSubmit()

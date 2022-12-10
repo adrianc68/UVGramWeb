@@ -1,0 +1,57 @@
+<div class="su-bd">
+    <section class="su-bd-main card">
+        <div class="su-bd-description">
+            <img src="/images/birthday-cake.svg" alt="Pastel de cumpleaños que hace alusión a la fecha de nacimiento" />
+            <p class="bold">Agrega tu fecha de nacimiento</p>
+            <p> No se incluirá en tu perfil público</p>
+        </div>
+        <div class="su-bd-form">
+            <select class="form-select input-size-color" aria-label="mes">
+                <option title="enero" value="1" selected>enero</option>
+                <option title="febrero" value="2">febrero</option>
+                <option title="marzo" value="3">marzo</option>
+                <option title="abril" value="4">abril</option>
+                <option title="mayo" value="5">mayo</option>
+                <option title="junio" value="6">junio</option>
+                <option title="julio" value="7">julio</option>
+                <option title="agosto" value="8">agosto</option>
+                <option title="septiembre" value="9">septiembre</option>
+                <option title="octubre" value="10">octubre</option>
+                <option title="noviembre" value="11">noviembre</option>
+                <option title="diciembre" value="12">diciembre</option>
+            </select>
+            <select class="form-select input-size-color" aria-label="día">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <select class="form-select input-size-color" aria-label="año">
+                <option selected value="2000">2000</option>
+                <option value="2">2001</option>
+                <option value="3">2002</option>
+            </select>
+        </div>
+        <div class="su-bd-select-description">
+            <p class="text-muted text-center">Debes ingresar la fecha en que naciste</p>
+            <p class="text-muted text-center">Indica tu fecha de nacimiento, aunque esta cuenta sea para un negocio, una
+                mascota, etc.</p>
+        </div>
+        <div class="su-buttons">
+            <button class="custom-btn custom-btn-primary" @onclick=@(()=>
+                this.InvokeParentMethod(MoveForward))>Siguiente</button>
+            <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
+                this.InvokeParentMethod(MoveBackward))>Volver</button>
+        </div>
+    </section>
+</div>
+
+@code {
+    [Parameter] public Action MoveForward { get; set; }
+
+    [Parameter] public Action MoveBackward { get; set; }
+
+    private void InvokeParentMethod(Action action)
+    {
+        action?.Invoke();
+    }
+}
