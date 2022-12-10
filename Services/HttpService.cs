@@ -1,8 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Components;
-
-namespace UVGramWeb.Shared;
+using UVGramWeb.Services;
 
 public interface IHttpService
 {

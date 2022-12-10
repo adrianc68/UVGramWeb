@@ -1,8 +1,8 @@
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Models;
-using UVGramWeb.Shared;
 using Microsoft.AspNetCore.Components;
 using UVGramWeb.Shared.Exceptions;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace UVGramWeb.Services;
 
@@ -11,15 +11,17 @@ public class AuthenticationService : IAuthenticationService
     private IHttpService httpService;
     private ILocalStorageService localStorageService;
     private NavigationManager navigationManager;
+    private AuthenticationStateProvider AuthenticationStateProvider;
     private string userKey = "login";
 
     public User User { get; private set; }
 
-    public AuthenticationService(IHttpService httpService, ILocalStorageService localStorageService, NavigationManager navigationManager)
+    public AuthenticationService(IHttpService httpService, ILocalStorageService localStorageService, NavigationManager navigationManager, AuthenticationStateProvider AuthenticationStateProvider)
     {
         this.httpService = httpService;
         this.localStorageService = localStorageService;
         this.navigationManager = navigationManager;
+        this.AuthenticationStateProvider = AuthenticationStateProvider;
     }
 
     public async Task Initialize()
@@ -29,35 +31,42 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task Login(Login model)
     {
-        string data;
+        string data = null;
         try
         {
             data = await httpService.Post("/authentication/login", model);
         }
         catch (Exception error)
         {
+            if (error.GetType() == typeof(HttpRequestException))
+            {
+                throw new InteralServerErrorException("No se ha podido conectar con el servidor");
+            }
+
             dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(error.Message);
             if (json.errors != null)
             {
                 throw new InvalidInputDataException("Los datos son invalidos");
             }
-            string message = json["message"];
-            if (message != null)
+            else
             {
-                if (message.Contains("user not found"))
+                string message = json["message"];
+                if (message != null)
                 {
-                    throw new UserNotFoundException("El correo electrónico o usuario no existe");
-                }
-                else if (message.Contains("password does not match"))
-                {
-                    throw new PasswordDoesNotMatchException("La contraseña no es correcta. Compruébala.");
-                }
-                else if (message.Contains("user has been kicked from server"))
-                {
-                    throw new UserKickedFromServerException("El usuario ha sido bloqueado.");
+                    if (message.Contains("user not found"))
+                    {
+                        throw new UserNotFoundException("El correo electrónico o usuario no existe");
+                    }
+                    else if (message.Contains("password does not match"))
+                    {
+                        throw new PasswordDoesNotMatchException("La contraseña no es correcta. Compruébala.");
+                    }
+                    else if (message.Contains("user has been kicked from server"))
+                    {
+                        throw new UserKickedFromServerException("El usuario ha sido bloqueado.");
+                    }
                 }
             }
-            throw new InteralServerErrorException("El servidor ha tenido un error");
         }
 
         try
@@ -67,6 +76,8 @@ public class AuthenticationService : IAuthenticationService
             User.accessToken = json.message.accessToken;
             User.refreshToken = json.message.refreshToken;
             await localStorageService.SetItem(userKey, User);
+            ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogInState(User);
+            navigationManager.NavigateTo("/");
         }
         catch (Exception error)
         {
@@ -82,10 +93,11 @@ public class AuthenticationService : IAuthenticationService
             User = null;
         }
         catch (Exception error)
-        {   
+        {
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
         await localStorageService.RemoveItem("login");
+        ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogOutState();
         navigationManager.NavigateTo("/");
     }
 }

@@ -2,14 +2,18 @@
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <CascadingValue Value="this">
-            <RouteView RouteData="@routeData" DefaultLayout="this.LayoutType" />
-        </CascadingValue>
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="this.LayoutType">
+            <NotAuthorized>
+                <UVGramWeb.Pages.Components.RedirectHome></UVGramWeb.Pages.Components.RedirectHome>
+            </NotAuthorized>
+        </AuthorizeRouteView>
     </Found>
     <NotFound>
-        <LayoutView Layout="this.LayoutType">
-            <UVGramWeb.Pages.Components.NotFound></UVGramWeb.Pages.Components.NotFound>
-        </LayoutView>
+        <CascadingAuthenticationState>
+            <LayoutView Layout="this.LayoutType">
+                <UVGramWeb.Pages.Components.NotFound></UVGramWeb.Pages.Components.NotFound>
+            </LayoutView>
+        </CascadingAuthenticationState>
     </NotFound>
 </Router>
 

@@ -1,4 +1,5 @@
 @page "/signup"
+@inject NavigationManager Navigation;
 
 <section class="signUp">
     <div class="su-signup-card">
@@ -51,3 +52,15 @@
     </div>
 
 </section>
+
+@code {
+    [CascadingParameter] public Task<AuthenticationState> authStateTask { get; set; }
+    protected override async void OnInitialized()
+    {
+        var user = (await authStateTask).User;
+        if (user.Identity.IsAuthenticated)
+        {
+            Navigation.NavigateTo("/");
+        }
+    }
+}

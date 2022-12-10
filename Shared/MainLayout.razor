@@ -3,15 +3,15 @@
 @inject NavigationManager NavigationManager
 
 @{
-    if (AuthenticationService.User == null)
-    {
-        @Body
-    }
-    else
-    {
-        <main class="main-page">
-            <UVGramWeb.Pages.Components.Topbar></UVGramWeb.Pages.Components.Topbar>
+    <AuthorizeView>
+        <Authorized>
+            <main class="main-page">
+                <UVGramWeb.Pages.Components.Topbar></UVGramWeb.Pages.Components.Topbar>
+                @Body
+            </main>
+        </Authorized>
+        <NotAuthorized>
             @Body
-        </main>
-    }
+        </NotAuthorized>
+    </AuthorizeView>
 }

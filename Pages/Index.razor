@@ -1,10 +1,10 @@
 ﻿@page "/"
-@inject Shared.PageHistoryState PageHistoryState
-@inject Services.IAuthenticationService AuthenticationService
 
-@{
-    if (AuthenticationService.User == null)
-    {
+<AuthorizeView>
+    <Authorized>
+        <Home></Home>
+    </Authorized>
+    <NotAuthorized>
         <main class="welcome-main-container">
             <section class="wm-information-container">
                 <div class="wmi-container-image">
@@ -13,9 +13,5 @@
                 <UVGramWeb.Pages.Components.Login></UVGramWeb.Pages.Components.Login>
             </section>
         </main>
-    }
-    else
-    {
-        <Home></Home>
-    }
-}
+    </NotAuthorized>
+</AuthorizeView>

@@ -1,6 +1,5 @@
-@inject NavigationManager navigationManager
 @inject Services.IAuthenticationService AuthenticationService
-@inject Shared.PageHistoryState PageHistoryState
+@inject NavigationManager Navigation;
 
 <div class="wmi-container-login">
     <div class="wmicl-login-card">
@@ -30,7 +29,7 @@
                     <button class="custom-btn btn-primary" disabled="@loading">
                         @if (loading)
                         {
-                            <span class=spinner-border spinner-border-sm mr-1"></span>
+                            <span class="spinner-border spinner-border-sm mr-1"></span>
                         }
                         else
                         {
@@ -66,6 +65,15 @@
     private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
     private bool loading;
     private String errorMessage;
+    [CascadingParameter] public Task<AuthenticationState> authStateTask { get; set; }
+    protected override async void OnInitialized()
+    {
+        var user = (await authStateTask).User;
+        if (user.Identity.IsAuthenticated)
+        {
+            Navigation.NavigateTo("/");
+        }
+    }
     private async void OnValidSubmit()
     {
         errorMessage = null;
@@ -73,7 +81,6 @@
         try
         {
             await AuthenticationService.Login(loginModel);
-            navigationManager.NavigateTo("/");
         }
         catch (Exception error)
         {
