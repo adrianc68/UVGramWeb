@@ -15,7 +15,7 @@ public class UserRegister
     [Required]
     [MinLength(3)]
     [MaxLength(30)]
-    [RegularExpression("^[\\w]+(\\.([\\w]+))*$", ErrorMessage = "username must have allowed characters: words, numbers. no allowed spaces and period as last character")]
+    [RegularExpression("^[a-z0-9_]+(\\.([a-z0-9_]+))*$", ErrorMessage = "username must have allowed characters: words, numbers. no allowed spaces and period as last character and lowercase")]
     public string username { get; set; }
     [Required]
     [MinLength(6)]

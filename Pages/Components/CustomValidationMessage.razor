@@ -10,21 +10,5 @@
     else
     {
         <span class="custom-form-floating-checking-type"><span class="checkmark"></span></span>
-        SimulateAsync();
-    }
-}
-
-@code {
-    public async void SimulateAsync()
-    {
-        Console.WriteLine("testststst");
-        await Task.Run(() =>
-        {
-            Console.WriteLine("1+1");
-            Console.WriteLine(_fieldIdentifier.FieldName);
-            Console.WriteLine(_fieldIdentifier.Model);
-
-            return 1 + 1;
-        });
     }
 }

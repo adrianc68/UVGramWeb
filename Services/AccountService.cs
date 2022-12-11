@@ -46,6 +46,7 @@ public class AccountService : IAccountService
         }
         catch (Exception error)
         {
+            Console.WriteLine(error);
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
         return isUsernameRegistered;

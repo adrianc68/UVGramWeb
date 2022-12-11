@@ -1,6 +1,7 @@
 @page "/signup"
 @inject NavigationManager Navigation;
 @using UVGramWeb.Pages.Components;
+@inject Services.IAccountService AccountService
 
 
 <section class="signUp">
@@ -16,7 +17,7 @@
 
     private UVGramWeb.Shared.Data.UserRegister newUserModel;
     private EditContext editContext;
-    private String errorMessage;
+    private ValidationMessageStore messages;
 
     protected override async void OnInitialized()
     {
@@ -30,6 +31,11 @@
         {
             newUserModel = new Shared.Data.UserRegister();
             editContext = new EditContext(newUserModel);
+
+            editContext.OnFieldChanged += EditContext_OnFieldChanged;
+            messages = new ValidationMessageStore(editContext);
+
+
             steps[0] =
     @<SignUpBasicInfo MoveForward="@MoveForward" UserRegisterModel="@newUserModel" EditContext="@editContext">
     </SignUpBasicInfo>
@@ -41,6 +47,55 @@
     @<SignUpVerifyCode MoveForward="@MoveForward" MoveBackward="@MoveBackward"></SignUpVerifyCode>
     ;
         }
+    }
+
+    private async void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs args)
+    {
+        editContext.Validate();
+        if (args.FieldIdentifier.FieldName == nameof(newUserModel.email))
+        {
+            if (!editContext.GetValidationMessages(args.FieldIdentifier).Any())
+            {
+                bool value = await AccountService.VerifyEmailAddress(newUserModel.email.ToLower());
+                if (value)
+                {
+                    messages.Clear(args.FieldIdentifier);
+                    messages.Add(args.FieldIdentifier, "Email is already registered");
+                }
+                else
+                {
+                    messages.Clear(args.FieldIdentifier);
+                }
+            }
+            else
+            {
+                messages.Clear(args.FieldIdentifier);
+            }
+        }
+
+        if (args.FieldIdentifier.FieldName == nameof(newUserModel.username))
+        {
+            if (!editContext.GetValidationMessages(args.FieldIdentifier).Any())
+            {
+                bool value = await AccountService.VerifyUsername(newUserModel.username.ToLower());
+                if (value)
+                {
+                    messages.Clear(args.FieldIdentifier);
+                    messages.Add(args.FieldIdentifier, "Username is already registered");
+                }
+                else
+                {
+                    messages.Clear(args.FieldIdentifier);
+                }
+            }
+            else
+            {
+                messages.Clear(args.FieldIdentifier);
+            }
+        }
+
+        editContext.NotifyValidationStateChanged();
+        StateHasChanged();
     }
 
     public void MoveForward()
@@ -60,5 +115,4 @@
             StateHasChanged();
         }
     }
-
 }

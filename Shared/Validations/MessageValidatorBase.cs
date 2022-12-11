@@ -6,14 +6,12 @@ namespace UVGramWeb.Shared.Validations;
 
 public class MessageValidatorBase<TValue> : ComponentBase, IDisposable
 {
-    [CascadingParameter]
-    protected EditContext EditContext { get; set; }
     protected FieldIdentifier _fieldIdentifier;
     protected EventHandler<ValidationStateChangedEventArgs> _stateChangedHandler;
-
+    [CascadingParameter]
+    protected EditContext EditContext { get; set; }
     [Parameter]
     public Expression<Func<TValue>> For { get; set; }
-
 
     protected IEnumerable<string> ValidationMessages =>
         EditContext.GetValidationMessages(_fieldIdentifier);
