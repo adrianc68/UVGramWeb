@@ -41,11 +41,30 @@
     </SignUpBasicInfo>
     ;
             steps[1] =
-    @<SignUpBirth MoveForward="@MoveForward" MoveBackward="@MoveBackward"></SignUpBirth>
+    @<SignUpBirth MoveForward="@MoveForward" MoveBackward="@MoveBackward" UserRegisterModel="@newUserModel"
+    EditContext="@editContext"></SignUpBirth>
     ;
             steps[2] =
     @<SignUpVerifyCode MoveForward="@MoveForward" MoveBackward="@MoveBackward"></SignUpVerifyCode>
     ;
+        }
+    }
+
+    public void MoveForward()
+    {
+        if (currentStep < 2)
+        {
+            currentStep += 1;
+            StateHasChanged();
+        }
+    }
+
+    public void MoveBackward()
+    {
+        if (currentStep > 0)
+        {
+            currentStep -= 1;
+            StateHasChanged();
         }
     }
 
@@ -96,23 +115,5 @@
 
         editContext.NotifyValidationStateChanged();
         StateHasChanged();
-    }
-
-    public void MoveForward()
-    {
-        if (currentStep < 2)
-        {
-            currentStep += 1;
-            StateHasChanged();
-        }
-    }
-
-    public void MoveBackward()
-    {
-        if (currentStep > 0)
-        {
-            currentStep -= 1;
-            StateHasChanged();
-        }
     }
 }

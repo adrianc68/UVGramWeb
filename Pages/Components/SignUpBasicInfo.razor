@@ -61,8 +61,6 @@
 
                 </button>
             </div>
-            <ValidationSummary></ValidationSummary>
-
         </EditForm>
         <div class="su-error-message">
         </div>
@@ -81,13 +79,10 @@
 </div>
 
 @code {
-    [Parameter] public Action MoveForward { get; set; }
     [Parameter] public UserRegister UserRegisterModel { get; set; }
     [Parameter] public EditContext EditContext { get; set; }
+    [Parameter] public Action MoveForward { get; set; }
     private bool loading;
-    private bool isUsernameRegistered = true;
-    private bool isValidUsername = false;
-    private bool isEmailRegistered;
 
     private void OnInvalidSubmit()
     {
@@ -99,36 +94,5 @@
         }
     }
 
-    private async void ValidateUsername()
-    {
-        if (UserRegisterModel.username == null)
-        {
-            return;
-        }
-        try
-        {
-            isUsernameRegistered = await AccountService.VerifyUsername(UserRegisterModel.username);
-        }
-        catch (Exception error)
-        {
-            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-    }
-
-    private async void ValidateEmail()
-    {
-        if (UserRegisterModel.email == null)
-        {
-            return;
-        }
-        try
-        {
-            isEmailRegistered = await AccountService.VerifyEmailAddress(UserRegisterModel.email);
-        }
-        catch (Exception error)
-        {
-            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-    }
 
 }

@@ -1,3 +1,5 @@
+@using UVGramWeb.Shared.Data
+
 <div class="su-bd">
     <section class="su-bd-main card">
         <div class="su-bd-description">
@@ -5,53 +7,126 @@
             <p class="bold">Agrega tu fecha de nacimiento</p>
             <p> No se incluirá en tu perfil público</p>
         </div>
-        <div class="su-bd-form">
-            <select class="form-select input-size-color" aria-label="mes">
-                <option title="enero" value="1" selected>enero</option>
-                <option title="febrero" value="2">febrero</option>
-                <option title="marzo" value="3">marzo</option>
-                <option title="abril" value="4">abril</option>
-                <option title="mayo" value="5">mayo</option>
-                <option title="junio" value="6">junio</option>
-                <option title="julio" value="7">julio</option>
-                <option title="agosto" value="8">agosto</option>
-                <option title="septiembre" value="9">septiembre</option>
-                <option title="octubre" value="10">octubre</option>
-                <option title="noviembre" value="11">noviembre</option>
-                <option title="diciembre" value="12">diciembre</option>
-            </select>
-            <select class="form-select input-size-color" aria-label="día">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-            <select class="form-select input-size-color" aria-label="año">
-                <option selected value="2000">2000</option>
-                <option value="2">2001</option>
-                <option value="3">2002</option>
-            </select>
-        </div>
-        <div class="su-bd-select-description">
-            <p class="text-muted text-center">Debes ingresar la fecha en que naciste</p>
-            <p class="text-muted text-center">Indica tu fecha de nacimiento, aunque esta cuenta sea para un negocio, una
-                mascota, etc.</p>
-        </div>
-        <div class="su-buttons">
-            <button class="custom-btn custom-btn-primary" @onclick=@(()=>
-                this.InvokeParentMethod(MoveForward))>Siguiente</button>
-            <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
-                this.InvokeParentMethod(MoveBackward))>Volver</button>
-        </div>
+        <EditForm EditContext="@EditContext" OnValidSubmit="@ValidSubmit">
+            <div class="su-bd-form">
+                <select class="form-select input-size-color" aria-label="mes" @onchange="this.ChangeMonth">
+                    @foreach (var month in monthTemplate)
+                    {
+                        <option title=@month value=@month>@month</option>
+                    }
+                </select>
+                <select class="form-select input-size-color" aria-label="día" @onchange="this.ChangeDay">
+                    @for (int i = DaysOfMonthTemplate; i >= 1; i--)
+                    {
+                        if (i == DaysSelected)
+                        {
+                            <option title=@i value=@i selected>@i</option>
+                        }
+                        else
+                        {
+                            <option title=@i value=@i>@i</option>
+                        }
+                    }
+                </select>
+                <select class="form-select input-size-color" aria-label="año" @onchange="this.ChangeYear">
+                    @for (int i = DateTime.Now.Year; i > 1900; i--)
+                    {
+                        <option title=@i value=@i>@i</option>
+                    }
+                </select>
+            </div>
+            <div class="su-bd-select-description">
+                <p class="text-muted text-center">Debes ingresar la fecha en que naciste</p>
+                <p class="text-muted text-center">Indica tu fecha de nacimiento, aunque esta cuenta sea para un negocio,
+                    una
+                    mascota, etc.</p>
+            </div>
+            <div class="su-buttons">
+                <button class="custom-btn custom-btn-primary" type="submit">Siguiente</button>
+                <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
+                    this.InvokeParentMethod(MoveBackward))>Volver</button>
+            </div>
+        </EditForm>
     </section>
 </div>
 
 @code {
+    [Parameter] public UserRegister UserRegisterModel { get; set; }
+    [Parameter] public EditContext EditContext { get; set; }
     [Parameter] public Action MoveForward { get; set; }
 
     [Parameter] public Action MoveBackward { get; set; }
+    private List<string> monthTemplate = new List<string>() { "enero", "febrero", "marzo", "abril", "mayo", "junio",
+"julio", "agosto", "septiembre", "octubre","noviembre", "diciembre"};
+    private int DaysOfMonthTemplate { get; set; } = 31;
+    private int DaysSelected { get; set; } = 31;
+    private int MonthsSelected { get; set; } = 1;
+    private int YearsSelected { get; set; } = 2022;
 
     private void InvokeParentMethod(Action action)
     {
         action?.Invoke();
+    }
+
+    private void ValidSubmit()
+    {
+        Console.WriteLine(MonthsSelected + "/" + DaysSelected + "/" + YearsSelected);
+    }
+
+    private void ChangeMonth(ChangeEventArgs e)
+    {
+        int daysOfMonth = monthTemplate.IndexOf(e.Value.ToString()) + 1;
+        if (daysOfMonth != -1)
+        {
+            MonthsSelected = monthTemplate.IndexOf(e.Value.ToString()) + 1;
+            DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+            UpdateDaySelected();
+        }
+    }
+
+    private void ChangeDay(ChangeEventArgs e)
+    {
+        try
+        {
+            DaysSelected = Convert.ToInt32(e.Value);
+            if (DaysSelected > DaysOfMonthTemplate)
+            {
+                DaysSelected = DaysOfMonthTemplate;
+            }
+            else if (DaysSelected < 1)
+            {
+                DaysSelected = 1;
+            }
+        }
+        catch (System.Exception)
+        {
+            DaysSelected = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+        }
+    }
+
+    private void UpdateDaySelected()
+    {
+        if (DaysSelected > DaysOfMonthTemplate)
+        {
+            DaysSelected = DaysOfMonthTemplate;
+        }
+    }
+
+    private void ChangeYear(ChangeEventArgs e)
+    {
+        try
+        {
+            int yearSelected = Convert.ToInt32(e.Value);
+            if (yearSelected > 1900 || yearSelected < DateTime.Now.Year)
+            {
+                YearsSelected = Convert.ToInt32(e.Value);
+                DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+                UpdateDaySelected();
+            }
+        }
+        catch (System.Exception)
+        {
+            YearsSelected = DateTime.Now.Year;
+        }
     }
 }
