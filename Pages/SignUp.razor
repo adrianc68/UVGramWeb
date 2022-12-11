@@ -14,7 +14,8 @@
     private RenderFragment[] steps = new RenderFragment[4];
     private int currentStep = 0;
 
-    private UVGramWeb.Shared.Data.UserRegister newUserModel = new Shared.Data.UserRegister();
+    private UVGramWeb.Shared.Data.UserRegister newUserModel;
+    private EditContext editContext;
     private String errorMessage;
 
     protected override async void OnInitialized()
@@ -27,8 +28,11 @@
         }
         else
         {
+            newUserModel = new Shared.Data.UserRegister();
+            editContext = new EditContext(newUserModel);
             steps[0] =
-    @<SignUpBasicInfo MoveForward="@MoveForward" UserRegisterModel="@newUserModel"></SignUpBasicInfo>
+    @<SignUpBasicInfo MoveForward="@MoveForward" UserRegisterModel="@newUserModel" EditContext="@editContext">
+    </SignUpBasicInfo>
     ;
             steps[1] =
     @<SignUpBirth MoveForward="@MoveForward" MoveBackward="@MoveBackward"></SignUpBirth>
@@ -37,7 +41,6 @@
     @<SignUpVerifyCode MoveForward="@MoveForward" MoveBackward="@MoveBackward"></SignUpVerifyCode>
     ;
         }
-
     }
 
     public void MoveForward()
