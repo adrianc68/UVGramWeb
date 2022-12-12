@@ -1,76 +1,77 @@
 .wrapper {
     /*height:calc(100vh - 62px);*/
-    height:10000px;
-    width:100vw;
-    display:flex;
+    height: 10000px;
+    width: 100vw;
+    display: flex;
     justify-content: center;
     background-color: red;
 }
 
 .home {
-    display:grid;
-    width:75%;
-    height:100%;
-    grid-gap:15px;
+    display: grid;
+    width: 75%;
+    height: 100%;
+    grid-gap: 15px;
     grid-template-areas:
-    "a c"
-    "b c";
-    grid-template-columns:calc(65% - 15px) 35%;
+        "a c"
+        "b c";
+    grid-template-columns: calc(65% - 15px) 35%;
     grid-template-rows: 120px calc(80vh - 15px);
     padding: 25px 15px 0 15px;
 }
 
 .histories {
-    grid-area:a;
+    grid-area: a;
 }
 
 .publications {
-    grid-area:b;
-    gap:25px;
-    display:flex;
+    grid-area: b;
+    gap: 25px;
+    display: flex;
     flex-direction: column;
 }
 
 .aside {
-    grid-area:c;
-    padding-top:100px;
+    grid-area: c;
+    padding-top: 100px;
 }
 
 .histories-content {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 .histories-content ul {
     list-style: none;
-    display:flex;
-    padding:0;
-    padding-left:10px;
-    height:100%;
-    margin:0;
+    display: flex;
+    padding: 0;
+    padding-left: 10px;
+    height: 100%;
+    margin: 0;
     justify-content: left;
     align-items: center;
-    overflow:auto;
+    overflow: auto;
 }
 
 .aside-content {
-    width:100%;
+    width: 100%;
 }
 
 .suggestions-content {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    width:100%;
+    width: 100%;
     overflow: hidden;
 }
 
 .suggestions-header {
-    padding:15px;
-    display:flex;
+    padding: 15px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.suggestions-header > span:nth-child(2) {
-    font-size: 0.8em;;
+.suggestions-header>span:nth-child(2) {
+    font-size: 0.8em;
+    ;
 }

@@ -1,0 +1,50 @@
+.topbar-search {
+    width:50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.topbar-actions {
+    width:50%;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+    font-size: 1.2em;
+}
+
+.topbar-actions>.custom-btn-secondary {
+    font-size: 0.75em;
+}
+
+.notification-popup {
+    position: relative;
+}
+
+.notification-tooltip {
+    position: absolute;
+    top: 10px;
+    z-index: 500;
+    right: -14px;
+    height: 320px;
+    max-height: 362px;
+    width: 500px;
+}
+
+.notsqr {
+    z-index: 1;
+    height: 14px;
+    width: 14px;
+    background-color: red;
+    position: absolute;
+    top: 5px;
+    transform: rotate(45deg);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .125);
+
+}

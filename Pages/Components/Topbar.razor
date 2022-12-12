@@ -1,47 +1,18 @@
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
 @inject NavigationManager NavigationManager
 
-<header class="card">
+<header class="topbar-card card">
     <nav class="topbar">
         <div class="topbar-logo">
             <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
         </div>
-        <div class="topbar-search">
-            <input type="text" id="search" class="form-control" placeholder="Buscar..." aria-label="Buscar">
-        </div>
-        <div class="topbar-actions">
-            @{
-                if (AuthenticationService.User == null)
-                {
-                    <button class="custom-btn custom-btn-primary" @onclick="@(() => NavigationManager.NavigateTo("/login"))">Iniciar sesión</button>
-                    <button class="custom-btn custom-btn-secondary" @onclick="@(() => NavigationManager.NavigateTo("/signup"))">Registrarse</button>
-                }
-                else
-                {
-                    <NavLink class="btn shadow-none" href="/">
-                        <span class="oi oi-home" aria-label="home"></span>
-                    </NavLink>
-                    <NavLink class="btn shadow-none" href="/inbox/">
-                        <span class="oi oi-envelope-closed" aria-label="Mensajes"></span>
-                    </NavLink>
-                    <NavLink class="btn shadow-none">
-                        <span class="oi oi-plus" aria-label="Publicar"></span>
-                    </NavLink>
-                    <NavLink class="btn shadow-none">
-                        <span class="oi oi-compass" aria-label="Explorar"></span>
-                    </NavLink>
-                    <NavLink class="btn shadow-none" href="/myUsername/">
-                        <span class="oi oi-person" aria-label="Mi perfil"></span>
-                    </NavLink>
-                    <a class="btn shadow-none" href="/logout">
-                        <span class="oi oi-account-logout" title="Salir" aria-label="Salir"></span>
-                    </a>
-                }
-            }
+        <div class="topbar-components">
+            @ChildContent
         </div>
     </nav>
 </header>
 
 @code {
-
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
 }

@@ -8,11 +8,10 @@
 }
 
 .sus-form {
-    width: 350px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: auto;
-    border-radius: 2px;
     align-items: center;
 }
 
