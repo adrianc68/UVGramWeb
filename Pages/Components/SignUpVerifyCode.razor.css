@@ -1,55 +1,54 @@
-.su-code{
-    padding:35px;
-    display:flex;
+.su-code {
+    padding: 35px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:15px;
 }
 
-.su-code-main {
-    padding:5px 25px 25px 25px;
-    width:calc(420px - 30px);
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.suc-code-main {
+    width: 350px;
+    padding: 25px;
 }
 
 .su-code-description {
-    padding:25px 25px 0 25px;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.su-code-description > img {
-    height:120px;
-    padding-bottom:15px;
+.su-code-description>img {
+    height: 80%;
+    width: 80%;
 }
 
 .su-code-form {
-    padding:25px;
-    padding:15px 25px 25px 25px;
-    width:100%;
+    padding: 5px;
+    width: 100%;
 }
 
-
+.sucf-inputs {
+    width: 100%;
+    padding: 15px;
+}
 
 .su-buttons {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    width:100%;
-    gap:15px;
-    padding-left:25px;
-    padding-right:25px;
+    width: 100%;
+    padding: 15px;
 }
 
-.su-buttons > button {
-    width:100%;
+.su-buttons>button {
+    width: 100%;
 }
 
-.su-buttons > .custom-btn-secondary {
-    font-size:0.88em;
+.su-buttons>.custom-btn-secondary {
+    font-size: 0.88em;
 }
 
+.su-error-message {
+    text-align: center;
+    font-size: 0.88em;
+}

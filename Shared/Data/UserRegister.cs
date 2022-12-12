@@ -32,9 +32,9 @@ public class UserRegister
     [MaxLength(254)]
     public string email { get; set; }
     [Required]
-    public DateTime birthdate { get; set; }
+    public string birthdate { get; set; }
     [Required]
-    [MinLength(6)]
-    [MaxLength(6)]
+    [MinLength(8)]
+    [MaxLength(8)]
     public string verificationCode { get; set; }
 }

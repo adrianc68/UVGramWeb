@@ -24,6 +24,10 @@ a,
     font-weight: 600;
 }
 
+.sm-font {
+    font-size: 0.8em;
+}
+
 #app>.app-loading {
     width: 100vw;
     height: 100vh;

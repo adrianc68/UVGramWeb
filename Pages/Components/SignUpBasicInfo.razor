@@ -8,7 +8,7 @@
             <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
             <p class="text-muted">Regístrate para ser parte de la comunidad universitaria.</p>
         </div>
-        <EditForm EditContext="@EditContext" OnInvalidSubmit="OnInvalidSubmit">
+        <EditForm EditContext="@EditContext" OnInvalidSubmit="OnInvalidSubmit" OnValidSubmit="OnInvalidSubmit">
             <DataAnnotationsValidator />
             <div class="su-form">
                 <div class="suf-inputs">
@@ -62,8 +62,6 @@
                 </button>
             </div>
         </EditForm>
-        <div class="su-error-message">
-        </div>
         <p class="text-muted text-center su-conditions">Al registrarte, aceptas nuestra
             <strong>Condiciones</strong>,
             la<strong> política de datos</strong> y la <strong>política de cookies.</strong>
@@ -88,11 +86,21 @@
     {
         loading = true;
 
-        if (EditContext.GetValidationMessages().ToList().Count == 1)
+        if (EditContext.GetValidationMessages().ToList().Count == 2)
+        {
+            var sb = new System.Text.StringBuilder();
+            EditContext.GetValidationMessages().ToList().ForEach(value => sb.AppendLine(value));
+            string message = Convert.ToString(sb);
+            if (message.Contains("verificationCode") && message.Contains("birthdate"))
+            {
+                MoveForward?.Invoke();
+            }
+        }
+        else if (EditContext.GetValidationMessages().ToList().Count == 1)
         {
             MoveForward?.Invoke();
         }
+        loading = false;
     }
-
 
 }

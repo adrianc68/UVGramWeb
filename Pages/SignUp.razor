@@ -45,7 +45,8 @@
     EditContext="@editContext"></SignUpBirth>
     ;
             steps[2] =
-    @<SignUpVerifyCode MoveForward="@MoveForward" MoveBackward="@MoveBackward"></SignUpVerifyCode>
+    @<SignUpVerifyCode MoveForward="@MoveForward" UserRegisterModel="@newUserModel" EditContext="@editContext">
+    </SignUpVerifyCode>
     ;
         }
     }
@@ -112,7 +113,6 @@
                 messages.Clear(args.FieldIdentifier);
             }
         }
-
         editContext.NotifyValidationStateChanged();
         StateHasChanged();
     }

@@ -1,4 +1,5 @@
 @using UVGramWeb.Shared.Data
+@inject Services.IAccountService AccountService
 
 <div class="su-bd">
     <section class="su-bd-main card">
@@ -9,13 +10,17 @@
         </div>
         <EditForm EditContext="@EditContext" OnValidSubmit="@ValidSubmit">
             <div class="su-bd-form">
-                <select class="form-select input-size-color" aria-label="mes" @onchange="this.ChangeMonth">
-                    @foreach (var month in monthTemplate)
+
+                <InputSelect class="form-select input-size-color" Value="@MonthsSelected"
+                    ValueExpression="@(() => MonthsSelected)" ValueChanged="@((int e) => ChangeMonth(e))">
+                    @for (int i = 0; i < monthTemplate.Count; i++)
                     {
-                        <option title=@month value=@month>@month</option>
+                        <option title=@monthTemplate[i] value=@(i+1)>@monthTemplate[i]</option>
                     }
-                </select>
-                <select class="form-select input-size-color" aria-label="día" @onchange="this.ChangeDay">
+                </InputSelect>
+
+                <InputSelect class="form-select input-size-color" Value="@DaysSelected"
+                    ValueExpression="@(() => DaysSelected)" ValueChanged="@((int e) => ChangeDay(e))">
                     @for (int i = DaysOfMonthTemplate; i >= 1; i--)
                     {
                         if (i == DaysSelected)
@@ -27,13 +32,15 @@
                             <option title=@i value=@i>@i</option>
                         }
                     }
-                </select>
-                <select class="form-select input-size-color" aria-label="año" @onchange="this.ChangeYear">
+                </InputSelect>
+
+                <InputSelect class="form-select input-size-color" Value="@YearsSelected"
+                    ValueExpression="@(() => YearsSelected)" ValueChanged="@((int e) => ChangeYear(e))">
                     @for (int i = DateTime.Now.Year; i > 1900; i--)
                     {
                         <option title=@i value=@i>@i</option>
                     }
-                </select>
+                </InputSelect>
             </div>
             <div class="su-bd-select-description">
                 <p class="text-muted text-center">Debes ingresar la fecha en que naciste</p>
@@ -41,12 +48,20 @@
                     una
                     mascota, etc.</p>
             </div>
+            @if (message != null)
+            {
+                <div class="su-error-message text-center sm-font">
+                    <p role="alert" class="text-danger">@message</p>
+                </div>
+            }
             <div class="su-buttons">
                 <button class="custom-btn custom-btn-primary" type="submit">Siguiente</button>
-                <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
-                    this.InvokeParentMethod(MoveBackward))>Volver</button>
             </div>
         </EditForm>
+        <div class="su-buttons">
+            <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
+                this.InvokeParentMethod(MoveBackward))>Volver</button>
+        </div>
     </section>
 </div>
 
@@ -54,7 +69,6 @@
     [Parameter] public UserRegister UserRegisterModel { get; set; }
     [Parameter] public EditContext EditContext { get; set; }
     [Parameter] public Action MoveForward { get; set; }
-
     [Parameter] public Action MoveBackward { get; set; }
     private List<string> monthTemplate = new List<string>() { "enero", "febrero", "marzo", "abril", "mayo", "junio",
 "julio", "agosto", "septiembre", "octubre","noviembre", "diciembre"};
@@ -62,45 +76,68 @@
     private int DaysSelected { get; set; } = 31;
     private int MonthsSelected { get; set; } = 1;
     private int YearsSelected { get; set; } = 2022;
+    private string message;
 
-    private void InvokeParentMethod(Action action)
+    protected override void OnInitialized()
     {
-        action?.Invoke();
-    }
-
-    private void ValidSubmit()
-    {
-        Console.WriteLine(MonthsSelected + "/" + DaysSelected + "/" + YearsSelected);
-    }
-
-    private void ChangeMonth(ChangeEventArgs e)
-    {
-        int daysOfMonth = monthTemplate.IndexOf(e.Value.ToString()) + 1;
-        if (daysOfMonth != -1)
+        if (UserRegisterModel != null && UserRegisterModel.birthdate != null)
         {
-            MonthsSelected = monthTemplate.IndexOf(e.Value.ToString()) + 1;
+            DateTime date = DateTime.ParseExact(UserRegisterModel.birthdate, "yyyy-MM-dd",
+            System.Globalization.CultureInfo.InvariantCulture);
+            DaysSelected = date.Day;
+            MonthsSelected = date.Month;
+            YearsSelected = date.Year;
+            DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+        }
+    }
+
+    private void ChangeMonth(int value)
+    {
+        string month = monthTemplate[value - 1];
+        if (month != null)
+        {
+            MonthsSelected = monthTemplate.IndexOf(month) + 1;
             DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
             UpdateDaySelected();
         }
+        UpdateRegisterModel();
     }
 
-    private void ChangeDay(ChangeEventArgs e)
+    private void ChangeDay(int value)
+    {
+        DaysSelected = value;
+        if (DaysSelected > DaysOfMonthTemplate)
+        {
+            DaysSelected = DaysOfMonthTemplate;
+        }
+        else if (DaysSelected < 1)
+        {
+            DaysSelected = 1;
+        }
+        UpdateRegisterModel();
+    }
+
+    private void ChangeYear(int value)
+    {
+        if (value > 1900 || value < DateTime.Now.Year)
+        {
+            YearsSelected = value;
+            DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+            UpdateDaySelected();
+        }
+        UpdateRegisterModel();
+    }
+
+    private void UpdateRegisterModel()
     {
         try
         {
-            DaysSelected = Convert.ToInt32(e.Value);
-            if (DaysSelected > DaysOfMonthTemplate)
-            {
-                DaysSelected = DaysOfMonthTemplate;
-            }
-            else if (DaysSelected < 1)
-            {
-                DaysSelected = 1;
-            }
+            DateTime date = new DateTime(YearsSelected, MonthsSelected, DaysSelected);
+            UserRegisterModel.birthdate = date.ToString("yyyy-MM-dd");
         }
         catch (System.Exception)
         {
-            DaysSelected = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+            throw;
         }
     }
 
@@ -112,21 +149,38 @@
         }
     }
 
-    private void ChangeYear(ChangeEventArgs e)
+    private void InvokeParentMethod(Action action)
     {
-        try
+        action?.Invoke();
+    }
+
+    private async void ValidSubmit()
+    {
+        UpdateRegisterModel();
+        bool status = await SendMessagecode();
+        if (status)
         {
-            int yearSelected = Convert.ToInt32(e.Value);
-            if (yearSelected > 1900 || yearSelected < DateTime.Now.Year)
-            {
-                YearsSelected = Convert.ToInt32(e.Value);
-                DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
-                UpdateDaySelected();
-            }
-        }
-        catch (System.Exception)
-        {
-            YearsSelected = DateTime.Now.Year;
+            InvokeParentMethod(MoveForward);
         }
     }
+
+    private async Task<Boolean> SendMessagecode()
+    {
+        bool isSent = false;
+        try
+        {
+            UserCreateVerification model = new UserCreateVerification();
+            model.email = UserRegisterModel.email;
+            model.username = UserRegisterModel.username;
+            isSent = await AccountService.CreateVerificationCode(model);
+        }
+        catch (System.Exception error)
+        {
+            message = "El servidor ha tenido un error";
+            StateHasChanged();
+            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isSent;
+    }
+
 }

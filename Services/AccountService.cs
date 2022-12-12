@@ -1,3 +1,4 @@
+using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
 
 namespace UVGramWeb.Services;
@@ -46,9 +47,53 @@ public class AccountService : IAccountService
         }
         catch (Exception error)
         {
-            Console.WriteLine(error);
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
         return isUsernameRegistered;
+    }
+
+    public async Task<bool> CreateVerificationCode(UserCreateVerification model)
+    {
+        Boolean isCodeSent = false;
+        try
+        {
+            var uri = $"/accounts/create/verification";
+            var data = await httpService.Post(uri, model);
+            if (data != null)
+            {
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
+                isCodeSent = json.message;
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isCodeSent;
+    }
+
+    public async Task<bool> CreateAccount(UserRegister model)
+    {
+        Boolean isCreated = false;
+        try
+        {
+            var uri = $"/accounts/create";
+            var data = await httpService.Post(uri, model);
+            if (data != null)
+            {
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
+                var message = json.message;
+                string result = Convert.ToString(message);
+                if (result.Contains("New entity was added"))
+                {
+                    isCreated = true;
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isCreated;
     }
 }
