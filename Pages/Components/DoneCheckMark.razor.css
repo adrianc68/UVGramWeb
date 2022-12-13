@@ -1,0 +1,41 @@
+.done-checkmark-square {
+    height: 80%;
+}
+
+.done-checkmark {
+    width: 100%;
+    height: 100%;
+    display: block;
+    stroke-width: 4;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    animation: fill .2s ease-in-out .2s forwards
+}
+
+.done-checkmark-check {
+    stroke-dasharray: 108;
+    stroke-dashoffset: 108;
+    animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: none
+    }
+
+    50% {
+        transform: scale3d(1.75, 1.75, 1)
+    }
+}
+
+@keyframes fill {
+    100% {}
+}

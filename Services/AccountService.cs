@@ -96,4 +96,29 @@ public class AccountService : IAccountService
         }
         return isCreated;
     }
+
+    public async Task<bool> CreateResetConfirmationAddress(UserEmailOrUsername model)
+    {
+        Boolean isCreated = false;
+        try
+        {
+            var uri = $"/accounts/password/reset/";
+            var data = await httpService.Post(uri, model);
+            if (data != null)
+            {
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
+                var message = json.message;
+                string result = Convert.ToString(message);
+                if (result.Contains("a confirmation address has been sent to the new email"))
+                {
+                    isCreated = true;
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isCreated;
+    }
 }

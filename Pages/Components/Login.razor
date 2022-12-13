@@ -27,25 +27,18 @@
                 </div>
                 <div class="wmicllc-buttons">
                     <button class="custom-btn custom-btn-primary" disabled="@loading">
-                        @if (loading)
-                        {
-                            <span class="spinner-border spinner-border-sm mr-1"></span>
-                        }
-                        else
-                        {
-                            <span>Iniciar sesión</span>
-                        }
+                        <StatusOperation Loading="@loading" Done="@done" Message="Iniciar sesión"></StatusOperation>
                     </button>
                 </div>
 
                 <div class="wmicllc-message">
                     <ValidationMessage For="@(() => loginModel.emailOrUsername)" />
-                    <p role="alert" class="text-danger ">
-                        @if (errorMessage != null)
-                        {
+                    @if (errorMessage != null)
+                    {
+                        <p role="alert" class="text-danger ">
                             <span>@errorMessage</span>
-                        }
-                    </p>
+                        </p>
+                    }
                 </div>
             </EditForm>
             <div class="wmicllc-recover">
@@ -65,7 +58,8 @@
 
 @code {
     private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
-    private bool loading;
+    private bool loading = false;
+    private bool done = false;
     private String errorMessage;
     [CascadingParameter] public Task<AuthenticationState> authStateTask { get; set; }
     protected override async void OnInitialized()
@@ -80,16 +74,17 @@
     {
         errorMessage = null;
         loading = true;
+        done = false;
         try
         {
             await AuthenticationService.Login(loginModel);
+            done = true;
         }
         catch (Exception error)
         {
             errorMessage = error.Message;
             loading = false;
-            StateHasChanged();
         }
-        return;
+        StateHasChanged();
     }
 }

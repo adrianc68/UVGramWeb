@@ -49,8 +49,10 @@ a,
 
 .custom-btn {
     height: 32px;
-    display: inline-block;
-    vertical-align: middle;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     background-color: transparent;
     font-weight: 600;
@@ -211,7 +213,7 @@ a:focus {
     -moz-transition: 0.15s ease all;
     -webkit-transition: 0.15s ease all;
     user-select: none;
-    pointer-events: none
+    pointer-events: none;
 }
 
 .custom-form-input:valid {
@@ -293,7 +295,6 @@ a:focus {
     top: calc(50% - 6px);
     left: calc(50% - 1px);
 }
-
 
 
 .not-found-container {
