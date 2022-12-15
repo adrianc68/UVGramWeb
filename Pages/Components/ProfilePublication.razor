@@ -1,0 +1,32 @@
+@using UVGramWeb.Shared.Data
+@inject IJSRuntime JS
+@inject HttpClient Http
+
+<div class="publication-profile">
+    <button class="pp-no-style">
+        <div class="pf-publication">
+            <div class="profile-img">
+                <img src="images/ide-13.svg" alt="Imagen de usuario">
+            </div>
+            <div class="pf-likes">
+                <span>@Post.likes</span>
+            </div>
+            <div class="pf-comments">
+                <span>@Post.comments</span>
+            </div>
+        </div>
+    </button>
+</div>
+
+@code {
+    [Parameter]
+    public Post Post { get; set; }
+
+    public string imageDataURL { get; set; }
+
+    protected override async void OnInitialized()
+    {
+    }
+
+
+}

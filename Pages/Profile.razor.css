@@ -1,0 +1,148 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 55px;
+}
+
+.profile-content {
+    width: 80vw;
+}
+
+
+/* 
+.profile-userdata {
+    background-color: red;
+}
+*/
+
+.profile-data {
+    padding: 30px 30px 0px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 25px;
+}
+
+.profile-description {
+    margin-left: 55px;
+}
+
+.userprofile {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    width: auto;
+}
+
+.profile-a-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 15px;
+}
+
+.profile-a-username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-a-username>h2 {
+    font-size: 1.6em;
+}
+
+.profile-desc-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.profile-desc-actions>div>button {
+    font-size: 0.85em;
+    color: #000;
+    font-weight: 600;
+}
+
+.profile-b-container {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 0px 0px 15px;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-indicators {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.profile-indicators>button {
+    border: 0;
+    background-color: transparent;
+}
+
+.profile-c-container {
+    padding: 15px;
+
+}
+
+
+.userprofile-img {
+    height: 165px;
+    width: 165px;
+}
+
+.profile-histories {
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.profile-histories ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.profile-publications {
+    padding-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: red;
+    padding: 10px;
+}
+
+.profile-publications-container {
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(35vh * 3 + 30px);
+    gap:15px;
+
+}
+
+.pf-followers {
+    position: relative;
+}
+
+.pf-following {
+    position: relative;
+}
+
+.notsqr {
+    z-index: 0;
+    height: 24px;
+    width: 24px;
+    left: 50%;
+    background-color: red;
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, .125);
+}
