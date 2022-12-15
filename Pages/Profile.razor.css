@@ -3,55 +3,80 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 55px;
+    padding-bottom: 5px;
+    width: 100%;
 }
 
 .profile-content {
-    width: 80vw;
+    width: calc(293px * 3 + 62px);
 }
 
-
-/* 
 .profile-userdata {
-    background-color: red;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    overflow: hidden;
 }
-*/
 
 .profile-data {
-    padding: 30px 30px 0px 30px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: top;
-    gap: 25px;
-}
-
-.profile-description {
-    margin-left: 55px;
 }
 
 .userprofile {
     display: flex;
     justify-content: center;
-    align-items: top;
-    width: auto;
+    align-items: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 85px;
+    padding-right: 85px;
+}
+
+.userprofile-img {
+    height: 165px;
+    width: 165px;
+    background-color: blueviolet;
+}
+
+.userprofile-img>img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-description {
+    flex: 1;
+    padding-left: 45px;
 }
 
 .profile-a-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 25px;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .profile-a-username {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .profile-a-username>h2 {
-    font-size: 1.6em;
+    font-size: 1.5em;
+    font-weight: 400;
 }
 
 .profile-desc-actions {
@@ -60,17 +85,19 @@
 }
 
 .profile-desc-actions>div>button {
-    font-size: 0.85em;
+    font-size: 0.8em;
     color: #000;
     font-weight: 600;
 }
 
 .profile-b-container {
     display: flex;
+    width: 409px;
     justify-content: flex-start;
-    padding: 5px 0px 0px 15px;
     align-items: center;
     gap: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .profile-indicators {
@@ -85,24 +112,18 @@
 }
 
 .profile-c-container {
-    padding: 15px;
-
+    padding-top: 15px;
 }
 
-
-.userprofile-img {
-    height: 165px;
-    width: 165px;
-}
-
-.profile-histories {
-    padding: 15px;
+.profile-stories {
+    height: 130px;
+    width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.profile-histories ul {
+.profile-stories ul {
     list-style: none;
     display: flex;
     gap: 15px;
@@ -110,19 +131,48 @@
 
 .profile-publications {
     padding-bottom: 15px;
+    padding-top: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    padding: 10px;
 }
+
+.profile-tab {
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+}
+
+
+.pftab-navbtn {
+    height: 53px;
+    border: none;
+    background-color: transparent;
+    font-size: 0.76em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    letter-spacing: 1px;
+}
+
+.pftab-selected {
+    height: 52px;
+    border-top: 1px solid #262626;
+}
+
 
 .profile-publications-container {
     display: flex;
     flex-wrap: wrap;
-    width: calc(293px * 3 + 62px);
-    gap:28px;
-
+    gap: 28px;
+    width: 100%;
 }
 
 .pf-followers {
@@ -133,14 +183,17 @@
     position: relative;
 }
 
-.notsqr {
-    z-index: 0;
-    height: 24px;
-    width: 24px;
-    left: 50%;
-    background-color: red;
-    position: absolute;
-    transform: rotate(45deg);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(0, 0, 0, .125);
+@media (max-width: calc(293px * 3 + 130px)) {
+    .profile-content {
+        width: calc(29vw * 3 + 62px);
+    }
+}
+
+@media (max-width: calc(293px * 3 - 70px)) {
+    .profile-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+    }
 }

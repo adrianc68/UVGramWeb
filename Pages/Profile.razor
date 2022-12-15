@@ -2,6 +2,7 @@
 @inject Services.IAccountService AccountService;
 @using UVGramWeb.Pages.Components;
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager;
 
 @if (DataLoaded)
 {
@@ -9,23 +10,23 @@
     {
         @if (AuthenticationService.User == null)
         {
-            <UVGramWeb.Pages.Components.Topbar>
-    <TopbarTools></TopbarTools>
-</UVGramWeb.Pages.Components.Topbar>
+          
         }
         <div class="profile">
     <div class="profile-content">
+
         <section class="profile-userdata">
-            <header class="profile-data">
+            <div class="profile-data">
                 <div class="userprofile">
                     <div class="userprofile-img">
+                        <img src="images/ide-16.svg" />
                         @* <UVGramWeb.Shared.UserProfile.UserProfile></UVGramWeb.Shared.UserProfile.UserProfile> *@
                     </div>
                 </div>
                 <div class="profile-description">
                     <div class="profile-a-container">
                         <div class="profile-a-username">
-                            <h2>@Username</h2>
+                            <h2>@UserProfile.username</h2>
                         </div>
                         <div class="profile-desc-actions">
                             <div>
@@ -34,12 +35,12 @@
                             <div>
                                 <button class="btn border">Seguir</button>
                             </div>
-                            <div>
+                            @* <div>
                                 <button class="btn border">Bloquear</button>
-                            </div>
-                            <div>
+                                </div>
+                                <div>
                                 <button class="btn border">Reportar</button>
-                            </div>
+                                </div> *@
                         </div>
                     </div>
                     <div class="profile-b-container">
@@ -55,13 +56,6 @@
                                         seguidores
                                     </span>
                                 </button>
-                                @* @if (ShowFollowersToolTip)
-                                    {
-                                    <div class="notsqr"></div>
-                                    <UVGramWeb.Pages.Profile.Followers.Followers>
-                                    </UVGramWeb.Pages.Profile.Followers.Followers>
-                                    } *@
-
                             </div>
                             <div class="pf-following">
                                 <button class="border-0 bg-transparent">
@@ -69,14 +63,6 @@
                                             class="semibold">@UserProfile.followed</strong>
                                         seguidos</span>
                                 </button>
-                                @* @if (ShowFollowingToolTip)
-                                    {
-                                    <div class="notsqr"></div>
-                                    <UVGramWeb.Pages.Profile.Following.Following>
-                                    </UVGramWeb.Pages.Profile.Following.Following>
-
-                                    } *@
-
                             </div>
                         </div>
                     </div>
@@ -85,26 +71,22 @@
                         <p class="muted-text">@UserProfile.presentation</p>
                     </div>
                 </div>
-            </header>
-            <div class="profile-histories">
-                <ul>
-                    @* <li>
-                        <UVGramWeb.Shared.HistoriesCard.Histories></UVGramWeb.Shared.HistoriesCard.Histories>
-                        </li>
-                        <li>
-                        <UVGramWeb.Shared.HistoriesCard.Histories></UVGramWeb.Shared.HistoriesCard.Histories>
-                        </li>
-                        <li>
-                        <UVGramWeb.Shared.HistoriesCard.Histories></UVGramWeb.Shared.HistoriesCard.Histories>
-                        </li>
-                        <li>
-                        <UVGramWeb.Shared.HistoriesCard.Histories></UVGramWeb.Shared.HistoriesCard.Histories>
-                        </li> *@
-
-                </ul>
+            </div>
+            <div class="profile-stories">
             </div>
         </section>
         <article class="profile-publications">
+            <div class="profile-tab">
+                <button class="pftab-navbtn pftab-selected">
+                    <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2 2h20v20H2V2zm2 2v4h4V4H4zm6 0v4h4V4h-4zm6 0v4h4V4h-4zm4 6h-4v4h4v-4zm0 6h-4v4h4v-4zm-6 4v-4h-4v4h4zm-6 0v-4H4v4h4zm-4-6h4v-4H4v4zm6-4v4h4v-4h-4z"
+                            fill="currentColor" />
+                    </svg>
+                    PUBLICACIONES
+                </button>
+            </div>
+
             <div class="profile-publications-container">
                 @foreach (var post in UserProfile.posts)
                         {
@@ -117,7 +99,6 @@
     }
     else
     {
-
         <NotFound></NotFound>
     }
 }
@@ -130,7 +111,7 @@
     private bool ValidUser { get; set; } = false;
     private bool DataLoaded { get; set; } = false;
 
-    protected override async void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (Username != null)
         {
@@ -145,6 +126,9 @@
         StateHasChanged();
     }
 
-
+    protected override async Task OnParametersSetAsync()
+    {
+        await OnInitializedAsync();
+    }
 
 }

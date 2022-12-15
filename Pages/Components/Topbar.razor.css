@@ -4,7 +4,9 @@
     border-bottom: 1px;
     border-style: solid;
     border-color: rgba(0, 0, 0, .125);
-
+    width: 100%;
+    position: fixed;
+    z-index:999;
 }
 
 .topbar {
@@ -28,4 +30,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+@media (max-width: 860px) {
+    .topbar-card {
+        background-color: red;
+    }
 }

@@ -62,3 +62,12 @@
     justify-content: center;
     gap: 7px;
 }
+
+
+@media (max-width: calc(293px * 3 + 130px)) {
+
+    .pf-publication {
+        height: 29vw;
+        width: 29vw;
+    }
+}
