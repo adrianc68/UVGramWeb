@@ -114,16 +114,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    background-color: red;
     padding: 10px;
 }
 
 .profile-publications-container {
-    background-color: blue;
     display: flex;
     flex-wrap: wrap;
-    width: calc(35vh * 3 + 30px);
-    gap:15px;
+    width: calc(293px * 3 + 62px);
+    gap:28px;
 
 }
 
