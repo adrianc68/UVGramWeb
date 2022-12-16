@@ -1,17 +1,17 @@
-@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
-@inject NavigationManager NavigationManager
+@inject UVGramWeb.Services.IAuthenticationService AuthService
+@inject NavigationManager NavManager
 
 <div class="topbar-search">
     <input type="text" id="search" class="form-control" placeholder="Buscar..." aria-label="Buscar">
 </div>
 <div class="topbar-actions">
     @{
-        if (AuthenticationService.User == null)
+        if (AuthService.User == null)
         {
-            <button class="custom-btn custom-btn-primary" @onclick="@(() => NavigationManager.NavigateTo("/login"))">Iniciar
+            <button class="custom-btn custom-btn-primary" @onclick="@(() => NavManager.NavigateTo("/login"))">Iniciar
                 sesión</button>
             <button class="custom-btn custom-btn-secondary" @onclick="@(() =>
-    NavigationManager.NavigateTo("/signup"))">Registrarse</button>
+    NavManager.NavigateTo("/signup"))">Registrarse</button>
         }
         else
         {
@@ -27,7 +27,7 @@
             <NavLink class="btn shadow-none">
                 <span class="oi oi-compass" aria-label="Explorar"></span>
             </NavLink>
-            <NavLink class="btn shadow-none" href="/myUsername/">
+            <NavLink class="btn shadow-none" href="@($"/{AuthService.User.Username}")">
                 <span class="oi oi-person" aria-label="Mi perfil"></span>
             </NavLink>
             <a class="btn shadow-none" href="/logout">

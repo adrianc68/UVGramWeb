@@ -1,13 +1,4 @@
-@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
-@inject NavigationManager NavigationManager
-
 @{
-    if (AuthenticationService.User == null)
-    {
-        <UVGramWeb.Pages.Components.Topbar>
-            <TopbarTools></TopbarTools>
-        </UVGramWeb.Pages.Components.Topbar>
-    }
     <div class="not-found-container">
         <h2>Esta página no está disponible</h2>
         <p>Es posible que el enlace que seleccionaste no funcione o que se haya eliminado la página.</p>

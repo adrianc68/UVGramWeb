@@ -9,4 +9,5 @@ public interface IAuthenticationService
     Task Initialize();
     Task Login(Login model);
     Task Logout();
+    Task UpdateData();
 }

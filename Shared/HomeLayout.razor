@@ -16,7 +16,14 @@
             </main>
         </Authorized>
         <NotAuthorized>
-            @Body
+            <main class="main-page">
+                <Topbar>
+                    <TopbarTools></TopbarTools>
+                </Topbar>
+                <div class="main-content">
+                    @Body
+                </div>
+            </main>
         </NotAuthorized>
     </AuthorizeView>
 }

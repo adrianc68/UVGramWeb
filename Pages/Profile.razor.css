@@ -197,3 +197,21 @@
         align-items: center;
     }
 }
+
+@media (max-width: calc(293px * 3 - 200px)) {
+    .profile-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+    }
+
+    .profile-publications-container {
+        gap: 1px;
+    }
+
+    .profile-content {
+        width: calc(29vw * 3 + 8px);
+    }
+
+}

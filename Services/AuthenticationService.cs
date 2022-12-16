@@ -3,6 +3,7 @@ using UVGramWeb.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using UVGramWeb.Shared.Exceptions;
 using Microsoft.AspNetCore.Components.Authorization;
+using UVGramWeb.Shared.Helpers;
 
 namespace UVGramWeb.Services;
 
@@ -13,7 +14,6 @@ public class AuthenticationService : IAuthenticationService
     private NavigationManager navigationManager;
     private AuthenticationStateProvider AuthenticationStateProvider;
     private string userKey = "login";
-
     public User User { get; private set; }
 
     public AuthenticationService(IHttpService httpService, ILocalStorageService localStorageService, NavigationManager navigationManager, AuthenticationStateProvider AuthenticationStateProvider)
@@ -76,6 +76,7 @@ public class AuthenticationService : IAuthenticationService
             User.accessToken = json.message.accessToken;
             User.refreshToken = json.message.refreshToken;
             await localStorageService.SetItem(userKey, User);
+            await UpdateData();
             ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogInState(User);
             navigationManager.NavigateTo("/");
         }
@@ -100,4 +101,21 @@ public class AuthenticationService : IAuthenticationService
         ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogOutState();
         navigationManager.NavigateTo("/");
     }
+
+    public async Task UpdateData()
+    {
+        try
+        {
+            var data = await httpService.Get("/accounts/data");
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
+            User.Username = json.message.username;
+            User.RoleType = EnumHelper.GetEnumValue<RoleType>(Convert.ToString(json.message.role));
+            await localStorageService.SetItem(userKey, User);
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+    }
+
 }
