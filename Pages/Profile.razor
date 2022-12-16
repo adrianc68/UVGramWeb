@@ -1,5 +1,4 @@
 @page "/{username}"
-@layout HomeLayout
 @inject Services.IAccountService AccountService;
 @using UVGramWeb.Pages.Components;
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
@@ -7,10 +6,18 @@
 
 @if (DataLoaded)
 {
+    if (AuthenticationService.User == null)
+    {
+        <Topbar>
+    <TopbarTools></TopbarTools>
+</Topbar>
+        <div class="profile-tbar-wa"></div>
+    }
+
     @if (ValidUser)
     {
         <div class="profile">
-    <div class="profile-content">
+            <div class="profile-content">
         <section class="profile-userdata">
             <div class="profile-data">
                 <div class="userprofile">
@@ -68,30 +75,53 @@
                     </div>
                 </div>
             </div>
-            <div class="profile-stories">
-            </div>
         </section>
-        <article class="profile-publications">
-            <div class="profile-tab">
-                <button class="pftab-navbtn pftab-selected">
-                    <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M2 2h20v20H2V2zm2 2v4h4V4H4zm6 0v4h4V4h-4zm6 0v4h4V4h-4zm4 6h-4v4h4v-4zm0 6h-4v4h4v-4zm-6 4v-4h-4v4h4zm-6 0v-4H4v4h4zm-4-6h4v-4H4v4zm6-4v4h4v-4h-4z"
-                            fill="currentColor" />
-                    </svg>
-                    PUBLICACIONES
-                </button>
-            </div>
 
-            <div class="profile-publications-container">
-                @foreach (var post in UserProfile.posts)
-                        {
-                            <ProfilePublication Post="post"></ProfilePublication>
-                        }
+        @if( (AuthenticationService.User != null && UserProfile.username == AuthenticationService.User.Username ) || UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO || (UserProfile.privacyType == Shared.Data.PrivacyType.PRIVADO && UserProfile.isFollowed)) // Not Logged And Public
+        {
+            <article class="profile-stories"></article>
+                <article class="profile-publications">
+                    <div class="profile-tab">
+                        <button class="pftab-navbtn pftab-selected">
+                            <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2 2h20v20H2V2zm2 2v4h4V4H4zm6 0v4h4V4h-4zm6 0v4h4V4h-4zm4 6h-4v4h4v-4zm0 6h-4v4h4v-4zm-6 4v-4h-4v4h4zm-6 0v-4H4v4h4zm-4-6h4v-4H4v4zm6-4v4h4v-4h-4z"
+                                    fill="currentColor" />
+                            </svg>
+                        PUBLICACIONES
+                        </button>
                     </div>
-                </article>
-            </div>
+                    <div class="profile-publications-container">
+                        @foreach (var post in UserProfile.posts)
+                                {
+                                    <ProfilePublication Post="post"></ProfilePublication>
+                                }
+                    </div>
+            </article>
+        }
+        else if(!UserProfile.isFollowed && Shared.Data.PrivacyType.PRIVADO == UserProfile.privacyType)
+        {
+             <div class="profile-private-account card">
+                    <div class="ppa-message">
+                        <h2>Esta cuenta es privada</h2>
+                        <div class="ppa-message-lg">
+                            @if (AuthenticationService.User == null)
+                            {
+                                <span>¿Ya sigues a @(UserProfile.username)?
+                                    <a href="/login">Inicia sesión</a>
+                                    para ver sus fotos y videos.
+                                </span>
+                            }
+                            else
+                            {
+                                <span>Síguela para ver sus fotos y videos.</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+        } 
         </div>
+    </div>
     }
     else
     {
@@ -120,11 +150,6 @@
         }
         DataLoaded = true;
         StateHasChanged();
-    }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        await OnInitializedAsync();
     }
 
 }

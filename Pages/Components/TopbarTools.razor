@@ -27,7 +27,7 @@
             <NavLink class="btn shadow-none">
                 <span class="oi oi-compass" aria-label="Explorar"></span>
             </NavLink>
-            <NavLink class="btn shadow-none" href="@($"/{AuthService.User.Username}")">
+            <NavLink class="btn shadow-none" href="@($"/{AuthService.User.Username}")" Match="NavLinkMatch.All">
                 <span class="oi oi-person" aria-label="Mi perfil"></span>
             </NavLink>
             <a class="btn shadow-none" href="/logout">

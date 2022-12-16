@@ -1,5 +1,6 @@
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
+using UVGramWeb.Shared.Helpers;
 
 namespace UVGramWeb.Services;
 
@@ -196,29 +197,35 @@ public class AccountService : IAccountService
                 profile.username = Convert.ToString(message.username);
                 profile.followers = Convert.ToInt32(message.followers);
                 profile.followed = Convert.ToInt32(message.followed);
+                profile.privacyType = EnumHelper.GetEnumValue<PrivacyType>(Convert.ToString(json.message.privacyType));
+                profile.isFollowed = (message.isFollowed != null) ? Convert.ToBoolean(message.isFollowed) : false;
                 profile.posts = new List<Post>();
-                foreach (var postData in message.posts)
+                if (message.posts != null)
                 {
-                    Post post = new Post();
-                    post.description = Convert.ToString(postData.description);
-                    post.comments_allowed = Convert.ToBoolean(postData.comments_allowed);
-                    post.likes_allowed = Convert.ToBoolean(postData.likes_allowed);
-                    post.uuid = Convert.ToString(postData.uuid);
-                    post.likes = Convert.ToInt32(postData.likes);
-                    post.comments = Convert.ToInt32(postData.comments);
-                    post.files = new List<PostFile>();
-                    foreach (var fileData in postData.files)
+                    foreach (var postData in message.posts)
                     {
-                        PostFile postFile = new PostFile();
-                        postFile.url = Convert.ToString(fileData.url);
-                        post.files.Add(postFile);
+                        Post post = new Post();
+                        post.description = Convert.ToString(postData.description);
+                        post.comments_allowed = Convert.ToBoolean(postData.comments_allowed);
+                        post.likes_allowed = Convert.ToBoolean(postData.likes_allowed);
+                        post.uuid = Convert.ToString(postData.uuid);
+                        post.likes = Convert.ToInt32(postData.likes);
+                        post.comments = Convert.ToInt32(postData.comments);
+                        post.files = new List<PostFile>();
+                        foreach (var fileData in postData.files)
+                        {
+                            PostFile postFile = new PostFile();
+                            postFile.url = Convert.ToString(fileData.url);
+                            post.files.Add(postFile);
+                        }
+                        profile.posts.Add(post);
                     }
-                    profile.posts.Add(post);
                 }
             }
         }
         catch (System.Exception error)
         {
+            Console.WriteLine("***<>>>>>" + error);
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
 
