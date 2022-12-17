@@ -197,8 +197,14 @@ public class AccountService : IAccountService
                 profile.username = Convert.ToString(message.username);
                 profile.followers = Convert.ToInt32(message.followers);
                 profile.followed = Convert.ToInt32(message.followed);
+                profile.postsCreated = Convert.ToInt32(message.postsCreated);
                 profile.privacyType = EnumHelper.GetEnumValue<PrivacyType>(Convert.ToString(json.message.privacyType));
                 profile.isFollowed = (message.isFollowed != null) ? Convert.ToBoolean(message.isFollowed) : false;
+                profile.isFollowerRequestSent = (message.isFollowerRequestSent != null) ? Convert.ToBoolean(message.isFollowerRequestSent) : false;
+                profile.isBlocked = (message.isBlocked != null) ? Convert.ToBoolean(message.isBlocked) : false;
+                profile.isBlocker = (message.isBlocker != null) ? Convert.ToBoolean(message.isBlocker) : false;
+                profile.isFollower = (message.isFollower != null) ? Convert.ToBoolean(message.isFollower) : false;
+                profile.hasSubmittedFollowerRequest = (message.hasSubmittedFollowerRequest != null) ? Convert.ToBoolean(message.hasSubmittedFollowerRequest) : false;
                 profile.posts = new List<Post>();
                 if (message.posts != null)
                 {
@@ -225,10 +231,158 @@ public class AccountService : IAccountService
         }
         catch (System.Exception error)
         {
-            Console.WriteLine("***<>>>>>" + error);
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
 
         return profile;
+    }
+
+    public async Task<bool> FollowUser(string username)
+    {
+        bool isFollowed = false;
+        try
+        {
+            var uri = "/user/follow/";
+            Username usernameModel = new Username();
+            usernameModel.username = username;
+            string resultData = await httpService.Post(uri, usernameModel);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (Convert.ToString(message).Contains("you are now following to"))
+            {
+                isFollowed = true;
+            }
+            else if (Convert.ToString(message).Contains("follower request sent to"))
+            {
+                isFollowed = true;
+            }
+        }
+        catch (System.Exception error)
+        {
+            Console.WriteLine(error);
+            return isFollowed;
+            // throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isFollowed;
+    }
+
+    public async Task<bool> UnfollowUser(string username)
+    {
+        bool isUnfollowed = false;
+        try
+        {
+            var uri = "/user/unfollow/";
+            Username usernameModel = new Username();
+            usernameModel.username = username;
+            string resultData = await httpService.Post(uri, usernameModel);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (Convert.ToString(message).Contains("you have unfollowed to"))
+            {
+                isUnfollowed = true;
+            }
+        }
+        catch (System.Exception error)
+        {
+            Console.WriteLine(error);
+            return isUnfollowed;
+            // throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isUnfollowed;
+    }
+
+    public async Task<bool> BlockUser(string username)
+    {
+        bool isBlocked = false;
+        try
+        {
+            var uri = "/user/block/";
+            Username usernameModel = new Username();
+            usernameModel.username = username;
+            string resultData = await httpService.Post(uri, usernameModel);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (Convert.ToString(message).Contains("you have blocked to"))
+            {
+                isBlocked = true;
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isBlocked;
+    }
+
+    public async Task<bool> UnblockUser(string username)
+    {
+        bool isUnblocked = false;
+        try
+        {
+            var uri = "/user/unblock/";
+            Username usernameModel = new Username();
+            usernameModel.username = username;
+            string resultData = await httpService.Post(uri, usernameModel);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (Convert.ToString(message).Contains("you have unblocked to"))
+            {
+                isUnblocked = true;
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isUnblocked;
+    }
+
+    public async Task<bool> CheckIfUserIsBlocker(string username)
+    {
+        bool isUserBlocker = false;
+        try
+        {
+            var uri = $"/user/check/block/{username}";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            isUserBlocker = Convert.ToBoolean(message);
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isUserBlocker;
+    }
+
+    public async Task<UserData> GetAccountData()
+    {
+        PersonalUserData personalUserdata = null;
+        try
+        {
+            var uri = "/accounts/data";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            personalUserdata = new PersonalUserData();
+            personalUserdata.name = Convert.ToString(message.name);
+            personalUserdata.presentation = Convert.ToString(message.presentation);
+            personalUserdata.username = Convert.ToString(message.username);
+            personalUserdata.email = Convert.ToString(message.email);
+            personalUserdata.phone_number = Convert.ToString(message.phone_number);
+            personalUserdata.birthday = Convert.ToString(message.birthday);
+            personalUserdata.role = EnumHelper.GetEnumValue<RoleType>(Convert.ToString(message.role));
+            personalUserdata.privacy = EnumHelper.GetEnumValue<PrivacyType>(Convert.ToString(message.privacy));
+            if (personalUserdata.role == RoleType.PERSONAL)
+            {
+                personalUserdata.gender = EnumHelper.GetEnumValue<GenderType>(Convert.ToString(message.gender));
+                personalUserdata.educational_program = (message.gender != null) ? Convert.ToString(message.educational_program) : null;
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return personalUserdata;
     }
 }

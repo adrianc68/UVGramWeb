@@ -95,6 +95,8 @@ public class AuthenticationService : IAuthenticationService
         }
         catch (Exception error)
         {
+            await localStorageService.RemoveItem("login");
+            ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogOutState();
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
         await localStorageService.RemoveItem("login");

@@ -15,24 +15,20 @@
         }
         else
         {
-            <NavLink class="btn shadow-none" href="/">
-                <span class="oi oi-home" aria-label="home"></span>
-            </NavLink>
-            <NavLink class="btn shadow-none" href="/inbox/">
-                <span class="oi oi-envelope-closed" aria-label="Mensajes"></span>
-            </NavLink>
-            <NavLink class="btn shadow-none">
-                <span class="oi oi-plus" aria-label="Publicar"></span>
-            </NavLink>
-            <NavLink class="btn shadow-none">
-                <span class="oi oi-compass" aria-label="Explorar"></span>
-            </NavLink>
-            <NavLink class="btn shadow-none" href="@($"/{AuthService.User.Username}")" Match="NavLinkMatch.All">
-                <span class="oi oi-person" aria-label="Mi perfil"></span>
-            </NavLink>
-            <a class="btn shadow-none" href="/logout">
-            <span class="oi oi-account-logout" title="Salir" aria-label="Salir"></span>
-        </a>
+            <div class="tbt-actions">
+                <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-label="home"></span>
+                </NavLink>
+                <NavLink class="nav-link">
+                    <span class="oi oi-plus" aria-label="Publicar"></span>
+                </NavLink>
+                <NavLink class="nav-link" href="@($"/{AuthService.User.Username}")" Match="NavLinkMatch.All">
+                    <span class="oi oi-person" aria-label="Mi perfil"></span>
+                </NavLink>
+                <NavLink class="nav-link" href="/logout">
+                    <span class="oi oi-account-logout" title="Salir" aria-label="Salir"></span>
+                </NavLink>
+            </div>
         }
     }
 </div>

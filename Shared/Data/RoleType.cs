@@ -1,4 +1,4 @@
-namespace UVGramWeb.Shared.Models;
+namespace UVGramWeb.Shared.Data;
 
 public enum RoleType
 {

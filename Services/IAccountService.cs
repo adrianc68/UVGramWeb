@@ -12,4 +12,11 @@ public interface IAccountService
     Task<Boolean> VerifyURLChangePassword(string uri);
     Task<Boolean> DoesUsernameExist(string username);
     Task<Profile> GetProfile(string username);
+    Task<Boolean> FollowUser(string username);
+    Task<Boolean> UnfollowUser(string username);
+    Task<Boolean> BlockUser(string username);
+    Task<Boolean> UnblockUser(string username);
+    Task<Boolean> CheckIfUserIsBlocker(string username);
+    Task<UserData> GetAccountData();
+
 }

@@ -28,6 +28,43 @@ a,
     font-size: 0.8em;
 }
 
+.nav-link {
+    background-color: transparent;
+    display: block;
+    padding: 8px;
+    color: #242424;
+    text-decoration: none;
+    transition: none;
+}
+
+.nav-link.active {
+    padding-top: 6px;
+    border-bottom: 2px solid rgb(2, 240, 6);
+}
+
+.nav-link-edit-profile {
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2a2a2a;
+    width: 100%;
+    text-align: start;
+    min-height: 52px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+}
+
+.nav-active-edit-profile {
+    border-left: 4px solid rgb(24, 22, 22);
+    padding-left: 21px;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    color: #242424;
+}
+
 #app>.app-loading {
     width: 100vw;
     height: 100vh;
