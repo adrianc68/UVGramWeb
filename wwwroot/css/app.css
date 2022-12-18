@@ -53,10 +53,27 @@ a,
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 25px;
+    font-size: 0.95em;
 }
+
+.nav-link-edit-profile:hover {
+    background-color: #fbfbfb;
+    border-left: 3px solid rgb(231, 230, 230);
+    padding-left: 22px;
+    color: #2a2a2a;
+}
+
+
+.nav-active-edit-profile:hover {
+    border-left: 4px solid rgb(24, 22, 22);
+    color: #2a2a2a;
+    padding-left: 21px;
+}
+
 
 .nav-active-edit-profile {
     border-left: 4px solid rgb(24, 22, 22);
+    color: #2a2a2a;
     padding-left: 21px;
 }
 
@@ -207,6 +224,36 @@ a:focus {
 .input-size-color {
     color: #737677 !important;
     font-size: 0.8em;
+}
+
+.form-input-normal {
+    display: block;
+    width: 100%;
+    min-height: 32px;
+    padding: 10px;
+    font-weight: 400;
+    border: 1px solid #cad3d6;
+    transition: border-color .025s ease-in-out;
+    background-color: #ffffff;
+    font-size: 0.9em;
+    color: #2e2c2c;
+    border-radius: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-input-normal-textarea {
+    display: block;
+    width: 100%;
+    min-height: 62px;
+    padding: 10px;
+    font-weight: 400;
+    border: 1px solid #cad3d6;
+    transition: border-color .025s ease-in-out;
+    background-color: #ffffff;
+    font-size: 0.9em;
+    color: #2e2c2c;
+    border-radius: 2px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .custom-form-input {

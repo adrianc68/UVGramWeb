@@ -1,8 +1,22 @@
+@using Shared.Data
 @inject UVGramWeb.Services.IAuthenticationService AuthService
 @inject NavigationManager NavManager
+@inject Services.IAccountService AccountService;
 
 <div class="topbar-search">
-    <input type="text" id="search" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+    <input type="text" id="search" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+        @oninput="SearchUsers">
+
+    @if (usersFilter.Count != 0)
+    {
+        <div class="topbar-search-users card">
+            @foreach (var userSearch in usersFilter)
+            {
+                <UserDisplay User="@userSearch"></UserDisplay>
+            }
+        </div>
+    }
+
 </div>
 <div class="topbar-actions">
     @{
@@ -32,3 +46,27 @@
         }
     }
 </div>
+
+@code {
+    private List<UserSearch> usersFilter = new List<UserSearch>();
+
+    private async void SearchUsers(ChangeEventArgs e)
+    {
+        string value = e.Value.ToString();
+        if (!String.IsNullOrEmpty(value))
+        {
+            usersFilter = await AccountService.FilterUsers(Convert.ToString(e.Value));
+        }
+        else
+        {
+            usersFilter = new List<UserSearch>();
+        }
+        StateHasChanged();
+    }
+
+    private void ClearList()
+    {
+        usersFilter.Clear();
+        StateHasChanged();
+    }
+}

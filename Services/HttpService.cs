@@ -7,6 +7,7 @@ public interface IHttpService
 {
     Task<string> Get(string uri);
     Task<string> Post(string uri, object value);
+    Task<string> Patch(string uri, object value);
     Task<string> Put(string uri, object value);
     Task<string> Delete(string uri);
 }
@@ -35,6 +36,12 @@ public class HttpService : IHttpService
     public async Task<string> Post(string uri, object value)
     {
         var request = createRequest(HttpMethod.Post, uri, value);
+        return await sendRequest<string>(request);
+    }
+
+    public async Task<string> Patch(string uri, object value)
+    {
+        var request = createRequest(HttpMethod.Patch, uri, value);
         return await sendRequest<string>(request);
     }
 

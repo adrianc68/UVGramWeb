@@ -369,14 +369,35 @@ public class AccountService : IAccountService
             personalUserdata.presentation = Convert.ToString(message.presentation);
             personalUserdata.username = Convert.ToString(message.username);
             personalUserdata.email = Convert.ToString(message.email);
-            personalUserdata.phone_number = Convert.ToString(message.phone_number);
-            personalUserdata.birthday = Convert.ToString(message.birthday);
+            personalUserdata.phoneNumber = Convert.ToString(message.phone_number);
+            personalUserdata.birthdate = Convert.ToString(message.birthday);
             personalUserdata.role = EnumHelper.GetEnumValue<RoleType>(Convert.ToString(message.role));
             personalUserdata.privacy = EnumHelper.GetEnumValue<PrivacyType>(Convert.ToString(message.privacy));
             if (personalUserdata.role == RoleType.PERSONAL)
             {
                 personalUserdata.gender = EnumHelper.GetEnumValue<GenderType>(Convert.ToString(message.gender));
-                personalUserdata.educational_program = (message.gender != null) ? Convert.ToString(message.educational_program) : null;
+
+                if (message.id_educational_program != null)
+                {
+                    Region region = new Region();
+                    region.id = Convert.ToInt32(message.id_region);
+                    Faculty faculty = new Faculty();
+                    faculty.id = Convert.ToInt32(message.id_faculty);
+                    faculty.region = region;
+                    EducationalProgram educationalProgram = new EducationalProgram();
+                    educationalProgram.id = Convert.ToInt32(message.id_educational_program);
+                    educationalProgram.faculty = faculty;
+                    personalUserdata.educational_program = educationalProgram;
+                }
+                else
+                {
+                    Region region = new Region();
+                    Faculty faculty = new Faculty();
+                    faculty.region = region;
+                    EducationalProgram educationalProgram = new EducationalProgram();
+                    educationalProgram.faculty = faculty;
+                    personalUserdata.educational_program = educationalProgram;
+                }
             }
         }
         catch (System.Exception error)
@@ -384,5 +405,185 @@ public class AccountService : IAccountService
             throw new InteralServerErrorException("El servidor ha tenido un error", error);
         }
         return personalUserdata;
+    }
+
+    public async Task<List<Region>> GetAvailableRegion()
+    {
+        List<Region> regions = new List<Region>();
+        try
+        {
+            var uri = "/data/region/";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var messages = json.message;
+            foreach (var regionData in messages)
+            {
+                Region region = new Region();
+                region.id = Convert.ToInt32(regionData.id);
+                region.region = Convert.ToString(regionData.region);
+                regions.Add(region);
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return regions;
+    }
+
+    public async Task<List<Faculty>> GetAvailableFaculty(int regionId)
+    {
+        List<Faculty> faculties = new List<Faculty>();
+        try
+        {
+            var uri = "/data/faculty/";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var messages = json.message;
+            foreach (var facultyData in messages)
+            {
+                if (regionId == Convert.ToInt32(facultyData.id_region))
+                {
+                    Faculty objectData = new Faculty();
+                    objectData.id = Convert.ToInt32(facultyData.id);
+                    objectData.faculty = Convert.ToString(facultyData.faculty);
+                    faculties.Add(objectData);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return faculties;
+    }
+
+    public async Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId)
+    {
+        List<EducationalProgram> educationalPrograms = new List<EducationalProgram>();
+        try
+        {
+            var uri = "/data/educationalprogram/";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var messages = json.message;
+            foreach (var educationalProgramData in messages)
+            {
+                if (facultyId == Convert.ToInt32(educationalProgramData.id_faculty))
+                {
+                    EducationalProgram objectData = new EducationalProgram();
+                    objectData.id = Convert.ToInt32(educationalProgramData.id);
+                    objectData.educational_program = Convert.ToString(educationalProgramData.educational_program);
+                    educationalPrograms.Add(objectData);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return educationalPrograms;
+    }
+
+    public async Task<ResultUpdateAccount> UpdatePersonalAccountData(PersonalUserData model)
+    {
+        ResultUpdateAccount result = new ResultUpdateAccount();
+        try
+        {
+            UpdatePersonalUserData modelRequest = new UpdatePersonalUserData();
+            modelRequest.name = model.name;
+            modelRequest.presentation = model.presentation;
+            modelRequest.username = model.username;
+            modelRequest.phoneNumber = model.phoneNumber;
+            modelRequest.email = model.email;
+            modelRequest.birthdate = model.birthdate;
+            modelRequest.gender = model.gender.ToString();
+            modelRequest.idCareer = model.educational_program.id.ToString();
+            var uri = $"/accounts/edit/personal";
+            string resultData = await httpService.Patch(uri, modelRequest);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            result.IsUpdated = Convert.ToBoolean(message.isUpdated);
+            if (message.emailMessage != null)
+            {
+                string messageEmail = Convert.ToString(message.emailMessage);
+                if (messageEmail.Contains("a confirmation address has been sent to the new email"))
+                {
+                    result.IsEmailUpdated = true;
+                }
+                else if (messageEmail.Contains("please wait 5 minutes to generate another confirmation address"))
+                {
+                    result.IsEmailConfirmationAlreadySent = true;
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return result;
+    }
+
+    public async Task<bool> ChangePassword(ChangeActualPassword model)
+    {
+        bool isChanged = false;
+        try
+        {
+            var uri = "/accounts/password/change";
+            string resultData = await httpService.Post(uri, model);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            isChanged = Convert.ToBoolean(message);
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isChanged;
+    }
+
+    public async Task<bool> ChangePrivacy(ChangePrivacy model)
+    {
+        bool isChanged = false;
+        try
+        {
+            var uri = "/accounts/users/change-privacy/";
+            string resultData = await httpService.Post(uri, model);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            isChanged = Convert.ToBoolean(message);
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isChanged;
+    }
+
+    public async Task<List<UserSearch>> FilterUsers(string filter)
+    {
+        List<UserSearch> users = new List<UserSearch>();
+        try
+        {
+            var uri = $"/users/{filter}";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (message != null)
+            {
+                foreach (var item in message)
+                {
+                    UserSearch userSearch = new UserSearch();
+                    userSearch.username = Convert.ToString(item.username);
+                    userSearch.name = Convert.ToString(item.name);
+                    users.Add(userSearch);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return users;
     }
 }

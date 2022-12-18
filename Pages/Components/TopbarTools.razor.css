@@ -1,14 +1,31 @@
 .topbar-search {
-    width:50%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.topbar-search>input {
+    width: 268px;
+}
+
+.topbar-search-users {
+    position: absolute;
+    width: 375px;
+    height: 362px;
+    top: 62px;
+    padding-top: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow: auto;
+    gap:10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .topbar-actions {
-    width:50%;
+    width: 50%;
     gap: 5px;
     display: flex;
     justify-content: center;
@@ -48,7 +65,6 @@
 }
 
 .tbt-actions {
-    display:flex;
-    gap:5px;
+    display: flex;
+    gap: 5px;
 }
-

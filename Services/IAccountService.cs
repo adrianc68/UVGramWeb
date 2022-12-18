@@ -18,5 +18,11 @@ public interface IAccountService
     Task<Boolean> UnblockUser(string username);
     Task<Boolean> CheckIfUserIsBlocker(string username);
     Task<UserData> GetAccountData();
-
+    Task<List<Region>> GetAvailableRegion();
+    Task<List<Faculty>> GetAvailableFaculty(int regionId);
+    Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId);
+    Task<ResultUpdateAccount> UpdatePersonalAccountData(PersonalUserData model);
+    Task<Boolean> ChangePassword(ChangeActualPassword model);
+    Task<Boolean> ChangePrivacy(ChangePrivacy model);
+    Task<List<UserSearch>> FilterUsers(string filter);
 }
