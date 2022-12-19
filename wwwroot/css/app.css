@@ -419,3 +419,14 @@ a:focus {
         transform: rotate(360deg);
     }
 }
+
+.pd-input-textarea {
+    width:100%;
+    min-height:32px;
+    height: 32px;
+    max-height: 90px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    font-size: 0.8em;
+}

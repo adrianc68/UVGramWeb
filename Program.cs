@@ -14,6 +14,7 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IHttpService, HttpService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
+builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped(x =>
 {
     var apiUrl = new Uri("http://localhost:8080");

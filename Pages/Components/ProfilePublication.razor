@@ -1,8 +1,9 @@
 @using UVGramWeb.Shared.Data
+@inject NavigationManager NavigationManager;
 @inject IJSRuntime JS
 @inject HttpClient Http
 
-<div class="publication-profile" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut">
+<div class="publication-profile" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" @onclick="OnClick">
     <div class="ppb-ns">
         <div class="pf-publication">
             <div class="pf-profile-img">
@@ -41,10 +42,6 @@
 
     public string imageDataURL { get; set; }
 
-    @* protected override async void OnInitialized()
-        {
-        } *@
-
     private void OnMouseOver(MouseEventArgs e)
     {
         OnHover = true;
@@ -55,6 +52,11 @@
     {
         OnHover = false;
         StateHasChanged();
+    }
+
+    private void OnClick()
+    {
+        NavigationManager.NavigateTo($"/p/{Post.uuid}", true);
     }
 
 
