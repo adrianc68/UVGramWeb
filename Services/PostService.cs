@@ -58,6 +58,7 @@ public class PostService : IPostService
                         replyObject.username = Convert.ToString(reply.username);
                         replyObject.likes = Convert.ToInt32(reply.likes);
                         replyObject.isLiked = Convert.ToBoolean(reply.isLiked);
+                        replyObject.parent_comment = comment;
                         comment.replies.Add(replyObject);
                     }
                     comments.Add(comment);

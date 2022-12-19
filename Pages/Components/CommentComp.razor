@@ -25,7 +25,8 @@
                     <button class="border-0 bg-transparent">
                         <span class="text-muted">@CommentData.likes Me gusta</span>
                     </button>
-                    <button class="border-0 bg-transparent" @onclick="ReplyComment">
+                    <button class="border-0 bg-transparent"
+                        @onclick="(() => ChangeAbstractPostSelected.InvokeAsync(CommentData))">
                         <span class="text-muted">Responder</span>
                     </button>
                 </div>
@@ -62,7 +63,8 @@
 
             @foreach (var item in CommentData.replies)
             {
-                <CommentComp CommentData="@item" AddCommentToRootList="AddCommentToList"></CommentComp>
+                <CommentComp CommentData="@item" AddCommentToRootList="AddCommentToList"
+            ChangeAbstractPostSelected="ChangeAbstractPostSelected"></CommentComp>
             }
         </div>
     }
@@ -77,6 +79,9 @@
 
     [Parameter]
     public EventCallback<Comment> AddCommentToRootList { get; set; }
+
+    [Parameter]
+    public EventCallback<AbstractPost> ChangeAbstractPostSelected { get; set; }
 
     private async void ChangeStatusLikeComment()
     {

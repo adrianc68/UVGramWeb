@@ -18,8 +18,7 @@
                 <span>@Post.owner.name</span>
             </div>
             <div class="pubd-header-actions">
-                <button class="border-0 bg-transparent"
-                    @onclick="@(() => ShowPublicationDetailOption = !ShowPublicationDetailOption)">
+                <button class="border-0 bg-transparent">
                     <svg aria-label="Más opciones" class="_8-yf5 " color="#262626" fill="#262626" height="24" role="img"
                         viewBox="0 0 24 24" width="24">
                         <circle cx="12" cy="12" r="1.5"></circle>
@@ -27,34 +26,20 @@
                         <circle cx="18" cy="12" r="1.5"></circle>
                     </svg>
                 </button>
-
-                @if (ShowPublicationDetailOption)
-                {
-                    <div class="notsqr"></div>
-                    <div class="pubd-options-tooltip card shadow">
-                    @* <UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption>
-                        </UVGramWeb.Shared.Publications.PublicationDetail.Options.PublicationDetailOption> *@
-                </div>
-                }
-
-
             </div>
         </div>
         <div class="pubd-comments">
             <div class="pubd-description">
-                <div class="userprofile">
-                    <UserProfile></UserProfile>
-                </div>
+
                 <div class="pudb-description-data">
-                    <span class="pudb-da-username"><a href="@Post.owner.username">@Post.owner.username</a></span>
+                    <span class="pudb-da-username"><a href="@Post.owner.username">@Post.owner.username:</a></span>
                     <span>@Post.description</span>
                 </div>
             </div>
 
-
             @foreach (var comment in Post.comments)
             {
-                <CommentComp CommentData="comment"></CommentComp>
+                <CommentComp CommentData="comment" ChangeAbstractPostSelected="ChangeAbstractPostData"></CommentComp>
             }
         </div>
 
@@ -82,7 +67,7 @@
                             }
                         </div>
                     </button>
-                    <button class="custom-btn custom-btn-secondary">
+                    <button class="custom-btn custom-btn-secondary" @onclick="(() => ChangeAbstractPostData(Post))">
                         <div class="hp-icon">
                             <svg aria-label="Comentar" class="hp-icon" color="#8e8e8e" fill="#8e8e8e" height="24"
                                 role="img" viewBox="0 0 24 24" width="24">
@@ -107,9 +92,9 @@
                 </button>
                 <div class="" style="right: 12px; bottom: 360px;"></div>
                 <div class="pd-textarea">
-                    <input class="pd-input-textarea" autocomplete="off" autocorrect="off" type="text"
-                        placeholder="Agrega un comentario..." aria-label="Agrega un comentario"
-                        @oninput="ChangeComment" />
+                    <textarea class="pd-input-textarea" autocomplete="off" autocorrect="off" type="text"
+                        placeholder="Agrega un comentario..." aria-label="Agrega un comentario" @oninput="ChangeComment"
+                        @bind="CommentObject.comment" />
                 </div>
                 <button class="btn-link border-0 bg-transparent text-decoration-none" @onclick="CreateComment">
                     <span>Publicar</span>
@@ -123,13 +108,15 @@
 @code {
     [Parameter]
     public PostDetails Post { get; set; }
-    public bool ShowPublicationDetailOption = false;
 
-    public CreateComment SelectedObject { get; set; } = new CreateComment();
+    public CreateComment CommentObject { get; set; } = new CreateComment();
+
+    public AbstractPost SelectedAbstractPost { get; set; }
 
     protected override void OnInitialized()
     {
-        SelectedObject.uuid = Post.uuid;
+        CommentObject.uuid = Post.uuid;
+        SelectedAbstractPost = Post;
         StateHasChanged();
     }
 
@@ -138,12 +125,36 @@
     {
         try
         {
-            Comment comment = await PostService.CommentPost(SelectedObject);
-            if (comment != null)
+            if (SelectedAbstractPost.GetType() == Post.GetType())
             {
-                comment.username = AuthenticationService.User.Username;
-                Post.comments.Add(comment);
+                Comment comment = await PostService.CommentPost(CommentObject);
+                if (comment != null)
+                {
+                    comment.username = AuthenticationService.User.Username;
+                    Post.comments.Add(comment);
+                }
             }
+            else
+            {
+                Comment comment = await PostService.ReplyComment(CommentObject);
+                comment.username = AuthenticationService.User.Username;
+                if (comment != null)
+                {
+                    if (((Comment)SelectedAbstractPost).parent_comment != null)
+                    {
+                        Comment parent = Post.comments.Find(x => ((Comment)SelectedAbstractPost).parent_comment.uuid == x.uuid);
+                        comment.parent_comment = parent;
+                        parent.replies.Add(comment);
+                    }
+                    else
+                    {
+                        Comment parent = Post.comments.Find(x => SelectedAbstractPost.uuid == x.uuid);
+                        comment.parent_comment = parent;
+                        parent.replies.Add(comment);
+                    }
+                }
+            }
+            CommentObject.comment = null;
         }
         catch (System.Exception error)
         {
@@ -152,6 +163,27 @@
         }
         StateHasChanged();
     }
+    private void ChangeComment(ChangeEventArgs e)
+    {
+        string value = e.Value.ToString();
+        if (!String.IsNullOrEmpty(value))
+        {
+            CommentObject.comment = value;
+
+        }
+    }
+
+    private void ChangeAbstractPostData(AbstractPost value)
+    {
+        if (value != null)
+        {
+            SelectedAbstractPost = value;
+            CommentObject.uuid = value.uuid;
+            StateHasChanged();
+        }
+    }
+
+
 
     private async void ChangeStatusLikePost()
     {
@@ -182,17 +214,4 @@
         }
         StateHasChanged();
     }
-
-    private void ChangeComment(ChangeEventArgs e)
-    {
-        string value = e.Value.ToString();
-        if (!String.IsNullOrEmpty(value))
-        {
-            SelectedObject.comment = value;
-
-        }
-    }
-
-
-
 }

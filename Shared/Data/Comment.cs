@@ -8,5 +8,6 @@ public class Comment : AbstractPost
     public int likes { get; set; }
     public bool isLiked { get; set; }
     public bool isReplyInnerComment { get; set; }
+    public Comment parent_comment { get; set; }
     public List<Comment> replies { get; set; }
 }

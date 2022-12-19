@@ -10,10 +10,9 @@ public interface IPostService
     Task<Boolean> DisLikeComment(string uuid);
     Task<Boolean> LikePost(string uuid);
     Task<Boolean> DislikePost(string uuid);
-
     Task<Comment> ReplyComment(CreateComment model);
     Task<Comment> CommentPost(CreateComment model);
 
 
-    
+
 }
