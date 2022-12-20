@@ -1,0 +1,9 @@
+@inject NavigationManager NavigationManager
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.CompletedTask;
+        NavigationManager.NavigateTo("/", forceLoad: false);
+    }
+}

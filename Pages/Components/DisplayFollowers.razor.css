@@ -1,0 +1,45 @@
+.followers {
+    min-height: 350px;
+    width: 100%;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.544);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog {
+    width:400px;
+}
+
+.modal-header {
+    padding: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.modal-header > h1{
+    text-align: center;
+}
+
+.btn-modal-close-container {
+
+    right:7.5px;
+    top:7.5px;
+    position:absolute;
+}
+
+.btn-modal-close-container > button {
+    height:30px;
+    width:30px;
+}
+
+.modal-header > h1 {
+    font-size: 1em;
+    font-weight: 700;
+    width:100%;
+}

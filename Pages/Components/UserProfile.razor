@@ -1,0 +1,21 @@
+<a class="userprofile-content">
+    <div class="up-content">
+        <div class="userprofile-img">
+            <img src="/images/ide-20.svg" alt="Imagen de usuario">
+        </div>
+    </div>
+
+    @if (HasHistory)
+        {
+        <div class="@(IsHistorySeen ? "userprofile-history-available history-outstanding" : " userprofile-history-available history-seen")">
+        </div>
+        }
+</a>
+
+@code {
+    public bool IsHistorySeen = false;
+
+    public bool HasHistory = false;
+
+
+}

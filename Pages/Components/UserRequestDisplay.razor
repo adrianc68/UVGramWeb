@@ -1,0 +1,98 @@
+@using UVGramWeb.Shared.Data
+@inject UVGramWeb.Services.IAccountService AccountService
+
+<div class="uc-usercard">
+    <div class="usercard-img">
+        <a class="uc-a" href="/@User.username">
+            <div class="userprofile">
+                <UserProfile></UserProfile>
+            </div>
+        </a>
+
+    </div>
+    <div class="userprofile-data">
+        <a class="uc-a" href="/@User.username"><span class="semibold uc-username">@User.username</span></a>
+        <span class="text-muted">@User.name</span>
+    </div>
+
+    @if (!actionPerfomed)
+    {
+        <div class="userprofile-actions">
+            <button class="custom-btn custom-btn-primary" @onclick="AcceptFollowerRequest">
+                Confirmar
+            </button>
+            <button class="custom-btn custom-btn-secondary border" @onclick="DenyFollowerRequest">
+                Rechazar
+            </button>
+        </div>
+    }
+    else
+    {
+        @if (isRejected)
+        {
+            <div class="userprofile-actions">
+                <button class="custom-btn custom-btn-secondary border usr-btn-rejected" disabled>
+                    Rechazado
+                </button>
+            </div>
+        }
+        else if (isAccepted)
+        {
+            <div class="userprofile-actions">
+                <button class="custom-btn custom-btn-secondary border usr-btn-accepted" disabled>
+                    Aceptado
+                </button>
+            </div>
+        }
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public UserSearch User { get; set; }
+    public bool actionPerfomed = false;
+    public bool isRejected = false;
+    public bool isAccepted = false;
+
+    private async void AcceptFollowerRequest()
+    {
+        isAccepted = false;
+        try
+        {
+            isAccepted = await AccountService.AcceptFollowerRequest(User.username);
+            if (isAccepted)
+            {
+                actionPerfomed = true;
+                User.hasSubmittedFollowerRequest = false;
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw error;
+        }
+        StateHasChanged();
+    }
+
+    private async void DenyFollowerRequest()
+    {
+        isRejected = false;
+        try
+        {
+            isRejected = await AccountService.AcceptFollowerRequest(User.username);
+            if (isRejected)
+            {
+                actionPerfomed = true;
+                User.hasSubmittedFollowerRequest = false;
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw error;
+        }
+        StateHasChanged();
+    }
+
+
+
+}

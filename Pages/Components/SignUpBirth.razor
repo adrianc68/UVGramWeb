@@ -1,0 +1,186 @@
+@using UVGramWeb.Shared.Data
+@inject Services.IAccountService AccountService
+
+<div class="su-bd">
+    <section class="su-bd-main card">
+        <div class="su-bd-description">
+            <img src="/images/birthday-cake.svg" alt="Pastel de cumpleaños que hace alusión a la fecha de nacimiento" />
+            <p class="bold">Agrega tu fecha de nacimiento</p>
+            <p> No se incluirá en tu perfil público</p>
+        </div>
+        <EditForm EditContext="@EditContext" OnValidSubmit="@ValidSubmit">
+            <div class="su-bd-form">
+
+                <InputSelect class="form-select input-size-color" Value="@MonthsSelected"
+                    ValueExpression="@(() => MonthsSelected)" ValueChanged="@((int e) => ChangeMonth(e))">
+                    @for (int i = 0; i < monthTemplate.Count; i++)
+                    {
+                        <option title=@monthTemplate[i] value=@(i+1)>@monthTemplate[i]</option>
+                    }
+                </InputSelect>
+
+                <InputSelect class="form-select input-size-color" Value="@DaysSelected"
+                    ValueExpression="@(() => DaysSelected)" ValueChanged="@((int e) => ChangeDay(e))">
+                    @for (int i = DaysOfMonthTemplate; i >= 1; i--)
+                    {
+                        if (i == DaysSelected)
+                        {
+                            <option title=@i value=@i selected>@i</option>
+                        }
+                        else
+                        {
+                            <option title=@i value=@i>@i</option>
+                        }
+                    }
+                </InputSelect>
+
+                <InputSelect class="form-select input-size-color" Value="@YearsSelected"
+                    ValueExpression="@(() => YearsSelected)" ValueChanged="@((int e) => ChangeYear(e))">
+                    @for (int i = DateTime.Now.Year; i > 1900; i--)
+                    {
+                        <option title=@i value=@i>@i</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="su-bd-select-description">
+                <p class="text-muted text-center">Debes ingresar la fecha en que naciste</p>
+                <p class="text-muted text-center">Indica tu fecha de nacimiento, aunque esta cuenta sea para un negocio,
+                    una
+                    mascota, etc.</p>
+            </div>
+            @if (message != null)
+            {
+                <div class="su-error-message text-center sm-font">
+                    <p role="alert" class="text-danger">@message</p>
+                </div>
+            }
+            <div class="su-buttons">
+                <button class="custom-btn custom-btn-primary" type="submit">Siguiente</button>
+            </div>
+        </EditForm>
+        <div class="su-buttons">
+            <button class="custom-btn custom-btn-secondary" @onclick=@(()=>
+                this.InvokeParentMethod(MoveBackward))>Volver</button>
+        </div>
+    </section>
+</div>
+
+@code {
+    [Parameter] public UserRegister UserRegisterModel { get; set; }
+    [Parameter] public EditContext EditContext { get; set; }
+    [Parameter] public Action MoveForward { get; set; }
+    [Parameter] public Action MoveBackward { get; set; }
+    private List<string> monthTemplate = new List<string>() { "enero", "febrero", "marzo", "abril", "mayo", "junio",
+"julio", "agosto", "septiembre", "octubre","noviembre", "diciembre"};
+    private int DaysOfMonthTemplate { get; set; } = 31;
+    private int DaysSelected { get; set; } = 31;
+    private int MonthsSelected { get; set; } = 1;
+    private int YearsSelected { get; set; } = 2022;
+    private string message;
+
+    protected override void OnInitialized()
+    {
+        if (UserRegisterModel != null && UserRegisterModel.birthdate != null)
+        {
+            DateTime date = DateTime.ParseExact(UserRegisterModel.birthdate, "yyyy-MM-dd",
+            System.Globalization.CultureInfo.InvariantCulture);
+            DaysSelected = date.Day;
+            MonthsSelected = date.Month;
+            YearsSelected = date.Year;
+            DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+        }
+    }
+
+    private void ChangeMonth(int value)
+    {
+        string month = monthTemplate[value - 1];
+        if (month != null)
+        {
+            MonthsSelected = monthTemplate.IndexOf(month) + 1;
+            DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+            UpdateDaySelected();
+        }
+        UpdateRegisterModel();
+    }
+
+    private void ChangeDay(int value)
+    {
+        DaysSelected = value;
+        if (DaysSelected > DaysOfMonthTemplate)
+        {
+            DaysSelected = DaysOfMonthTemplate;
+        }
+        else if (DaysSelected < 1)
+        {
+            DaysSelected = 1;
+        }
+        UpdateRegisterModel();
+    }
+
+    private void ChangeYear(int value)
+    {
+        if (value > 1900 || value < DateTime.Now.Year)
+        {
+            YearsSelected = value;
+            DaysOfMonthTemplate = DateTime.DaysInMonth(YearsSelected, MonthsSelected);
+            UpdateDaySelected();
+        }
+        UpdateRegisterModel();
+    }
+
+    private void UpdateRegisterModel()
+    {
+        try
+        {
+            DateTime date = new DateTime(YearsSelected, MonthsSelected, DaysSelected);
+            UserRegisterModel.birthdate = date.ToString("yyyy-MM-dd");
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
+    }
+
+    private void UpdateDaySelected()
+    {
+        if (DaysSelected > DaysOfMonthTemplate)
+        {
+            DaysSelected = DaysOfMonthTemplate;
+        }
+    }
+
+    private void InvokeParentMethod(Action action)
+    {
+        action?.Invoke();
+    }
+
+    private async void ValidSubmit()
+    {
+        UpdateRegisterModel();
+        bool status = await SendMessagecode();
+        if (status)
+        {
+            InvokeParentMethod(MoveForward);
+        }
+    }
+
+    private async Task<Boolean> SendMessagecode()
+    {
+        bool isSent = false;
+        try
+        {
+            UserCreateVerification model = new UserCreateVerification();
+            model.email = UserRegisterModel.email;
+            model.username = UserRegisterModel.username;
+            isSent = await AccountService.CreateVerificationCode(model);
+        }
+        catch (System.Exception error)
+        {
+            message = "El servidor ha tenido un error";
+            StateHasChanged();
+            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isSent;
+    }
+
+}

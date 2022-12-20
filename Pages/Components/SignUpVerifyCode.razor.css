@@ -1,0 +1,54 @@
+.su-code {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.suc-code-main {
+    width: 350px;
+    padding: 25px;
+}
+
+.su-code-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.su-code-description>img {
+    height: 80%;
+    width: 80%;
+}
+
+.su-code-form {
+    padding: 5px;
+    width: 100%;
+}
+
+.sucf-inputs {
+    width: 100%;
+    padding: 15px;
+}
+
+.su-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+}
+
+.su-buttons>button {
+    width: 100%;
+}
+
+.su-buttons>.custom-btn-secondary {
+    font-size: 0.88em;
+}
+
+.su-error-message {
+    text-align: center;
+    font-size: 0.88em;
+}

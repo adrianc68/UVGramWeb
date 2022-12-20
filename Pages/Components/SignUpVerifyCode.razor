@@ -1,0 +1,93 @@
+@inject Services.IAccountService AccountService
+@using UVGramWeb.Shared.Data
+@inject NavigationManager NavigationManager
+
+<div class="su-code">
+    <section class="suc-code-main card">
+        <div class="su-code-description">
+            <img src="/images/ide-24.svg" alt="Imagen decorativa que hace alusión a un telefono que recibe un código">
+            <p class="bold text-center">Solo un paso más</p>
+            <p class="text-muted text-center">Ingresa el código de 6 dígitos que enviamos a tu correo electrónico</p>
+        </div>
+        <EditForm EditContext="@EditContext" OnValidSubmit="@ValidSubmit">
+            <DataAnnotationsValidator />
+            <div class="su-code-form">
+                <div class="sucf-inputs">
+                    <div class="custom-form-floating">
+                        <InputText id="code" autocomplete="off" class="custom-form-input"
+                            @bind-Value="UserRegisterModel.verificationCode" aria-label="Código de verificación"
+                            required=true aria-required="true" />
+                        <label for="code" class="custom-form-floating-label">Código de confirmación</label>
+                        <CustomValidationMessage For="@(() => UserRegisterModel.verificationCode)" />
+                    </div>
+                </div>
+            </div>
+            @if (message != null)
+            {
+                <div class="su-error-message">
+                    <p role="alert" class="text-danger">@message</p>
+                </div>
+            }
+
+            <div class="su-buttons">
+                <button class="custom-btn custom-btn-primary" @onclick=@(()=>
+                    this.InvokeParentMethod(MoveForward))>Confirmar</button>
+                <button class="custom-btn custom-btn-secondary" @onclick="@(() => this.SendMessagecode())">Enviar un
+                    nuevo
+                    código</button>
+            </div>
+        </EditForm>
+
+    </section>
+</div>
+
+@code {
+    [Parameter] public Action MoveForward { get; set; }
+    [Parameter] public UserRegister UserRegisterModel { get; set; }
+    [Parameter] public EditContext EditContext { get; set; }
+    private string message;
+    private void InvokeParentMethod(Action action)
+    {
+        action?.Invoke();
+    }
+
+    private async Task<Boolean> SendMessagecode()
+    {
+        bool isSent = false;
+        try
+        {
+            UserCreateVerification model = new UserCreateVerification();
+            model.email = UserRegisterModel.email;
+            model.username = UserRegisterModel.username;
+            isSent = await AccountService.CreateVerificationCode(model);
+        }
+        catch (System.Exception error)
+        {
+            message = "El servidor ha tenido un error";
+            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isSent;
+    }
+
+    private async void ValidSubmit()
+    {
+        bool isSent = false;
+        try
+        {
+            isSent = await AccountService.CreateAccount(UserRegisterModel);
+        }
+        catch (System.Exception error)
+        {
+            message = "El servidor ha tenido un error";
+            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
+
+        }
+
+        if (isSent)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+
+
+    }
+}

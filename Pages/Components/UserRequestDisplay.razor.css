@@ -1,0 +1,65 @@
+.uc-usercard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    min-height: 60px;
+    max-height: 60px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+    color: #2d2d2d;
+}
+
+.uc-a {
+    text-decoration: none;
+    color: #2d2d2d;
+}
+
+.uc-username {
+    font-weight: 600;
+}
+
+.uc-no-select {
+    user-select: none;
+}
+
+
+.userprofile {
+    height: 44px;
+    width: 44px;
+    display: flex;
+}
+
+.userprofile-data {
+    font-size: 0.9em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.userprofile-data>span:last-child {
+    font-size: 0.85em;
+    color: #2d2d2d;
+}
+
+.userprofile-actions {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8em;
+}
+
+.usr-btn-rejected {
+    color: #ad0000;
+    border:#ad0000;
+    user-select: none;
+    pointer-events: none;
+}
+
+.usr-btn-accepted {
+    color: #0f940f;
+    border:#0f940f;
+    user-select: none;
+    pointer-events: none;
+}

@@ -1,0 +1,52 @@
+.userprofile-content {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: transparent;
+    overflow: hidden;
+    background-color: red;
+}
+
+.up-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.userprofile-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    background-color: rgb(54, 58, 54);
+    overflow: hidden;
+
+}
+
+.userprofile-img>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: contain;
+}
+
+.userprofile-history-available {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 100%;
+}
+
+.history-outstanding {
+    border: 2.5px solid red;
+    border-radius: 100%;
+}
+
+.history-seen {
+    border: 2.5px solid rgb(187, 187, 187);
+    border-radius: 100%;
+}

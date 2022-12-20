@@ -1,0 +1,73 @@
+.publication-profile {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+.ppb-ns {
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.128);
+}
+
+.pf-publication {
+    display: flex;
+    height: 293px;
+    width: 293px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    pointer-events: none;
+}
+
+.pf-profile-img>img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.pf-details {
+    background-color: rgba(0, 0, 0, 0.432);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+}
+
+.pf-likes {
+    width: 70px;
+    height: 25px;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pf-comments {
+    width: 70px;
+    height: 25px;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+
+@media (max-width: calc(293px * 3 + 130px)) {
+
+    .pf-publication {
+        height: 29vw;
+        width: 29vw;
+    }
+}

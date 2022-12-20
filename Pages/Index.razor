@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<AuthorizeView>
+    <Authorized>
+        <Home></Home>
+    </Authorized>
+    <NotAuthorized>
+        <main class="welcome-main-container">
+            <section class="wm-information-container">
+                <div class="wmi-container-image">
+                    <img src="images/ide-20.svg" alt="Imagen decorativa" />
+                </div>
+                <UVGramWeb.Pages.Components.Login></UVGramWeb.Pages.Components.Login>
+            </section>
+        </main>
+    </NotAuthorized>
+</AuthorizeView>

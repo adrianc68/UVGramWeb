@@ -1,0 +1,46 @@
+@using UVGramWeb.Shared.Data
+
+<a class="uc-usercard" href="/@User.username" @onclick="ExecuteOnClick" @onfocusin="ExecuteOnFocusIn">
+    <div class="usercard-img">
+        <div class="userprofile @(!NeedActions ? " uc-no-select" : "")">
+            <UserProfile></UserProfile>
+        </div>
+    </div>
+    <div class="userprofile-data">
+        <span class="semibold uc-username">@User.username</span>
+        <span class="text-muted">@User.name</span>
+    </div>
+
+    @if (NeedData)
+    {
+        <div class="userprofile-actions">
+            <button class="btn btn-link text-decoration-none" enabled>
+                <span>Seguir</span>
+            </button>
+        </div>
+    }
+
+</a>
+
+@code {
+    [Parameter]
+    public Action OnFocusIn { get; set; }
+    [Parameter]
+    public Action OnClick { get; set; }
+    [Parameter]
+    public UserSearch User { get; set; }
+    [Parameter]
+    public bool NeedData { get; set; } = false;
+    public bool NeedActions { get; set; } = false;
+
+    private void ExecuteOnClick()
+    {
+        OnClick?.Invoke();
+    }
+
+    private void ExecuteOnFocusIn()
+    {
+        OnFocusIn?.Invoke();
+    }
+
+}

@@ -1,0 +1,349 @@
+@page "/{username}"
+@inject Services.IAccountService AccountService;
+@using UVGramWeb.Pages.Components;
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager;
+
+@if (DataLoaded)
+{
+    if (AuthenticationService.User == null)
+    {
+        <Topbar>
+    <TopbarTools></TopbarTools>
+</Topbar>
+        <div class="profile-tbar-wa"></div>
+    }
+
+    @if (ValidUser)
+    {
+        <div class="profile">
+    <div class="profile-content">
+        <section class="profile-userdata">
+            <div class="profile-data">
+                <div class="userprofile">
+                    <div class="userprofile-img">
+                        <img src="images/ide-16.svg" />
+                        @* <UVGramWeb.Shared.UserProfile.UserProfile></UVGramWeb.Shared.UserProfile.UserProfile> *@
+                    </div>
+                </div>
+                <div class="profile-description">
+                    <div class="profile-a-container">
+                        <div class="profile-a-username">
+                            <h2>@UserProfile.username</h2>
+                        </div>
+                        <div class="profile-desc-actions">
+                                        @if (AuthenticationService.User != null && AuthenticationService.User.Username == UserProfile.username)
+                                        {
+                                        
+                                            <div>
+                                                <button class="custom-btn border">
+                                                    <a href="/accounts/edit/">
+                                                         Editar perfil
+                                                         </a>
+                                                    </button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            @if(!UserProfile.isFollowed && !UserProfile.isFollowerRequestSent) 
+                                            {
+                                                @if(!UserProfile.isBlocked) {
+                                            <div>
+                                                <button class="custom-btn border" @onclick="FollowProfile">Seguir</button>
+                                            </div>
+                                                }
+                                            } else if(UserProfile.isFollowerRequestSent)
+                                            {
+                                            <div>
+                                                <button class="custom-btn border " @onclick="UnfollowProfile">Pendiente</button>
+                                            </div>  
+                                            }
+                                            else
+                                            {
+                                            <div>
+                                                <button class="custom-btn border " @onclick="UnfollowProfile">Dejar de seguir</button>
+                                            </div>
+                                            }
+                                        @if(!UserProfile.isBlocked)
+                                        {
+                                        <div>
+                                            <button class="custom-btn border " @onclick="BlockUser">Bloquear</button>
+                                        </div>
+                                        } 
+                                        else 
+                                        {
+                                            <div>
+                                            <button class="custom-btn border " @onclick="UnblockUser">Desbloquear</button>
+                                        </div>
+                                        }
+                                    }
+                                   
+
+                                </div>
+                            </div>
+                            <div class="profile-b-container">
+                                <div class="profile-indicators">
+                                    <span class="profile-publications-span"><strong class="semibold">
+                                            @UserProfile.postsCreated
+                                        </strong>
+                                        publicaciones</span>
+                                    <div class="pf-followers">
+                                        <button class="border-0 bg-transparent" @onclick="ShowFollowersModal">
+                                            <span class="profile-followers-span"><strong
+                                            class="semibold">@UserProfile.followers</strong>
+                                                seguidores
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="pf-following">
+                                        <button class="border-0 bg-transparent" @onclick="ShowFollowedUsersModal">
+                                            <span class="profile-followed-span"><strong
+                                            class="semibold">@UserProfile.followed</strong>
+                                                seguidos</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-c-container">
+                                <span class="profile-name-span semibold">@UserProfile.name</span>
+                                <p class="muted-text">@UserProfile.presentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                @if ((AuthenticationService.User != null && UserProfile.username == AuthenticationService.User.Username) ||
+               UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO || (UserProfile.privacyType ==
+               Shared.Data.PrivacyType.PRIVADO && UserProfile.isFollowed))
+                {
+                    <article class="profile-stories"></article>
+                    <article class="profile-publications">
+            <div class="profile-tab">
+                <button class="pftab-navbtn pftab-selected">
+                    <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2 2h20v20H2V2zm2 2v4h4V4H4zm6 0v4h4V4h-4zm6 0v4h4V4h-4zm4 6h-4v4h4v-4zm0 6h-4v4h4v-4zm-6 4v-4h-4v4h4zm-6 0v-4H4v4h4zm-4-6h4v-4H4v4zm6-4v4h4v-4h-4z"
+                            fill="currentColor" />
+                    </svg>
+                    PUBLICACIONES
+                </button>
+            </div>
+            <div class="profile-publications-container">
+                @if(UserProfile.posts.Count == 0 ) 
+                {
+                    <div class ="profile-no-publications">
+                        <span class="pnp-icon">
+                        <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><desc/><g><path d="M25,7l-2-4H9L7,7H3   C1.895,7,1,7.895,1,9v18c0,1.105,0.895,2,2,2h26c1.105,0,2-0.895,2-2V9c0-1.105-0.895-2-2-2H25z" fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/><line fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" x1="28" x2="26" y1="11" y2="11"/><circle cx="16" cy="18" fill="none" r="7" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/></g></svg>
+                        </span>
+                        <h2>Aún no hay publicaciones</h2>
+                    </div>
+                }
+                @foreach (var post in UserProfile.posts)
+                            {
+                                <ProfilePublication Post="post"></ProfilePublication>
+                            }
+                        </div>
+                    </article>
+                }
+                else if (!UserProfile.isFollowed && Shared.Data.PrivacyType.PRIVADO == UserProfile.privacyType)
+                {
+                    <div class="profile-private-account card">
+                        <div class="ppa-message">
+                            <h2>Esta cuenta es privada</h2>
+                            <div class="ppa-message-lg">
+                                @if (AuthenticationService.User == null)
+                                {
+                                    <span>¿Ya sigues a @(UserProfile.username)?
+                                        <a href="/login">Inicia sesión</a>
+                                        para ver sus fotos y videos.
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span>Síguela para ver sus fotos y videos.</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <NotFound></NotFound>
+    }
+}
+
+
+@code {
+    [Parameter]
+    public string Username { get; set; }
+    public UVGramWeb.Shared.Data.Profile UserProfile { get; set; }
+    private bool ValidUser { get; set; } = false;
+    private bool DataLoaded { get; set; } = false;
+    [CascadingParameter] public IModalService Modal { get; set; } = default!;
+
+    private void ShowFollowersModal()
+    {
+        if(CheckAuthentication())
+        {
+        var options = new ModalOptions
+        {
+            UseCustomLayout = true
+        };
+        var parameters = new ModalParameters().Add(nameof(DisplayFollowers.Username), Username);
+        Modal.Show<DisplayFollowers>("Seguidores", parameters, options);
+        }
+    }
+
+    private void ShowFollowedUsersModal()
+    {
+        if(CheckAuthentication())
+        {
+
+           var options = new ModalOptions
+        {
+            UseCustomLayout = true
+        };
+        var parameters = new ModalParameters().Add(nameof(DisplayFollowed.Username), Username);
+        Modal.Show<DisplayFollowed>("Seguidos", parameters, options);
+        }
+
+    }
+
+    protected async Task GetData()
+    {
+        if (Username != null)
+        {
+            bool isValidUser = await CheckUser();
+            if (isValidUser)
+            {
+                UserProfile = await AccountService.GetProfile(Username.ToLower());
+                ValidUser = true;
+            }
+        }
+        DataLoaded = true;
+        StateHasChanged();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await GetData();
+    }
+
+    private async Task<bool> CheckUser()
+    {
+        bool isValid = false;
+        try
+        {
+            bool result = await AccountService.DoesUsernameExist(Username.ToLower());
+            if(result)
+            {
+                if(AuthenticationService.User != null ) {
+                    result = await AccountService.CheckIfUserIsBlocker(Username.ToLower());
+                    if(!result) 
+                    {
+                        isValid = true;
+                    }
+                } else {
+                    isValid = true;
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            Console.WriteLine(error);
+            isValid = false;
+        }
+        return isValid;
+    }
+
+    private async void FollowProfile()
+    {
+            if(CheckAuthentication()){
+        if( AuthenticationService.User.Username != null && UserProfile.username != AuthenticationService.User.Username)
+        {
+            bool result = await AccountService.FollowUser(UserProfile.username);
+            if(result) 
+            {
+                if(UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO)
+                {
+                    UserProfile.isFollowed = true;
+                    UserProfile.followers += 1;
+                } 
+                else 
+                {
+                    UserProfile.isFollowerRequestSent = true;
+                }
+            } 
+            StateHasChanged();
+        }
+        }
+    }
+
+    private async void UnfollowProfile()
+    {
+        if(CheckAuthentication()){
+        if( UserProfile.username != AuthenticationService.User.Username)
+        {
+            bool result = await AccountService.UnfollowUser(UserProfile.username);
+            if(result)
+            {
+                if(UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO || UserProfile.isFollowed)
+                {
+                    UserProfile.isFollowed = false;
+                    UserProfile.followers -= 1;
+                } 
+                else if(UserProfile.privacyType == Shared.Data.PrivacyType.PRIVADO || UserProfile.isFollowerRequestSent)
+                {
+                    UserProfile.isFollowerRequestSent = false;
+                }
+            }
+            StateHasChanged();
+        }
+        }
+
+    }
+
+    private async void BlockUser() 
+    {
+        if(CheckAuthentication()){
+         if( UserProfile.username != AuthenticationService.User.Username)
+        {
+            bool result = await AccountService.BlockUser(UserProfile.username);
+            if(result)
+            {
+                UserProfile.isBlocked = true;
+                NavigationManager.NavigateTo(NavigationManager.Uri, true);     
+            }
+        }
+        }
+    }
+
+    private async void UnblockUser()
+    {
+        if(CheckAuthentication()){
+       if( UserProfile.username != AuthenticationService.User.Username)
+        {
+            bool result = await AccountService.UnblockUser(UserProfile.username);
+            if(result)
+            {
+                UserProfile.isBlocked = false;
+                NavigationManager.NavigateTo(NavigationManager.Uri, true);            
+            }
+        }
+        }
+    }
+
+    private bool CheckAuthentication()
+    {
+        if (AuthenticationService.User == null)
+        {
+            NavigationManager.NavigateTo("/login");
+            return false;
+        }
+        return true;
+    }
+
+}

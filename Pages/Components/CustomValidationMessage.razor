@@ -1,0 +1,14 @@
+@typeparam TValue
+@inherits UVGramWeb.Shared.Validations.MessageValidatorBase<TValue>
+
+@if (EditContext.IsModified(_fieldIdentifier))
+{
+    if (ValidationMessages.Any())
+    {
+        <span class="custom-form-floating-checking-type"><span class="checkmark-invalid"></span></span>
+    }
+    else
+    {
+        <span class="custom-form-floating-checking-type"><span class="checkmark"></span></span>
+    }
+}

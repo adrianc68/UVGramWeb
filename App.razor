@@ -1,12 +1,34 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@inject NavigationManager NavigationManager
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        <CascadingBlazoredModal Position="ModalPosition.Middle" AnimationType="@ModalAnimationType.None">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="this.LayoutType">
+                <NotAuthorized>
+                    <UVGramWeb.Pages.Components.RedirectHome></UVGramWeb.Pages.Components.RedirectHome>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </CascadingBlazoredModal>
     </Found>
     <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>
+        <CascadingAuthenticationState>
+            <LayoutView Layout="this.LayoutType">
+                <UVGramWeb.Pages.Components.NotFound></UVGramWeb.Pages.Components.NotFound>
+            </LayoutView>
+        </CascadingAuthenticationState>
     </NotFound>
 </Router>
+
+
+@code {
+    private Type LayoutType = typeof(MainLayout);
+
+    public void SetLayout(Type layout)
+    {
+        if (layout != LayoutType)
+        {
+            this.LayoutType = layout;
+            StateHasChanged();
+        }
+    }
+}

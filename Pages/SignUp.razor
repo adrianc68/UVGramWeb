@@ -1,0 +1,118 @@
+@page "/signup"
+@inject NavigationManager Navigation;
+@using UVGramWeb.Pages.Components;
+@inject Services.IAccountService AccountService
+
+<section class="signUp">
+    @steps[currentStep]
+</section>
+
+
+@code {
+    [CascadingParameter] public Task<AuthenticationState> authStateTask { get; set; }
+
+    private RenderFragment[] steps = new RenderFragment[4];
+    private int currentStep = 0;
+
+    private UVGramWeb.Shared.Data.UserRegister newUserModel;
+    private EditContext editContext;
+    private ValidationMessageStore messages;
+
+    protected override async void OnInitialized()
+    {
+        var user = (await authStateTask).User;
+        if (user.Identity.IsAuthenticated)
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+        else
+        {
+            newUserModel = new Shared.Data.UserRegister();
+            editContext = new EditContext(newUserModel);
+
+            editContext.OnFieldChanged += EditContext_OnFieldChanged;
+            messages = new ValidationMessageStore(editContext);
+
+
+            steps[0] =
+    @<SignUpBasicInfo MoveForward="@MoveForward" UserRegisterModel="@newUserModel" EditContext="@editContext">
+    </SignUpBasicInfo>
+    ;
+            steps[1] =
+    @<SignUpBirth MoveForward="@MoveForward" MoveBackward="@MoveBackward" UserRegisterModel="@newUserModel"
+    EditContext="@editContext"></SignUpBirth>
+    ;
+            steps[2] =
+    @<SignUpVerifyCode MoveForward="@MoveForward" UserRegisterModel="@newUserModel" EditContext="@editContext">
+    </SignUpVerifyCode>
+    ;
+        }
+    }
+
+    public void MoveForward()
+    {
+        if (currentStep < 2)
+        {
+            currentStep += 1;
+            StateHasChanged();
+        }
+    }
+
+    public void MoveBackward()
+    {
+        if (currentStep > 0)
+        {
+            currentStep -= 1;
+            StateHasChanged();
+        }
+    }
+
+    private async void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs args)
+    {
+        editContext.Validate();
+        if (args.FieldIdentifier.FieldName == nameof(newUserModel.email))
+        {
+            if (!editContext.GetValidationMessages(args.FieldIdentifier).Any())
+            {
+                bool value = await AccountService.VerifyEmailAddress(newUserModel.email.ToLower());
+                if (value)
+                {
+                    messages.Clear(args.FieldIdentifier);
+                    messages.Add(args.FieldIdentifier, "Email is already registered");
+                }
+                else
+                {
+                    messages.Clear(args.FieldIdentifier);
+                }
+            }
+            else
+            {
+                messages.Clear(args.FieldIdentifier);
+            }
+        }
+
+        if (args.FieldIdentifier.FieldName == nameof(newUserModel.username))
+        {
+            if (!editContext.GetValidationMessages(args.FieldIdentifier).Any())
+            {
+                bool value = await AccountService.VerifyUsername(newUserModel.username.ToLower());
+                if (value)
+                {
+                    messages.Clear(args.FieldIdentifier);
+                    messages.Add(args.FieldIdentifier, "Username is already registered");
+                }
+                else
+                {
+                    messages.Clear(args.FieldIdentifier);
+                }
+            }
+            else
+            {
+                messages.Clear(args.FieldIdentifier);
+            }
+        }
+        editContext.NotifyValidationStateChanged();
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,59 @@
+.su-bd {
+    padding:35px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+}
+
+.su-bd-main {
+    padding:25px;
+    width:calc(430px - 30px);
+    display:flex;
+    align-items: center;
+}
+
+.su-bd-form {
+    display:flex;
+    gap:15px;
+    padding-left:35px;
+    padding-right:35px;
+}
+
+.su-bd-description {
+    padding:25px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.su-bd-description > img {
+    height:120px;
+    padding-bottom:15px;
+}
+
+
+.su-bd-select-description {
+    font-size:0.8em;
+    padding-left:25px;
+    padding-right:25px;
+}
+
+.su-buttons {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    gap:15px;
+    padding-left:25px;
+    padding-right:25px;
+}
+
+.su-buttons > button {
+    width:100%;
+}
+
+.su-buttons > .custom-btn-secondary {
+    font-size:0.88em;
+}

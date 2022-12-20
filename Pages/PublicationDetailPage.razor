@@ -1,0 +1,70 @@
+@page "/p/{uuid}"
+@using UVGramWeb.Shared.Data
+@using UVGramWeb.Pages.Components
+@inject UVGramWeb.Services.IPostService PostService
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager;
+
+@if (DataLoaded)
+{
+    if (ValidPost)
+    {
+        <div class="publication">
+    <PublicationDetail Post="Post"></PublicationDetail>
+</div>
+    }
+    else
+    {
+        <NotFound></NotFound>
+    }
+}
+
+@code {
+    [Parameter]
+    public string uuid { get; set; }
+    private bool DataLoaded { get; set; } = false;
+    private bool ValidPost { get; set; } = false;
+    private PostDetails Post { get; set; }
+
+
+    protected async Task GetData()
+    {
+        if (!String.IsNullOrEmpty(uuid))
+        {
+            try
+            {
+                Post = await PostService.GetPostDetails(uuid);
+                if (Post != null)
+                {
+                    ValidPost = true;
+                }
+            }
+            catch (System.Exception error)
+            {
+                Console.WriteLine(error);
+                ValidPost = false;
+            }
+        }
+        DataLoaded = true;
+        StateHasChanged();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (CheckAuthentication())
+        {
+            await GetData();
+        }
+    }
+
+    private bool CheckAuthentication()
+    {
+        if (AuthenticationService.User == null)
+        {
+            NavigationManager.NavigateTo("/login");
+            return false;
+        }
+        return true;
+    }
+
+}

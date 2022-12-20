@@ -1,9 +1,22 @@
 ﻿@inherits LayoutComponentBase
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager
+@using UVGramWeb.Pages.Components
 
-<PageTitle>UVGramWeb</PageTitle>
-
-<div class="page">
-    <main>
+@{
+    <AuthorizeView>
+        <Authorized>
+            <main class="main-page">
+                <Topbar>
+                    <TopbarTools></TopbarTools>
+                </Topbar>
+                <div class="main-content">
+                    @Body
+                </div>
+            </main>
+        </Authorized>
+        <NotAuthorized>
             @Body
-    </main>
-</div>
+        </NotAuthorized>
+    </AuthorizeView>
+}

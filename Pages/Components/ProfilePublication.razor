@@ -1,0 +1,63 @@
+@using UVGramWeb.Shared.Data
+@inject NavigationManager NavigationManager;
+@inject IJSRuntime JS
+@inject HttpClient Http
+
+<div class="publication-profile" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" @onclick="OnClick">
+    <div class="ppb-ns">
+        <div class="pf-publication">
+            <div class="pf-profile-img">
+                <img src="images/ide-13.svg" alt="Imagen de usuario">
+            </div>
+            @if (OnHover)
+            {
+                <div class="pf-details">
+                    <div class="pf-likes">
+                        <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                            d="M22 9.07503C22 10.7199 21.2857 12.1591 20.1633 13.2899L12.5102 20.7944C12.3061 20.8972 12.2041 21 12 21C11.7959 21 11.5918 20.8972 11.4898 20.7944L3.83673 13.1871C2.71429 12.0563 2 10.5142 2 8.86943C2 7.3274 2.71429 5.88818 3.83673 4.75737C5.06122 3.62655 6.59184 2.90694 8.22449 3.00974C9.55102 3.00974 10.7755 3.52375 11.7959 4.34616C14.2449 2.39293 17.7143 2.59853 19.9592 4.86017C21.2857 5.88818 22 7.4302 22 9.07503Z"
+                            fill="#fff" />
+                        </svg>
+                        <span>@Post.likes</span>
+                    </div>
+                    <div class="pf-comments">
+                        <svg width="19px" height="19px" fill="#fff" viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg">
+                            <path
+                            d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z" />
+                        </svg>
+                        <span>@Post.comments</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Post Post { get; set; }
+
+    private bool OnHover { get; set; } = false;
+
+    public string imageDataURL { get; set; }
+
+    private void OnMouseOver(MouseEventArgs e)
+    {
+        OnHover = true;
+        StateHasChanged();
+    }
+
+    private void OnMouseOut(MouseEventArgs e)
+    {
+        OnHover = false;
+        StateHasChanged();
+    }
+
+    private void OnClick()
+    {
+        NavigationManager.NavigateTo($"/p/{Post.uuid}", false);
+    }
+
+
+}

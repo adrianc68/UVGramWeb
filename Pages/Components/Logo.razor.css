@@ -1,0 +1,14 @@
+.logo {
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.logo > a {
+    text-decoration: none;
+    color:rgb(27, 26, 26);
+    letter-spacing: 3px;
+}
+
+.logo-title {
+    font-family: Lobster, 'Helvetica';
+}

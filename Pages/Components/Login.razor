@@ -1,0 +1,90 @@
+@inject Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager;
+
+<div class="wmi-container-login">
+    <div class="wmicl-login-card">
+        <form class="wmicllc-form card">
+            <div class="wmicllc-logo-title">
+                <UVGramWeb.Pages.Components.Logo></UVGramWeb.Pages.Components.Logo>
+            </div>
+
+            <EditForm model="@loginModel" OnValidSubmit="OnValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="wmicllc-inputs">
+                    <div class="custom-form-floating">
+                        <InputText id="username" @bind-Value="loginModel.emailOrUsername" autocomplete="off"
+                            class="custom-form-input" aria-label="usuario o correo electrónico" required=true
+                            aria-required="true" />
+                        <label for="username" class="custom-form-floating-label">Usuario o correo
+                            electrónico</label>
+                    </div>
+
+                    <div class="custom-form-floating">
+                        <InputText id="password" type="password" @bind-Value="loginModel.password" autocomplete="off"
+                            class="custom-form-input" aria-label="Contraseña" required=true aria-required="true" />
+                        <label for="password" class="custom-form-floating-label">Contraseña</label>
+                    </div>
+                </div>
+                <div class="wmicllc-buttons">
+                    <button class="custom-btn custom-btn-primary" disabled="@loading">
+                        <StatusOperation Loading="@loading" Done="@done" Message="Iniciar sesión"></StatusOperation>
+                    </button>
+                </div>
+
+                <div class="wmicllc-message">
+                    <ValidationMessage For="@(() => loginModel.emailOrUsername)" />
+                    @if (errorMessage != null)
+                    {
+                        <p role="alert" class="text-danger ">
+                            <span>@errorMessage</span>
+                        </p>
+                    }
+                </div>
+            </EditForm>
+            <div class="wmicllc-recover">
+                <button class="custom-btn custom-btn-secondary"
+                    @onclick="@(() => NavigationManager.NavigateTo("/accounts/password/reset"))">¿Olvidaste tu
+                    contraseña?
+                </button>
+            </div>
+        </form>
+        <section class="wmicllc-options card">
+            <span>¿No tienes una cuenta?</span>
+            <button class="custom-btn custom-btn-secondary no-padding"
+                @onclick="@(() => NavigationManager.NavigateTo("/signup"))">Registrate</button>
+        </section>
+    </div>
+</div>
+
+@code {
+    private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
+    private bool loading = false;
+    private bool done = false;
+    private String errorMessage;
+    [CascadingParameter] public Task<AuthenticationState> authStateTask { get; set; }
+    protected override async void OnInitialized()
+    {
+        var user = (await authStateTask).User;
+        if (user.Identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+    private async void OnValidSubmit()
+    {
+        errorMessage = null;
+        loading = true;
+        done = false;
+        try
+        {
+            await AuthenticationService.Login(loginModel);
+            done = true;
+        }
+        catch (Exception error)
+        {
+            errorMessage = error.Message;
+            loading = false;
+        }
+        StateHasChanged();
+    }
+}
