@@ -88,7 +88,7 @@
                                         </strong>
                                         publicaciones</span>
                                     <div class="pf-followers">
-                                        <button class="border-0 bg-transparent">
+                                        <button class="border-0 bg-transparent" @onclick="ShowFollowersModal">
                                             <span class="profile-followers-span"><strong
                                             class="semibold">@UserProfile.followers</strong>
                                                 seguidores
@@ -96,7 +96,7 @@
                                         </button>
                                     </div>
                                     <div class="pf-following">
-                                        <button class="border-0 bg-transparent">
+                                        <button class="border-0 bg-transparent" @onclick="ShowFollowedUsersModal">
                                             <span class="profile-followed-span"><strong
                                             class="semibold">@UserProfile.followed</strong>
                                                 seguidos</span>
@@ -182,6 +182,27 @@
     public UVGramWeb.Shared.Data.Profile UserProfile { get; set; }
     private bool ValidUser { get; set; } = false;
     private bool DataLoaded { get; set; } = false;
+    [CascadingParameter] public IModalService Modal { get; set; } = default!;
+
+    private void ShowFollowersModal()
+    {
+        var options = new ModalOptions
+        {
+            UseCustomLayout = true
+        };
+        var parameters = new ModalParameters().Add(nameof(DisplayFollowers.Username), Username);
+        Modal.Show<DisplayFollowers>("Seguidores", parameters, options);
+    }
+
+    private void ShowFollowedUsersModal()
+    {
+           var options = new ModalOptions
+        {
+            UseCustomLayout = true
+        };
+        var parameters = new ModalParameters().Add(nameof(DisplayFollowed.Username), Username);
+        Modal.Show<DisplayFollowed>("Seguidos", parameters, options);
+    }
 
     protected async Task GetData()
     {

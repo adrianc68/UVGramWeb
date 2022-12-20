@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using UVGramWeb;
 using UVGramWeb.Services;
 using Microsoft.AspNetCore.Components.Authorization;
+using Blazored.Modal;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -15,6 +16,7 @@ builder.Services.AddScoped<IHttpService, HttpService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddBlazoredModal();
 builder.Services.AddScoped(x =>
 {
     var apiUrl = new Uri("http://localhost:8080");

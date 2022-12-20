@@ -1,18 +1,19 @@
-@using Shared.Data
+@using UVGramWeb.Shared.Data
 @inject UVGramWeb.Services.IAuthenticationService AuthService
 @inject NavigationManager NavManager
 @inject Services.IAccountService AccountService;
 
 <div class="topbar-search">
-    <input type="text" id="search" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+    <input type="text" id="search" class="form-input-normal" placeholder="Buscar..." aria-label="Buscar"
         @oninput="SearchUsers" autocomplete="off" @onfocusin="ShowSearchTip" @onblur="HandleBlur">
 
     @if (ShowSearch)
     {
         @if (usersFilter.Count != 0)
         {
+            <div class="notsqr"></div>
             <div class="topbar-search-users card" @onfocusin="HandleFocus" @onfocusout="HandleBlur" tabindex="-1">
-                @foreach (var userSearch in usersFilter)
+        @foreach (var userSearch in usersFilter)
                 {
                     <UserDisplay User="@userSearch" OnClick="HideSearchTip"></UserDisplay>
                 }
@@ -43,6 +44,11 @@
                 <NavLink class="nav-link" href="@($"/{AuthService.User.Username}")" Match="NavLinkMatch.All">
                     <span class="oi oi-person" aria-label="Mi perfil"></span>
                 </NavLink>
+
+                <button class="btn shadow-none" @onclick="ShowFollowedUsersModal">
+                    <span class="oi oi-heart" aria-label="Notificaciones"></span>
+                </button>
+
                 <NavLink class="nav-link" href="/logout">
                     <span class="oi oi-account-logout" title="Salir" aria-label="Salir"></span>
                 </NavLink>
@@ -55,6 +61,8 @@
     CancellationTokenSource token;
     private List<UserSearch> usersFilter = new List<UserSearch>();
     private bool ShowSearch { get; set; } = false;
+    [CascadingParameter] public IModalService Modal { get; set; } = default!;
+
 
     private async void SearchUsers(ChangeEventArgs e)
     {
@@ -87,7 +95,8 @@
     private async Task HandleBlur(FocusEventArgs e)
     {
         token = new CancellationTokenSource();
-        await Task.Factory.StartNew(async () => {
+        await Task.Factory.StartNew(async () =>
+        {
             await Task.Delay(100);
             ShowSearch = false;
             await InvokeAsync(StateHasChanged);
@@ -96,14 +105,20 @@
 
     private void HandleFocus(FocusEventArgs e)
     {
-        if(token is CancellationTokenSource)
+        if (token is CancellationTokenSource)
         {
             token.Cancel();
         }
     }
 
-    
 
-
+    private void ShowFollowedUsersModal()
+    {
+        var options = new ModalOptions
+        {
+            UseCustomLayout = true
+        };
+        Modal.Show<DisplayNotifications>("Notificaciones", options);
+    }
 
 }

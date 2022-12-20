@@ -6,7 +6,7 @@
     border-color: rgba(0, 0, 0, .125);
     width: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 1;
 }
 
 .topbar {
@@ -33,7 +33,5 @@
 }
 
 @media (max-width: 860px) {
-    .topbar-card {
-
-    }
+   
 }

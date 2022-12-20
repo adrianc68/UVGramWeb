@@ -1,5 +1,5 @@
-@using Shared.Data
-@using Shared.Models
+@using UVGramWeb.Shared.Data
+@using UVGramWeb.Shared.Models
 @using UVGramWeb.Shared.Helpers
 @inject UVGramWeb.Services.IPostService PostService;
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
@@ -22,7 +22,7 @@
                             </span>
                         </time>
                     </div>
-                    <button class="border-0 bg-transparent">
+                    <button class="border-0 bg-transparent" @onclick="ShowCommentLikes">
                         <span class="text-muted">@CommentData.likes Me gusta</span>
                     </button>
                     <button class="border-0 bg-transparent"
@@ -82,6 +82,7 @@
 
     [Parameter]
     public EventCallback<AbstractPost> ChangeAbstractPostSelected { get; set; }
+    [CascadingParameter] public IModalService Modal { get; set; } = default!;
 
     private async void ChangeStatusLikeComment()
     {
@@ -148,6 +149,16 @@
         {
             CommentData.replies.Add(comment);
         }
+    }
+
+    private void ShowCommentLikes()
+    {
+        var options = new ModalOptions
+        {
+            UseCustomLayout = true
+        };
+        var parameters = new ModalParameters().Add(nameof(DisplayPostLikes.Post), CommentData);
+        Modal.Show<DisplayPostLikes>("Me gusta", parameters, options);
     }
 
 

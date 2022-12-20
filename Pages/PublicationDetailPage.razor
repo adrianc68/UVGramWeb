@@ -1,5 +1,5 @@
 @page "/p/{uuid}"
-@using Shared.Data
+@using UVGramWeb.Shared.Data
 @using UVGramWeb.Pages.Components
 @inject UVGramWeb.Services.IPostService PostService
 
@@ -15,10 +15,7 @@
     {
         <NotFound></NotFound>
     }
-
-
 }
-
 
 @code {
     [Parameter]

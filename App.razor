@@ -2,11 +2,13 @@
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="this.LayoutType">
-            <NotAuthorized>
-                <UVGramWeb.Pages.Components.RedirectHome></UVGramWeb.Pages.Components.RedirectHome>
-            </NotAuthorized>
-        </AuthorizeRouteView>
+        <CascadingBlazoredModal Position="ModalPosition.Middle" AnimationType="@ModalAnimationType.None">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="this.LayoutType">
+                <NotAuthorized>
+                    <UVGramWeb.Pages.Components.RedirectHome></UVGramWeb.Pages.Components.RedirectHome>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </CascadingBlazoredModal>
     </Found>
     <NotFound>
         <CascadingAuthenticationState>

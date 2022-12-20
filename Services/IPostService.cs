@@ -12,7 +12,6 @@ public interface IPostService
     Task<Boolean> DislikePost(string uuid);
     Task<Comment> ReplyComment(CreateComment model);
     Task<Comment> CommentPost(CreateComment model);
-
-
-
+    Task<List<UserSearch>> GetUsersLikesOfPost(string uuid);
+    Task<List<UserSearch>> GetUsersLikesOfComment(string uuid);
 }

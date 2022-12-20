@@ -586,4 +586,126 @@ public class AccountService : IAccountService
         }
         return users;
     }
+
+    public async Task<List<UserSearch>> GetFollowers(string username)
+    {
+        List<UserSearch> users = new List<UserSearch>();
+        try
+        {
+            var uri = $"/user/followers-of/{username}";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (message != null)
+            {
+                foreach (var item in message)
+                {
+                    UserSearch userSearch = new UserSearch();
+                    userSearch.username = Convert.ToString(item.username);
+                    userSearch.name = Convert.ToString(item.name);
+                    users.Add(userSearch);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return users;
+    }
+
+    public async Task<List<UserSearch>> GetFollowed(string username)
+    {
+        List<UserSearch> users = new List<UserSearch>();
+        try
+        {
+            var uri = $"/user/followed-by/{username}";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (message != null)
+            {
+                foreach (var item in message)
+                {
+                    UserSearch userSearch = new UserSearch();
+                    userSearch.username = Convert.ToString(item.username);
+                    userSearch.name = Convert.ToString(item.name);
+                    users.Add(userSearch);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return users;
+    }
+
+    public async Task<List<UserSearch>> GetPendingFollowerRequest()
+    {
+        List<UserSearch> users = new List<UserSearch>();
+        try
+        {
+            var uri = $"/user/followers/pending/";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (message != null)
+            {
+                foreach (var item in message)
+                {
+                    UserSearch userSearch = new UserSearch();
+                    userSearch.username = Convert.ToString(item.username);
+                    userSearch.name = Convert.ToString(item.name);
+                    userSearch.hasSubmittedFollowerRequest = String.Equals(Convert.ToString(item.status), "PENDIENTE");
+                    users.Add(userSearch);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return users;
+    }
+
+    public async Task<bool> AcceptFollowerRequest(string username)
+    {
+        bool isAccepted = false;
+        try
+        {
+            var uri = "/user/followers/accept/";
+            Username usernameModel = new Username();
+            usernameModel.username = username;
+            string resultData = await httpService.Post(uri, usernameModel);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            isAccepted = Convert.ToBoolean(message);
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isAccepted;
+    }
+
+    public async Task<bool> DenyFollowerRequest(string username)
+    {
+        bool isRejected = false;
+        try
+        {
+            var uri = "/user/followers/deny/";
+            Username usernameModel = new Username();
+            usernameModel.username = username;
+            string resultData = await httpService.Post(uri, usernameModel);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            isRejected = Convert.ToBoolean(message);
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return isRejected;
+    }
 }

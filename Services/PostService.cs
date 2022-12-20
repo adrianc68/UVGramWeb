@@ -226,4 +226,60 @@ public class PostService : IPostService
         }
         return isDisliked;
     }
+
+    public async Task<List<UserSearch>> GetUsersLikesOfPost(string uuid)
+    {
+        List<UserSearch> users = new List<UserSearch>();
+        try
+        {
+            var uri = $"/post/details/likes/{uuid}";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (message != null)
+            {
+                foreach (var item in message.likedBy)
+                {
+                    UserSearch userSearch = new UserSearch();
+                    userSearch.username = Convert.ToString(item.username);
+                    userSearch.name = Convert.ToString(item.name);
+                    userSearch.isFollowed = Convert.ToBoolean(item.isFollowed);
+                    users.Add(userSearch);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return users;
+    }
+
+    public async Task<List<UserSearch>> GetUsersLikesOfComment(string uuid)
+    {
+        List<UserSearch> users = new List<UserSearch>();
+        try
+        {
+            var uri = $"/post/comment/details/likes/{uuid}";
+            string resultData = await httpService.Get(uri);
+            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+            var message = json.message;
+            if (message != null)
+            {
+                foreach (var item in message.likedBy)
+                {
+                    UserSearch userSearch = new UserSearch();
+                    userSearch.username = Convert.ToString(item.username);
+                    userSearch.name = Convert.ToString(item.name);
+                    userSearch.isFollowed = Convert.ToBoolean(item.isFollowed);
+                    users.Add(userSearch);
+                }
+            }
+        }
+        catch (System.Exception error)
+        {
+            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        }
+        return users;
+    }
 }

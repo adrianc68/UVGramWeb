@@ -25,4 +25,9 @@ public interface IAccountService
     Task<Boolean> ChangePassword(ChangeActualPassword model);
     Task<Boolean> ChangePrivacy(ChangePrivacy model);
     Task<List<UserSearch>> FilterUsers(string filter);
+    Task<List<UserSearch>> GetFollowers(string username);
+    Task<List<UserSearch>> GetFollowed(string username);
+    Task<List<UserSearch>> GetPendingFollowerRequest();
+    Task<Boolean> AcceptFollowerRequest(string username);
+    Task<Boolean> DenyFollowerRequest(string username);
 }

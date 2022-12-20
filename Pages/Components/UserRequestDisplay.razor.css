@@ -12,16 +12,17 @@
     color: #2d2d2d;
 }
 
+.uc-a {
+    text-decoration: none;
+    color: #2d2d2d;
+}
+
 .uc-username {
     font-weight: 600;
 }
 
 .uc-no-select {
     user-select: none;
-}
-
-.uc-usercard:hover {
-    background-color: rgba(59, 59, 59, 0.084);
 }
 
 
@@ -43,9 +44,22 @@
     color: #2d2d2d;
 }
 
-.userprofile-actions>button {
+.userprofile-actions {
+    display: flex;
+    gap: 10px;
     font-size: 0.8em;
-    color: #3d3939;
-    font-weight: 600;
-    padding: 0;
+}
+
+.usr-btn-rejected {
+    color: #ad0000;
+    border:#ad0000;
+    user-select: none;
+    pointer-events: none;
+}
+
+.usr-btn-accepted {
+    color: #0f940f;
+    border:#0f940f;
+    user-select: none;
+    pointer-events: none;
 }

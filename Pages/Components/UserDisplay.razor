@@ -1,4 +1,4 @@
-@using Shared.Data
+@using UVGramWeb.Shared.Data
 
 <a class="uc-usercard" href="/@User.username" @onclick="ExecuteOnClick" @onfocusin="ExecuteOnFocusIn">
     <div class="usercard-img">
@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="userprofile-data">
-        <span class="semibold">@User.username</span>
+        <span class="semibold uc-username">@User.username</span>
         <span class="text-muted">@User.name</span>
     </div>
 
