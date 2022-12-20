@@ -1,27 +1,12 @@
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+
 <div class="wrapper">
     <div class="home">
-        <div class="histories card">
-            <div class="histories-content">
-
+        <div class="home-message card">
+            <h1>Bienvenido @AuthenticationService.User.Username</h1>
+            <div class="publications">
+                <span></span>
             </div>
         </div>
-        <div class="publications">
-        </div>
-
-        <section class="aside">
-            <div class="aside-content">
-                <div class="suggestions-content">
-                    <div class="suggestions-header">
-                        <span class="bold text-muted">Sugerencias para tí</span>
-                        <span class="bold"> Ver más</span>
-                    </div>
-                    <div class="suggestions-cbody">
-                        @* <UVGramWeb.Shared.Suggestions.Suggestions></UVGramWeb.Shared.Suggestions.Suggestions> *@
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
     </div>
 </div>

@@ -251,15 +251,15 @@
     private int FacultySelected { get; set; } = 0;
     private List<Faculty> Faculties { get; set; } = new List<Faculty>();
     private List<EducationalProgram> EducationalPrograms { get; set; } = new List<EducationalProgram>();
-
     private string errorMessage { get; set; }
-
     private string successfulMessage { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        CheckAuthentication();
-        await GetData();
+        if (CheckAuthentication())
+        {
+            await GetData();
+        }
     }
 
     protected async Task GetData()
@@ -279,13 +279,14 @@
         StateHasChanged();
     }
 
-    private void CheckAuthentication()
+    private bool CheckAuthentication()
     {
         if (AuthenticationService.User == null)
         {
             NavigationManager.NavigateTo("/login");
-            return;
+            return false;
         }
+        return true;
     }
 
     private async void GetAvailableRegion()

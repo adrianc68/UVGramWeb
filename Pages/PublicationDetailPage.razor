@@ -2,6 +2,8 @@
 @using UVGramWeb.Shared.Data
 @using UVGramWeb.Pages.Components
 @inject UVGramWeb.Services.IPostService PostService
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager;
 
 @if (DataLoaded)
 {
@@ -49,7 +51,20 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        await GetData();
+        if (CheckAuthentication())
+        {
+            await GetData();
+        }
+    }
+
+    private bool CheckAuthentication()
+    {
+        if (AuthenticationService.User == null)
+        {
+            NavigationManager.NavigateTo("/login");
+            return false;
+        }
+        return true;
     }
 
 }

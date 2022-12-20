@@ -186,22 +186,30 @@
 
     private void ShowFollowersModal()
     {
+        if(CheckAuthentication())
+        {
         var options = new ModalOptions
         {
             UseCustomLayout = true
         };
         var parameters = new ModalParameters().Add(nameof(DisplayFollowers.Username), Username);
         Modal.Show<DisplayFollowers>("Seguidores", parameters, options);
+        }
     }
 
     private void ShowFollowedUsersModal()
     {
+        if(CheckAuthentication())
+        {
+
            var options = new ModalOptions
         {
             UseCustomLayout = true
         };
         var parameters = new ModalParameters().Add(nameof(DisplayFollowed.Username), Username);
         Modal.Show<DisplayFollowed>("Seguidos", parameters, options);
+        }
+
     }
 
     protected async Task GetData()
@@ -253,7 +261,7 @@
 
     private async void FollowProfile()
     {
-        CheckAuthentication();
+            if(CheckAuthentication()){
         if( AuthenticationService.User.Username != null && UserProfile.username != AuthenticationService.User.Username)
         {
             bool result = await AccountService.FollowUser(UserProfile.username);
@@ -271,11 +279,12 @@
             } 
             StateHasChanged();
         }
+        }
     }
 
     private async void UnfollowProfile()
     {
-    CheckAuthentication();
+        if(CheckAuthentication()){
         if( UserProfile.username != AuthenticationService.User.Username)
         {
             bool result = await AccountService.UnfollowUser(UserProfile.username);
@@ -293,10 +302,13 @@
             }
             StateHasChanged();
         }
+        }
+
     }
 
     private async void BlockUser() 
     {
+        if(CheckAuthentication()){
          if( UserProfile.username != AuthenticationService.User.Username)
         {
             bool result = await AccountService.BlockUser(UserProfile.username);
@@ -306,11 +318,12 @@
                 NavigationManager.NavigateTo(NavigationManager.Uri, true);     
             }
         }
+        }
     }
 
     private async void UnblockUser()
     {
-        CheckAuthentication();
+        if(CheckAuthentication()){
        if( UserProfile.username != AuthenticationService.User.Username)
         {
             bool result = await AccountService.UnblockUser(UserProfile.username);
@@ -320,17 +333,17 @@
                 NavigationManager.NavigateTo(NavigationManager.Uri, true);            
             }
         }
-    }
-
-    private void CheckAuthentication() 
-    {
-    if(AuthenticationService.User == null )
-        {
-            NavigationManager.NavigateTo("/login");
-            return;
         }
     }
 
-
+    private bool CheckAuthentication()
+    {
+        if (AuthenticationService.User == null)
+        {
+            NavigationManager.NavigateTo("/login");
+            return false;
+        }
+        return true;
+    }
 
 }

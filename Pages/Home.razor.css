@@ -1,23 +1,22 @@
 .wrapper {
-    /*height:calc(100vh - 62px);*/
-    height: 10000px;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    background-color: red;
+    align-items: center;
 }
 
 .home {
-    display: grid;
-    width: 75%;
+    width: 100%;
     height: 100%;
-    grid-gap: 15px;
-    grid-template-areas:
-        "a c"
-        "b c";
-    grid-template-columns: calc(65% - 15px) 35%;
-    grid-template-rows: 120px calc(80vh - 15px);
-    padding: 25px 15px 0 15px;
+    padding:45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-message {
+    padding:45px;
 }
 
 .histories {

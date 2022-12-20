@@ -39,17 +39,20 @@
 
     protected override async Task OnInitializedAsync()
     {
-        CheckAuthentication();
-        await GetData();
+        if (CheckAuthentication())
+        {
+            await GetData();
+        }
     }
 
-    private void CheckAuthentication()
+    private bool CheckAuthentication()
     {
         if (AuthenticationService.User == null)
         {
             NavigationManager.NavigateTo("/login");
-            return;
+            return false;
         }
+        return true;
     }
 
     protected async Task GetData()
