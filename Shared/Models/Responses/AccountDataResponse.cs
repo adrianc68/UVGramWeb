@@ -6,12 +6,12 @@ public class AccountDataResponse
     public string Presentation { get; set; }
     public string Username { get; set; }
     public string Email { get; set; }
-    public int Phone_number { get; set; }
+    public string Phone_number { get; set; }
     public string Birthday { get; set; }
     public string Role { get; set; }
     public string PrivacyType { get; set; }
     public string Gender { get; set; }
-    public int Id_Educational_Program { get; set; }
-    public int Id_Region { get; set; }
-    public int Id_Faculty { get; set; }
+    public string Id_Educational_Program { get; set; }
+    public string Id_Region { get; set; }
+    public string Id_Faculty { get; set; }
 }

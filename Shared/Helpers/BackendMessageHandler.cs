@@ -10,39 +10,10 @@ public static class BackendMessageHandler
         {
             return MessageType.API_ERROR;
         }
-        dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(error.Message);
-        if (json.errors != null)
-        {
-            return MessageType.INVALID_DATA;
-        }
-        string code = json.data.code;
-        return Enum.Parse<MessageType>(code);
+        return MessageType.INTERNAL_ERROR;
     }
 
-    public static object GetMessageFromJson<T>(string data)
-    {
-        dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-        if (json.status == (int)HttpStatusCode.OK)
-        {
-            return new ApiResponse<T>
-            {
-                Status = json.status,
-                Message = json.message,
-                Data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json.data.ToString()),
-                Version = json.version
-            };
-        }
-
-        if (json.errors != null)
-        {
-            return MessageType.INVALID_DATA;
-        }
-        string code = json.data.code;
-        System.Console.WriteLine(code);
-        return Enum.Parse<MessageType>(code);
-    }
-
-    public static ApiResponse<object> GetMessageFromJson2<T>(string data)
+    public static ApiResponse<object> GetMessageFromJson<T>(string data)
     {
         dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
         int status = json.status;

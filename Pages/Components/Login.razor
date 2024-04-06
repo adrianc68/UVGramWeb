@@ -25,7 +25,7 @@
      </div>
     </div>
     <div class="wmicllc-buttons">
-     <button class="custom-btn custom-btn-primary" disabled="@buttonPressed">
+     <button class="custom-btn custom-btn-primary" disabled="@loading">
       <StatusOperation Loading="@loading" Done="@done" Message="Iniciar sesión"></StatusOperation>
      </button>
     </div>
@@ -59,7 +59,6 @@
  private UVGramWeb.Shared.Data.Login loginModel = new Shared.Data.Login();
  private bool loading = false;
  private bool done = false;
- private bool buttonPressed = false;
  private String errorMessage;
  [CascadingParameter] public Task<AuthenticationState> authStateTask { get; set; }
  protected override async void OnInitialized()
@@ -74,7 +73,6 @@
  {
   errorMessage = null;
   loading = true;
-  buttonPressed = true;
   done = false;
   MessageType result = MessageType.NONE;
   try
@@ -84,22 +82,22 @@
   catch (Exception error)
   {
    Console.WriteLine(error);
-   errorMessage = error.Message;
+   result = MessageType.INTERNAL_ERROR;
   }
+  if (result == MessageType.OK)
+  {
   loading = false;
-  if (result != MessageType.OK)
-  {
-   errorMessage = result.ToString();
-  }
-  else
-  {
    done = true;
    StateHasChanged();
    await Task.Delay(1500);
    AuthenticationService.NotifyUserLoginChange();
    return;
   }
-  buttonPressed = false;
+  else
+  {
+   errorMessage = result.ToString();
+  }
+  loading = false;
   StateHasChanged();
  }
 }
