@@ -20,11 +20,11 @@ builder.Services.AddBlazoredModal();
 
 builder.Services.AddScoped(x =>
 {
-    var apiUrl = new Uri("http://192.168.10.148:8080");
+    var apiUrl = new Uri("http://localhost:8080");
     return new HttpClient() { BaseAddress = apiUrl };
 });
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://192.168.10.148:8080") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8080") });
 
 var host = builder.Build();
 var authService = host.Services.GetRequiredService<IAuthenticationService>();

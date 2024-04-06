@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="ACCOUNT_PRIVACY_IS_ALREADY_TAKEN" xml:space="preserve">
+        <value>Your account is already: $</value>
+    </data>
+    <data name="API_ERROR" xml:space="preserve">
+        <value>Error al comunicarse con un servicio externo</value>
+    </data>
+    <data name="AUTHENTICATION_ERROR" xml:space="preserve">
+        <value>Error de autenticación al acceder a un servicio externo</value>
+    </data>
+    <data name="BAD_PASSWORD" xml:space="preserve">
+        <value>Password does not match</value>
+    </data>
+    <data name="BLOCKED_TO" xml:space="preserve">
+        <value>You have blocked to $</value>
+    </data>
+    <data name="CANNOT_ACCEPT_DENY_YOURSELF" xml:space="preserve">
+        <value>You cannot accept or deny follower request from yourself</value>
+    </data>
+    <data name="CANNOT_BLOCK_YOURSELF" xml:space="preserve">
+        <value>You cannot block yourself</value>
+    </data>
+    <data name="CANNOT_FOLLOW_YOURSELF" xml:space="preserve">
+        <value>You cannot follow yourself</value>
+    </data>
+    <data name="CANNOT_REMOVE_YOURSELF_FROM_FOLLOWERS" xml:space="preserve">
+        <value>You cannot delete yourself from your followers</value>
+    </data>
+    <data name="CANNOT_SEND_FOLLOWER_REQUEST_TO" xml:space="preserve">
+        <value>Cannot send follower request to $</value>
+    </data>
+    <data name="CANNOT_UNBLOCK_YOURSELF" xml:space="preserve">
+        <value>You cannot unblock yourself</value>
+    </data>
+    <data name="CANNOT_UNFOLLOW_YOURSELF" xml:space="preserve">
+        <value>You cannot unfollow yourself</value>
+    </data>
+    <data name="CONFIGURATION_ERROR" xml:space="preserve">
+        <value>Error de configuración del sistema</value>
+    </data>
+    <data name="CONFIRMATION_CODE_SENT" xml:space="preserve">
+        <value>a confirmation address has been sent to the email</value>
+    </data>
+    <data name="CONNECTION_ERROR" xml:space="preserve">
+        <value>Error de conexión con un servicio externo</value>
+    </data>
+    <data name="DATABASE_ERROR" xml:space="preserve">
+        <value>Error en la base de datos</value>
+    </data>
+    <data name="DATA_TOO_LONG" xml:space="preserve">
+        <value>Los datos proporcionados son demasiado largos</value>
+    </data>
+    <data name="DELETED_TO" xml:space="preserve">
+        <value>You have removed $ from your followers</value>
+    </data>
+    <data name="DISK_FULL" xml:space="preserve">
+        <value>El disco está lleno, no se pueden realizar más operaciones</value>
+    </data>
+    <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
+        <value>The email is already registered</value>
+    </data>
+    <data name="EMAIL_NOT_REGISTERED" xml:space="preserve">
+        <value>The email is not registered</value>
+    </data>
+    <data name="ERROR_CANNOT_CHANGE_EMAIL" xml:space="preserve">
+        <value>Cannot change email, try later</value>
+    </data>
+    <data name="ERROR_CANNOT_CHANGE_PASSWORD" xml:space="preserve">
+        <value>Cannot change password, try later</value>
+    </data>
+    <data name="ERROR_GENERATE_URL" xml:space="preserve">
+        <value>Cannot generate a new url</value>
+    </data>
+    <data name="ERROR_SEND_CODE_VERIFICATION" xml:space="preserve">
+        <value>Cannot send message to this address</value>
+    </data>
+    <data name="FOLLOWER_REQUEST_ALREADY_SENT" xml:space="preserve">
+        <value>Follower request is already sent to user</value>
+    </data>
+    <data name="FOLLOWER_REQUEST_SENT_TO" xml:space="preserve">
+        <value>Follower request sent to $</value>
+    </data>
+    <data name="FOLLOWING_TO" xml:space="preserve">
+        <value>You are now following to $</value>
+    </data>
+    <data name="INTERNAL_ERROR" xml:space="preserve">
+        <value>Error interno del sistema</value>
+    </data>
+    <data name="INVALID_CATEGORY_TYPE_PROVIDED" xml:space="preserve">
+        <value>category type provided does not exist</value>
+    </data>
+    <data name="INVALID_DATA" xml:space="preserve">
+        <value>Los datos proporcionados son inválidos</value>
+    </data>
+    <data name="INVALID_GENDER_TYPE_PROVIDED" xml:space="preserve">
+        <value>gender provided does not exist</value>
+    </data>
+    <data name="INVALID_IDCAREER_TYPE_PROVIDED" xml:space="preserve">
+        <value>idCareer provided does not exist</value>
+    </data>
+    <data name="INVALID_INPUT" xml:space="preserve">
+        <value>Los datos proporcionados son inválidos</value>
+    </data>
+    <data name="INVALID_TOKEN_TYPE" xml:space="preserve">
+        <value>You must provide a token of type $</value>
+    </data>
+    <data name="INVALID_VERIFICATION_CODE" xml:space="preserve">
+        <value>verification code is not valid</value>
+    </data>
+    <data name="LOGOUT_SUCESSFUL" xml:space="preserve">
+        <value>Logout sucessfull</value>
+    </data>
+    <data name="MISSING_FIELD" xml:space="preserve">
+        <value>Falta uno o más campos obligatorios</value>
+    </data>
+    <data name="NOT_FOUND" xml:space="preserve">
+        <value>No se encontró el usuario</value>
+    </data>
+    <data name="NO_FOLLOWER_REQUEST_FROM_USER" xml:space="preserve">
+        <value>There is no follower request from $</value>
+    </data>
+    <data name="OK" xml:space="preserve">
+        <value>Successfull request</value>
+    </data>
+    <data name="PASSWORD_NOT_MATCH_WITH_ACTUAL" xml:space="preserve">
+        <value>The old password does not match actual password</value>
+    </data>
+    <data name="TIMEOUT_ERROR" xml:space="preserve">
+        <value>Tiempo de espera agotado al comunicarse con un servicio externo</value>
+    </data>
+    <data name="UNABLE_TO_FOLLOW_TO" xml:space="preserve">
+        <value>Cannot follow to $</value>
+    </data>
+    <data name="UNAUTHORIZED" xml:space="preserve">
+        <value>You don't have permissions to perform this action!</value>
+    </data>
+    <data name="UNBLOCKED_TO" xml:space="preserve">
+        <value>You have unblocked to $</value>
+    </data>
+    <data name="UNFOLLOWED_TO" xml:space="preserve">
+        <value>You have unfollowed to $</value>
+    </data>
+    <data name="URL_EXPIRED" xml:space="preserve">
+        <value>URL has expired</value>
+    </data>
+    <data name="URL_INVALID" xml:space="preserve">
+        <value>URL is not valid</value>
+    </data>
+    <data name="USERNAME_NOT_FOUND" xml:space="preserve">
+        <value>username not found</value>
+    </data>
+    <data name="USER_ALREADY_REGISTERED" xml:space="preserve">
+        <value>username is already registered</value>
+    </data>
+    <data name="USER_BLOCKED" xml:space="preserve">
+        <value>The user has been blocked</value>
+    </data>
+    <data name="USER_HAS_BLOCKED_YOU" xml:space="preserve">
+        <value>User has blocked you</value>
+    </data>
+    <data name="USER_HAS_PRIVATE_ACCOUNT" xml:space="preserve">
+        <value>User has private account</value>
+    </data>
+    <data name="USER_IS_ALREADY_ACCEPTED" xml:space="preserve">
+        <value>User is already accepted</value>
+    </data>
+    <data name="USER_IS_ALREADY_BLOCKED" xml:space="preserve">
+        <value>User is already blocked</value>
+    </data>
+    <data name="USER_IS_ALREADY_FOLLOWED" xml:space="preserve">
+        <value>User is already followed</value>
+    </data>
+    <data name="USER_IS_ALREADY_UNBLOCKED" xml:space="preserve">
+        <value>User is already unblocked</value>
+    </data>
+    <data name="USER_IS_ALREADY_UNFOLLOWED" xml:space="preserve">
+        <value>User is already unfollowed</value>
+    </data>
+    <data name="USER_IS_NOT_FOLLOWING_YOU" xml:space="preserve">
+        <value>$ is not following you</value>
+    </data>
+    <data name="USER_NOT_FOUND" xml:space="preserve">
+        <value>user not found</value>
+    </data>
+    <data name="USER_NOT_REGISTERED" xml:space="preserve">
+        <value>username not registered</value>
+    </data>
+    <data name="WAITFOR_GENERATE_VERIFICATION_CODE" xml:space="preserve">
+        <value>Please wait to generate another verification code</value>
+    </data>
+    <data name="WAITFOR_GENERATE_VERIFICATION_CODE" xml:space="preserve">
+        <value>please wait 5 minutes to generate another one</value>
+    </data>
+</root>

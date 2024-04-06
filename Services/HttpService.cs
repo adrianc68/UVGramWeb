@@ -19,7 +19,12 @@ public class HttpService : IHttpService
     private ILocalStorageService localStorageService;
     private IConfiguration configuration;
 
-    public HttpService(HttpClient httpClient, NavigationManager navigationManager, ILocalStorageService localStorageService, IConfiguration configuration)
+    public HttpService(
+        HttpClient httpClient,
+        NavigationManager navigationManager,
+        ILocalStorageService localStorageService,
+        IConfiguration configuration
+    )
     {
         this.httpClient = httpClient;
         this.navigationManager = navigationManager;
@@ -62,33 +67,19 @@ public class HttpService : IHttpService
         var request = new HttpRequestMessage(method, uri);
         if (value != null)
         {
-            request.Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(value), System.Text.Encoding.UTF8, "application/json");
+            request.Content = new StringContent(
+                System.Text.Json.JsonSerializer.Serialize(value),
+                System.Text.Encoding.UTF8,
+                "application/json"
+            );
         }
         return request;
-    }
-
-    private async Task sendRequest(HttpRequestMessage request)
-    {
-        await addJwtHeader(request);
-        using var response = await httpClient.SendAsync(request);
-        if (response.StatusCode == HttpStatusCode.Unauthorized)
-        {
-            navigationManager.NavigateTo("/authentication/logout");
-            return;
-        }
-        await handleErrors(response);
     }
 
     private async Task<string> sendRequest<T>(HttpRequestMessage request)
     {
         await addJwtHeader(request);
         using var response = await httpClient.SendAsync(request);
-        if (response.StatusCode == HttpStatusCode.Unauthorized)
-        {
-            navigationManager.NavigateTo("/logout");
-            return default;
-        }
-        await handleErrors(response);
         return await response.Content.ReadAsStringAsync();
     }
 
@@ -100,21 +91,11 @@ public class HttpService : IHttpService
             var isApiUrl = !request.RequestUri.IsAbsoluteUri;
             if (isApiUrl)
             {
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", User.accessToken);
+                request.Headers.Authorization = new AuthenticationHeaderValue(
+                    "Bearer",
+                    User.AccessToken
+                );
             }
         }
     }
-
-    private async Task handleErrors(HttpResponseMessage response)
-    {
-        if (!response.IsSuccessStatusCode)
-        {
-            var error = await response.Content.ReadAsStringAsync();
-            throw new Exception(error);
-        }
-    }
-
-
-
-
 }

@@ -1,9 +1,11 @@
-using UVGramWeb.Shared.Data;
-using UVGramWeb.Shared.Models;
+using System.Net;
 using Microsoft.AspNetCore.Components;
-using UVGramWeb.Shared.Exceptions;
 using Microsoft.AspNetCore.Components.Authorization;
+using Newtonsoft.Json.Linq;
+using UVGramWeb.Shared.Data;
+using UVGramWeb.Shared.Exceptions;
 using UVGramWeb.Shared.Helpers;
+using UVGramWeb.Shared.Models;
 
 namespace UVGramWeb.Services;
 
@@ -16,7 +18,12 @@ public class AuthenticationService : IAuthenticationService
     private string userKey = "login";
     public User User { get; private set; }
 
-    public AuthenticationService(IHttpService httpService, ILocalStorageService localStorageService, NavigationManager navigationManager, AuthenticationStateProvider AuthenticationStateProvider)
+    public AuthenticationService(
+        IHttpService httpService,
+        ILocalStorageService localStorageService,
+        NavigationManager navigationManager,
+        AuthenticationStateProvider AuthenticationStateProvider
+    )
     {
         this.httpService = httpService;
         this.localStorageService = localStorageService;
@@ -29,61 +36,46 @@ public class AuthenticationService : IAuthenticationService
         User = await localStorageService.GetItem<User>(userKey);
     }
 
-    public async Task Login(Login model)
+    public async Task<MessageType> Login(Login model)
     {
-        string data = null;
+        MessageType result = MessageType.NONE;
         try
         {
-            data = await httpService.Post("/authentication/login", model);
+            string data = await httpService.Post("/authentication/login", model);
+            // object message = BackendMessageHandler.GetMessageFromJson<LoginResponse>(data);
+            ApiResponse<object> message2 = BackendMessageHandler.GetMessageFromJson2<LoginResponse>(
+                data
+            );
+
+           if(message2.Status != (int)HttpStatusCode.OK) {
+                CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse) message2.Data;
+                result = codeMessageData.Code;
+           }
+
+
+            // if (message is ApiResponse<LoginResponse>)
+            // {
+            //     ApiResponse<LoginResponse> loginResponse = (ApiResponse<LoginResponse>)message;
+            //     User = new User
+            //     {
+            //         AccessToken = loginResponse.Data.AccessToken,
+            //         RefreshToken = loginResponse.Data.RefreshToken
+            //     };
+            //     await localStorageService.SetItem(userKey, User);
+            //     await UpdateData();
+            //     result = MessageType.OK;
+            // }
+            // else
+            // {
+            //     result = (MessageType)message;
+            // }
         }
         catch (Exception error)
         {
-            if (error.GetType() == typeof(HttpRequestException))
-            {
-                throw new InteralServerErrorException("No se ha podido conectar con el servidor");
-            }
-
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(error.Message);
-            if (json.errors != null)
-            {
-                throw new InvalidInputDataException("Los datos son invalidos");
-            }
-            else
-            {
-                string message = json["message"];
-                if (message != null)
-                {
-                    if (message.Contains("user not found"))
-                    {
-                        throw new UserNotFoundException("El correo electrónico o usuario no existe");
-                    }
-                    else if (message.Contains("password does not match"))
-                    {
-                        throw new PasswordDoesNotMatchException("La contraseña no es correcta. Compruébala.");
-                    }
-                    else if (message.Contains("user has been kicked from server"))
-                    {
-                        throw new UserKickedFromServerException("El usuario ha sido bloqueado.");
-                    }
-                }
-            }
+            MessageType resultError = BackendMessageHandler.GetErrorMessage(error);
+            throw new Exception(resultError.ToString(), error);
         }
-
-        try
-        {
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-            User = new User();
-            User.accessToken = json.message.accessToken;
-            User.refreshToken = json.message.refreshToken;
-            await localStorageService.SetItem(userKey, User);
-            await UpdateData();
-            ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogInState(User);
-            navigationManager.NavigateTo("/");
-        }
-        catch (Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
+        return result;
     }
 
     public async Task Logout()
@@ -106,18 +98,30 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task UpdateData()
     {
-        try
-        {
-            var data = await httpService.Get("/accounts/data");
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-            User.Username = json.message.username;
-            User.RoleType = EnumHelper.GetEnumValue<RoleType>(Convert.ToString(json.message.role));
-            await localStorageService.SetItem(userKey, User);
-        }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
+        // try
+        // {
+        //     var data = await httpService.Get("/accounts/data");
+        //     object result = BackendMessageHandler.GetMessageFromJson<AccountDataResponse>(data);
+        //     if (result is ApiResponse<AccountDataResponse>)
+        //     {
+
+        //         User.Username = result.data.username;
+        //         User.RoleType = EnumHelper.GetEnumValue<RoleType>(
+        //             Convert.ToString(json.message.role)
+        //         );
+        //         await localStorageService.SetItem(userKey, User);
+        //     }
+
+        //     dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
+        // }
+        // catch (System.Exception error)
+        // {
+        //     throw new InteralServerErrorException("El servidor ha tenido un error", error);
+        // }
     }
 
+    public void NotifyUserLoginChange()
+    {
+        ((ApiAuthenticationStateProvider)AuthenticationStateProvider).NewUserLogInState(User);
+    }
 }

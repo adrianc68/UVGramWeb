@@ -2,7 +2,8 @@ namespace UVGramWeb.Shared.Helpers;
 
 public class EnumHelper
 {
-    public static T GetEnumValue<T>(string str) where T : struct, IConvertible
+    public static T GetEnumValue<T>(string str)
+        where T : struct, IConvertible
     {
         if (!typeof(T).IsEnum)
         {
@@ -23,6 +24,22 @@ public class EnumHelper
         return val;
     }
 
+    public static T GetEnumValue<T>(string str, T defaultValue)
+        where T : struct, IConvertible
+    {
+        if (!typeof(T).IsEnum)
+        {
+            throw new Exception("T must be an Enumeration type.");
+        }
+
+        foreach (T enumValue in (T[])Enum.GetValues(typeof(T)))
+        {
+            if (enumValue.ToString().ToUpper().Equals(str.ToUpper()))
+            {
+                return enumValue;
+            }
+        }
+
+        return defaultValue;
+    }
 }
-
-

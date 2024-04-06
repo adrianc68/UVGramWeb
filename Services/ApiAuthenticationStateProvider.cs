@@ -1,11 +1,12 @@
-using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace UVGramWeb.Services;
 
 public class ApiAuthenticationStateProvider : AuthenticationStateProvider
 {
     private readonly ILocalStorageService localStorageService;
+
     public ApiAuthenticationStateProvider(ILocalStorageService localStorageService)
     {
         this.localStorageService = localStorageService;
@@ -40,8 +41,8 @@ public class ApiAuthenticationStateProvider : AuthenticationStateProvider
     private ClaimsPrincipal ParseClaimFromUserToken(UVGramWeb.Shared.Models.User User)
     {
         var claims = new List<Claim>();
-        claims.Add(new Claim("accessToken", User.accessToken));
-        claims.Add(new Claim("refreshToken", User.refreshToken));
+        claims.Add(new Claim("accessToken", User.AccessToken));
+        claims.Add(new Claim("refreshToken", User.RefreshToken));
         var claimIdentity = new ClaimsIdentity(claims, "jwt");
         var claimPrincipal = new ClaimsPrincipal(claimIdentity);
         return claimPrincipal;
