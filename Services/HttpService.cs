@@ -85,7 +85,7 @@ public class HttpService : IHttpService
 
     private async Task addJwtHeader(HttpRequestMessage request)
     {
-        var User = await localStorageService.GetItem<UVGramWeb.Shared.Models.User>("login");
+        var User = await localStorageService.GetItem<UVGramWeb.Shared.Models.UserAuthentication>("login");
         if (User != null)
         {
             var isApiUrl = !request.RequestUri.IsAbsoluteUri;

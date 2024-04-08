@@ -5,10 +5,10 @@ public interface IAccountService
 {
     Task<Boolean> VerifyUsername(string username);
     Task<Boolean> VerifyEmailAddress(string email);
-    Task<Boolean> CreateVerificationCode(UserCreateVerification model);
-    Task<Boolean> CreateAccount(UserRegister model);
-    Task<Boolean> CreateResetConfirmationAddress(UserEmailOrUsername model);
-    Task<Boolean> ChangePasswordByURL(ChangeForgottenPassword model, string uriData);
+    Task<MessageType> CreateVerificationCode(UserCreateVerification model);
+    Task<MessageType> CreateAccount(UserRegister model);
+    Task<MessageType> CreateResetConfirmationAddress(UserEmailOrUsername model);
+    Task<MessageType> ChangePasswordByURL(ChangeForgottenPassword model, string uriData);
     Task<Boolean> VerifyURLChangePassword(string uri);
     Task<Boolean> DoesUsernameExist(string username);
     Task<Profile> GetProfile(string username);
@@ -22,7 +22,7 @@ public interface IAccountService
     Task<List<Faculty>> GetAvailableFaculty(int regionId);
     Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId);
     Task<ResultUpdateAccount> UpdatePersonalAccountData(PersonalUserData model);
-    Task<Boolean> ChangePassword(ChangeActualPassword model);
+    Task<MessageType> ChangePassword(ChangeActualPassword model);
     Task<Boolean> ChangePrivacy(ChangePrivacy model);
     Task<List<UserSearch>> FilterUsers(string filter);
     Task<List<UserSearch>> GetFollowers(string username);

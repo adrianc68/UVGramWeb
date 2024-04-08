@@ -5,7 +5,7 @@ namespace UVGramWeb.Services;
 
 public interface IAuthenticationService
 {
-    User User { get; }
+    UserAuthentication User { get; }
     Task Initialize();
     Task<MessageType> Login(Login model);
     Task Logout();

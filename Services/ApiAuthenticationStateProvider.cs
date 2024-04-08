@@ -14,7 +14,7 @@ public class ApiAuthenticationStateProvider : AuthenticationStateProvider
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        var User = await localStorageService.GetItem<UVGramWeb.Shared.Models.User>("login");
+        var User = await localStorageService.GetItem<UVGramWeb.Shared.Models.UserAuthentication>("login");
         if (User == null)
         {
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
@@ -29,7 +29,7 @@ public class ApiAuthenticationStateProvider : AuthenticationStateProvider
         NotifyAuthenticationStateChanged(authState);
     }
 
-    public void NewUserLogInState(UVGramWeb.Shared.Models.User User)
+    public void NewUserLogInState(UVGramWeb.Shared.Models.UserAuthentication User)
     {
         if (User != null)
         {
@@ -38,7 +38,7 @@ public class ApiAuthenticationStateProvider : AuthenticationStateProvider
         }
     }
 
-    private ClaimsPrincipal ParseClaimFromUserToken(UVGramWeb.Shared.Models.User User)
+    private ClaimsPrincipal ParseClaimFromUserToken(UVGramWeb.Shared.Models.UserAuthentication User)
     {
         var claims = new List<Claim>();
         claims.Add(new Claim("accessToken", User.AccessToken));

@@ -3,91 +3,110 @@
 @inject NavigationManager NavigationManager
 
 <div class="su-code">
-    <section class="suc-code-main card">
-        <div class="su-code-description">
-            <img src="/images/ide-24.svg" alt="Imagen decorativa que hace alusión a un telefono que recibe un código">
-            <p class="bold text-center">Solo un paso más</p>
-            <p class="text-muted text-center">Ingresa el código de 6 dígitos que enviamos a tu correo electrónico</p>
-        </div>
-        <EditForm EditContext="@EditContext" OnValidSubmit="@ValidSubmit">
-            <DataAnnotationsValidator />
-            <div class="su-code-form">
-                <div class="sucf-inputs">
-                    <div class="custom-form-floating">
-                        <InputText id="code" autocomplete="off" class="custom-form-input"
-                            @bind-Value="UserRegisterModel.verificationCode" aria-label="Código de verificación"
-                            required=true aria-required="true" />
-                        <label for="code" class="custom-form-floating-label">Código de confirmación</label>
-                        <CustomValidationMessage For="@(() => UserRegisterModel.verificationCode)" />
-                    </div>
-                </div>
-            </div>
-            @if (message != null)
-            {
-                <div class="su-error-message">
-                    <p role="alert" class="text-danger">@message</p>
-                </div>
-            }
+ <section class="suc-code-main card">
+  <div class="su-code-description">
+   <img src="/images/ide-24.svg" alt="Imagen decorativa que hace alusión a un telefono que recibe un código">
+   <p class="bold text-center">Solo un paso más</p>
+   <p class="text-muted text-center">Ingresa el código de 6 dígitos que enviamos a tu correo electrónico</p>
+  </div>
+  <EditForm EditContext="@EditContext" OnValidSubmit="@ValidSubmit">
+   <DataAnnotationsValidator />
+   <div class="su-code-form">
+    <div class="sucf-inputs">
+     <div class="custom-form-floating">
+      <InputText id="code" autocomplete="off" class="custom-form-input" @bind-Value="UserRegisterModel.verificationCode"
+       aria-label="Código de verificación" required=true aria-required="true" />
+      <label for="code" class="custom-form-floating-label">Código de confirmación</label>
+      <CustomValidationMessage For="@(() => UserRegisterModel.verificationCode)" />
+     </div>
+    </div>
+   </div>
+   @if (errorMessage != null)
+   {
+    <div class="su-error-message">
+     <p role="alert" class="text-danger">@errorMessage</p>
+    </div>
+   }
 
-            <div class="su-buttons">
-                <button class="custom-btn custom-btn-primary" @onclick=@(()=>
-                    this.InvokeParentMethod(MoveForward))>Confirmar</button>
-                <button class="custom-btn custom-btn-secondary" @onclick="@(() => this.SendMessagecode())">Enviar un
-                    nuevo
-                    código</button>
-            </div>
-        </EditForm>
+   <div class="su-buttons">
+    <button class="custom-btn custom-btn-primary" disabled="@loading" @onclick=@(()=>
+     this.InvokeParentMethod(MoveForward))>
+     <StatusOperation Loading="@loading" Done="@done" Message="Confirmar"></StatusOperation>
+    </button>
+    <button class="custom-btn custom-btn-secondary" @onclick="@(() => this.SendMessagecode())">Enviar un
+     nuevo
+     código</button>
+   </div>
+  </EditForm>
 
-    </section>
+ </section>
 </div>
 
 @code {
-    [Parameter] public Action MoveForward { get; set; }
-    [Parameter] public UserRegister UserRegisterModel { get; set; }
-    [Parameter] public EditContext EditContext { get; set; }
-    private string message;
-    private void InvokeParentMethod(Action action)
-    {
-        action?.Invoke();
-    }
+ [Parameter] public Action MoveForward { get; set; }
+ [Parameter] public UserRegister UserRegisterModel { get; set; }
+ [Parameter] public EditContext EditContext { get; set; }
+ private string errorMessage;
+ private bool loading = false;
+ private bool done = false;
+ private void InvokeParentMethod(Action action)
+ {
+  action?.Invoke();
+ }
 
-    private async Task<Boolean> SendMessagecode()
-    {
-        bool isSent = false;
-        try
-        {
-            UserCreateVerification model = new UserCreateVerification();
-            model.email = UserRegisterModel.email;
-            model.username = UserRegisterModel.username;
-            isSent = await AccountService.CreateVerificationCode(model);
-        }
-        catch (System.Exception error)
-        {
-            message = "El servidor ha tenido un error";
-            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return isSent;
-    }
+ private async Task<Boolean> SendMessagecode()
+ {
+  bool isSent = false;
+  UserCreateVerification model = new UserCreateVerification();
+  model.email = UserRegisterModel.email;
+  model.username = UserRegisterModel.username;
+  MessageType result = MessageType.NONE;
+  try
+  {
+   result = await AccountService.CreateVerificationCode(model);
+  }
+  catch (System.Exception error)
+  {
+   errorMessage = error.Message;
+  }
+  if (result == MessageType.OK)
+  {
+   isSent = true;
+  }
+  else
+  {
+   errorMessage = result.ToString();
+  }
+  return isSent;
+ }
 
-    private async void ValidSubmit()
-    {
-        bool isSent = false;
-        try
-        {
-            isSent = await AccountService.CreateAccount(UserRegisterModel);
-        }
-        catch (System.Exception error)
-        {
-            message = "El servidor ha tenido un error";
-            throw new UVGramWeb.Shared.Exceptions.InteralServerErrorException("El servidor ha tenido un error", error);
-
-        }
-
-        if (isSent)
-        {
-            NavigationManager.NavigateTo("/login");
-        }
-
-
-    }
+ private async void ValidSubmit()
+ {
+  if (done) return;
+  errorMessage = null;
+  loading = true;
+  done = false;
+  MessageType result = MessageType.NONE;
+  try
+  {
+   result = await AccountService.CreateAccount(UserRegisterModel);
+  }
+  catch (System.Exception error)
+  {
+   result = MessageType.INTERNAL_ERROR;
+   errorMessage = error.Message;
+  }
+  if (result == MessageType.OK)
+  {
+   loading = false;
+   done = true;
+   StateHasChanged();
+   await Task.Delay(1500);
+   NavigationManager.NavigateTo("/login");
+   return;
+  }
+  errorMessage = result.ToString();
+  loading = false;
+  StateHasChanged();
+ }
 }

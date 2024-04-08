@@ -1,6 +1,6 @@
 namespace UVGramWeb.Shared.Models;
 
-public class User
+public class UserAuthentication
 {
     public string AccessToken { get; set; } = default;
     public string RefreshToken { get; set; } = default;

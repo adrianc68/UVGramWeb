@@ -16,7 +16,7 @@ public class AuthenticationService : IAuthenticationService
     private NavigationManager navigationManager;
     private AuthenticationStateProvider AuthenticationStateProvider;
     private string userKey = "login";
-    public User User { get; private set; }
+    public UserAuthentication User { get; private set; }
 
     public AuthenticationService(
         IHttpService httpService,
@@ -33,7 +33,7 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task Initialize()
     {
-        User = await localStorageService.GetItem<User>(userKey);
+        User = await localStorageService.GetItem<UserAuthentication>(userKey);
     }
 
     public async Task<MessageType> Login(Login model)
@@ -42,21 +42,16 @@ public class AuthenticationService : IAuthenticationService
         try
         {
             string data = await httpService.Post("/authentication/login", model);
-            ApiResponse<object> message =
-                BackendMessageHandler.GetMessageFromJson<LoginDataResponse>(data);
-            if (message.Status != (int)HttpStatusCode.OK)
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<UserAuthentication>(data);
+            if (apiResponse.Status != (int)HttpStatusCode.OK)
             {
-                CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)message.Data;
+                CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
                 result = codeMessageData.Code;
             }
             else
             {
-                LoginDataResponse LoginDataResponse = (LoginDataResponse)message.Data;
-                User = new User
-                {
-                    AccessToken = LoginDataResponse.AccessToken,
-                    RefreshToken = LoginDataResponse.RefreshToken
-                };
+                User = (UserAuthentication)apiResponse.Data;
                 await localStorageService.SetItem(userKey, User);
                 await UpdateData();
                 result = MessageType.OK;
@@ -94,16 +89,18 @@ public class AuthenticationService : IAuthenticationService
         try
         {
             var data = await httpService.Get("/accounts/data");
-            ApiResponse<object> message =
+            ApiResponse<object> apiResponse =
                 BackendMessageHandler.GetMessageFromJson<AccountDataResponse>(data);
-            if (message.Status == (int)HttpStatusCode.OK)
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                AccountDataResponse accountDataResponse = (AccountDataResponse)message.Data;
+                AccountDataResponse accountDataResponse = (AccountDataResponse)apiResponse.Data;
                 User.Username = accountDataResponse.Username;
                 User.RoleType = EnumHelper.GetEnumValue<RoleType>(accountDataResponse.Role);
                 await localStorageService.SetItem(userKey, User);
-            } else {
-             throw new InteralServerErrorException(MessageType.API_ERROR.ToString());
+            }
+            else
+            {
+                throw new InteralServerErrorException(MessageType.API_ERROR.ToString());
             }
         }
         catch (System.Exception error)

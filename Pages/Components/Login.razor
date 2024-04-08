@@ -71,6 +71,7 @@
  }
  private async void OnValidSubmit()
  {
+  if (done) return;
   errorMessage = null;
   loading = true;
   done = false;
@@ -81,22 +82,19 @@
   }
   catch (Exception error)
   {
-   Console.WriteLine(error);
    result = MessageType.INTERNAL_ERROR;
+   errorMessage = error.Message;
   }
   if (result == MessageType.OK)
   {
-  loading = false;
+   loading = false;
    done = true;
    StateHasChanged();
    await Task.Delay(1500);
    AuthenticationService.NotifyUserLoginChange();
    return;
   }
-  else
-  {
-   errorMessage = result.ToString();
-  }
+  errorMessage = result.ToString();
   loading = false;
   StateHasChanged();
  }
