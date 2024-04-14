@@ -16,8 +16,8 @@ public interface IAccountService
     Task<Boolean> UnfollowUser(string username);
     Task<Boolean> BlockUser(string username);
     Task<Boolean> UnblockUser(string username);
-    Task<Boolean> CheckIfUserIsBlocker(string username);
-    Task<UserData> GetAccountData();
+    Task<Boolean> CheckIfUserIsBlockerOrBlocked(string username);
+    Task<PersonalUserData> GetAccountPersonalData();
     Task<List<Region>> GetAvailableRegion();
     Task<List<Faculty>> GetAvailableFaculty(int regionId);
     Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId);

@@ -57,7 +57,7 @@
 
     protected async Task GetData()
     {
-        UserData = await AccountService.GetAccountData();
+        UserData = await AccountService.GetAccountPersonalData();
         PrivacySelected = (UserData.privacy == PrivacyType.PRIVADO);
         DataLoaded = true;
         StateHasChanged();

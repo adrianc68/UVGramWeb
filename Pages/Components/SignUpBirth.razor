@@ -180,11 +180,12 @@
    errorMessage = error.Message;
    StateHasChanged();
   }
-  if (result == MessageType.OK)
+  if (result == MessageType.CONFIRMATION_CODE_SENT)
   {
    isSent = true;
   }
   errorMessage = result.ToString();
+  StateHasChanged();
   return isSent;
  }
 

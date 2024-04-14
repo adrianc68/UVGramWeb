@@ -10,6 +10,7 @@
     padding-right: 15px;
     text-decoration: none;
     color: #2d2d2d;
+    position: relative;
 }
 
 .uc-username {
@@ -41,6 +42,12 @@
 .userprofile-data>span:last-child {
     font-size: 0.85em;
     color: #2d2d2d;
+}
+
+.userprofile-actions {
+ position: absolute;
+ right:0px;
+ right:15px;
 }
 
 .userprofile-actions>button {

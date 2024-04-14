@@ -213,35 +213,27 @@
  {
   if (CheckAuthentication())
   {
-
    var options = new ModalOptions
-    {
-     UseCustomLayout = true
-    };
+    { UseCustomLayout = true };
    var parameters = new ModalParameters().Add(nameof(DisplayFollowed.Username), Username);
    Modal.Show<DisplayFollowed>("Seguidos", parameters, options);
   }
-
  }
 
  protected async Task GetData()
  {
   if (Username != null)
   {
-   try
+   bool isValidUser = await CheckUser();
+   if (isValidUser)
    {
-    bool isValidUser = await CheckUser();
-    if (isValidUser)
+    UserProfile = await AccountService.GetProfile(Username.ToLower());
+    if (UserProfile != null)
     {
-     UserProfile = await AccountService.GetProfile(Username.ToLower());
      ValidUser = true;
-     DataLoaded = true;
     }
    }
-   catch (Exception error)
-   {
-    Console.WriteLine(error);
-   }
+   DataLoaded = true;
   }
   StateHasChanged();
  }
@@ -266,8 +258,8 @@
   {
    if (AuthenticationService.User != null)
    {
-    bool isBlocked = await AccountService.CheckIfUserIsBlocker(Username.ToLower());
-    if (!isBlocked)
+    bool isBlocker = await AccountService.CheckIfUserIsBlockerOrBlocked(Username.ToLower());
+    if (!isBlocker)
     {
      isValid = true;
     }

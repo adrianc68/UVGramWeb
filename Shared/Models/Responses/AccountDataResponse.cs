@@ -11,7 +11,7 @@ public class AccountDataResponse
     public string Role { get; set; }
     public string PrivacyType { get; set; }
     public string Gender { get; set; }
-    public string Id_Educational_Program { get; set; }
+    public string Id_Educational_program { get; set; }
     public string Id_Region { get; set; }
     public string Id_Faculty { get; set; }
 }

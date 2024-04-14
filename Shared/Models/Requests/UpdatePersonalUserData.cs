@@ -8,6 +8,6 @@ public class UpdatePersonalUserData
     public string phoneNumber { get; set; }
     public string email { get; set; }
     public string birthdate { get; set; }
-    public string gender { get; set; }
+    public string Gender { get; set; }
     public string idCareer { get; set; }
 }

@@ -1,5 +1,6 @@
 using System.Net;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
 using UVGramWeb.Shared.Helpers;
@@ -23,13 +24,12 @@ public class AccountService : IAccountService
             string uri = $"/accounts/email/check/{System.Net.WebUtility.UrlEncode(email)}";
             var data = await httpService.Get(uri);
             ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<IsRegisteredDataResponse>(data);
-
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
             if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                IsRegisteredDataResponse dataRegisteredResponse = (IsRegisteredDataResponse)
+                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
                     apiResponse.Data;
-                isEmailRegistered = dataRegisteredResponse.isRegistered;
+                isEmailRegistered = codeMessageDataResponse.BoolValue;
             }
         }
         catch (System.Exception error)
@@ -47,13 +47,13 @@ public class AccountService : IAccountService
             string uri = $"/accounts/username/check/{username}";
             var data = await httpService.Get(uri);
             ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<IsRegisteredDataResponse>(data);
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
 
             if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                IsRegisteredDataResponse dataRegisteredResponse = (IsRegisteredDataResponse)
+                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
                     apiResponse.Data;
-                isUsernameRegistered = dataRegisteredResponse.isRegistered;
+                isUsernameRegistered = codeMessageDataResponse.BoolValue;
             }
         }
         catch (Exception error)
@@ -71,16 +71,9 @@ public class AccountService : IAccountService
             string uri = $"/accounts/create/verification";
             var data = await httpService.Post(uri, model);
             ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<IsRegisteredDataResponse>(data);
-            if (apiResponse.Status != (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
-                result = codeMessageData.Code;
-            }
-            else
-            {
-                result = MessageType.OK;
-            }
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+            result = codeMessageData.Code;
         }
         catch (System.Exception error)
         {
@@ -97,17 +90,11 @@ public class AccountService : IAccountService
         {
             string uri = $"/accounts/create";
             var data = await httpService.Post(uri, model);
+            string datos = data.ToString();
             ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<IsRegisteredDataResponse>(data);
-            if (apiResponse.Status != (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
-                result = codeMessageData.Code;
-            }
-            else
-            {
-                result = MessageType.OK;
-            }
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+            result = codeMessageData.Code;
         }
         catch (System.Exception error)
         {
@@ -169,7 +156,7 @@ public class AccountService : IAccountService
             string url = $"/accounts/verification/url/change_password?{uri}";
             string data = await httpService.Get(url);
             ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<IsUpdatedDataResponse>(data);
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
             if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
                 result = true;
@@ -214,35 +201,12 @@ public class AccountService : IAccountService
         {
             string uri = $"/{username}";
             string resultData = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<Profile>(resultData);
+            ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<Profile>(
+                resultData
+            );
             if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-             profile = (Profile) apiResponse.Data;
-                // ProfileDataResponse profileDataResponse = (ProfileDataResponse)apiResponse.Data;
-                // profile = new Profile
-                // {
-                //     name = profileDataResponse.Name,
-                //     presentation = profileDataResponse.Presentation,
-                //     username = profileDataResponse.Username,
-                //     followers = profileDataResponse.Followers,
-                //     followed = profileDataResponse.Followers,
-                //     postsCreated = profileDataResponse.PostsCreated,
-                //     privacyType = EnumHelper.GetEnumValue<PrivacyType>(
-                //         profileDataResponse.PrivacyType
-                //     ),
-                //     isFollowed = profileDataResponse.IsFollowed,
-                //     isFollowerRequestSent = profileDataResponse.IsFollowerRequestSent,
-                //     isBlocked = profileDataResponse.IsBlocked,
-                //     isBlocker = profileDataResponse.IsBlocker,
-                //     isFollower = profileDataResponse.IsFollower,
-                //     hasSubmittedFollowerRequest = profileDataResponse.HasSubmittedFollowerRequest,
-                //     posts = new List<Post>()
-                // };
-                // foreach (var post in profileDataResponse.Posts)
-                // {
-                //     profile.posts.Add(post);
-                // }
+                profile = (Profile)apiResponse.Data;
             }
         }
         catch (System.Exception error)
@@ -258,26 +222,23 @@ public class AccountService : IAccountService
         bool isFollowed = false;
         try
         {
-            var uri = "/user/follow/";
+            string uri = "/user/follow/";
             Username usernameModel = new Username();
             usernameModel.username = username;
-            string resultData = await httpService.Post(uri, usernameModel);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (Convert.ToString(message).Contains("you are now following to"))
+            string data = await httpService.Post(uri, usernameModel);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                isFollowed = true;
-            }
-            else if (Convert.ToString(message).Contains("follower request sent to"))
-            {
-                isFollowed = true;
+                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+                    apiResponse.Data;
+                isFollowed = codeMessageDataResponse.BoolValue;
             }
         }
         catch (System.Exception error)
         {
-            Console.WriteLine(error);
-            return isFollowed;
-            // throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return isFollowed;
     }
@@ -287,22 +248,23 @@ public class AccountService : IAccountService
         bool isUnfollowed = false;
         try
         {
-            var uri = "/user/unfollow/";
+            string uri = "/user/unfollow/";
             Username usernameModel = new Username();
             usernameModel.username = username;
-            string resultData = await httpService.Post(uri, usernameModel);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (Convert.ToString(message).Contains("you have unfollowed to"))
+            string data = await httpService.Post(uri, usernameModel);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                isUnfollowed = true;
+                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+                    apiResponse.Data;
+                isUnfollowed = codeMessageDataResponse.BoolValue;
             }
         }
         catch (System.Exception error)
         {
-            Console.WriteLine(error);
-            return isUnfollowed;
-            // throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return isUnfollowed;
     }
@@ -312,20 +274,23 @@ public class AccountService : IAccountService
         bool isBlocked = false;
         try
         {
-            var uri = "/user/block/";
+            string uri = "/user/block/";
             Username usernameModel = new Username();
             usernameModel.username = username;
-            string resultData = await httpService.Post(uri, usernameModel);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (Convert.ToString(message).Contains("you have blocked to"))
+            string data = await httpService.Post(uri, usernameModel);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                isBlocked = true;
+                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+                    apiResponse.Data;
+                isBlocked = codeMessageDataResponse.BoolValue;
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return isBlocked;
     }
@@ -335,25 +300,28 @@ public class AccountService : IAccountService
         bool isUnblocked = false;
         try
         {
-            var uri = "/user/unblock/";
+            string uri = "/user/unblock/";
             Username usernameModel = new Username();
             usernameModel.username = username;
-            string resultData = await httpService.Post(uri, usernameModel);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (Convert.ToString(message).Contains("you have unblocked to"))
+            string data = await httpService.Post(uri, usernameModel);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                isUnblocked = true;
+                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+                    apiResponse.Data;
+                isUnblocked = codeMessageDataResponse.BoolValue;
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return isUnblocked;
     }
 
-    public async Task<bool> CheckIfUserIsBlocker(string username)
+    public async Task<bool> CheckIfUserIsBlockerOrBlocked(string username)
     {
         bool isUserBlocker = false;
         try
@@ -377,140 +345,128 @@ public class AccountService : IAccountService
         return isUserBlocker;
     }
 
-    public async Task<UserData> GetAccountData()
+    public async Task<PersonalUserData> GetAccountPersonalData()
     {
-        PersonalUserData personalUserdata = null;
+        PersonalUserData userData = null;
         try
         {
             var uri = "/accounts/data";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            personalUserdata = new PersonalUserData();
-            personalUserdata.name = Convert.ToString(message.name);
-            personalUserdata.presentation = Convert.ToString(message.presentation);
-            personalUserdata.username = Convert.ToString(message.username);
-            personalUserdata.email = Convert.ToString(message.email);
-            personalUserdata.phoneNumber = Convert.ToString(message.phone_number);
-            personalUserdata.birthdate = Convert.ToString(message.birthday);
-            personalUserdata.role = EnumHelper.GetEnumValue<RoleType>(
-                Convert.ToString(message.role)
-            );
-            personalUserdata.privacy = EnumHelper.GetEnumValue<PrivacyType>(
-                Convert.ToString(message.privacy)
-            );
-            if (personalUserdata.role == RoleType.PERSONAL)
-            {
-                personalUserdata.gender = EnumHelper.GetEnumValue<GenderType>(
-                    Convert.ToString(message.gender)
-                );
+            string data = await httpService.Get(uri);
 
-                if (message.id_educational_program != null)
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<PersonalUserData>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
+            {
+                PersonalUserData personalData = (PersonalUserData)apiResponse.Data;
+                userData = personalData;
+                if (personalData.Educational_program == null)
                 {
-                    Region region = new Region();
-                    region.id = Convert.ToInt32(message.id_region);
-                    Faculty faculty = new Faculty();
-                    faculty.id = Convert.ToInt32(message.id_faculty);
-                    faculty.region = region;
-                    EducationalProgram educationalProgram = new EducationalProgram();
-                    educationalProgram.id = Convert.ToInt32(message.id_educational_program);
-                    educationalProgram.faculty = faculty;
-                    personalUserdata.educational_program = educationalProgram;
-                }
-                else
-                {
-                    Region region = new Region();
-                    Faculty faculty = new Faculty();
-                    faculty.region = region;
-                    EducationalProgram educationalProgram = new EducationalProgram();
-                    educationalProgram.faculty = faculty;
-                    personalUserdata.educational_program = educationalProgram;
+                    Region region = new();
+                    Faculty faculty = new() { region = region };
+                    EducationalProgram educationalProgram = new() { faculty = faculty };
+                    personalData.Educational_program = educationalProgram;
                 }
             }
+            //     if (message.id_Educational_program != null)
+            //     {
+            //         Region region = new Region();
+            //         region.id = Convert.ToInt32(message.id_region);
+            //         Faculty faculty = new Faculty();
+            //         faculty.id = Convert.ToInt32(message.id_faculty);
+            //         faculty.region = region;
+            //         EducationalProgram educationalProgram = new EducationalProgram();
+            //         educationalProgram.id = Convert.ToInt32(message.id_Educational_program);
+            //         educationalProgram.faculty = faculty;
+            //         userData.Educational_program = educationalProgram;
+            //     }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
-        return personalUserdata;
+        return userData;
     }
 
     public async Task<List<Region>> GetAvailableRegion()
     {
-        List<Region> regions = new List<Region>();
+        List<Region> regions = new();
         try
         {
-            var uri = "/data/region/";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var messages = json.message;
-            foreach (var regionData in messages)
+            string uri = "/data/region/";
+            string data = await httpService.Get(uri);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<RegionListDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                Region region = new Region();
-                region.id = Convert.ToInt32(regionData.id);
-                region.region = Convert.ToString(regionData.region);
-                regions.Add(region);
+                RegionListDataResponse regionListDataResponse = (RegionListDataResponse)
+                    apiResponse.Data;
+                foreach (var region in regionListDataResponse.Regions)
+                {
+                    regions.Add(region);
+                }
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return regions;
     }
 
     public async Task<List<Faculty>> GetAvailableFaculty(int regionId)
     {
-        List<Faculty> faculties = new List<Faculty>();
+        List<Faculty> faculties = new();
         try
         {
-            var uri = "/data/faculty/";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var messages = json.message;
-            foreach (var facultyData in messages)
+            string uri = "/data/faculty/";
+            string data = await httpService.Get(uri);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<FacultyListDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                if (regionId == Convert.ToInt32(facultyData.id_region))
+                FacultyListDataResponse facultyListDataResponse = (FacultyListDataResponse)
+                    apiResponse.Data;
+                foreach (var faculty in facultyListDataResponse.Faculties)
                 {
-                    Faculty objectData = new Faculty();
-                    objectData.id = Convert.ToInt32(facultyData.id);
-                    objectData.faculty = Convert.ToString(facultyData.faculty);
-                    faculties.Add(objectData);
+                    faculties.Add(faculty);
                 }
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return faculties;
     }
 
     public async Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId)
     {
-        List<EducationalProgram> educationalPrograms = new List<EducationalProgram>();
+        List<EducationalProgram> educationalPrograms = new();
         try
         {
-            var uri = "/data/educationalprogram/";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var messages = json.message;
-            foreach (var educationalProgramData in messages)
+            string uri = "/data/educationalprogram/";
+            string data = await httpService.Get(uri);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<EducationalProgramListDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                if (facultyId == Convert.ToInt32(educationalProgramData.id_faculty))
+                EducationalProgramListDataResponse educationalProgramListDataResponse =
+                    (EducationalProgramListDataResponse)apiResponse.Data;
+                foreach (
+                    var educationalProgram in educationalProgramListDataResponse.EducationalPrograms
+                )
                 {
-                    EducationalProgram objectData = new EducationalProgram();
-                    objectData.id = Convert.ToInt32(educationalProgramData.id);
-                    objectData.educational_program = Convert.ToString(
-                        educationalProgramData.educational_program
-                    );
-                    educationalPrograms.Add(objectData);
+                    educationalPrograms.Add(educationalProgram);
                 }
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return educationalPrograms;
     }
@@ -527,8 +483,8 @@ public class AccountService : IAccountService
             modelRequest.phoneNumber = model.phoneNumber;
             modelRequest.email = model.email;
             modelRequest.birthdate = model.birthdate;
-            modelRequest.gender = model.gender.ToString();
-            modelRequest.idCareer = model.educational_program.id.ToString();
+            modelRequest.Gender = model.Gender.ToString();
+            modelRequest.idCareer = model.Educational_program.id.ToString();
             var uri = $"/accounts/edit/personal";
             string resultData = await httpService.Patch(uri, modelRequest);
             dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
@@ -566,17 +522,10 @@ public class AccountService : IAccountService
             string uri = "/accounts/password/change";
             string data = await httpService.Post(uri, model);
             ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<IsUpdatedDataResponse>(data);
-            if (apiResponse.Status != (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                result = codeMessageDataResponse.Code;
-            }
-            else
-            {
-                result = MessageType.OK;
-            }
+                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+            CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+                apiResponse.Data;
+            result = codeMessageDataResponse.Code;
         }
         catch (System.Exception error)
         {
@@ -609,24 +558,24 @@ public class AccountService : IAccountService
         List<UserSearch> users = new List<UserSearch>();
         try
         {
-            var uri = $"/users/{filter}";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (message != null)
+            string uri = $"/users/{filter}";
+            string data = await httpService.Get(uri);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                foreach (var item in message)
+                UsersListDataResponse usersListDataResponse = (UsersListDataResponse)
+                    apiResponse.Data;
+                foreach (var user in usersListDataResponse.Users)
                 {
-                    UserSearch userSearch = new UserSearch();
-                    userSearch.username = Convert.ToString(item.username);
-                    userSearch.name = Convert.ToString(item.name);
-                    users.Add(userSearch);
+                    users.Add(user);
                 }
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return users;
     }
@@ -636,28 +585,24 @@ public class AccountService : IAccountService
         List<UserSearch> users = new List<UserSearch>();
         try
         {
-            var uri = $"/user/followers-of/{username}";
+            string uri = $"/user/followers-of/{username}";
             string data = await httpService.Get(uri);
-            // ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<>(data);
-
-
-
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-            var message = json.message;
-            if (message != null)
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                foreach (var item in message)
+                UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
+                    apiResponse.Data;
+                foreach (var user in userFollowersDataResponse.Users)
                 {
-                    UserSearch userSearch = new UserSearch();
-                    userSearch.username = Convert.ToString(item.username);
-                    userSearch.name = Convert.ToString(item.name);
-                    users.Add(userSearch);
+                    users.Add(user);
                 }
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return users;
     }
@@ -667,24 +612,24 @@ public class AccountService : IAccountService
         List<UserSearch> users = new List<UserSearch>();
         try
         {
-            var uri = $"/user/followed-by/{username}";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (message != null)
+            string uri = $"/user/followed-by/{username}";
+            string data = await httpService.Get(uri);
+            ApiResponse<object> apiResponse =
+                BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
+            if (apiResponse.Status == (int)HttpStatusCode.OK)
             {
-                foreach (var item in message)
+                UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
+                    apiResponse.Data;
+                foreach (var user in userFollowersDataResponse.Users)
                 {
-                    UserSearch userSearch = new UserSearch();
-                    userSearch.username = Convert.ToString(item.username);
-                    userSearch.name = Convert.ToString(item.name);
-                    users.Add(userSearch);
+                    users.Add(user);
                 }
             }
         }
         catch (System.Exception error)
         {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
+            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+            throw new Exception(ErrorMessage, error);
         }
         return users;
     }
