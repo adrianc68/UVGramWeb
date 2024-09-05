@@ -11,4 +11,5 @@ public interface IAuthenticationService
     Task Logout();
     Task UpdateData();
     void NotifyUserLoginChange();
+    event Action OnUserDataChanged;
 }

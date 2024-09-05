@@ -1,6 +1,8 @@
 using System.Net;
+using System.Net.Http.Headers;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
 using UVGramWeb.Shared.Helpers;
@@ -9,699 +11,722 @@ namespace UVGramWeb.Services;
 
 public class AccountService : IAccountService
 {
-    private IHttpService httpService;
+  private IHttpService httpService;
 
-    public AccountService(IHttpService httpService)
+  public AccountService(IHttpService httpService)
+  {
+    this.httpService = httpService;
+  }
+
+  public async Task<Boolean> VerifyEmailAddress(string email)
+  {
+    bool isEmailRegistered = false;
+    try
     {
-        this.httpService = httpService;
+      string uri = $"/accounts/email/check/{System.Net.WebUtility.UrlEncode(email)}";
+      var data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isEmailRegistered = codeMessageDataResponse.BoolValue;
+      }
     }
-
-    public async Task<Boolean> VerifyEmailAddress(string email)
+    catch (System.Exception error)
     {
-        bool isEmailRegistered = false;
-        try
-        {
-            string uri = $"/accounts/email/check/{System.Net.WebUtility.UrlEncode(email)}";
-            var data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isEmailRegistered = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return isEmailRegistered;
+      throw new InteralServerErrorException("El servidor ha tenido un error", error);
     }
+    return isEmailRegistered;
+  }
 
-    public async Task<Boolean> VerifyUsername(string username)
+  public async Task<Boolean> VerifyUsername(string username)
+  {
+    Boolean isUsernameRegistered = false;
+    try
     {
-        Boolean isUsernameRegistered = false;
-        try
-        {
-            string uri = $"/accounts/username/check/{username}";
-            var data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      string uri = $"/accounts/username/check/{username}";
+      var data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
 
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isUsernameRegistered = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return isUsernameRegistered;
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isUsernameRegistered = codeMessageDataResponse.BoolValue;
+      }
     }
-
-    public async Task<MessageType> CreateVerificationCode(UserCreateVerification model)
+    catch (Exception error)
     {
-        MessageType result = MessageType.NONE;
-        try
-        {
-            string uri = $"/accounts/create/verification";
-            var data = await httpService.Post(uri, model);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
-            result = codeMessageData.Code;
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      throw new InteralServerErrorException("El servidor ha tenido un error", error);
     }
+    return isUsernameRegistered;
+  }
 
-    public async Task<MessageType> CreateAccount(UserRegister model)
+  public async Task<MessageType> CreateVerificationCode(UserCreateVerification model)
+  {
+    MessageType result = MessageType.NONE;
+    try
     {
-        MessageType result = MessageType.NONE;
-        try
-        {
-            string uri = $"/accounts/create";
-            var data = await httpService.Post(uri, model);
-            string datos = data.ToString();
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
-            result = codeMessageData.Code;
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      string uri = $"/accounts/create/verification";
+      var data = await httpService.Post(uri, model);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+      result = codeMessageData.Code;
     }
-
-    public async Task<MessageType> CreateResetConfirmationAddress(UserEmailOrUsername model)
+    catch (System.Exception error)
     {
-        MessageType result = MessageType.NONE;
-        try
-        {
-            string uri = $"/accounts/password/reset";
-            var data = await httpService.Post(uri, model);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
-            result = codeMessageData.Code;
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return result;
+  }
 
-    public async Task<MessageType> ChangePasswordByURL(
-        ChangeForgottenPassword model,
-        string uriData
-    )
+  public async Task<MessageType> CreateAccount(UserRegister model)
+  {
+    MessageType result = MessageType.NONE;
+    try
     {
-        MessageType result = MessageType.NONE;
-        try
-        {
-            var uri = $"/accounts/password/reset/confirmation?{uriData}";
-            var data = await httpService.Post(uri, model);
-
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
-            result = codeMessageData.Code;
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      string uri = $"/accounts/create";
+      var data = await httpService.Post(uri, model);
+      string datos = data.ToString();
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+      result = codeMessageData.Code;
     }
-
-    public async Task<Boolean> VerifyURLChangePassword(string uri)
+    catch (System.Exception error)
     {
-        bool result = false;
-        try
-        {
-            string url = $"/accounts/verification/url/change_password?{uri}";
-            string data = await httpService.Get(url);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                result = true;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return result;
+  }
 
-    public async Task<bool> DoesUsernameExist(string username)
+  public async Task<MessageType> CreateResetConfirmationAddress(UserEmailOrUsername model)
+  {
+    MessageType result = MessageType.NONE;
+    try
     {
-        bool result = false;
-        try
-        {
-            string uri = $"/accounts/username/check/{username}";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                result = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      string uri = $"/accounts/password/reset";
+      var data = await httpService.Post(uri, model);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+      result = codeMessageData.Code;
     }
-
-    public async Task<Profile> GetProfile(string username)
+    catch (System.Exception error)
     {
-        Profile profile = null;
-        try
-        {
-            string uri = $"/{username}";
-            string resultData = await httpService.Get(uri);
-            ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<Profile>(
-                resultData
-            );
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                profile = (Profile)apiResponse.Data;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return profile;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return result;
+  }
 
-    public async Task<bool> FollowUser(string username)
+  public async Task<MessageType> ChangePasswordByURL(
+      ChangeForgottenPassword model,
+      string uriData
+  )
+  {
+    MessageType result = MessageType.NONE;
+    try
     {
-        bool isFollowed = false;
-        try
-        {
-            string uri = "/user/follow/";
-            Username usernameModel = new Username();
-            usernameModel.username = username;
-            string data = await httpService.Post(uri, usernameModel);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isFollowed = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return isFollowed;
-    }
+      var uri = $"/accounts/password/reset/confirmation?{uriData}";
+      var data = await httpService.Post(uri, model);
 
-    public async Task<bool> UnfollowUser(string username)
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+      result = codeMessageData.Code;
+    }
+    catch (System.Exception error)
     {
-        bool isUnfollowed = false;
-        try
-        {
-            string uri = "/user/unfollow/";
-            Username usernameModel = new Username();
-            usernameModel.username = username;
-            string data = await httpService.Post(uri, usernameModel);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isUnfollowed = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return isUnfollowed;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return result;
+  }
 
-    public async Task<bool> BlockUser(string username)
+  public async Task<Boolean> VerifyURLChangePassword(string uri)
+  {
+    bool result = false;
+    try
     {
-        bool isBlocked = false;
-        try
-        {
-            string uri = "/user/block/";
-            Username usernameModel = new Username();
-            usernameModel.username = username;
-            string data = await httpService.Post(uri, usernameModel);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isBlocked = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return isBlocked;
+      string url = $"/accounts/verification/url/change_password?{uri}";
+      string data = await httpService.Get(url);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        result = true;
+      }
     }
-
-    public async Task<bool> UnblockUser(string username)
+    catch (System.Exception error)
     {
-        bool isUnblocked = false;
-        try
-        {
-            string uri = "/user/unblock/";
-            Username usernameModel = new Username();
-            usernameModel.username = username;
-            string data = await httpService.Post(uri, usernameModel);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isUnblocked = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return isUnblocked;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return result;
+  }
 
-    public async Task<bool> CheckIfUserIsBlockerOrBlocked(string username)
+  public async Task<bool> DoesUsernameExist(string username)
+  {
+    bool result = false;
+    try
     {
-        bool isUserBlocker = false;
-        try
-        {
-            string uri = $"/user/check/block/{username}";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                    apiResponse.Data;
-                isUserBlocker = codeMessageDataResponse.BoolValue;
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return isUserBlocker;
+      string uri = $"/accounts/username/check/{username}";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        result = codeMessageDataResponse.BoolValue;
+      }
     }
-
-    public async Task<PersonalUserData> GetAccountPersonalData()
+    catch (System.Exception error)
     {
-        PersonalUserData userData = null;
-        try
-        {
-            var uri = "/accounts/data";
-            string data = await httpService.Get(uri);
-
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<PersonalUserData>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                PersonalUserData personalData = (PersonalUserData)apiResponse.Data;
-                userData = personalData;
-                if (personalData.Educational_program == null)
-                {
-                    Region region = new();
-                    Faculty faculty = new() { region = region };
-                    EducationalProgram educationalProgram = new() { faculty = faculty };
-                    personalData.Educational_program = educationalProgram;
-                }
-            }
-            //     if (message.id_Educational_program != null)
-            //     {
-            //         Region region = new Region();
-            //         region.id = Convert.ToInt32(message.id_region);
-            //         Faculty faculty = new Faculty();
-            //         faculty.id = Convert.ToInt32(message.id_faculty);
-            //         faculty.region = region;
-            //         EducationalProgram educationalProgram = new EducationalProgram();
-            //         educationalProgram.id = Convert.ToInt32(message.id_Educational_program);
-            //         educationalProgram.faculty = faculty;
-            //         userData.Educational_program = educationalProgram;
-            //     }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return userData;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return result;
+  }
 
-    public async Task<List<Region>> GetAvailableRegion()
+  public async Task<Profile> GetProfile(string username)
+  {
+    Profile profile = null;
+    try
     {
-        List<Region> regions = new();
-        try
-        {
-            string uri = "/data/region/";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<RegionListDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                RegionListDataResponse regionListDataResponse = (RegionListDataResponse)
-                    apiResponse.Data;
-                foreach (var region in regionListDataResponse.Regions)
-                {
-                    regions.Add(region);
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return regions;
+      string uri = $"/{username}";
+      string resultData = await httpService.Get(uri);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<Profile>(
+          resultData
+      );
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        profile = (Profile)apiResponse.Data;
+      }
     }
-
-    public async Task<List<Faculty>> GetAvailableFaculty(int regionId)
+    catch (System.Exception error)
     {
-        List<Faculty> faculties = new();
-        try
-        {
-            string uri = "/data/faculty/";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<FacultyListDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                FacultyListDataResponse facultyListDataResponse = (FacultyListDataResponse)
-                    apiResponse.Data;
-                foreach (var faculty in facultyListDataResponse.Faculties)
-                {
-                    faculties.Add(faculty);
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return faculties;
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
+    return profile;
+  }
 
-    public async Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId)
+  public async Task<bool> FollowUser(string username)
+  {
+    bool isFollowed = false;
+    try
     {
-        List<EducationalProgram> educationalPrograms = new();
-        try
-        {
-            string uri = "/data/educationalprogram/";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<EducationalProgramListDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                EducationalProgramListDataResponse educationalProgramListDataResponse =
-                    (EducationalProgramListDataResponse)apiResponse.Data;
-                foreach (
-                    var educationalProgram in educationalProgramListDataResponse.EducationalPrograms
-                )
-                {
-                    educationalPrograms.Add(educationalProgram);
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return educationalPrograms;
+      string uri = "/user/follow/";
+      Username usernameModel = new Username();
+      usernameModel.username = username;
+      string data = await httpService.Post(uri, usernameModel);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isFollowed = codeMessageDataResponse.BoolValue;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return isFollowed;
+  }
 
-    public async Task<ResultUpdateAccount> UpdatePersonalAccountData(PersonalUserData model)
+  public async Task<bool> UnfollowUser(string username)
+  {
+    bool isUnfollowed = false;
+    try
     {
-        ResultUpdateAccount result = new ResultUpdateAccount();
-        try
-        {
-            UpdatePersonalUserData modelRequest = new UpdatePersonalUserData();
-            modelRequest.name = model.name;
-            modelRequest.presentation = model.presentation;
-            modelRequest.username = model.username;
-            modelRequest.phoneNumber = model.phoneNumber;
-            modelRequest.email = model.email;
-            modelRequest.birthdate = model.birthdate;
-            modelRequest.Gender = model.Gender.ToString();
-            modelRequest.idCareer = model.Educational_program.id.ToString();
-            var uri = $"/accounts/edit/personal";
-            string resultData = await httpService.Patch(uri, modelRequest);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            result.IsUpdated = Convert.ToBoolean(message.isUpdated);
-            if (message.emailMessage != null)
-            {
-                string messageEmail = Convert.ToString(message.emailMessage);
-                if (messageEmail.Contains("a confirmation address has been sent to the new email"))
-                {
-                    result.IsEmailUpdated = true;
-                }
-                else if (
-                    messageEmail.Contains(
-                        "please wait 5 minutes to generate another confirmation address"
-                    )
-                )
-                {
-                    result.IsEmailConfirmationAlreadySent = true;
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return result;
+      string uri = "/user/unfollow/";
+      Username usernameModel = new Username();
+      usernameModel.username = username;
+      string data = await httpService.Post(uri, usernameModel);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isUnfollowed = codeMessageDataResponse.BoolValue;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return isUnfollowed;
+  }
 
-    public async Task<MessageType> ChangePassword(ChangeActualPassword model)
+  public async Task<bool> BlockUser(string username)
+  {
+    bool isBlocked = false;
+    try
     {
-        MessageType result = MessageType.NONE;
-        try
-        {
-            string uri = "/accounts/password/change";
-            string data = await httpService.Post(uri, model);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
-            CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
-                apiResponse.Data;
-            result = codeMessageDataResponse.Code;
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return result;
+      string uri = "/user/block/";
+      Username usernameModel = new Username();
+      usernameModel.username = username;
+      string data = await httpService.Post(uri, usernameModel);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isBlocked = codeMessageDataResponse.BoolValue;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return isBlocked;
+  }
 
-    public async Task<bool> ChangePrivacy(ChangePrivacy model)
+  public async Task<bool> UnblockUser(string username)
+  {
+    bool isUnblocked = false;
+    try
     {
-        bool isChanged = false;
-        try
-        {
-            var uri = "/accounts/users/change-privacy/";
-            string resultData = await httpService.Post(uri, model);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            isChanged = Convert.ToBoolean(message);
-        }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return isChanged;
+      string uri = "/user/unblock/";
+      Username usernameModel = new Username();
+      usernameModel.username = username;
+      string data = await httpService.Post(uri, usernameModel);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isUnblocked = codeMessageDataResponse.BoolValue;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return isUnblocked;
+  }
 
-    public async Task<List<UserSearch>> FilterUsers(string filter)
+  public async Task<bool> CheckIfUserIsBlockerOrBlocked(string username)
+  {
+    bool isUserBlocker = false;
+    try
     {
-        List<UserSearch> users = new List<UserSearch>();
-        try
-        {
-            string uri = $"/users/{filter}";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                UsersListDataResponse usersListDataResponse = (UsersListDataResponse)
-                    apiResponse.Data;
-                foreach (var user in usersListDataResponse.Users)
-                {
-                    users.Add(user);
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return users;
+      string uri = $"/user/check/block/{username}";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+            apiResponse.Data;
+        isUserBlocker = codeMessageDataResponse.BoolValue;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return isUserBlocker;
+  }
 
-    public async Task<List<UserSearch>> GetFollowers(string username)
+  public async Task<PersonalUserData> GetAccountPersonalData()
+  {
+    PersonalUserData userData = null;
+    try
     {
-        List<UserSearch> users = new List<UserSearch>();
-        try
-        {
-            string uri = $"/user/followers-of/{username}";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
-                    apiResponse.Data;
-                foreach (var user in userFollowersDataResponse.Users)
-                {
-                    users.Add(user);
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return users;
-    }
+      var uri = "/accounts/data";
+      string data = await httpService.Get(uri);
 
-    public async Task<List<UserSearch>> GetFollowed(string username)
-    {
-        List<UserSearch> users = new List<UserSearch>();
-        try
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<PersonalUserDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        PersonalUserDataResponse personalUserDataResponse = (PersonalUserDataResponse)apiResponse.Data;
+        PersonalUserData personalData = new()
         {
-            string uri = $"/user/followed-by/{username}";
-            string data = await httpService.Get(uri);
-            ApiResponse<object> apiResponse =
-                BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
-            if (apiResponse.Status == (int)HttpStatusCode.OK)
-            {
-                UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
-                    apiResponse.Data;
-                foreach (var user in userFollowersDataResponse.Users)
-                {
-                    users.Add(user);
-                }
-            }
-        }
-        catch (System.Exception error)
-        {
-            string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
-            throw new Exception(ErrorMessage, error);
-        }
-        return users;
+          name = personalUserDataResponse.Name,
+          presentation = personalUserDataResponse.Presentation,
+          username = personalUserDataResponse.Username,
+          email = personalUserDataResponse.Email,
+          url = personalUserDataResponse.Url,
+          phoneNumber = personalUserDataResponse.Phone_Number,
+          birthdate = personalUserDataResponse.Birthday,
+          role = personalUserDataResponse.Role,
+          privacy = personalUserDataResponse.Privacy,
+          Gender = personalUserDataResponse.Gender
+        };
+        userData = personalData;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return userData;
+  }
 
-    public async Task<List<UserSearch>> GetPendingFollowerRequest()
+  public async Task<List<Region>> GetAvailableRegion()
+  {
+    List<Region> regions = new();
+    try
     {
-        List<UserSearch> users = new List<UserSearch>();
-        try
+      string uri = "/data/region/";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<RegionListDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        RegionListDataResponse regionListDataResponse = (RegionListDataResponse)
+            apiResponse.Data;
+        foreach (var region in regionListDataResponse.Regions)
         {
-            var uri = $"/user/followers/pending/";
-            string resultData = await httpService.Get(uri);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            if (message != null)
-            {
-                foreach (var item in message)
-                {
-                    UserSearch userSearch = new UserSearch();
-                    userSearch.username = Convert.ToString(item.username);
-                    userSearch.name = Convert.ToString(item.name);
-                    userSearch.hasSubmittedFollowerRequest = String.Equals(
-                        Convert.ToString(item.status),
-                        "PENDIENTE"
-                    );
-                    users.Add(userSearch);
-                }
-            }
+          regions.Add(region);
         }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return users;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return regions;
+  }
 
-    public async Task<bool> AcceptFollowerRequest(string username)
+  public async Task<List<Faculty>> GetAvailableFaculty(int regionId)
+  {
+    List<Faculty> faculties = new();
+    try
     {
-        bool isAccepted = false;
-        try
+      string uri = "/data/faculty/";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<FacultyListDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        FacultyListDataResponse facultyListDataResponse = (FacultyListDataResponse)
+            apiResponse.Data;
+        foreach (var faculty in facultyListDataResponse.Faculties)
         {
-            var uri = "/user/followers/accept/";
-            Username usernameModel = new Username();
-            usernameModel.username = username;
-            string resultData = await httpService.Post(uri, usernameModel);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            isAccepted = Convert.ToBoolean(message);
+          faculties.Add(faculty);
         }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return isAccepted;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return faculties;
+  }
 
-    public async Task<bool> DenyFollowerRequest(string username)
+  public async Task<List<EducationalProgram>> GetAvailableEducationalProgram(int facultyId)
+  {
+    List<EducationalProgram> educationalPrograms = new();
+    try
     {
-        bool isRejected = false;
-        try
+      string uri = "/data/educationalprogram/";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<EducationalProgramListDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        EducationalProgramListDataResponse educationalProgramListDataResponse =
+            (EducationalProgramListDataResponse)apiResponse.Data;
+        foreach (
+            var educationalProgram in educationalProgramListDataResponse.EducationalPrograms
+        )
         {
-            var uri = "/user/followers/deny/";
-            Username usernameModel = new Username();
-            usernameModel.username = username;
-            string resultData = await httpService.Post(uri, usernameModel);
-            dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-            var message = json.message;
-            isRejected = Convert.ToBoolean(message);
+          educationalPrograms.Add(educationalProgram);
         }
-        catch (System.Exception error)
-        {
-            throw new InteralServerErrorException("El servidor ha tenido un error", error);
-        }
-        return isRejected;
+      }
     }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return educationalPrograms;
+  }
+
+  public async Task<object> UpdatePersonalAccountData(PersonalUserData model)
+  {
+    object result = null;
+    try
+    {
+      UpdatePersonalUserData modelRequest = new()
+      {
+        name = model.name,
+        presentation = model.presentation,
+        username = model.username,
+        phoneNumber = model.phoneNumber,
+        email = model.email,
+        birthdate = model.birthdate,
+        gender = model.Gender.ToString(),
+      };
+      string uri = $"/accounts/edit/personal";
+      string data = await httpService.Patch(uri, modelRequest);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<UpdateAccountDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        UpdateAccountDataResponse updateAccountDataResponse = (UpdateAccountDataResponse)apiResponse.Data;
+        result = updateAccountDataResponse;
+      }
+      else
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)apiResponse.Data;
+        result = codeMessageDataResponse;
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return result;
+  }
+
+  public async Task<MessageType> ChangePassword(ChangeActualPassword model)
+  {
+    MessageType result = MessageType.NONE;
+    try
+    {
+      string uri = "/accounts/password/change";
+      string data = await httpService.Post(uri, model);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)
+          apiResponse.Data;
+      result = codeMessageDataResponse.Code;
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return result;
+  }
+
+  public async Task<MessageType> ChangePrivacy(ChangePrivacy model)
+  {
+    MessageType messageType = MessageType.NONE;
+    try
+    {
+      var uri = "/accounts/users/change-privacy/";
+      string data = await httpService.Post(uri, model);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)apiResponse.Data;
+      messageType = codeMessageDataResponse.Code;
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return messageType;
+  }
+
+  public async Task<List<UserSearch>> FilterUsers(string filter)
+  {
+    List<UserSearch> users = new List<UserSearch>();
+    try
+    {
+      string uri = $"/users/{filter}";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        UsersListDataResponse usersListDataResponse = (UsersListDataResponse)
+            apiResponse.Data;
+        foreach (var user in usersListDataResponse.Users)
+        {
+          users.Add(user);
+        }
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return users;
+  }
+
+  public async Task<List<UserSearch>> GetFollowers(string username)
+  {
+    List<UserSearch> users = new List<UserSearch>();
+    try
+    {
+      string uri = $"/user/followers-of/{username}";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
+            apiResponse.Data;
+        foreach (var user in userFollowersDataResponse.Users)
+        {
+          users.Add(user);
+        }
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return users;
+  }
+
+  public async Task<List<UserSearch>> GetFollowed(string username)
+  {
+    List<UserSearch> users = new List<UserSearch>();
+    try
+    {
+      string uri = $"/user/followed-by/{username}";
+      string data = await httpService.Get(uri);
+      ApiResponse<object> apiResponse =
+          BackendMessageHandler.GetMessageFromJson<UsersListDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
+            apiResponse.Data;
+        foreach (var user in userFollowersDataResponse.Users)
+        {
+          users.Add(user);
+        }
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return users;
+  }
+
+  public async Task<List<UserSearch>> GetPendingFollowerRequest()
+  {
+    List<UserSearch> users = new List<UserSearch>();
+    try
+    {
+      var uri = $"/user/followers/pending/";
+      string resultData = await httpService.Get(uri);
+      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
+      var message = json.message;
+      if (message != null)
+      {
+        foreach (var item in message)
+        {
+          UserSearch userSearch = new UserSearch();
+          userSearch.username = Convert.ToString(item.username);
+          userSearch.name = Convert.ToString(item.name);
+          userSearch.hasSubmittedFollowerRequest = String.Equals(
+              Convert.ToString(item.status),
+              "PENDIENTE"
+          );
+          users.Add(userSearch);
+        }
+      }
+    }
+    catch (System.Exception error)
+    {
+      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+    }
+    return users;
+  }
+
+  public async Task<bool> AcceptFollowerRequest(string username)
+  {
+    bool result = false;
+    try
+    {
+      string uri = "/user/followers/accept/";
+      Username usernameModel = new();
+      usernameModel.username = username;
+      string data = await httpService.Post(uri, usernameModel);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)apiResponse.Data;
+        result = codeMessageDataResponse.BoolValue;
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return result;
+  }
+
+  public async Task<bool> DenyFollowerRequest(string username)
+  {
+    bool result = false;
+    try
+    {
+      string uri = "/user/followers/deny/";
+      Username usernameModel = new();
+      usernameModel.username = username;
+      string data = await httpService.Post(uri, usernameModel);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)apiResponse.Data;
+        result = codeMessageDataResponse.BoolValue;
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return result;
+  }
+
+  public async Task<Image> GetImageResource(string uri)
+  {
+    Image image;
+    try
+    {
+      (byte[] responseBytes, Dictionary<string, IEnumerable<string>> responseHeaders) = await httpService.GetBytes(uri);
+      string contentType = "image/jpeg";
+      if (responseHeaders.ContainsKey("Content-Type"))
+      {
+        contentType = responseHeaders["Content-Type"].FirstOrDefault();
+      }
+      image = new()
+      {
+        Data = responseBytes,
+        ContentType = contentType
+      };
+      return image;
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+  }
+
 }

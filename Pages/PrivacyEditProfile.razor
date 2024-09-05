@@ -7,79 +7,78 @@
 
 @if (DataLoaded)
 {
-    <div class="editprofile-psec">
-    <div class="editprofilepsec-content card">
-        <sidebar class="editprofile-sidebar">
-            <UVGramWeb.Pages.Components.EPSidebar></UVGramWeb.Pages.Components.EPSidebar>
-        </sidebar>
-        <article class="ep-rightside">
-            <EditForm Model="UserData">
-                <div class="ep-form">
-                    <h2>Privacidad de la cuenta</h2>
-                    <label>
-                        <InputCheckbox Value="PrivacySelected" ValueExpression="@(() => PrivacySelected)"
-                            ValueChanged="((bool e) => OnChange(e))" />
-                        Cuenta privada
-                    </label>
-                    <p>Si tu cuenta es privada, solo las personas que apruebes podrán ver tus fotos y vídeos en UVGram.
-                        Esto no afectará a tus seguidores actuales
-                    </p>
-                </div>
-            </EditForm>
-        </article>
-    </div>
+  <div class="editprofile-psec">
+  <div class="editprofilepsec-content card">
+    <sidebar class="editprofile-sidebar">
+      <UVGramWeb.Pages.Components.EPSidebar></UVGramWeb.Pages.Components.EPSidebar>
+    </sidebar>
+    <article class="ep-rightside">
+      <EditForm Model="UserData">
+        <div class="ep-form">
+          <h2>Privacidad de la cuenta</h2>
+          <label>
+            <InputCheckbox Value="PrivacySelected" ValueExpression="@(() => PrivacySelected)"
+              ValueChanged="((bool e) => OnChange(e))" />
+            Cuenta privada
+          </label>
+          <p>Si tu cuenta es privada, solo las personas que apruebes podrán ver tus fotos y vídeos en UVGram.
+            Esto no afectará a tus seguidores actuales
+          </p>
+        </div>
+      </EditForm>
+    </article>
+  </div>
 </div>
 }
 
 
 @code {
-    private UserData UserData { get; set; } = new UserData();
-    private bool DataLoaded { get; set; } = false;
-    private bool PrivacySelected { get; set; } = false;
+  private UserData UserData { get; set; } = new UserData();
+  private bool DataLoaded { get; set; } = false;
+  private bool PrivacySelected { get; set; } = false;
 
-    protected override async Task OnInitializedAsync()
+  protected override async Task OnInitializedAsync()
+  {
+    if (CheckAuthentication())
     {
-        if (CheckAuthentication())
-        {
-            await GetData();
-        }
+      await GetData();
     }
+  }
 
-    private bool CheckAuthentication()
+  private bool CheckAuthentication()
+  {
+    if (AuthenticationService.User == null)
     {
-        if (AuthenticationService.User == null)
-        {
-            NavigationManager.NavigateTo("/login");
-            return false;
-        }
-        return true;
+      NavigationManager.NavigateTo("/login");
+      return false;
     }
+    return true;
+  }
 
-    protected async Task GetData()
+  protected async Task GetData()
+  {
+    UserData = await AccountService.GetAccountPersonalData();
+    PrivacySelected = (UserData.privacy == PrivacyType.PRIVADO);
+    DataLoaded = true;
+    StateHasChanged();
+  }
+
+  private async void ChangePrivacy()
+  {
+    ChangePrivacy model = new ChangePrivacy();
+    model.privacy = (PrivacySelected) ? Enum.GetName(PrivacyType.PUBLICO) : Enum.GetName(PrivacyType.PRIVADO);
+    MessageType result = await AccountService.ChangePrivacy(model);
+    if (result == MessageType.DATA_UPDATED)
     {
-        UserData = await AccountService.GetAccountPersonalData();
-        PrivacySelected = (UserData.privacy == PrivacyType.PRIVADO);
-        DataLoaded = true;
-        StateHasChanged();
+      UserData.privacy = (PrivacySelected) ? PrivacyType.PUBLICO : PrivacyType.PRIVADO;
+      PrivacySelected = (UserData.privacy == PrivacyType.PRIVADO);
     }
+    StateHasChanged();
+  }
 
-    private async void ChangePrivacy()
-    {
-        ChangePrivacy model = new ChangePrivacy();
-        model.privacy = (PrivacySelected) ? Enum.GetName(PrivacyType.PUBLICO) : Enum.GetName(PrivacyType.PRIVADO);
-        bool result = await AccountService.ChangePrivacy(model);
-        if (result)
-        {
-            UserData.privacy = (PrivacySelected) ? PrivacyType.PUBLICO : PrivacyType.PRIVADO;
-            PrivacySelected = (UserData.privacy == PrivacyType.PRIVADO);
-
-        }
-        StateHasChanged();
-    }
-
-    private void OnChange(bool value)
-    {
-        PrivacySelected = !value;
-        ChangePrivacy();
-    }
+  private void OnChange(bool value)
+  {
+    PrivacySelected = !value;
+    ChangePrivacy();
+  }
 }

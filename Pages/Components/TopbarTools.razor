@@ -63,6 +63,15 @@
  private bool ShowSearch { get; set; } = false;
  [CascadingParameter] public IModalService Modal { get; set; } = default!;
 
+  protected override void OnInitialized()
+  {
+    AuthService.OnUserDataChanged += StateHasChanged;
+  }
+
+  public void Dispose() 
+  {
+    AuthService.OnUserDataChanged -= StateHasChanged;
+  }
 
  private async void SearchUsers(ChangeEventArgs e)
  {

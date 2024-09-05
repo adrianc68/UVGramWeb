@@ -4,7 +4,6 @@ namespace UVGramWeb.Shared.Data;
 
 public class PersonalUserData : UserData
 {
-    [Required]
-    public GenderType Gender { get; set; }
-    public EducationalProgram Educational_program { get; set; }
+ public GenderType Gender { get; set; }
+ public EducationalProgram Educational_program { get; set; }
 }

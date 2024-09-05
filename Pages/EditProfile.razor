@@ -3,391 +3,321 @@
 @inject Services.IAccountService AccountService;
 
 @page "/accounts/edit/"
+@using UVGramWeb.Pages.Components
 @using UVGramWeb.Shared.Data
 
 @if (DataLoaded)
 {
- <div class="editprofile">
- <div class="editprofile-content card">
-  <sidebar class="editprofile-sidebar">
-   <UVGramWeb.Pages.Components.EPSidebar></UVGramWeb.Pages.Components.EPSidebar>
-  </sidebar>
-  <article class="ep-rightside">
-   <EditForm EditContext="EditContext">
-    <DataAnnotationsValidator />
-    <div class="ep-editprofile-form">
-     <div class="ep-data ep-photo-profile">
-      <div class="epaside-data-container">
-       <div class="userprofile-img-content">
-       </div>
-       @* <UVGramWeb.Shared.UserProfile.UserProfile></UVGramWeb.Shared.UserProfile.UserProfile> *@
-      </div>
-      <div class="ep-data ep-pp-data">
-       <h1>@UserData.username</h1>
-       <button class="btn-link text-decoration-none">Cambiar foto de perfil</button>
-      </div>
-     </div>
-     <div class="ep-data">
-      <div class="epaside-data-container">
-       <label class="epaside-data semibold" for="name">Nombre:</label>
-      </div>
-      <div class="ep-input">
-       <InputText class="form-input-normal" aria-required="true" id="name" placeholder="Nombre" type="text"
-        @bind-Value="@UserData.name" />
-       <div id="help" class="form-text">
-        <p>
-         Para ayudar a que las personas descubran tu cuenta, usa el nombre por el que te
-         conoce
-         la
-         gente, ya sea tu nombre completo, apodo o nombre comercial.
-        </p>
-       </div>
+  <div class="editprofile">
+  <div class="editprofile-content card">
+    <sidebar class="editprofile-sidebar">
+      <UVGramWeb.Pages.Components.EPSidebar></UVGramWeb.Pages.Components.EPSidebar>
+    </sidebar>
+    <article class="ep-rightside">
+      <EditForm EditContext="EditContext">
+        <DataAnnotationsValidator />
+        <div class="ep-editprofile-form">
+          <div class="ep-data ep-photo-profile">
+            <div class="epaside-data-container">
+              <div class="userprofile-img-content">
+              </div>
+              <UserProfile ImageUrl="@UserData.url"></UserProfile>
+            </div>
+            <div class="ep-data ep-pp-data">
+              <h1>@UserData.username</h1>
+              <button class="btn-link text-decoration-none">Cambiar foto de perfil</button>
+            </div>
+          </div>
+          <div class="ep-data">
+            <div class="epaside-data-container">
+              <label class="epaside-data semibold" for="name">Nombre:</label>
+            </div>
+            <div class="ep-input">
+              <InputText class="form-input-normal" aria-required="true" id="name" placeholder="Nombre" type="text"
+                @bind-Value="@UserData.name" />
+              <div id="help" class="form-text">
+                <p>
+                  Para ayudar a que las personas descubran tu cuenta, usa el nombre por el que te
+                  conoce
+                  la
+                  gente, ya sea tu nombre completo, apodo o nombre comercial.
+                </p>
+              </div>
 
-      </div>
-     </div>
-     <div class="ep-data">
-      <div class="epaside-data-container">
-       <label class="epaside-data semibold" for="username">Nombre de usuario:</label>
-      </div>
-      <div class="ep-input">
-       <InputText class="form-input-normal" aria-required="true" id="username" placeholder="Nombre de usuario"
-        type="text" @bind-Value="@UserData.username" />
-       <div id="help" class="form-text">
-        <p>
-         En la mayoría de los casos, podrás volver a cambiar tu nombre de usuario sin
-         problema.
-        </p>
-       </div>
-      </div>
-     </div>
-     <div class="ep-data">
-      <div class="epaside-data-container">
-       <label class="epaside-data semibold" for="presentation">Presentación:</label>
-      </div>
-      <div class="ep-input">
-       <InputTextArea class="form-input-normal-textarea" autocomplete="off" autocorrect="off" type="text"
-        id="presentation" aria-label="Presentacion para tu perfil" @bind-Value="@UserData.presentation">
-       </InputTextArea>
-      </div>
-     </div>
-     <div class="ep-data">
-      <div class="epaside-data-container">
-      </div>
-      <div class="ep-input">
-       <div id="help" class="form-text">
-        <h2>Información personal</h2>
-        <p>
+            </div>
+          </div>
+          <div class="ep-data">
+            <div class="epaside-data-container">
+              <label class="epaside-data semibold" for="username">Nombre de usuario:</label>
+            </div>
+            <div class="ep-input">
+              <InputText class="form-input-normal" aria-required="true" id="username" placeholder="Nombre de usuario"
+                type="text" @bind-Value="@UserData.username" />
+              <div id="help" class="form-text">
+                <p>
+                  En la mayoría de los casos, podrás volver a cambiar tu nombre de usuario sin
+                  problema.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="ep-data">
+            <div class="epaside-data-container">
+              <label class="epaside-data semibold" for="presentation">Presentación:</label>
+            </div>
+            <div class="ep-input">
+              <InputTextArea class="form-input-normal-textarea" autocomplete="off" autocorrect="off" type="text"
+                id="presentation" aria-label="Presentacion para tu perfil" @bind-Value="@UserData.presentation">
+              </InputTextArea>
+            </div>
+          </div>
+          <div class="ep-data">
+            <div class="epaside-data-container">
+            </div>
+            <div class="ep-input">
+              <div id="help" class="form-text">
+                <h2>Información personal</h2>
+                <p>
 
-         Proporciona tu información personal, incluso si la cuenta se usa para un negocio,
-         una
-         mascota,
-         etc. Esta información no se incluirá en tu perfil público.
-        </p>
-       </div>
-      </div>
-     </div>
-     <div class="ep-data">
-      <div class="epaside-data-container">
-       <label class="epaside-data semibold" for="email">Correo electrónico:</label>
-      </div>
-      <div class="ep-input">
-       <InputText class="form-input-normal" aria-required="true" id="email" placeholder="email" type="text"
-        @bind-Value="@UserData.email" />
-      </div>
-     </div>
-     <div class="ep-data">
-      <div class="epaside-data-container">
-       <label class="epaside-data semibold" for="phonenumber">Telefono:</label>
-      </div>
-      <div class="ep-input">
-       <InputText class="form-input-normal" aria-required="true" id="phonenumber" placeholder="Telefono" type="text"
-        @bind-Value="@UserData.phoneNumber" />
-      </div>
-     </div>
+                  Proporciona tu información personal, incluso si la cuenta se usa para un negocio,
+                  una
+                  mascota,
+                  etc. Esta información no se incluirá en tu perfil público.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="ep-data">
+            <div class="epaside-data-container">
+              <label class="epaside-data semibold" for="email">Correo electrónico:</label>
+            </div>
+            <div class="ep-input">
+              <InputText class="form-input-normal" aria-required="true" id="email" placeholder="email" type="text"
+                @bind-Value="@UserData.email" />
+            </div>
+          </div>
+          <div class="ep-data">
+            <div class="epaside-data-container">
+              <label class="epaside-data semibold" for="phonenumber">Telefono:</label>
+            </div>
+            <div class="ep-input">
+              <InputText class="form-input-normal" aria-required="true" id="phonenumber" placeholder="Telefono"
+                type="text" @bind-Value="@UserData.phoneNumber" />
+            </div>
+          </div>
 
-     @if (UserData.role == RoleType.PERSONAL)
-      {
-       <div class="ep-data">
-        <div class="epaside-data-container">
-         <label class="epaside-data semibold" for="gender">Genero:</label>
-        </div>
-        <div class="ep-input">
-         <InputSelect class="form-select form-input-normal" name="gender" id="gender" aria-required="true"
-          @bind-Value="((PersonalUserData) UserData).Gender">
-          @foreach (var gender in Enum.GetValues(typeof(GenderType)))
-          {
-           <option value="@gender">@gender.ToString().ToLower()</option>
-          }
-         </InputSelect>
-        </div>
-       </div>
+          @if (UserData.role == RoleType.PERSONAL)
+            {
+              <div class="ep-data">
+                <div class="epaside-data-container">
+                  <label class="epaside-data semibold" for="gender">Genero:</label>
+                </div>
+                <div class="ep-input">
+                  <InputSelect class="form-select form-input-normal" name="gender" id="gender" aria-required="true"
+                    @bind-Value="((PersonalUserData) UserData).Gender">
+                    @foreach (var gender in Enum.GetValues(typeof(GenderType)))
+                    {
+                      <option value="@gender">@gender.ToString().ToLower()</option>
+                    }
+                  </InputSelect>
+                </div>
+              </div>
 
-       <div class="ep-data">
-        <div class="epaside-data-container">
-         <label class="epaside-data semibold" for="gender">Region:</label>
-        </div>
-        <div class="ep-input">
+              @* <div class="ep-data">
+          <div class="epaside-data-container">
+          <label class="epaside-data semibold" for="gender">Region:</label>
+          </div>
+          <div class="ep-input">
 
-         <InputSelect class="form-select form-input-normal" name="region" id="region" aria-required="false"
+          <InputSelect class="form-select form-input-normal" name="region" id="region" aria-required="false"
           Value="((PersonalUserData) UserData).Educational_program.faculty.region.id"
           ValueExpression="@(() => ((PersonalUserData) UserData).Educational_program.faculty.region.id)"
           ValueChanged="((int e) => OnChangeRegion(e))">
           <option value="-1">Selecciona una región</option>
           @foreach (var region in Regions)
           {
-           if (((PersonalUserData)UserData).Educational_program.faculty.region.id == region.id)
-           {
-            <option value="@region.id" selected>@region.region</option>
-           }
-           else
-           {
-            <option value="@region.id">@region.region</option>
-           }
+          if (((PersonalUserData)UserData).Educational_program.faculty.region.id == region.id)
+          {
+          <option value="@region.id" selected>@region.region</option>
           }
-         </InputSelect>
-        </div>
-       </div>
-       <div class="ep-data">
-        <div class="epaside-data-container">
-         <label class="epaside-data semibold" for="faculty">Facultad:</label>
-        </div>
-        <div class="ep-input">
-         <InputSelect class="form-select form-input-normal" name="faculty" id="faculty" aria-required="true"
+          else
+          {
+          <option value="@region.id">@region.region</option>
+          }
+          }
+          </InputSelect>
+          </div>
+          </div>
+          <div class="ep-data">
+          <div class="epaside-data-container">
+          <label class="epaside-data semibold" for="faculty">Facultad:</label>
+          </div>
+          <div class="ep-input">
+          <InputSelect class="form-select form-input-normal" name="faculty" id="faculty" aria-required="true"
           Value="((PersonalUserData) UserData).Educational_program.faculty.id"
           ValueExpression="@(() => ((PersonalUserData) UserData).Educational_program.faculty.id)"
           ValueChanged="((int e) => OnChangeFaculty(e))">
           <option value="-1">Selecciona una facultad</option>
           @foreach (var faculty in Faculties)
           {
-           if (((PersonalUserData)UserData).Educational_program.faculty.id == faculty.id)
-           {
-            <option value="@faculty.id" selected>@faculty.faculty.Replace("_", " ")</option>
-           }
-           else
-           {
-            <option value="@faculty.id">@faculty.faculty.Replace("_", " ")</option>
-           }
+          if (((PersonalUserData)UserData).Educational_program.faculty.id == faculty.id)
+          {
+          <option value="@faculty.id" selected>@faculty.faculty.Replace("_", " ")</option>
           }
-         </InputSelect>
-        </div>
-       </div>
-       <div class="ep-data">
-        <div class="epaside-data-container">
-         <label class="epaside-data semibold" for="Educational_program">Programa educativo:</label>
-        </div>
-        <div class="ep-input">
-         <InputSelect class="form-select form-input-normal" name="Educational_program" id="Educational_program"
+          else
+          {
+          <option value="@faculty.id">@faculty.faculty.Replace("_", " ")</option>
+          }
+          }
+          </InputSelect>
+          </div>
+          </div>
+          <div class="ep-data">
+          <div class="epaside-data-container">
+          <label class="epaside-data semibold" for="Educational_program">Programa educativo:</label>
+          </div>
+          <div class="ep-input">
+          <InputSelect class="form-select form-input-normal" name="Educational_program" id="Educational_program"
           aria-required="true" Value="((PersonalUserData) UserData).Educational_program.id"
           ValueExpression="@(() => ((PersonalUserData) UserData).Educational_program.id)"
           ValueChanged="((int e) => OnChangeEducationalProgram(e))">
           <option value="-1">Selecciona una programa educativo</option>
           @foreach (var educationalProgram in EducationalPrograms)
           {
-           if (((PersonalUserData)UserData).Educational_program.id == educationalProgram.id)
-           {
-            <option value="@educationalProgram.id" selected>
-             @educationalProgram.Educational_program.Replace("_", " ")</option>
-           }
-           else
-           {
-            <option value="@educationalProgram.id">
-             @educationalProgram.Educational_program.Replace("_", " ")</option>
-           }
+          if (((PersonalUserData)UserData).Educational_program.id == educationalProgram.id)
+          {
+          <option value="@educationalProgram.id" selected>
+          @educationalProgram.Educational_program.Replace("_", " ")</option>
+          }
+          else
+          {
+          <option value="@educationalProgram.id">
+          @educationalProgram.Educational_program.Replace("_", " ")</option>
+          }
 
           }
-         </InputSelect>
+          </InputSelect>
 
-        </div>
-       </div>
-      }
-
-      <div class="ep-data">
-       <div class="epaside-data-container">
-       </div>
-       <div class="ep-input">
-        <div class="actions">
-         <button class="btn btn-primary" @onclick="OnValidSubmit">Enviar</button>
-         <button class="btn btn-link text-decoration-none">Inhabilitar temporalmente mi
-          cuenta</button>
-        </div>
+          </div>
+          </div> *@
 
 
-        @if (errorMessage != null)
-        {
-         <p role="alert" class="text-danger ">
-          <span>@errorMessage</span>
-         </p>
-        }
+            }
 
-        @if (successfulMessage != null)
-        {
-         <p role="alert">
-          <span>@successfulMessage</span>
-         </p>
-        }
+            <div class="ep-data">
+              <div class="epaside-data-container">
+              </div>
+              <div class="ep-input">
+                <div class="actions">
+                  <button class="btn btn-primary" @onclick="OnValidSubmit">Enviar</button>
+                  <button class="btn btn-link text-decoration-none">Inhabilitar temporalmente mi
+                    cuenta</button>
+                </div>
 
-       </div>
-      </div>
-     </div>
-    </EditForm>
-   </article>
 
+                @if (errorMessage != null)
+                {
+                  <p role="alert" class="text-danger ">
+                    <span>@errorMessage</span>
+                  </p>
+                }
+
+                @if (message != null)
+                {
+                  <p role="alert">
+                    <span>@message</span>
+                  </p>
+                }
+
+              </div>
+            </div>
+          </div>
+        </EditForm>
+      </article>
+
+    </div>
   </div>
- </div>
 }
 
 @code {
- private UserData UserData { get; set; } = new UserData();
- private EditContext EditContext { get; set; }
- private bool DataLoaded { get; set; } = false;
- private List<Region> Regions { get; set; } = new List<Region>();
- private int RegionSelected { get; set; } = 0;
- private int FacultySelected { get; set; } = 0;
- private List<Faculty> Faculties { get; set; } = new List<Faculty>();
- private List<EducationalProgram> EducationalPrograms { get; set; } = new List<EducationalProgram>();
- private string errorMessage { get; set; }
- private string successfulMessage { get; set; }
+  private UserData UserData { get; set; } = new UserData();
+  private EditContext EditContext { get; set; }
+  private bool DataLoaded { get; set; } = false;
+  private List<Region> Regions { get; set; } = new List<Region>();
+  private int RegionSelected { get; set; } = 0;
+  private int FacultySelected { get; set; } = 0;
+  private List<Faculty> Faculties { get; set; } = new List<Faculty>();
+  private List<EducationalProgram> EducationalPrograms { get; set; } = new List<EducationalProgram>();
+  private string errorMessage { get; set; }
+  private string message { get; set; }
 
- protected override async Task OnInitializedAsync()
- {
-  try
+  protected override async Task OnInitializedAsync()
   {
-   if (CheckAuthentication())
-   {
-    await GetData();
-   }
-
-  }
-  catch (Exception error)
-  {
-   Console.WriteLine(error);
-  }
- }
-
- protected async Task GetData()
- {
-  UserData = await AccountService.GetAccountPersonalData();
-
-
-  Console.WriteLine(((PersonalUserData)UserData).Educational_program);
-
-
-
-  EditContext = new EditContext(UserData);
-  if (UserData.role == RoleType.PERSONAL)
-  {
-   GetAvailableRegion();
-   if (((PersonalUserData)UserData).Educational_program != null)
-   {
-    GetAvailableFaculty(((PersonalUserData)UserData).Educational_program.faculty.region.id);
-    GetAvailableEducationalProgram(((PersonalUserData)UserData).Educational_program.faculty.id);
-   }
-  }
-  DataLoaded = true;
-  StateHasChanged();
- }
-
- private bool CheckAuthentication()
- {
-  if (AuthenticationService.User == null)
-  {
-   NavigationManager.NavigateTo("/login");
-   return false;
-  }
-  return true;
- }
-
- private async void GetAvailableRegion()
- {
-  Regions = new List<Region>();
-  try
-  {
-   Regions = await AccountService.GetAvailableRegion();
-  }
-  catch (System.Exception error)
-  {
-
-   Console.WriteLine("error en regiones");
-   Console.WriteLine(error);
-  }
-  StateHasChanged();
- }
-
- private async void GetAvailableFaculty(int regionId)
- {
-  Faculties = new List<Faculty>();
-  try
-  {
-   Faculties = await AccountService.GetAvailableFaculty(regionId);
-   StateHasChanged();
-  }
-  catch (System.Exception error)
-  {
-   Console.WriteLine("error en facultad");
-   Console.WriteLine(error);
-  }
- }
-
- private async void GetAvailableEducationalProgram(int facultyId)
- {
-  EducationalPrograms = new List<EducationalProgram>();
-  try
-  {
-   EducationalPrograms = await AccountService.GetAvailableEducationalProgram(facultyId);
-   StateHasChanged();
-  }
-  catch (System.Exception error)
-  {
-   throw error;
-  }
- }
-
- private void OnChangeRegion(int id)
- {
-  ((PersonalUserData)UserData).Educational_program.faculty.region.id = id;
-  ((PersonalUserData)UserData).Educational_program.faculty.id = -1;
-  ((PersonalUserData)UserData).Educational_program.id = -1;
-
-  Faculties.Clear();
-  EducationalPrograms.Clear();
-  GetAvailableFaculty(id);
- }
-
- private void OnChangeFaculty(int id)
- {
-  ((PersonalUserData)UserData).Educational_program.faculty.id = id;
-  ((PersonalUserData)UserData).Educational_program.id = -1;
-  EducationalPrograms.Clear();
-  GetAvailableEducationalProgram(id);
- }
-
- private void OnChangeEducationalProgram(int id)
- {
-  ((PersonalUserData)UserData).Educational_program.id = id;
- }
-
- private async void OnValidSubmit()
- {
-  if (EditContext.Validate())
-  {
-   if (((PersonalUserData)UserData).Educational_program.id > 0)
-   {
-    PersonalUserData personalUserData = (PersonalUserData)UserData;
-    ResultUpdateAccount result = await AccountService.UpdatePersonalAccountData(personalUserData);
-    if (result.IsUpdated)
+    try
     {
-     successfulMessage = "Se ha actualizado los datos";
-     await AuthenticationService.UpdateData();
-     NavigationManager.NavigateTo(NavigationManager.Uri, true);
-     if (result.IsEmailUpdated || result.IsEmailConfirmationAlreadySent)
-     {
-      successfulMessage += "Se ha enviado una url de confirmación a la nueva dirección de correo electrónico";
-     }
+      if (CheckAuthentication())
+      {
+        await GetData();
+      }
     }
-   }
+    catch (Exception error)
+    {
+      Console.WriteLine(error);
+    }
   }
-  StateHasChanged();
- }
 
+  protected async Task GetData()
+  {
+    UserData = await AccountService.GetAccountPersonalData();
+    EditContext = new EditContext(UserData);
+    DataLoaded = true;
+    StateHasChanged();
+  }
 
+  private bool CheckAuthentication()
+  {
+    if (AuthenticationService.User == null)
+    {
+      NavigationManager.NavigateTo("/login");
+      return false;
+    }
+    return true;
+  }
+  private async void OnValidSubmit()
+  {
+    if (!EditContext.Validate())
+    {
+      foreach (var data in EditContext.GetValidationMessages())
+      {
+        message = MessageType.INVALID_DATA.ToString();
+        StateHasChanged();
+        return;
+      }
+    }
+
+    PersonalUserData personalUserData = (PersonalUserData)UserData;
+    object result = await AccountService.UpdatePersonalAccountData(personalUserData);
+    if (result.GetType() != typeof(UpdateAccountDataResponse))
+    {
+      CodeMessageDataResponse codeMessageDataResponse = (CodeMessageDataResponse)result;
+      message = codeMessageDataResponse.Code.ToString();
+      StateHasChanged();
+      return;
+    }
+    else
+    {
+      UpdateAccountDataResponse updateAccountDataResponse = (UpdateAccountDataResponse)result;
+      if (updateAccountDataResponse.UserDataUpdateMessage.BoolValue)
+      {
+        await AuthenticationService.UpdateData();
+        message = updateAccountDataResponse.UserDataUpdateMessage.Code.ToString();
+        if (updateAccountDataResponse.EmailChangeUpdateMessage != null)
+        {
+          message += "\n";
+          message += updateAccountDataResponse.EmailChangeUpdateMessage.Code.ToString();
+        }
+      }
+    }
+    StateHasChanged();
+  }
 }

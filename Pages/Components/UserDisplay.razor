@@ -1,10 +1,11 @@
 @using UVGramWeb.Shared.Data
+@inject Services.IAccountService AccountService;
 
 <div class="uc-usercard-container">
  <a class="uc-usercard" href="/@User.username" @onclick="ExecuteOnClick" @onfocusin="ExecuteOnFocusIn">
   <div class="usercard-img">
    <div class="userprofile @(!NeedActions ? " uc-no-select" : "")">
-    <UserProfile></UserProfile>
+    <UserProfile ImageUrl="@User.url"></UserProfile>
    </div>
   </div>
   <div class="userprofile-data">
@@ -34,7 +35,6 @@
  [Parameter]
  public bool NeedData { get; set; } = false;
  public bool NeedActions { get; set; } = false;
-
  private void ExecuteOnClick()
  {
   OnClick?.Invoke();
@@ -44,5 +44,4 @@
  {
   OnFocusIn?.Invoke();
  }
-
 }

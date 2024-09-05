@@ -7,7 +7,7 @@ public class AccountDataResponse
     public string Username { get; set; }
     public string Email { get; set; }
     public string Phone_number { get; set; }
-    public string Birthday { get; set; }
+    public string Birthdate { get; set; }
     public string Role { get; set; }
     public string PrivacyType { get; set; }
     public string Gender { get; set; }

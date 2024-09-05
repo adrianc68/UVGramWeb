@@ -30,7 +30,6 @@
 
 @code {
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; } = default!;
-
     [Parameter] public string Username { get; set; }
     private List<UserSearch> usersFilter = new List<UserSearch>();
     private async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));

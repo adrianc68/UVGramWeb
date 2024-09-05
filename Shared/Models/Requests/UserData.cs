@@ -17,6 +17,7 @@ public class UserData
     [MaxLength(30)]
     [RegularExpression("^[a-z0-9_]+(\\.([a-z0-9_]+))*$", ErrorMessage = "username must have allowed characters: words, numbers. no allowed spaces and period as last character and lowercase")]
     public string username { get; set; }
+    public string url { get; set; }
     [Required]
     [EmailAddress]
     [MinLength(3)]

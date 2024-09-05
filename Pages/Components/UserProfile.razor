@@ -1,21 +1,44 @@
-<a class="userprofile-content">
-    <div class="up-content">
-        <div class="userprofile-img">
-            <img src="/images/ide-20.svg" alt="Imagen de usuario">
-        </div>
-    </div>
+@inject Services.IAccountService AccountService;
+@inject NavigationManager NavigationManager;
 
-    @if (HasHistory)
-        {
-        <div class="@(IsHistorySeen ? "userprofile-history-available history-outstanding" : " userprofile-history-available history-seen")">
-        </div>
-        }
+<a class="userprofile-content">
+  <div class="up-content">
+    <div class="userprofile-img">
+      @if (Image != null && Image.Data != null)
+      {
+        <img src="@($"data:${Image.ContentType};base64,{Convert.ToBase64String(Image.Data)}")" alt="Imagen" />
+      }
+      else
+      {
+        <img src="/images/ide-19.svg" alt="Imagen de usuario">
+      }
+    </div>
+  </div>
+
+  @if (HasHistory)
+  {
+    <div
+      class="@(IsHistorySeen ? "userprofile-history-available history-outstanding" : " userprofile-history-available history-seen")">
+    </div>
+  }
 </a>
 
 @code {
-    public bool IsHistorySeen = false;
+  public bool IsHistorySeen = true;
+  public bool HasHistory = true;
+  public Image Image = null;
+  [Parameter]
+  public string ImageUrl { get; set; }
 
-    public bool HasHistory = false;
+  protected override async Task OnInitializedAsync()
+  {
+    Console.WriteLine("**********");
+    Console.WriteLine(ImageUrl);
+    if (ImageUrl != null)
+    {
+      Image = await AccountService.GetImageResource(ImageUrl);
+    }
+  }
 
 
 }
