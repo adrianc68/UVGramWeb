@@ -9,5 +9,6 @@ public class Comment : AbstractPost
     public bool isLiked { get; set; }
     public bool isReplyInnerComment { get; set; }
     public Comment parent_comment { get; set; }
-    public List<Comment> replies { get; set; }
+    public string rootCommentUUID {get; set;}
+    public List<Comment> replies { get; set; } 
 }

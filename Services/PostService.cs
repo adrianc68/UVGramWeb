@@ -20,8 +20,8 @@ public class PostService : IPostService
     PostDetails post = null;
     try
     {
-      var uri = $"/post/details/{uuid}";
-      var data = await httpService.Get(uri);
+      string uri = $"/post/details/{uuid}";
+      string data = await httpService.Get(uri);
       ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<PostDetailsDataResponse>(data);
       if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
@@ -34,7 +34,9 @@ public class PostService : IPostService
           isLiked = postDetailsDataResponse.Post.isLiked,
           likes = postDetailsDataResponse.Likes,
           files = postDetailsDataResponse.Files,
-          owner = postDetailsDataResponse.Owner
+          owner = postDetailsDataResponse.Owner,
+          comments = postDetailsDataResponse.Comments,
+          uuid = postDetailsDataResponse.Post.uuid
         };
       }
 
@@ -52,17 +54,24 @@ public class PostService : IPostService
     bool isLiked = false;
     try
     {
-      Uuid model = new Uuid();
-      model.uuid = uuid;
-      var uri = "/post/comment/like/";
-      var data = await httpService.Post(uri, model);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-      var message = json.message;
-      isLiked = Convert.ToBoolean(message);
+      Uuid model = new()
+      {
+        uuid = uuid
+      };
+      string uri = "/post/comment/like/";
+      string data = await httpService.Post(uri, model);
+
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+        isLiked = codeMessageData.BoolValue;
+      }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return isLiked;
   }
@@ -74,15 +83,20 @@ public class PostService : IPostService
     {
       Uuid model = new Uuid();
       model.uuid = uuid;
-      var uri = "/post/comment/dislike/";
-      var data = await httpService.Post(uri, model);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-      var message = json.message;
-      isDisliked = Convert.ToBoolean(message);
+      string uri = "/post/comment/dislike/";
+      string data = await httpService.Post(uri, model);
+
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+        isDisliked = codeMessageData.BoolValue;
+      }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return isDisliked;
   }
@@ -92,29 +106,20 @@ public class PostService : IPostService
     Comment reply = null;
     try
     {
-      var uri = "/post/comment/reply";
-      var data = await httpService.Post(uri, model);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-      var message = json.message;
-      if (Convert.ToBoolean(message.isCreated))
+      string uri = "/post/comment/reply";
+      string data = await httpService.Post(uri, model);
+
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CommentCreatedDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
-        var commentData = message.commentDetails;
-        reply = new Comment();
-        reply.comment = Convert.ToString(commentData.comment);
-        DateTime timeUtc = Convert.ToDateTime(commentData.created_time);
-        TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("America/Mexico_City");
-        DateTime cstTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, cstZone);
-        reply.isReplyInnerComment = Convert.ToBoolean(commentData.isReplyInnerComment);
-        reply.created_time = cstTime.ToString();
-        reply.uuid = Convert.ToString(commentData.uuid);
-        reply.likes = 0;
-        reply.isLiked = false;
-        reply.replies = new List<Comment>();
+        CommentCreatedDataResponse commentCreatedDataResponse = (CommentCreatedDataResponse) apiResponse.Data;
+        reply = commentCreatedDataResponse.CommentDetails;
       }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return reply;
   }
@@ -124,29 +129,20 @@ public class PostService : IPostService
     Comment commentCreated = null;
     try
     {
-      var uri = "/post/comment/create/";
-      var data = await httpService.Post(uri, model);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-      var message = json.message;
-      if (Convert.ToBoolean(message.isCreated))
+      string uri = "/post/comment/create/";
+      string data = await httpService.Post(uri, model);
+      
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CommentCreatedDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
-        var commentData = message.commentDetails;
-        commentCreated = new Comment();
-        commentCreated.comment = Convert.ToString(commentData.comment);
-        DateTime timeUtc = Convert.ToDateTime(commentData.created_time);
-        TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("America/Mexico_City");
-        DateTime cstTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, cstZone);
-        commentCreated.isReplyInnerComment = Convert.ToBoolean(commentData.isReplyInnerComment);
-        commentCreated.created_time = cstTime.ToString();
-        commentCreated.uuid = Convert.ToString(commentData.uuid);
-        commentCreated.likes = 0;
-        commentCreated.isLiked = false;
-        commentCreated.replies = new List<Comment>();
+        CommentCreatedDataResponse commentCreatedData = (CommentCreatedDataResponse)apiResponse.Data;
+        commentCreated = commentCreatedData.CommentDetails;
       }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return commentCreated;
   }
@@ -156,17 +152,25 @@ public class PostService : IPostService
     bool isLiked = false;
     try
     {
-      Uuid model = new Uuid();
-      model.uuid = uuid;
-      var uri = "/post/like/";
-      var data = await httpService.Post(uri, model);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-      var message = json.message;
-      isLiked = Convert.ToBoolean(message);
+      Uuid model = new()
+      {
+        uuid = uuid
+      };
+      string uri = "/post/like/";
+      string data = await httpService.Post(uri, model);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+
+        CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+        isLiked = codeMessageData.BoolValue;
+      }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      System.Console.WriteLine(error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return isLiked;
   }
@@ -176,17 +180,24 @@ public class PostService : IPostService
     bool isDisliked = false;
     try
     {
-      Uuid model = new Uuid();
-      model.uuid = uuid;
-      var uri = "/post/dislike/";
-      var data = await httpService.Post(uri, model);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(data);
-      var message = json.message;
-      isDisliked = Convert.ToBoolean(message);
+      Uuid model = new()
+      {
+        uuid = uuid
+      };
+      string uri = "/post/dislike/";
+      string data = await httpService.Post(uri, model);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CodeMessageDataResponse>(data);
+
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        CodeMessageDataResponse codeMessageData = (CodeMessageDataResponse)apiResponse.Data;
+        isDisliked = codeMessageData.BoolValue;
+      }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return isDisliked;
   }

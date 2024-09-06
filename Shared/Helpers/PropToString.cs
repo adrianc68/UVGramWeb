@@ -1,28 +1,60 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+
 public class PropToString
 {
- public static void PrintData<T>(T obj)
- {
-  Type type = obj.GetType();
-    System.Reflection.PropertyInfo[] properties = type.GetProperties();
-
+  public static void PrintData<T>(T obj)
+  {
+    Type type = obj.GetType();
+    PropertyInfo[] properties = type.GetProperties();
     Console.WriteLine($"Propiedades de {type.Name}:");
-    foreach (System.Reflection.PropertyInfo property in properties)
+    foreach (PropertyInfo property in properties)
     {
-        object value = property.GetValue(obj);
-        if (value != null && value.GetType().IsArray)
+      object value = property.GetValue(obj);
+      if (value != null)
+      {
+        if (value is Array arrayValue)
         {
-            Array arrayValue = (Array)value;
-            Console.WriteLine($"{property.Name}:");
-            foreach (object item in arrayValue)
-            {
-                PrintData(item);
-            }
+          Console.WriteLine($"{property.Name}:");
+          foreach (object item in arrayValue)
+          {
+            PrintData(item);
+          }
+        }
+        else if (value is IEnumerable enumerableValue && !(value is string))
+        {
+          Console.WriteLine($"{property.Name}:");
+          foreach (object item in enumerableValue)
+          {
+            PrintData(item);
+          }
         }
         else
         {
-            Console.WriteLine($"{property.Name}: {value}");
+          Console.WriteLine($"{property.Name}: {value}");
         }
+      }
     }
-}
- 
+  }
+
+  public static void PrintListData<T>(IEnumerable<T> list)
+  {
+    if (list == null)
+    {
+      Console.WriteLine("List is null");
+      return;
+    }
+
+    int index = 0;
+    foreach (T item in list)
+    {
+      Console.WriteLine($"Elemento {index++}:");
+      PrintData(item);
+      Console.WriteLine();
+    }
+  }
+
+
 }

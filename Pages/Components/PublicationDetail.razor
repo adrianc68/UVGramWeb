@@ -2,7 +2,7 @@
 @using UVGramWeb.Shared.Models
 @inject UVGramWeb.Services.IPostService PostService;
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
-
+@inject IJSRuntime JS
 
 <div class="publicationdetail card">
   <div class="pubd-img">
@@ -70,10 +70,10 @@
         </div>
       </div>
 
-      @* @foreach (var comment in Post.comments)
+      @foreach (var comment in Post.comments)
       {
-      <CommentComp CommentData="@comment" ChangeAbstractPostSelected="ChangeAbstractPostData"></CommentComp>
-      } *@
+        <CommentComp CommentData="@comment" ChangeAbstractPostSelected="ChangeAbstractPostData"></CommentComp>
+      }
 
     </div>
 
@@ -130,7 +130,7 @@
         <div class="pd-textarea">
           <textarea class="pd-input-textarea" autocomplete="off" autocorrect="off" type="text"
             placeholder="Agrega un comentario..." aria-label="Agrega un comentario" @oninput="ChangeComment"
-            @bind="CommentObject.comment" />
+            @bind="CommentObjectRequest.comment" @ref="commentTextarea" />
         </div>
         <button class="btn-link border-0 bg-transparent text-decoration-none" @onclick="CreateComment">
           <span>Publicar</span>
@@ -144,53 +144,49 @@
 @code {
   [Parameter]
   public PostDetails Post { get; set; }
-  public CreateComment CommentObject { get; set; } = new CreateComment();
+  public CreateComment CommentObjectRequest { get; set; } = new CreateComment();
   public AbstractPost SelectedAbstractPost { get; set; }
   [CascadingParameter] public IModalService Modal { get; set; } = default!;
   private List<Image> Images { get; set; }
   private int currentIndex = 0;
+  private ElementReference commentTextarea;
 
-  private void NextImage()
+  protected override async Task OnInitializedAsync()
   {
-    if (Images != null && Images.Any())
+    Images = new List<Image>();
+    var imageTasks = Post.files.Select(async file =>
     {
-      currentIndex = (currentIndex + 1) % Images.Count;
-      StateHasChanged();
-    }
+      return await PostService.GetImageResource(file.url);
+    });
+    var images = await Task.WhenAll(imageTasks);
+    Images.AddRange(images);
   }
-
-  private void PreviousImage()
-  {
-    if (Images != null && Images.Any())
-    {
-      currentIndex = (currentIndex - 1 + Images.Count) % Images.Count;
-      StateHasChanged();
-    }
-  }
-
   protected override void OnInitialized()
   {
-    CommentObject.uuid = Post.uuid;
+    CommentObjectRequest.uuid = Post.uuid;
     SelectedAbstractPost = Post;
     StateHasChanged();
   }
-
   private async void CreateComment()
   {
     try
     {
+      // This check if SelectedAbstractPost (it means where did you presses reply button) is the original post
+      // or any comment.
+      // If yes then it sends a comment directly to post
       if (SelectedAbstractPost.GetType() == Post.GetType())
       {
-        Comment comment = await PostService.CommentPost(CommentObject);
+        Comment comment = await PostService.CommentPost(CommentObjectRequest);
         if (comment != null)
         {
           comment.username = AuthenticationService.User.Username;
           Post.comments.Add(comment);
         }
       }
+      // else it sends a comment to a post's comment
       else
       {
-        Comment comment = await PostService.ReplyComment(CommentObject);
+        Comment comment = await PostService.ReplyComment(CommentObjectRequest);
         comment.username = AuthenticationService.User.Username;
         if (comment != null)
         {
@@ -200,15 +196,19 @@
             comment.parent_comment = parent;
             parent.replies.Add(comment);
           }
+          // This means that comment reply (comment selected) is root comment
           else
           {
             Comment parent = Post.comments.Find(x => SelectedAbstractPost.uuid == x.uuid);
             comment.parent_comment = parent;
+            if(parent.replies == null ) {
+              parent.replies = new List<Comment>();
+            }
             parent.replies.Add(comment);
           }
         }
       }
-      CommentObject.comment = null;
+      CommentObjectRequest.comment = null;
     }
     catch (System.Exception error)
     {
@@ -222,7 +222,7 @@
     string value = e.Value.ToString();
     if (!String.IsNullOrEmpty(value))
     {
-      CommentObject.comment = value;
+      CommentObjectRequest.comment = value;
 
     }
   }
@@ -232,9 +232,24 @@
     if (value != null)
     {
       SelectedAbstractPost = value;
-      CommentObject.uuid = value.uuid;
+      CommentObjectRequest.uuid = value.uuid;
+
+      if (value is Comment comment)
+      {
+        CommentObjectRequest.comment = $"@{comment.username} ";
+      }
+      else
+      {
+        CommentObjectRequest.comment = string.Empty;
+      }
+      SelectTextarea();
       StateHasChanged();
     }
+  }
+
+  private async void SelectTextarea()
+  {
+    await JS.InvokeVoidAsync("selectTextarea", commentTextarea);
   }
 
   private async void ChangeStatusLikePost()
@@ -277,21 +292,22 @@
     Modal.Show<DisplayPostLikes>("Me gusta", parameters, options);
   }
 
-  protected override async Task OnInitializedAsync()
+  private void NextImage()
   {
-    Images = new List<Image>();
-    @* foreach (var file in Post.files)
-{
-Image postImage = await PostService.GetImageResource(file.url);
-Images.Add(postImage);
-} *@
-
-    var imageTasks = Post.files.Select(async file =>
+    if (Images != null && Images.Any())
     {
-      return await PostService.GetImageResource(file.url);
-    });
-    var images = await Task.WhenAll(imageTasks);
-    Images.AddRange(images);
+      currentIndex = (currentIndex + 1) % Images.Count;
+      StateHasChanged();
+    }
+  }
+
+  private void PreviousImage()
+  {
+    if (Images != null && Images.Any())
+    {
+      currentIndex = (currentIndex - 1 + Images.Count) % Images.Count;
+      StateHasChanged();
+    }
   }
 
 }
