@@ -115,36 +115,6 @@
     }
     StateHasChanged();
   }
-
-  @* private async void ReplyComment()
-  {
-    try
-    {
-      CreateComment model = new CreateComment();
-      model.comment = "hola";
-      model.uuid = CommentData.uuid;
-      Comment reply = await PostService.ReplyComment(model);
-      if (reply != null)
-      {
-        reply.username = AuthenticationService.User.Username;
-        if (reply.isReplyInnerComment)
-        {
-          await AddCommentToRootList.InvokeAsync(reply);
-        }
-        else
-        {
-          CommentData.replies.Add(reply);
-        }
-      }
-    }
-    catch (System.Exception error)
-    {
-      Console.WriteLine(error);
-      throw error;
-    }
-    StateHasChanged();
-  } *@
-
   private void AddCommentToList(Comment comment)
   {
     if (comment != null)

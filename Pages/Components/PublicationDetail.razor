@@ -194,14 +194,19 @@
           {
             Comment parent = Post.comments.Find(x => ((Comment)SelectedAbstractPost).parent_comment.uuid == x.uuid);
             comment.parent_comment = parent;
+            if (parent.replies == null)
+            {
+              parent.replies = new List<Comment>();
+            }
             parent.replies.Add(comment);
           }
           // This means that comment reply (comment selected) is root comment
           else
           {
-            Comment parent = Post.comments.Find(x => SelectedAbstractPost.uuid == x.uuid);
+            Comment parent = Post.comments.Find(x => comment.rootCommentUUID == x.uuid);
             comment.parent_comment = parent;
-            if(parent.replies == null ) {
+            if (parent.replies == null)
+            {
               parent.replies = new List<Comment>();
             }
             parent.replies.Add(comment);
@@ -209,6 +214,8 @@
         }
       }
       CommentObjectRequest.comment = null;
+      CommentObjectRequest.uuid = Post.uuid;
+      SelectedAbstractPost = Post;
     }
     catch (System.Exception error)
     {
