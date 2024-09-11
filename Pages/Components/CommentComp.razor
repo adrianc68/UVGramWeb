@@ -2,12 +2,12 @@
 @using UVGramWeb.Shared.Models
 @using UVGramWeb.Shared.Helpers
 @inject UVGramWeb.Services.IPostService PostService;
-@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService;
 
 <div class="comment-wrapper">
   <div class="comment-layout">
     <div class="cl-userprofile">
-      <UserProfile></UserProfile>
+      <UserProfile ImageUrl="@CommentData.url"></UserProfile>
     </div>
     <div class="comment-content">
       <span class="comment-spn">

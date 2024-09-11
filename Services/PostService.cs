@@ -207,25 +207,19 @@ public class PostService : IPostService
     List<UserSearch> users = new List<UserSearch>();
     try
     {
-      var uri = $"/post/details/likes/{uuid}";
+      string uri = $"/post/details/likes/{uuid}";
       string resultData = await httpService.Get(uri);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-      var message = json.message;
-      if (message != null)
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<PostLikeByDataResponse>(resultData);
+      if (apiResponse.Status == (int) HttpStatusCode.OK)
       {
-        foreach (var item in message.likedBy)
-        {
-          UserSearch userSearch = new UserSearch();
-          userSearch.username = Convert.ToString(item.username);
-          userSearch.name = Convert.ToString(item.name);
-          userSearch.isFollowed = Convert.ToBoolean(item.isFollowed);
-          users.Add(userSearch);
-        }
+        PostLikeByDataResponse postlikeData = (PostLikeByDataResponse) apiResponse.Data;
+        users = postlikeData.LikedBy;
       }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return users;
   }
@@ -235,25 +229,19 @@ public class PostService : IPostService
     List<UserSearch> users = new List<UserSearch>();
     try
     {
-      var uri = $"/post/comment/details/likes/{uuid}";
+      string uri = $"/post/comment/details/likes/{uuid}";
       string resultData = await httpService.Get(uri);
-      dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(resultData);
-      var message = json.message;
-      if (message != null)
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<PostLikeByDataResponse>(resultData);
+      if (apiResponse.Status == (int) HttpStatusCode.OK)
       {
-        foreach (var item in message.likedBy)
-        {
-          UserSearch userSearch = new UserSearch();
-          userSearch.username = Convert.ToString(item.username);
-          userSearch.name = Convert.ToString(item.name);
-          userSearch.isFollowed = Convert.ToBoolean(item.isFollowed);
-          users.Add(userSearch);
-        }
+        PostLikeByDataResponse postlikeData = (PostLikeByDataResponse) apiResponse.Data;
+        users = postlikeData.LikedBy;
       }
     }
     catch (System.Exception error)
     {
-      throw new InteralServerErrorException("El servidor ha tenido un error", error);
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
     }
     return users;
   }

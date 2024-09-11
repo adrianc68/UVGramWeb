@@ -97,6 +97,7 @@ public class AuthenticationService : IAuthenticationService
         AccountDataResponse accountDataResponse = (AccountDataResponse)apiResponse.Data;
         User.Username = accountDataResponse.Username;
         User.RoleType = EnumHelper.GetEnumValue<RoleType>(accountDataResponse.Role);
+        User.Url = accountDataResponse.Url;
         await localStorageService.SetItem(userKey, User);
         NotifyUserDataChanged();
       }

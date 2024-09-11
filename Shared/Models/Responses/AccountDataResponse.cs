@@ -14,4 +14,5 @@ public class AccountDataResponse
     public string Id_Educational_program { get; set; }
     public string Id_Region { get; set; }
     public string Id_Faculty { get; set; }
+    public string Url { get; set; }
 }

@@ -44,7 +44,7 @@
   <div class="pubd-details border-start">
     <div class="pubd-header border-bottom">
       <div class="userprofile">
-        <UserProfile></UserProfile>
+        <UserProfile ImageUrl="@Post.owner.url"></UserProfile>
       </div>
       <div class="userdatapub">
         <span class="semibold"><a href="@Post.owner.username">@Post.owner.username</a></span>
@@ -180,6 +180,7 @@
         if (comment != null)
         {
           comment.username = AuthenticationService.User.Username;
+          comment.url = AuthenticationService.User.Url;
           Post.comments.Add(comment);
         }
       }
@@ -188,6 +189,7 @@
       {
         Comment comment = await PostService.ReplyComment(CommentObjectRequest);
         comment.username = AuthenticationService.User.Username;
+        comment.url = AuthenticationService.User.Url;
         if (comment != null)
         {
           if (((Comment)SelectedAbstractPost).parent_comment != null)
@@ -219,7 +221,6 @@
     }
     catch (System.Exception error)
     {
-      Console.WriteLine(error);
       throw error;
     }
     StateHasChanged();
