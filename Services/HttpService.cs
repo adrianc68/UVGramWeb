@@ -75,11 +75,18 @@ public class HttpService : IHttpService
     var request = new HttpRequestMessage(method, uri);
     if (value != null)
     {
-      request.Content = new StringContent(
-          System.Text.Json.JsonSerializer.Serialize(value),
-          System.Text.Encoding.UTF8,
-          "application/json"
-      );
+      if (value is MultipartFormDataContent)
+      {
+        request.Content = (MultipartFormDataContent)value;
+      }
+      else
+      {
+        request.Content = new StringContent(
+            System.Text.Json.JsonSerializer.Serialize(value),
+            System.Text.Encoding.UTF8,
+            "application/json"
+        );
+      }
     }
     return request;
   }

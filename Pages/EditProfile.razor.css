@@ -78,8 +78,8 @@
 }
 
 .userprofile-img-content {
-    height: 42px;
-    width: 42px;
+    height: 82px;
+    width: 82px;
 }
 
 .ep-pp-data {
@@ -94,7 +94,7 @@
     text-align: start;
 }
 
-.ep-pp-data>button {
+.ep-pp-data>label {
     text-align: start;
     font-size: 0.8em;
     padding: 0px;
@@ -102,6 +102,10 @@
     border: 0;
     background-color: transparent;
     margin: 0px;
+}
+
+.ep-pp-data>input {
+  display:none;
 }
 
 .form-text {

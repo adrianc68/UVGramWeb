@@ -20,12 +20,13 @@
           <div class="ep-data ep-photo-profile">
             <div class="epaside-data-container">
               <div class="userprofile-img-content">
+                <UserProfile ImageUrl="@UserData.url"></UserProfile>
               </div>
-              <UserProfile ImageUrl="@UserData.url"></UserProfile>
             </div>
             <div class="ep-data ep-pp-data">
               <h1>@UserData.username</h1>
-              <button class="btn-link text-decoration-none">Cambiar foto de perfil</button>
+              <label class="btn-link text-decoration-none" for="fileInput">Cambiar foto de perfil</label>
+              <InputFile OnChange="OnFileSelected" id="fileInput" style="display:none"/>
             </div>
           </div>
           <div class="ep-data">
@@ -319,5 +320,18 @@
       }
     }
     StateHasChanged();
+  }
+
+  private async Task OnFileSelected(InputFileChangeEventArgs e)
+  {
+    var file = e.File;
+    if (file != null)
+    {
+      using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024); // 10 MB
+      string result = await AccountService.UpdateProfileImage(stream, file.Name, file.ContentType);
+      UserData.url = result;
+      StateHasChanged();
+    }
+
   }
 }

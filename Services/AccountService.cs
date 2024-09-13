@@ -12,10 +12,13 @@ namespace UVGramWeb.Services;
 public class AccountService : IAccountService
 {
   private IHttpService httpService;
+  private IAuthenticationService authenticationService;
+  public event Action OnUserDataChanged;
 
-  public AccountService(IHttpService httpService)
+  public AccountService(IHttpService httpService, IAuthenticationService authenticationService)
   {
     this.httpService = httpService;
+    this.authenticationService = authenticationService;
   }
 
   public async Task<Boolean> VerifyEmailAddress(string email)
@@ -704,6 +707,33 @@ public class AccountService : IAccountService
     return result;
   }
 
+  public async Task<string> UpdateProfileImage(Stream fileStream, string fileName, string contentType)
+  {
+    string result = null;
+    try
+    {
+      var content = new MultipartFormDataContent();
+      var fileContent = new StreamContent(fileStream);
+      fileContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+      content.Add(fileContent, "file", fileName);
+      string uri = "/accounts/edit/image/";
+      string data = await httpService.Patch(uri, content);
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<UpdateImageProfileResponse>(data);
+      if(apiResponse.Status == (int) HttpStatusCode.OK)
+      {
+        UpdateImageProfileResponse objectResult = (UpdateImageProfileResponse) apiResponse.Data;
+        result = objectResult.Url;
+        authenticationService.User.Url = objectResult.Url;
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return result;
+  }
+
   public async Task<Image> GetImageResource(string uri)
   {
     Image image;
@@ -727,6 +757,11 @@ public class AccountService : IAccountService
       string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
       throw new Exception(ErrorMessage, error);
     }
+  }
+
+  public void NotifyUserProfileChange()
+  {
+    OnUserDataChanged?.Invoke();
   }
 
 }
