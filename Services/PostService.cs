@@ -49,7 +49,7 @@ public class PostService : IPostService
       foreach (var comment in post.comments)
       {
         comment.url = ConfigHelper.SetResourcesApiBaseUrl(comment.url);
-        foreach ( var reply in comment.replies)
+        foreach (var reply in comment.replies)
         {
           reply.url = ConfigHelper.SetResourcesApiBaseUrl(reply.url);
         }
@@ -230,6 +230,10 @@ public class PostService : IPostService
       {
         PostLikeByDataResponse postlikeData = (PostLikeByDataResponse)apiResponse.Data;
         users = postlikeData.LikedBy;
+        foreach (var user in users)
+        {
+          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
+        }
       }
     }
     catch (System.Exception error)
@@ -252,6 +256,10 @@ public class PostService : IPostService
       {
         PostLikeByDataResponse postlikeData = (PostLikeByDataResponse)apiResponse.Data;
         users = postlikeData.LikedBy;
+        foreach (var user in users)
+        {
+          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
+        }
       }
     }
     catch (System.Exception error)

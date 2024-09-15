@@ -211,9 +211,9 @@ public class AccountService : IAccountService
         profile = (Profile)apiResponse.Data;
         profile.url = ConfigHelper.SetResourcesApiBaseUrl(profile.url);
       }
-      foreach(var postfile in profile.posts)
+      foreach (var postfile in profile.posts)
       {
-        foreach(var file in postfile.files)
+        foreach (var file in postfile.files)
         {
           file.url = ConfigHelper.SetResourcesApiBaseUrl(file.url);
         }
@@ -567,6 +567,7 @@ public class AccountService : IAccountService
             apiResponse.Data;
         foreach (var user in usersListDataResponse.Users)
         {
+          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
           users.Add(user);
         }
       }
@@ -594,6 +595,7 @@ public class AccountService : IAccountService
             apiResponse.Data;
         foreach (var user in userFollowersDataResponse.Users)
         {
+          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
           users.Add(user);
         }
       }
@@ -621,6 +623,7 @@ public class AccountService : IAccountService
             apiResponse.Data;
         foreach (var user in userFollowersDataResponse.Users)
         {
+          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
           users.Add(user);
         }
       }
@@ -649,6 +652,7 @@ public class AccountService : IAccountService
           UserSearch userSearch = new UserSearch();
           userSearch.username = Convert.ToString(item.username);
           userSearch.name = Convert.ToString(item.name);
+          userSearch.url = ConfigHelper.SetResourcesApiBaseUrl(userSearch.url);
           userSearch.hasSubmittedFollowerRequest = String.Equals(
               Convert.ToString(item.status),
               "PENDIENTE"
