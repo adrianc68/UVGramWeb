@@ -1,11 +1,8 @@
 using System.Net;
 using System.Net.Http.Headers;
-using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+using UVGramWeb.Helpers;
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
-using UVGramWeb.Shared.Helpers;
 
 namespace UVGramWeb.Services;
 
@@ -212,6 +209,14 @@ public class AccountService : IAccountService
       if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
         profile = (Profile)apiResponse.Data;
+        profile.url = ConfigHelper.SetResourcesApiBaseUrl(profile.url);
+      }
+      foreach(var postfile in profile.posts)
+      {
+        foreach(var file in postfile.files)
+        {
+          file.url = ConfigHelper.SetResourcesApiBaseUrl(file.url);
+        }
       }
     }
     catch (System.Exception error)
@@ -369,7 +374,7 @@ public class AccountService : IAccountService
           presentation = personalUserDataResponse.Presentation,
           username = personalUserDataResponse.Username,
           email = personalUserDataResponse.Email,
-          url = personalUserDataResponse.Url,
+          url = ConfigHelper.SetResourcesApiBaseUrl(personalUserDataResponse.Url),
           phoneNumber = personalUserDataResponse.Phone_Number,
           birthdate = personalUserDataResponse.Birthday,
           role = personalUserDataResponse.Role,
@@ -719,11 +724,11 @@ public class AccountService : IAccountService
       string uri = "/accounts/edit/image/";
       string data = await httpService.Patch(uri, content);
       ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<UpdateImageProfileResponse>(data);
-      if(apiResponse.Status == (int) HttpStatusCode.OK)
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
-        UpdateImageProfileResponse objectResult = (UpdateImageProfileResponse) apiResponse.Data;
-        result = objectResult.Url;
-        authenticationService.User.Url = objectResult.Url;
+        UpdateImageProfileResponse objectResult = (UpdateImageProfileResponse)apiResponse.Data;
+        result = ConfigHelper.SetResourcesApiBaseUrl(objectResult.Url);
+        authenticationService.User.Url = result;
       }
     }
     catch (System.Exception error)

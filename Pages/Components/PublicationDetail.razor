@@ -22,22 +22,22 @@
         <div class="pubd-img-wrapper" style="transform: translateX(-@(currentIndex * 100)%)">
           @foreach (var image in Images)
           {
-            <img src="@($"data:{image.ContentType};base64,{Convert.ToBase64String(image.Data)}")" alt="Imagen" />
+            <img src="@image.Url" alt="Imagen"/>
           }
         </div>
+      </div>
+      <div class="pubd-indicators">
+      @for (int i = 0; i < Images.Count; i++)
+        {
+          <div class="pubd-indicator @(i == currentIndex ? "active" : "")"></div>
+        }
       </div>
     }
     else
     {
-      <p>No hay imágenes disponibles.</p>
+      <p class="pubd-indicator-nofiles">No hay imágenes disponibles.</p>
     }
 
-    <div class="pubd-indicators">
-      @for (int i = 0; i < Images.Count; i++)
-      {
-        <div class="pubd-indicator @(i == currentIndex ? "active" : "")"></div>
-      }
-    </div>
 
 
   </div>
@@ -147,22 +147,23 @@
   public CreateComment CommentObjectRequest { get; set; } = new CreateComment();
   public AbstractPost SelectedAbstractPost { get; set; }
   [CascadingParameter] public IModalService Modal { get; set; } = default!;
-  private List<Image> Images { get; set; }
+  private List<Image> Images { get; set; } = new List<Image>();
   private int currentIndex = 0;
   private ElementReference commentTextarea;
 
-  protected override async Task OnInitializedAsync()
-  {
-    Images = new List<Image>();
-    var imageTasks = Post.files.Select(async file =>
-    {
-      return await PostService.GetImageResource(file.url);
-    });
-    var images = await Task.WhenAll(imageTasks);
-    Images.AddRange(images);
-  }
+
   protected override void OnInitialized()
   {
+    if (Post != null)
+    {
+      foreach (var file in Post.files)
+      {
+        Image image = new Image();
+        image.Url = file.url;
+        Images.Add(image);
+      }
+    }
+
     CommentObjectRequest.uuid = Post.uuid;
     SelectedAbstractPost = Post;
     StateHasChanged();

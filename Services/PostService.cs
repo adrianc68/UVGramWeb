@@ -1,5 +1,7 @@
 using System.Globalization;
 using System.Net;
+using Microsoft.Extensions.Options;
+using UVGramWeb.Helpers;
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
 using UVGramWeb.Shared.Models;
@@ -39,7 +41,19 @@ public class PostService : IPostService
           uuid = postDetailsDataResponse.Post.uuid
         };
       }
-
+      post.owner.url = ConfigHelper.SetResourcesApiBaseUrl(post.owner.url);
+      foreach (var postfile in post.files)
+      {
+        postfile.url = ConfigHelper.SetResourcesApiBaseUrl(postfile.url);
+      }
+      foreach (var comment in post.comments)
+      {
+        comment.url = ConfigHelper.SetResourcesApiBaseUrl(comment.url);
+        foreach ( var reply in comment.replies)
+        {
+          reply.url = ConfigHelper.SetResourcesApiBaseUrl(reply.url);
+        }
+      }
     }
     catch (System.Exception error)
     {
@@ -112,9 +126,10 @@ public class PostService : IPostService
       ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CommentCreatedDataResponse>(data);
       if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
-        CommentCreatedDataResponse commentCreatedDataResponse = (CommentCreatedDataResponse) apiResponse.Data;
+        CommentCreatedDataResponse commentCreatedDataResponse = (CommentCreatedDataResponse)apiResponse.Data;
         reply = commentCreatedDataResponse.CommentDetails;
       }
+      reply.url = ConfigHelper.SetResourcesApiBaseUrl(reply.url);
     }
     catch (System.Exception error)
     {
@@ -131,13 +146,14 @@ public class PostService : IPostService
     {
       string uri = "/post/comment/create/";
       string data = await httpService.Post(uri, model);
-      
+
       ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<CommentCreatedDataResponse>(data);
       if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
         CommentCreatedDataResponse commentCreatedData = (CommentCreatedDataResponse)apiResponse.Data;
         commentCreated = commentCreatedData.CommentDetails;
       }
+      commentCreated.url = ConfigHelper.SetResourcesApiBaseUrl(commentCreated.url);
     }
     catch (System.Exception error)
     {
@@ -210,9 +226,9 @@ public class PostService : IPostService
       string uri = $"/post/details/likes/{uuid}";
       string resultData = await httpService.Get(uri);
       ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<PostLikeByDataResponse>(resultData);
-      if (apiResponse.Status == (int) HttpStatusCode.OK)
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
-        PostLikeByDataResponse postlikeData = (PostLikeByDataResponse) apiResponse.Data;
+        PostLikeByDataResponse postlikeData = (PostLikeByDataResponse)apiResponse.Data;
         users = postlikeData.LikedBy;
       }
     }
@@ -232,9 +248,9 @@ public class PostService : IPostService
       string uri = $"/post/comment/details/likes/{uuid}";
       string resultData = await httpService.Get(uri);
       ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<PostLikeByDataResponse>(resultData);
-      if (apiResponse.Status == (int) HttpStatusCode.OK)
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
       {
-        PostLikeByDataResponse postlikeData = (PostLikeByDataResponse) apiResponse.Data;
+        PostLikeByDataResponse postlikeData = (PostLikeByDataResponse)apiResponse.Data;
         users = postlikeData.LikedBy;
       }
     }

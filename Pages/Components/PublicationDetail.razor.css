@@ -77,8 +77,10 @@
   background-color: white; 
 }
 
-
-
+.pubd-indicator-nofiles{
+  color:#fff;
+  fill:#fff;
+}
 
 .pubd-details {
     width: 380px;

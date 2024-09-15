@@ -1,7 +1,9 @@
 using System.Net;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
+using UVGramWeb.Helpers;
 using UVGramWeb.Shared.Data;
 using UVGramWeb.Shared.Exceptions;
 using UVGramWeb.Shared.Helpers;
@@ -97,7 +99,7 @@ public class AuthenticationService : IAuthenticationService
         AccountDataResponse accountDataResponse = (AccountDataResponse)apiResponse.Data;
         User.Username = accountDataResponse.Username;
         User.RoleType = EnumHelper.GetEnumValue<RoleType>(accountDataResponse.Role);
-        User.Url = accountDataResponse.Url;
+        User.Url = ConfigHelper.SetResourcesApiBaseUrl(User.Url);
         await localStorageService.SetItem(userKey, User);
         NotifyUserDataChanged();
       }
@@ -112,7 +114,7 @@ public class AuthenticationService : IAuthenticationService
     }
   }
 
-  public void NotifyUserDataChanged() 
+  public void NotifyUserDataChanged()
   {
     OnUserDataChanged?.Invoke();
   }
