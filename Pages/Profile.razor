@@ -207,12 +207,15 @@
   {
     if (CheckAuthentication())
     {
-      var options = new ModalOptions
-        {
-          UseCustomLayout = true
-        };
-      var parameters = new ModalParameters().Add(nameof(DisplayFollowers.Username), Username);
-      Modal.Show<DisplayFollowers>("Seguidores", parameters, options);
+      if ((UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO) || UserProfile.isFollowed )
+      {
+        var options = new ModalOptions
+          {
+            UseCustomLayout = true
+          };
+        var parameters = new ModalParameters().Add(nameof(DisplayFollowers.Username), Username);
+        Modal.Show<DisplayFollowers>("Seguidores", parameters, options);
+      }
     }
   }
 
@@ -220,10 +223,13 @@
   {
     if (CheckAuthentication())
     {
-      var options = new ModalOptions
-        { UseCustomLayout = true };
-      var parameters = new ModalParameters().Add(nameof(DisplayFollowed.Username), Username);
-      Modal.Show<DisplayFollowed>("Seguidos", parameters, options);
+      if (UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO || UserProfile.isFollowed)
+      {
+        var options = new ModalOptions
+          { UseCustomLayout = true };
+        var parameters = new ModalParameters().Add(nameof(DisplayFollowed.Username), Username);
+        Modal.Show<DisplayFollowed>("Seguidos", parameters, options);
+      }
     }
   }
 
@@ -242,6 +248,8 @@
       }
       DataLoaded = true;
     }
+
+    PropToString.PrintData(UserProfile);
     StateHasChanged();
   }
 

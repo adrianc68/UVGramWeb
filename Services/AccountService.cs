@@ -210,12 +210,15 @@ public class AccountService : IAccountService
       {
         profile = (Profile)apiResponse.Data;
         profile.url = ConfigHelper.SetResourcesApiBaseUrl(profile.url);
-      }
-      foreach (var postfile in profile.posts)
-      {
-        foreach (var file in postfile.files)
+        if (profile.posts != null)
         {
-          file.url = ConfigHelper.SetResourcesApiBaseUrl(file.url);
+          foreach (var postfile in profile.posts)
+          {
+            foreach (var file in postfile.files)
+            {
+              file.url = ConfigHelper.SetResourcesApiBaseUrl(file.url);
+            }
+          }
         }
       }
     }
@@ -565,10 +568,13 @@ public class AccountService : IAccountService
       {
         UsersListDataResponse usersListDataResponse = (UsersListDataResponse)
             apiResponse.Data;
-        foreach (var user in usersListDataResponse.Users)
+        if (usersListDataResponse.Users != null)
         {
-          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
-          users.Add(user);
+          foreach (var user in usersListDataResponse.Users)
+          {
+            user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
+            users.Add(user);
+          }
         }
       }
     }
@@ -593,10 +599,13 @@ public class AccountService : IAccountService
       {
         UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
             apiResponse.Data;
-        foreach (var user in userFollowersDataResponse.Users)
+        if (userFollowersDataResponse.Users != null)
         {
-          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
-          users.Add(user);
+          foreach (var user in userFollowersDataResponse.Users)
+          {
+            user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
+            users.Add(user);
+          }
         }
       }
     }
@@ -621,11 +630,14 @@ public class AccountService : IAccountService
       {
         UsersListDataResponse userFollowersDataResponse = (UsersListDataResponse)
             apiResponse.Data;
+        if (userFollowersDataResponse.Users != null)
+        {
         foreach (var user in userFollowersDataResponse.Users)
         {
           user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
           users.Add(user);
         }
+            }
       }
     }
     catch (System.Exception error)
