@@ -38,6 +38,16 @@ public static class FormatStringHelper
 
     return Suffix + sm_Dict.First(n => TotalMinutes < n.Key).Value.Invoke(TotalMinutes);
   }
+  public static DateTime ConvertToTimeZone(DateTime utcDateTime, string timeZoneId)
+  {
+    if (utcDateTime.Kind != DateTimeKind.Utc)
+    {
+      utcDateTime = DateTime.SpecifyKind(utcDateTime, DateTimeKind.Utc);
+    }
+
+    TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+    return TimeZoneInfo.ConvertTimeFromUtc(utcDateTime, timeZone);
+  }
 
   public static string FormatDescriptionBreakLines(String description)
   {

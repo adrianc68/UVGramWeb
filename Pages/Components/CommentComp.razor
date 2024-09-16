@@ -25,7 +25,7 @@
           <div class="act-timestamp">
             <time class="text-muted" datetime="@CommentData.created_time">
               <span>
-                @FormatStringHelper.ToRelativeDate(Convert.ToDateTime(CommentData.created_time))
+                @FormatStringHelper.ToRelativeDate(FormatStringHelper.ConvertToTimeZone(Convert.ToDateTime(CommentData.created_time),"America/Mexico_City"))
               </span>
             </time>
           </div>
