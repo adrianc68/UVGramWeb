@@ -1,15 +1,16 @@
 .publicationdetail {
-    max-width: 920px;
-    min-width: 900px;
-    min-height: 600px;
-    height: 600px;
-    max-height: 600px;
-    display: flex;
-    flex-direction: row;
-    position:relative;
+  max-width: 920px;
+  min-width: 900px;
+  min-height: 600px;
+  height: 600px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
-.pudb-ic-previous-button, .pudb-ic-next-button {
+.pudb-ic-previous-button,
+.pudb-ic-next-button {
   position: absolute;
   top: 50% - 8px;
   z-index: 1;
@@ -17,6 +18,13 @@
 .pudb-ic-previous-button > button,
 .pudb-ic-next-button > button {
   padding: 8px;
+}
+
+.pudb-ic-previous-button > button > span,
+.pudb-ic-next-button > button > span {
+  color: #fff;
+  fill: #fff;
+  font-size: 1.1em;
 }
 
 .pudb-ic-previous-button {
@@ -28,26 +36,26 @@
 }
 
 .pubd-img {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(34, 32, 32);
-    position:relative;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(34, 32, 32);
+  position: relative;
+  overflow: hidden;
 }
 
 .pubd-img-container {
-  width:100%;
-  height:auto;
+  width: 100%;
+  height: auto;
   position: relative;
 }
 
 .pubd-img-wrapper {
-  display:flex;
+  display: flex;
   transition: transform 0.5s ease-in-out;
-  width:100%;
+  width: 100%;
 }
 
 .pubd-img-container img {
@@ -58,15 +66,15 @@
 
 .pubd-indicators {
   position: absolute;
-  bottom: 20px; 
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 5px; 
+  gap: 5px;
 }
 
 .pubd-indicator {
-  width: 5px; 
+  width: 5px;
   height: 5px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
@@ -74,137 +82,147 @@
 }
 
 .pubd-indicator.active {
-  background-color: white; 
+  background-color: white;
 }
 
-.pubd-indicator-nofiles{
-  color:#fff;
-  fill:#fff;
+.pubd-indicator-nofiles {
+  color: #fff;
+  fill: #fff;
 }
 
 .pubd-details {
-    width: 380px;
-    min-width: 347px;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9em;
+  width: 380px;
+  min-width: 347px;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
 }
 
 .pubd-header {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-    padding: 10px 20px 10px 20px;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .userprofile {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .userdatapub {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.userdatapub>span>a {
-    text-decoration: none;
-    color: #180e5a;
-    font-weight: 600;
+.userdatapub > span > a {
+  text-decoration: none;
+  color: #180e5a;
+  font-weight: 600;
 }
 
-.userdatapub>span:nth-child(2) {
-    font-size: 0.9em;
+.userdatapub > span:nth-child(2) {
+  font-size: 0.9em;
 }
 
 .pubd-comments {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: auto;
-    padding: 15px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+  padding: 15px;
+  gap: 10px;
 }
 
 .pubd-actions-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .pubd-actions-data {
-    padding: 5px;
+  padding: 5px;
 }
 
 .pubd-actions-data-mb {
-    display: flex;
-    gap: 5px;
-    background-color: transparent;
-    border: none;
-    padding: 5px;
+  display: flex;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
 }
 
 .pubd-ad-likes {
-    padding-left: 10px;
-    display: flex;
-    gap: 5px;
+  padding-left: 10px;
+  display: flex;
+  gap: 5px;
 }
 
 .pubd-description {
-    display: flex;
-    padding-bottom: 20px;
-    justify-content: flex-start;
-    align-items: flex-start;
+  display: flex;
+  padding-bottom: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width:100%;
 }
 
-.pudb-da-username>a {
-    text-decoration: none;
-    color: #180e5a;
-    font-weight: 600;
-    font-size: 0.85em;
+.pudb-description-data {
+  width:100%;
 }
 
+.pudb-da-username > a {
+  text-decoration: none;
+  color: #180e5a;
+  font-weight: 600;
+  font-size: 0.85em;
+}
 
+.pudb-da-description {
+  word-break:break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  width:100%;
+  max-width: 100%;
+  padding-left:5px;
+}
 
 .pubd-actions {
-    display: flex;
-    padding: 15px;
-    gap: 5px;
-    width: 100%;
+  display: flex;
+  padding: 15px;
+  gap: 5px;
+  width: 100%;
 }
 
-
 .pd-emojis {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pd-textarea {
-    width: 100%;
-
+  width: 100%;
 }
 
 .pubd-header-actions {
-    position: relative;
+  position: relative;
 }
 
 .pubd-options-tooltip {
-    width: 320px;
-    right: -10px;
-    top: 32px;
-    position: absolute;
+  width: 320px;
+  right: -10px;
+  top: 32px;
+  position: absolute;
 }
 
 .notsqr {
-    z-index: 0;
-    height: 24px;
-    width: 24px;
-    background-color: red;
-    position: absolute;
-    transform: rotate(45deg);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(0, 0, 0, .125);
+  z-index: 0;
+  height: 24px;
+  width: 24px;
+  background-color: red;
+  position: absolute;
+  transform: rotate(45deg);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }

@@ -1,4 +1,5 @@
 @using UVGramWeb.Shared.Data
+@using UVGramWeb.Shared.Helpers
 @using UVGramWeb.Shared.Models
 @inject UVGramWeb.Services.IPostService PostService;
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
@@ -10,10 +11,14 @@
     @if (Images.Count > 1)
     {
       <div class="pudb-ic-previous-button">
-        <button @onclick="PreviousImage">A</button>
+        <button class="btn bg-transparent" @onclick="PreviousImage">
+          <span class="oi oi-chevron-left" aria-label="Publicar"></span>
+        </button>
       </div>
       <div class="pudb-ic-next-button">
-        <button @onclick="NextImage">N</button>
+        <button class="btn bg-transparent" @onclick="NextImage">
+          <span class="oi oi-chevron-right" aria-label="Publicar"></span>
+        </button>
       </div>
     }
     @if (Images != null && Images.Any())
@@ -66,7 +71,12 @@
 
         <div class="pudb-description-data">
           <span class="pudb-da-username"><a href="@Post.owner.username">@Post.owner.username:</a></span>
-          <span>@Post.description</span>
+          <span class="pudb-da-description">
+            @if (Post.description != null)
+            {
+              @((MarkupString)FormatStringHelper.FormatDescriptionBreakLines(Post.description))
+            }
+          </span>
         </div>
       </div>
 
@@ -172,6 +182,10 @@
   {
     try
     {
+      if (CommentObjectRequest.comment == "" || CommentObjectRequest.comment == null)
+      {
+        return;
+      }
       // This check if SelectedAbstractPost (it means where did you presses reply button) is the original post
       // or any comment.
       // If yes then it sends a comment directly to post

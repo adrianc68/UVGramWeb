@@ -54,10 +54,14 @@
           @if (MediaFiles.Count > 1)
           {
             <div class="pudb-ic-previous-button">
-              <button @onclick="PreviousImage">A</button>
+              <button class="btn bg-transparent" @onclick="PreviousImage">
+                <span class="oi oi-chevron-left" aria-label="Publicar"></span>
+              </button>
             </div>
             <div class="pudb-ic-next-button">
-              <button @onclick="NextImage">N</button>
+              <button class="btn bg-transparent" @onclick="NextImage">
+                <span class="oi oi-chevron-right" aria-label="Publicar"></span>
+              </button>
             </div>
           }
 

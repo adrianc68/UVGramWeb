@@ -207,7 +207,8 @@
   {
     if (CheckAuthentication())
     {
-      if ((UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO) || UserProfile.isFollowed  || UserProfile.username == AuthenticationService.User.Username)
+      if ((UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO) || UserProfile.isFollowed || UserProfile.username ==
+      AuthenticationService.User.Username)
       {
         var options = new ModalOptions
           {
@@ -223,7 +224,8 @@
   {
     if (CheckAuthentication())
     {
-      if (UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO || UserProfile.isFollowed || UserProfile.username == AuthenticationService.User.Username)
+      if (UserProfile.privacyType == Shared.Data.PrivacyType.PUBLICO || UserProfile.isFollowed || UserProfile.username ==
+      AuthenticationService.User.Username)
       {
         var options = new ModalOptions
           { UseCustomLayout = true };

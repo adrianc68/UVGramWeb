@@ -132,6 +132,13 @@
   padding: 8px;
 }
 
+.pudb-ic-previous-button > button > span,
+.pudb-ic-next-button > button > span {
+  color:#fff;
+  fill:#fff;
+  font-size: 1.1em;
+}
+
 .pudb-ic-previous-button {
   left: 20px;
 }

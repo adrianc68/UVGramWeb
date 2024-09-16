@@ -12,14 +12,20 @@
     <div class="comment-content">
       <span class="comment-spn">
         <a href="@CommentData.username">@CommentData.username</a>
-        @CommentData.comment
+        <span class="comment-spn-description">
+          @if (CommentData.comment != null)
+          {
+            @((MarkupString)FormatStringHelper.FormatDescriptionBreakLines(CommentData.comment))
+          }
+        </span>
+
       </span>
       <div class="actions-wrapper">
         <div class="actions">
           <div class="act-timestamp">
             <time class="text-muted" datetime="@CommentData.created_time">
               <span>
-                @RelativeDateHelper.ToRelativeDate(Convert.ToDateTime(CommentData.created_time))
+                @FormatStringHelper.ToRelativeDate(Convert.ToDateTime(CommentData.created_time))
               </span>
             </time>
           </div>
