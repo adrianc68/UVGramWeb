@@ -25,12 +25,13 @@
           <div class="act-timestamp">
             <time class="text-muted" datetime="@CommentData.created_time">
               <span>
-                @FormatStringHelper.ToRelativeDate(FormatStringHelper.ConvertToTimeZone(Convert.ToDateTime(CommentData.created_time),"America/Mexico_City"))
+                @FormatStringHelper.ToRelativeDate(FormatStringHelper.ConvertToTimeZone(Convert.ToDateTime(CommentData.created_time), "America/Mexico_City"))
               </span>
             </time>
           </div>
-          <button class="border-0 bg-transparent" @onclick="ShowCommentLikes">
-            <span class="text-muted">@CommentData.likes Me gusta</span>
+          <button class="border-0 bg-transparent like-button" @onclick="ShowCommentLikes">
+            <span class="text-muted likes-span-label">@CommentData.likes</span>
+            <span class="text-muted">Me gusta</span>
           </button>
           <button class="border-0 bg-transparent"
             @onclick="(() => ChangeAbstractPostSelected.InvokeAsync(CommentData))">
