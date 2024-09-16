@@ -29,19 +29,19 @@
     object-fit: cover;
 }
 
-.userprofile-history-available {
+.userprofile-story-available {
     height: 100%;
     width: 100%;
     position: absolute;
     border-radius: 100%;
 }
 
-.history-outstanding {
+.story-outstanding {
     border: 2.5px solid red;
     border-radius: 100%;
 }
 
-.history-seen {
+.story-seen {
     border: 2.5px solid rgb(187, 187, 187);
     border-radius: 100%;
 }

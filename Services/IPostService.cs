@@ -15,4 +15,5 @@ public interface IPostService
     Task<List<UserSearch>> GetUsersLikesOfPost(string uuid);
     Task<List<UserSearch>> GetUsersLikesOfComment(string uuid);
     Task<Image> GetImageResource(string uri);
+    Task<Post> CreatePost(CreatePostPubRequest model);
 }

@@ -38,17 +38,18 @@
     <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
      <span class="oi oi-home" aria-label="home"></span>
     </NavLink>
-    <NavLink class="nav-link">
-     <span class="oi oi-plus" aria-label="Publicar"></span>
+    <NavLink class="nav-link" href="/create-pub" Match="NavLinkMatch.All">
+     <span class="oi oi-image" aria-label="Publicar"></span>
     </NavLink>
-    <NavLink class="nav-link" href="@($"/{AuthService.User.Username}")" Match="NavLinkMatch.All">
-     <span class="oi oi-person" aria-label="Mi perfil"></span>
-    </NavLink>
-
+    <NavLink class="nav-link" href="/inbox" Match="NavLinkMatch.All">
+     <span class="oi oi-chat" aria-label="Chat"></span>
+      </NavLink>
     <button class="btn shadow-none" @onclick="ShowFollowedUsersModal">
      <span class="oi oi-heart" aria-label="Notificaciones"></span>
     </button>
-
+    <NavLink class="nav-link" href="@($"/{AuthService.User.Username}")" Match="NavLinkMatch.All">
+     <span class="oi oi-person" aria-label="Mi perfil"></span>
+    </NavLink>
     <NavLink class="nav-link" href="/logout">
      <span class="oi oi-account-logout" title="Salir" aria-label="Salir"></span>
     </NavLink>
@@ -129,5 +130,6 @@
    };
   Modal.Show<DisplayNotifications>("Notificaciones", options);
  }
+
 
 }

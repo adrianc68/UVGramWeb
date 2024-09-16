@@ -6,7 +6,7 @@
     <div class="userprofile-img">
       @if (ImageUrl != null)
       {
-        <img src="@ImageUrl" alt="Imagen"/>
+        <img src="@ImageUrl" alt="Imagen" />
       }
       else
       {
@@ -15,17 +15,17 @@
     </div>
   </div>
 
-  @if (HasHistory)
+  @if (HasStory)
   {
     <div
-      class="@(IsHistorySeen ? "userprofile-history-available history-outstanding" : " userprofile-history-available history-seen")">
+      class="@(IsStorySeen ? "userprofile-story-available story-outstanding" : " userprofile-story-available story-seen")">
     </div>
   }
 </a>
 
 @code {
-  public bool IsHistorySeen = true;
-  public bool HasHistory = true;
+  public bool IsStorySeen = true;
+  public bool HasStory = true;
   [Parameter]
   public string ImageUrl { get; set; }
 

@@ -1,0 +1,258 @@
+@page "/create-pub"
+@using UVGramWeb.Shared.Data
+@using UVGramWeb.Shared.Models
+@inject Services.IPostService PostService;
+@inject NavigationManager NavigationManager
+
+<div class="createpublication">
+  @if (!isImageUploaded)
+  {
+    <div class="createpub-content card">
+      <div class="cpc-header border-bottom">
+        <h1>Crear una nueva publicación</h1>
+      </div>
+      <div class="createpub-body-content">
+        <div class="cpc-multimedia">
+          <svg aria-label="Icono para representar contenido multimedia, como imágenes o videos" class="_8-yf5 "
+            color="#262626" fill="#262626" height="77" role="img" viewBox="0 0 97.6 77.3" width="96">
+            <path
+              d="M16.3 24h.3c2.8-.2 4.9-2.6 4.8-5.4-.2-2.8-2.6-4.9-5.4-4.8s-4.9 2.6-4.8 5.4c.1 2.7 2.4 4.8 5.1 4.8zm-2.4-7.2c.5-.6 1.3-1 2.1-1h.2c1.7 0 3.1 1.4 3.1 3.1 0 1.7-1.4 3.1-3.1 3.1-1.7 0-3.1-1.4-3.1-3.1 0-.8.3-1.5.8-2.1z"
+              fill="currentColor"></path>
+            <path
+              d="M84.7 18.4L58 16.9l-.2-3c-.3-5.7-5.2-10.1-11-9.8L12.9 6c-5.7.3-10.1 5.3-9.8 11L5 51v.8c.7 5.2 5.1 9.1 10.3 9.1h.6l21.7-1.2v.6c-.3 5.7 4 10.7 9.8 11l34 2h.6c5.5 0 10.1-4.3 10.4-9.8l2-34c.4-5.8-4-10.7-9.7-11.1zM7.2 10.8C8.7 9.1 10.8 8.1 13 8l34-1.9c4.6-.3 8.6 3.3 8.9 7.9l.2 2.8-5.3-.3c-5.7-.3-10.7 4-11 9.8l-.6 9.5-9.5 10.7c-.2.3-.6.4-1 .5-.4 0-.7-.1-1-.4l-7.8-7c-1.4-1.3-3.5-1.1-4.8.3L7 49 5.2 17c-.2-2.3.6-4.5 2-6.2zm8.7 48c-4.3.2-8.1-2.8-8.8-7.1l9.4-10.5c.2-.3.6-.4 1-.5.4 0 .7.1 1 .4l7.8 7c.7.6 1.6.9 2.5.9.9 0 1.7-.5 2.3-1.1l7.8-8.8-1.1 18.6-21.9 1.1zm76.5-29.5l-2 34c-.3 4.6-4.3 8.2-8.9 7.9l-34-2c-4.6-.3-8.2-4.3-7.9-8.9l2-34c.3-4.4 3.9-7.9 8.4-7.9h.5l34 2c4.7.3 8.2 4.3 7.9 8.9z"
+              fill="currentColor"></path>
+            <path
+              d="M78.2 41.6L61.3 30.5c-2.1-1.4-4.9-.8-6.2 1.3-.4.7-.7 1.4-.7 2.2l-1.2 20.1c-.1 2.5 1.7 4.6 4.2 4.8h.3c.7 0 1.4-.2 2-.5l18-9c2.2-1.1 3.1-3.8 2-6-.4-.7-.9-1.3-1.5-1.8zm-1.4 6l-18 9c-.4.2-.8.3-1.3.3-.4 0-.9-.2-1.2-.4-.7-.5-1.2-1.3-1.1-2.2l1.2-20.1c.1-.9.6-1.7 1.4-2.1.8-.4 1.7-.3 2.5.1L77 43.3c1.2.8 1.5 2.3.7 3.4-.2.4-.5.7-.9.9z"
+              fill="currentColor"></path>
+          </svg>
+          <h2>Arrastra las fotos y los vídeos aquí</h2>
+          <label class="btn-link text-decoration-none" tabindex="0" for="fileInput">Seleccionar de la computadora</label>
+          <InputFile OnChange="OnFileSelected" id="fileInput" style="display:none" multiple />
+        </div>
+      </div>
+    </div>
+  }
+  else
+  {
+    <div class="createpub-description-content card">
+      <div class="cpc-header-cpd border-bottom">
+        <button class="btn-link text-decoration-none" @onclick="HandleBackButton">
+          <svg aria-label="Volver" class="_8-yf5 " color="#262626" fill="#262626" height="24" role="img"
+            viewBox="0 0 24 24" width="24">
+            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line>
+            <polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
+          </svg>
+        </button>
+        <h1>Crear una nueva publicación</h1>
+        <button class="btn-link text-decoration-none semibold" type="button"
+          @onclick="HandleCreatePost">Compartir</button>
+      </div>
+      <div class="cpc-description-body">
+        <div class="cpc-img">
+          @if (MediaFiles.Count > 1)
+          {
+            <div class="pudb-ic-previous-button">
+              <button @onclick="PreviousImage">A</button>
+            </div>
+            <div class="pudb-ic-next-button">
+              <button @onclick="NextImage">N</button>
+            </div>
+          }
+
+          @if (MediaFiles.Any())
+          {
+            <div class="cpc-img-container">
+              <div class="cpc-img-wrapper" style="transform: translateX(-@(currentIndex * 100)%)">
+                @foreach (var media in MediaFiles)
+                {
+                  if (media.ContentType.StartsWith("image/"))
+                  {
+                    <img src="@media.Url" alt="Imagen cargada" />
+                  }
+                  else if (media.ContentType.StartsWith("video/"))
+                  {
+                    <video controls>
+                      <source src="@media.Url" type="@media.ContentType" />
+                      Tu navegador no soporta el elemento de video.
+                    </video>
+                  }
+                }
+              </div>
+            </div>
+            <div class="cpc-button-removephoto">
+              <button class="btn shadow-none" @onclick="HandleRemoveCurrentFile">
+                <span class="oi oi-trash" aria-label="Eliminar archivo"></span>
+              </button>
+            </div>
+            <div class="pubd-indicators">
+          @for (int i = 0; i < MediaFiles.Count; i++)
+              {
+                <div class="pubd-indicator @(i == currentIndex ? "active" : "")"></div>
+              }
+            </div>
+          }
+          else
+          {
+            <p class="pubd-indicator-nofiles">No hay imágenes disponibles.</p>
+          }
+        </div>
+        <div class="createpub-datapublication border-start">
+          <div class="cs-textarea">
+            <textarea class="form-control shadow-none border-0" autocomplete="off" autocorrect="off" type="text"
+              id="search" placeholder="Agrega un comentario..." aria-label="Agrega un comentario"
+              @bind="postRequest.Description" @oninput="OnCommentChanged" />
+          </div>
+          <div class="cs-textarea-info">
+            <button>
+              <svg aria-label="Emoji" class="_8-yf5 " color="#8e8e8e" fill="#8e8e8e" height="20" role="img"
+                viewBox="0 0 24 24" width="20">
+                <path
+                  d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z">
+                </path>
+              </svg>
+            </button>
+            <div class="cs-ti-limitdesc text-muted">
+              <span>@CharacterCount</span> / <span>@MaxCharacterCount</span>
+            </div>
+          </div>
+          <div class="cs-ubication">
+            <input type="text" class="form-control shadow-none border-0 border-top" placeholder="Agregar ubicación"
+              aria-label="Agregar ubicación">
+          </div>
+          <div class="cs-configuration border-top">
+            <div class="form-check form-switch">
+              <label class="form-check-label" for="counterPublication">Ocultar recuentos de Me gusta y
+                reproducciones en esta publicación
+              </label>
+              <input class="form-check-input" type="checkbox" id="counterPublication" @bind="postRequest.LikesAllowed">
+            </div>
+            <div class="form-check form-switch">
+              <label class="form-check-label" for="commentsCheckBox">Desactivar comentarios</label>
+              <input class="form-check-input" type="checkbox" id="commentsCheckBox" @bind="postRequest.CommentsAllowed">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+@code {
+  bool isImageUploaded = false;
+  private List<Image> MediaFiles = new List<Image>();
+  private int currentIndex = 0;
+  private const int MaxCharacterCount = 2200;
+
+  private CreatePostPubRequest postRequest = new CreatePostPubRequest
+    {
+      Description = "",
+      CommentsAllowed = false,
+      LikesAllowed = false
+    };
+
+  private int CharacterCount => postRequest.Description.Length;
+
+  private void OnCommentChanged(ChangeEventArgs e)
+  {
+    postRequest.Description = e.Value?.ToString() ?? string.Empty;
+    StateHasChanged();
+  }
+
+  private async Task OnFileSelected(InputFileChangeEventArgs e)
+  {
+    var files = e.GetMultipleFiles();
+    MediaFiles.Clear();
+    postRequest.Files.Clear();
+
+    foreach (var file in files)
+    {
+      using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
+      using var memoryStream = new MemoryStream();
+      await stream.CopyToAsync(memoryStream);
+      var buffer = memoryStream.ToArray();
+
+      MediaFiles.Add(new Image
+        {
+          ContentType = file.ContentType,
+          Data = buffer,
+          Url = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}",
+          Filename = file.Name,
+          Filesize = file.Size,
+          MimeType = file.ContentType
+        });
+    }
+
+    postRequest.Files = new List<Image>(MediaFiles);
+    isImageUploaded = true;
+    StateHasChanged();
+  }
+
+  private async Task HandleCreatePost()
+  {
+    postRequest.Files = new List<Image>(MediaFiles);
+    try
+    {
+      Post postCreated = await PostService.CreatePost(postRequest);
+      if (postCreated != null)
+      {
+        NavigationManager.NavigateTo($"/p/{postCreated.uuid}");
+      }
+    }
+    catch (SystemException error)
+    {
+      Console.WriteLine(error);
+    }
+  }
+
+  private void HandleBackButton()
+  {
+    MediaFiles.Clear();
+    isImageUploaded = false;
+    StateHasChanged();
+  }
+
+  private void HandleRemoveCurrentFile()
+  {
+    if (MediaFiles.Any())
+    {
+      MediaFiles.RemoveAt(currentIndex);
+      postRequest.Files = new List<Image>(MediaFiles);
+      if (MediaFiles.Count == 0)
+      {
+        isImageUploaded = false;
+        currentIndex = 0;
+      }
+      else
+      {
+        if (currentIndex >= MediaFiles.Count)
+        {
+          currentIndex = MediaFiles.Count - 1;
+        }
+      }
+      StateHasChanged();
+    }
+  }
+
+
+  private void NextImage()
+  {
+    if (MediaFiles != null && MediaFiles.Any())
+    {
+      currentIndex = (currentIndex + 1) % MediaFiles.Count;
+      StateHasChanged();
+    }
+  }
+
+  private void PreviousImage()
+  {
+    if (MediaFiles != null && MediaFiles.Any())
+    {
+      currentIndex = (currentIndex - 1 + MediaFiles.Count) % MediaFiles.Count;
+      StateHasChanged();
+    }
+  }
+
+
+}

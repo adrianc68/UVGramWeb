@@ -1,0 +1,220 @@
+.createpublication {
+  width: 100%;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createpub {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createpub-content {
+  width: 65%;
+  min-height: 600px;
+  height: 600px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cpc-header > h1,
+.cpc-header-cpd > h1 {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  height: 100%;
+}
+
+.cpc-header,
+.cpc-header-cpd {
+  padding: 5px;
+}
+
+.createpub-body-content {
+  width: 100%;
+  height: 100%;
+}
+
+.cpc-multimedia {
+  display: Flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+  padding: 10px;
+}
+
+.cpc-multimedia > h2 {
+  font-size: 1.3em;
+}
+
+.cpc-multimedia > button {
+  font-size: 0.8em;
+}
+
+.createpub-description-content {
+  width: 920px;
+  min-width: 900px;
+  max-width: 920px;
+  height: 600px;
+  min-height: 600px;
+  max-height: 600px;
+}
+
+.cpc-header-cpd {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 15px 5px 15px;
+}
+
+.cpc-header-cpd > button {
+  border: none;
+  background-color: transparent;
+  font-size: 0.8em;
+}
+
+.cpc-description-body {
+  height: 100%;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.cpc-img {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(34, 32, 32);
+  position: relative;
+  overflow: hidden;
+}
+
+.cpc-img-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.cpc-img-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.cpc-img-wrapper img {
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+}
+
+.pudb-ic-previous-button,
+.pudb-ic-next-button {
+  position: absolute;
+  top: 50% - 8px;
+  z-index: 1;
+}
+.pudb-ic-previous-button > button,
+.pudb-ic-next-button > button {
+  padding: 8px;
+}
+
+.pudb-ic-previous-button {
+  left: 20px;
+}
+
+.pudb-ic-next-button {
+  right: 20px;
+}
+
+.pubd-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.pubd-indicator {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.pubd-indicator.active {
+  background-color: white;
+}
+
+.pubd-indicator-nofiles {
+  color: #fff;
+  fill: #fff;
+}
+
+.cpc-button-removephoto {
+  position: absolute;
+  bottom:40px;
+}
+
+.cpc-button-removephoto > button > span {
+  font-size: 1.5em;
+  fill: #fff;
+  color: #fff;
+}
+
+.createpub-datapublication {
+  width: 380px;
+  min-width: 347px;
+}
+
+.createpub-datapublication > .cs-textarea > textarea {
+  min-height: 86px;
+  height: 176px;
+  max-height: 176px;
+  min-width: 153px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 0;
+}
+
+.cs-textarea-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.cs-textarea-info > button {
+  border: none;
+  background-color: transparent;
+}
+
+.cs-ti-limitdesc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
+}
+
+.createpub-datapublication > .cs-ubication > input {
+  padding: 15px;
+}
+
+.cs-configuration {
+  padding: 15px;
+}

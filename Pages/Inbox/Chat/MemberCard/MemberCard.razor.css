@@ -1,0 +1,31 @@
+.uc-membercard {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:15px;
+  padding:15px;
+}
+
+.userprofile {
+  height:56px;
+  width:56px;
+  display:flex;
+
+}
+
+.membercard-data {
+  font-size:0.9em;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.membercard-data > span:last-child {
+  font-size:0.85em;
+}
+
+.membercard-actions > button {
+  font-size:0.8em;
+  font-weight: 600;
+  padding:0;
+}

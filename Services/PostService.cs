@@ -295,5 +295,42 @@ public class PostService : IPostService
     }
   }
 
+  public async Task<Post> CreatePost(CreatePostPubRequest model)
+  {
+    Post post = null;
+    try
+    {
+      var formData = new MultipartFormDataContent();
+      foreach (var mediaFile in model.Files)
+      {
+        var fileContent = new ByteArrayContent(mediaFile.Data);
+        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(mediaFile.ContentType);
+        formData.Add(fileContent, "files[]", mediaFile.Filename);
+      }
+
+      formData.Add(new StringContent(model.Description ?? string.Empty, System.Text.Encoding.UTF8, "text/plain"),
+      "description");
+      formData.Add(new StringContent(model.CommentsAllowed.ToString().ToLower(), System.Text.Encoding.UTF8,
+      "application/json"), "commentsAllowed");
+      formData.Add(new StringContent(model.LikesAllowed.ToString().ToLower(), System.Text.Encoding.UTF8,
+      "application/json"), "likesAllowed");
+      string uri = "/post/create";
+      string data = await httpService.Post(uri, formData);
+
+      ApiResponse<object> apiResponse = BackendMessageHandler.GetMessageFromJson<PostCreatedDataResponse>(data);
+      if (apiResponse.Status == (int)HttpStatusCode.OK)
+      {
+        PostCreatedDataResponse postCreatedDataResponse = (PostCreatedDataResponse)apiResponse.Data;
+        post = postCreatedDataResponse.PostInfo;
+      }
+    }
+    catch (System.Exception error)
+    {
+      string ErrorMessage = BackendMessageHandler.GetErrorMessage(error).ToString();
+      throw new Exception(ErrorMessage, error);
+    }
+    return post;
+  }
+
 
 }

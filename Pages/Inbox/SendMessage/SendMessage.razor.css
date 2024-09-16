@@ -1,0 +1,35 @@
+.sendmessage {
+  width:100%;
+  height:100%;
+}
+
+.sendmessage-header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:10px;
+}
+
+.sendmessage-header > span {
+  font-size:0.85em;
+  display:flex;
+  align-items: center;
+}
+
+.sendmessage-to-input {
+  padding:15px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sendmessage-to-input > input {
+  background-color: transparent;
+  border:none;
+  font-size: 1.2em;;
+}
+
+.sendmessage-suggestions {
+  padding: 15px;
+  font-size:0.8em;
+}
