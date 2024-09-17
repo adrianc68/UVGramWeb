@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 
 namespace UVGramWeb.Shared.Helpers;
 public static class FormatStringHelper
@@ -57,7 +58,8 @@ public static class FormatStringHelper
     string normalizedText = description.Replace("\r\n", "\n");
     string singleLineText = System.Text.RegularExpressions.Regex.Replace(normalizedText, @"(\n\s*){2,}", "\n");
     string formattedText = singleLineText.Replace("\n", "<br>");
-    return formattedText;
+    return HtmlEncoder.Default.Encode(formattedText).Replace("&lt;br&gt;", "<br>");
+
   }
 
 }
