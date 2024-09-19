@@ -8,5 +8,6 @@ public class Post : AbstractPost
     public bool isLiked { get; set; }
     public int likes { get; set; }
     public int comments { get; set; }
+    public string created_time {get; set;}
     public List<PostFile> files { get; set; }
 }

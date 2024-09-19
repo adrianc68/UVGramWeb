@@ -10,12 +10,13 @@
 }
 
 .chat-header {
-  height:62px;
-  padding:18px;
+  height:63px;
+  padding:19px;
   display:flex;
   padding-left:30px;
   justify-content: center;
   align-items: center;
+  background-color: gray;
 }
 
 .chat-actions {

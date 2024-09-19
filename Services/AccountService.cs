@@ -212,9 +212,12 @@ public class AccountService : IAccountService
         profile.url = ConfigHelper.SetResourcesApiBaseUrl(profile.url);
         if (profile.posts != null)
         {
-          foreach (var postfile in profile.posts)
+
+          profile.posts = profile.posts.OrderByDescending(post => post.created_time).ToList();
+
+          foreach (var post in profile.posts)
           {
-            foreach (var file in postfile.files)
+            foreach (var file in post.files)
             {
               file.url = ConfigHelper.SetResourcesApiBaseUrl(file.url);
             }
@@ -632,12 +635,12 @@ public class AccountService : IAccountService
             apiResponse.Data;
         if (userFollowersDataResponse.Users != null)
         {
-        foreach (var user in userFollowersDataResponse.Users)
-        {
-          user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
-          users.Add(user);
+          foreach (var user in userFollowersDataResponse.Users)
+          {
+            user.url = ConfigHelper.SetResourcesApiBaseUrl(user.url);
+            users.Add(user);
+          }
         }
-            }
       }
     }
     catch (System.Exception error)

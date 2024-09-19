@@ -38,7 +38,8 @@ public class PostService : IPostService
           files = postDetailsDataResponse.Files,
           owner = postDetailsDataResponse.Owner,
           comments = postDetailsDataResponse.Comments,
-          uuid = postDetailsDataResponse.Post.uuid
+          uuid = postDetailsDataResponse.Post.uuid,
+          created_time = postDetailsDataResponse.Post.created_time
         };
       }
       post.owner.url = ConfigHelper.SetResourcesApiBaseUrl(post.owner.url);
