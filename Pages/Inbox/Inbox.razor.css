@@ -1,51 +1,47 @@
 .inbox {
-  width:100%;
+  width: 100%;
   min-height: 720px;
-  padding:35px;
-  display:flex;
+  padding: 35px;
+  display: flex;
   justify-content: center;
-  background-color: red;
 }
 
 .inbox-container {
-  width:760px;
-  height:650px;
+  width: 760px;
+  height: 650px;
   min-height: 650px;
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
 
 .inbox-messages {
-  width:35%;
-  background-color: green;
+  width: 35%;
   min-width: 200px;
   max-width: 349px;
-
 }
 
 .inbox-header {
-  padding:18px;
-  display:flex;
+  padding: 18px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: yellow;
 }
 
 .inbox-header > span {
-  width:100%;
+  width: 100%;
   text-align: center;
 }
 
 .inbox-send-action {
-  position:relative;
+  position: relative;
 }
 
 .sendmessage-tooltip {
-  position:absolute;
-  z-index:100;
-  left:-150px;
-  top:35px;
-  width:300px;
+  position: absolute;
+  z-index: 100;
+  left: -150px;
+  top: 35px;
+  width: 300px;
 }
 
 .inbox-send-action > button {
@@ -54,32 +50,46 @@
 }
 
 .inbox-messagescards {
-  height:90%;
+  height: 90%;
   overflow: auto;
 }
 
 .inbox-messagescards > ul {
   list-style: none;
-  margin:0;
-  padding:0;
-  display:flex;
+  margin: 0;
+  padding: 0;
+  display: flex;
   flex-direction: column;
 }
 
+.inbox-messagescards > ul > li {
+  transition: background-color 0.1s;
+}
+
+.inbox-messagescards > ul > li:hover {
+  background-color: rgb(247, 241, 250);
+}
+
+.selected-chat-class {
+  background-color: #d5e6f9;
+}
+
+.inbox-messagescards > ul > li.selected-chat-class:hover {
+  background-color: #d5e6f9;
+}
+
 .inbox-chat {
-  flex:1;
-  height:100%;
+  flex: 1;
+  height: 100%;
   overflow: hidden;
-  background-color: blue;
 }
 
 .notsqr {
-  z-index:0;
+  z-index: 0;
   height: 24px;
   width: 24px;
-  background-color: red;
   position: absolute;
   transform: rotate(45deg);
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(0, 0, 0, .125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }

@@ -1,4 +1,4 @@
-.uc-membercard {
+.uc-chatusercard {
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -13,18 +13,18 @@
 
 }
 
-.membercard-data {
+.chatusercard-data {
   font-size:0.9em;
   width:100%;
   display:flex;
   flex-direction: column;
 }
 
-.membercard-data > span:last-child {
+.chatusercard-data > span:last-child {
   font-size:0.85em;
 }
 
-.membercard-actions > button {
+.chatusercard-actions > button {
   font-size:0.8em;
   font-weight: 600;
   padding:0;

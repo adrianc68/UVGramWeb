@@ -1,0 +1,73 @@
+@using UVGramWeb.Shared.Data
+@inject UVGramWeb.Services.IAuthenticationService AuthenticationService
+
+<div class="chatmessagecard">
+  <div class="chatmessagecard-img">
+    <div class="userprofile">
+      @if (Chat != null && Chat.Initiator != null && Chat.Receiver != null)
+      {
+        if (Chat.Initiator.username == Chat.Receiver.username)
+        {
+          <UVGramWeb.Pages.Components.UserProfile ImageUrl="@AuthenticationService.User.Url"></UVGramWeb.Pages.Components.UserProfile>
+        }
+        else if (Chat.Initiator.username != AuthenticationService.User.Username)
+        {
+          <UVGramWeb.Pages.Components.UserProfile ImageUrl="@Chat.Initiator.url"></UVGramWeb.Pages.Components.UserProfile>
+        }
+        else 
+        {
+          <UVGramWeb.Pages.Components.UserProfile ImageUrl="@Chat.Receiver.url"></UVGramWeb.Pages.Components.UserProfile>
+        }
+      }
+    </div>
+  </div>
+  <div class="userprofile-data">
+    <div class="mc-message-content">
+      <span>
+        @if (Chat != null && Chat.Initiator != null && Chat.Receiver != null)
+        {
+          if (Chat.Initiator.username == Chat.Receiver.username)
+          {
+            @Chat.Initiator.username
+          }
+          else if (Chat.Initiator.username != AuthenticationService.User.Username)
+          {
+            @Chat.Initiator.username
+          }
+          else
+          {
+            @Chat.Receiver.username
+          }
+        }
+
+      </span>
+    </div>
+    <div class="mc-message-content">
+      <span class="text-muted">
+        @if (Chat != null && Chat.Messages != null && Chat.Messages[0] != null)
+        {
+          if (Chat.Messages[0].Message_Type == MessageTypeEnum.TEXTO)
+          {
+            @Chat.Messages[0].Content
+          }
+          else
+          {
+            @:Archivo enviado...
+          }
+        ;
+        }
+      </span>
+    </div>
+  </div>
+  <div class="userprofile-actions">
+    <div aria-label="No leído" class="message no-readed" style="height: 8px; width: 8px;"></div>
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public UVGramWeb.Shared.Data.Chat Chat { get; set; }
+  
+
+  
+}

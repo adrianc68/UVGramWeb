@@ -1,14 +1,10 @@
-.messagecard {
+.chatmessagecard {
   display:flex;
   justify-content: space-between;
   align-items: center;
   gap:15px;
   padding:10px 15px 10px 15px;
   width:100%;
-}
-
-.messagecard:hover {
-  background-color: rgb(247, 241, 250);
 }
 
 .userprofile {
@@ -22,7 +18,6 @@
   flex-direction: column;
   width:100%;
   overflow: hidden;
-
 }
 
 .mc-message-content > span:last-child {

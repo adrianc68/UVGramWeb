@@ -1,8 +1,40 @@
+@using UVGramWeb.Shared.Data
+
 <div class="usermessage-wrapper">
-    <div class="userprofile">
-        <UVGramWeb.Shared.UserProfile.UserProfile></UVGramWeb.Shared.UserProfile.UserProfile>
-    </div>
-    <div class="usermessage border">
-        <span>test</span>
-    </div>
+  <div class="userprofile">
+    <UVGramWeb.Pages.Components.UserProfile ImageUrl="@Message.User.url" />
+  </div>
+  <div class="usermessage border">
+    <span>
+      @if (Message != null && Message.Content != null)
+      {
+        if (@Message.Message_Type == MessageTypeEnum.TEXTO)
+        {
+          @Message.Content
+        }
+        else if(Message.Message_Type == MessageTypeEnum.IMAGEN)
+        {
+          @:___Imagen enviada?___
+        } 
+        else if(Message.Message_Type == MessageTypeEnum.VIDEO)
+        {
+          @:____Video enviado____
+        }
+        else
+        {
+          @:____Archivo enviado____
+        }
+      }
+      else
+      {
+        @:Sin contenido...
+      }
+    </span>
+  </div>
 </div>
+
+@code {
+  [Parameter]
+  public Message Message {get; set;}
+
+}

@@ -1,5 +1,37 @@
+@using UVGramWeb.Shared.Data
+
 <div class="mymessage-wrapper">
-    <div class="mymessage">
-        <span>adaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapofadaspodfkaspokdfapodkfpsokfapdosfkasopfdksapof</span>
-    </div>
+  <div class="mymessage">
+    <span>
+      @if (Message != null && Message.Content != null)
+      {
+        if (@Message.Message_Type == MessageTypeEnum.TEXTO)
+        {
+          @Message.Content
+        }
+        else if(Message.Message_Type == MessageTypeEnum.IMAGEN)
+        {
+          @:___Imagen enviada?___
+        } 
+        else if(Message.Message_Type == MessageTypeEnum.VIDEO)
+        {
+          @:____Video enviado____
+        }
+        else
+        {
+          @:____Archivo enviado____
+        }
+      }
+      else
+      {
+        @:Sin contenido...
+      }
+    </span>
+  </div>
 </div>
+
+@code {
+  [Parameter]
+  public Message Message { get; set; }
+
+}
