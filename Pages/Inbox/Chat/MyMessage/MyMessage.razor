@@ -9,11 +9,18 @@
         {
           @Message.Content
         }
-        else if(Message.Message_Type == MessageTypeEnum.IMAGEN)
+        else if (Message.Message_Type == MessageTypeEnum.IMAGEN)
         {
-          @:___Imagen enviada?___
-        } 
-        else if(Message.Message_Type == MessageTypeEnum.VIDEO)
+          @if (Message.Content != null)
+          {
+            <img class="mymessage-img" src="@Message.Content" />
+          }
+          else
+          {
+            <p>La imagen no está disponible.</p>
+          }
+        }
+        else if (Message.Message_Type == MessageTypeEnum.VIDEO)
         {
           @:____Video enviado____
         }

@@ -1,6 +1,8 @@
 .inbox {
   width: 100%;
-  min-height: 720px;
+  min-height: 700px;
+  height:700px;
+  max-height: 700px;
   padding: 35px;
   display: flex;
   justify-content: center;
@@ -80,8 +82,7 @@
 
 .inbox-chat {
   flex: 1;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
 }
 
 .notsqr {

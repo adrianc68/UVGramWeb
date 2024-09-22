@@ -44,11 +44,11 @@
     </div>
     <div class="mc-message-content">
       <span class="text-muted">
-        @if (Chat != null && Chat.Messages != null && Chat.Messages[0] != null)
+        @if (Chat != null && Chat.Messages != null && Chat.Messages.Any())
         {
-          if (Chat.Messages[0].Message_Type == MessageTypeEnum.TEXTO)
+          if (Chat.Messages.Last().Message_Type == MessageTypeEnum.TEXTO)
           {
-            @Chat.Messages[0].Content
+            @Chat.Messages.Last().Content
           }
           else
           {

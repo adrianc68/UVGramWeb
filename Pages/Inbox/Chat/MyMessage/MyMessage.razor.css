@@ -13,3 +13,8 @@
   word-break: break-all;
   font-size:0.87em;
 }
+
+.mymessage-img {
+  width:100%;
+  height:auto;
+}

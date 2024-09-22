@@ -1,5 +1,6 @@
 @page "/inbox"
 @inject Services.IChatService ChatService;
+@inject IJSRuntime JSRuntime
 
 <div class="inbox">
   <div class="inbox-container card">
@@ -25,8 +26,8 @@
             <div class="notsqr"></div>
 
             <div class="sendmessage-tooltip shadow">
-              <UVGramWeb.Pages.Inbox.SendMessage.SendMessage/>
-            </div>
+            <UVGramWeb.Pages.Inbox.SendMessage.SendMessage />
+          </div>
           }
         </div>
 
@@ -38,7 +39,7 @@
             @foreach (var chat in Chats)
             {
               <li @onclick="() => SelectChat(chat)" class="imesscard-li @GetChatClass(chat)">
-                <UVGramWeb.Pages.Inbox.Chat.ChatMessageCard.ChatMessageCard Chat="@chat"/>
+                <UVGramWeb.Pages.Inbox.Chat.ChatMessageCard.ChatMessageCard Chat="@chat" />
               </li>
             }
           }
@@ -48,7 +49,7 @@
     <section class="inbox-chat border-start">
       @if (SelectedChat != null)
       {
-        <UVGramWeb.Pages.Inbox.Chat.ChatInbox Chat="@SelectedChat"/>
+        <UVGramWeb.Pages.Inbox.Chat.ChatInbox Chat="@SelectedChat" OnMessageSent="OnMessageSent" />
       }
       else
       {
@@ -64,6 +65,7 @@
 
   private UVGramWeb.Shared.Data.Chat SelectedChat = null;
 
+
   protected override async void OnInitialized()
   {
     try
@@ -77,14 +79,37 @@
     StateHasChanged();
   }
 
-  private void SelectChat(UVGramWeb.Shared.Data.Chat chat)
+  private async void SelectChat(UVGramWeb.Shared.Data.Chat chat)
   {
     SelectedChat = chat;
+    await UpdateMessages(chat);
     StateHasChanged();
+  }
+
+
+  protected async Task UpdateMessages(UVGramWeb.Shared.Data.Chat chat)
+  {
+    if (chat != null)
+    {
+      try
+      {
+        chat.Messages = await ChatService.GetAllChatMessages(chat.Uuid);
+        StateHasChanged();
+      }
+      catch (SystemException error)
+      {
+        Console.WriteLine(error);
+      }
+    }
   }
 
   private string GetChatClass(UVGramWeb.Shared.Data.Chat chat)
   {
     return SelectedChat == chat ? "selected-chat-class" : "";
+  }
+  private async Task OnMessageSent((UVGramWeb.Shared.Data.Message Message, UVGramWeb.Shared.Data.Chat Chat) args)
+  {
+    args.Chat.Messages.Add(args.Message);
+    StateHasChanged();
   }
 }

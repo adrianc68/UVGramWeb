@@ -1,6 +1,8 @@
 @using UVGramWeb.Shared.Data
 @inject UVGramWeb.Services.IAuthenticationService AuthenticationService
 @inject Services.IChatService ChatService;
+@inject IJSRuntime JSRuntime
+
 
 <div class="chat">
   <div class="chat-header border-bottom">
@@ -72,10 +74,35 @@
   @if (!ShowDetailsChat)
   {
     <div class="chat-messages">
-      <div class="chat-messages-wrapper">
-        @if (Messages != null)
+      @* @if (!isAtBottom)
+    { *@
+      <button @onclick="ScrollToBottom" class="chat-btn-scroll @(isAtBottom ? "hidden" : "visible")">
+        <svg fill="#00000080" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <g>
+              <g>
+                <g>
+                  <path
+                    d="M256,0C114.88,0,0,114.88,0,256s114.88,256,256,256s256-114.88,256-256S397.12,0,256,0z M256,490.667 c-129.387,0-234.667-105.28-234.667-234.667S126.613,21.333,256,21.333S490.667,126.613,490.667,256S385.387,490.667,256,490.667 z">
+                  </path>
+                  <path
+                    d="M365.76,280.533l-99.093,99.093V107.093c0-5.333-3.84-10.133-9.067-10.88c-6.613-0.96-12.267,4.16-12.267,10.56v272.96 l-99.093-99.2c-4.267-4.053-10.987-3.947-15.04,0.213c-3.947,4.16-3.947,10.667,0,14.827l117.333,117.333 c4.16,4.16,10.88,4.16,15.04,0l117.333-117.333c4.053-4.267,3.947-10.987-0.213-15.04 C376.533,276.587,369.92,276.587,365.76,280.533z">
+                  </path>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+      @* } *@
+      <div class="chat-messages-wrapper" @ref="messagesWrapper" @onscroll="CheckIfAtBottom">
+
+        @if (Chat.Messages != null)
         {
-          foreach (var message in Messages)
+          foreach (var message in Chat.Messages)
           {
             if (message.User.username == AuthenticationService.User.Username)
             {
@@ -102,32 +129,63 @@
         </button>
       </div>
       <div class="cs-textarea">
-        <textarea class="form-control shadow-none" autocomplete="off" autocorrect="off" type="text" id="search"
-          placeholder="Agrega un comentario..." aria-label="Agrega un comentario" />
-      </div>
-      <div class="cs-fileadj">
-        <button>
-          <svg aria-label="Agregar foto o video" class="_8-yf5 " color="#262626" fill="#262626" height="24" role="img"
-            viewBox="0 0 24 24" width="24">
-            <path d="M6.549 5.013A1.557 1.557 0 108.106 6.57a1.557 1.557 0 00-1.557-1.557z" fill-rule="evenodd">
-            </path>
-            <path
-              d="M2 18.605l3.901-3.9a.908.908 0 011.284 0l2.807 2.806a.908.908 0 001.283 0l5.534-5.534a.908.908 0 011.283 0l3.905 3.905"
-              fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-            <path
-              d="M18.44 2.004A3.56 3.56 0 0122 5.564h0v12.873a3.56 3.56 0 01-3.56 3.56H5.568a3.56 3.56 0 01-3.56-3.56V5.563a3.56 3.56 0 013.56-3.56z"
-              fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-            </path>
-          </svg>
+        @if (FileSelected != null)
+          {
+            <div class="cs-textarea-img-wrapper">
+              <button @onclick="RemoveFileSelected" class="cs-textarea-removeimg-btn" title="Eliminar imagen">
+                <svg version="1.1" id="svg2" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                  xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                  xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="remove-circle.svg"
+                  inkscape:version="0.48.4 r9939" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="-120 -120 1440.00 1440.00"
+                  enable-background="new 0 0 1200 1200" xml:space="preserve" fill="#262626" stroke="#262626">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(126,126), scale(0.79)">
+                    <rect x="-120" y="-120" width="1440.00" height="1440.00" rx="720" fill="#ffffff" strokewidth="0"></rect>
+                  </g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path id="path18520" inkscape:connector-curvature="0"
+                      d="M600,0C268.63,0,0,268.63,0,600c0,331.369,268.63,600,600,600 c331.369,0,600-268.63,600-600S931.369,0,600,0z M600,130.371c259.369,0,469.556,210.325,469.556,469.629 c0,259.305-210.187,469.556-469.556,469.556c-259.37,0-469.556-210.251-469.556-469.556C130.445,340.696,340.63,130.371,600,130.371 L600,130.371z M435.425,305.347L305.347,435.425L469.922,600L305.347,764.575l130.078,130.078L600,730.078l164.575,164.575 l130.078-130.078L730.078,600l164.575-164.575L764.575,305.347L600,469.922L435.425,305.347z">
+                    </path>
+                  </g>
+                </svg>
+              </button>
+              <img class="cs-textarea-img" src="@FileSelected.Url" />
+            </div>
+          }
+          else
+          {
+            <textarea class="form-control shadow-none" @oninput="OnCommentChanged" @bind="Message.Content"
+              autocomplete="off" autocorrect="off" type="text" id="search" placeholder="Agrega un comentario..."
+              aria-label="Agrega un comentario" />
+
+          }
+        </div>
+        <div class="cs-fileadj">
+          <label class="btn-link text-decoration-none" tabindex="0" for="fileInput">
+            <svg aria-label="Agregar foto o video" class="_8-yf5 " color="#262626" fill="#262626" height="24" role="img"
+              viewBox="0 0 24 24" width="24">
+              <path d="M6.549 5.013A1.557 1.557 0 108.106 6.57a1.557 1.557 0 00-1.557-1.557z" fill-rule="evenodd">
+              </path>
+              <path
+                d="M2 18.605l3.901-3.9a.908.908 0 011.284 0l2.807 2.806a.908.908 0 001.283 0l5.534-5.534a.908.908 0 011.283 0l3.905 3.905"
+                fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+              <path
+                d="M18.44 2.004A3.56 3.56 0 0122 5.564h0v12.873a3.56 3.56 0 01-3.56 3.56H5.568a3.56 3.56 0 01-3.56-3.56V5.563a3.56 3.56 0 013.56-3.56z"
+                fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+              </path>
+            </svg>
+          </label>
+          <InputFile OnChange="OnFileSelected" id="fileInput" style="display:none" />
+        </div>
+        @* IF TEXTFIELD ENTERED DATA THEN SHOW THIS BUTTON *@
+        <button class="btn btn-link text-decoration-none" @onclick="SendMessage" enabled>
+          <span>Enviar</span>
         </button>
       </div>
-      @* IF TEXTFIELD ENTERED DATA THEN SHOW THIS BUTTON *@
-      <button class="btn btn-link text-decoration-none" enabled>
-        <span>Enviar</span>
-      </button>
-    </div>
 
-  </div>
+    </div>
   }
   else
   {
@@ -158,22 +216,115 @@
   public Boolean ShowDetailsChat = false;
   [Parameter]
   public Chat Chat { get; set; }
+  [Parameter]
+  public EventCallback<(Message Message, Chat Chat)> OnMessageSent { get; set; }
+  private Message Message = new Message();
+  private Image FileSelected = null;
+  private ElementReference fileInput;
+  private ElementReference messagesWrapper;
+  private bool isAtBottom = false;
 
-  public List<Message> Messages { get; set; }
 
-  protected override async Task OnParametersSetAsync()
+
+   protected override async void OnParametersSet()
   {
-    try
+    await CheckIfAtBottom();
+  }
+
+  private async Task SendMessage()
+  {
+
+    @if (Chat != null && Chat.Initiator != null && Chat.Receiver != null)
     {
-      Messages = await ChatService.GetAllChatMessages(Chat.Uuid);
-    }
-    catch (SystemException error)
-    {
-      Console.WriteLine(error);
+      string receiver = null;
+      if (Chat.Initiator.username == Chat.Receiver.username)
+      {
+        receiver = AuthenticationService.User.Username;
+      }
+      else if (Chat.Initiator.username != AuthenticationService.User.Username)
+      {
+        receiver = Chat.Initiator.username;
+      }
+      else
+      {
+        receiver = Chat.Receiver.username;
+      }
+      if (Message.Content != null || FileSelected != null)
+      {
+        (Message messageCreated, Chat ChatInfo) = await ChatService.SendMessageToChat(Message, receiver, FileSelected);
+        await OnMessageSent.InvokeAsync((messageCreated, Chat));
+        Message.Content = null;
+        FileSelected = null;
+        await ScrollToBottom();
+      }
     }
     StateHasChanged();
   }
 
+  private async Task OnFileSelected(InputFileChangeEventArgs e)
+  {
+    var files = e.GetMultipleFiles();
+    var file = files.FirstOrDefault();
 
+    Message.Content = null;
+
+    using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
+    using var memoryStream = new MemoryStream();
+    await stream.CopyToAsync(memoryStream);
+    var buffer = memoryStream.ToArray();
+
+    FileSelected = new Image
+      {
+        ContentType = file.ContentType,
+        Data = buffer,
+        Url = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}",
+        Filename = file.Name,
+        Filesize = file.Size,
+        MimeType = file.ContentType
+      };
+
+    StateHasChanged();
+  }
+  private void RemoveFileSelected()
+  {
+    FileSelected = null;
+    Message.Content = null;
+    StateHasChanged();
+  }
+  private void OnCommentChanged(ChangeEventArgs e)
+  {
+    Message.Content = e.Value?.ToString() ?? string.Empty;
+    StateHasChanged();
+  }
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      await ScrollToBottom();
+    }
+  }
+  
+
+  public async Task ScrollToBottom()
+  {
+    await JSRuntime.InvokeVoidAsync("scrollToBottom", messagesWrapper);
+    isAtBottom = true;
+  }
+
+
+  private async Task CheckIfAtBottom()
+  {
+    var scrollInfo = await JSRuntime.InvokeAsync<ScrollInfo>("getScrollInfo", messagesWrapper);
+    isAtBottom = (scrollInfo.scrollHeight - scrollInfo.scrollTop <= scrollInfo.clientHeight + 1);
+  }
+
+
+  private class ScrollInfo
+  {
+    public double scrollHeight { get; set; }
+    public double scrollTop { get; set; }
+    public double clientHeight { get; set; }
+  }
 
 }

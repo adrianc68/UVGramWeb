@@ -12,11 +12,18 @@
         {
           @Message.Content
         }
-        else if(Message.Message_Type == MessageTypeEnum.IMAGEN)
+        else if (Message.Message_Type == MessageTypeEnum.IMAGEN)
         {
-          @:___Imagen enviada?___
-        } 
-        else if(Message.Message_Type == MessageTypeEnum.VIDEO)
+          @if (Message.Content != null)
+          {
+            <img class="usermessage-img" src="@Message.Content" />
+          }
+          else
+          {
+            <p>La imagen no está disponible.</p>
+          }
+        }
+        else if (Message.Message_Type == MessageTypeEnum.VIDEO)
         {
           @:____Video enviado____
         }
@@ -35,6 +42,6 @@
 
 @code {
   [Parameter]
-  public Message Message {get; set;}
+  public Message Message { get; set; }
 
 }
